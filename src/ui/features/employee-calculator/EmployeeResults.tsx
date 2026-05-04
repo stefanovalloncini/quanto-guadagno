@@ -38,30 +38,26 @@ export function EmployeeResults({ result }: { readonly result: SalaryBreakdown }
       </h2>
 
       <Stack gap="lg">
-        <dl className="qg-result-card">
-          <div className="qg-result-card__primary">
-            <dt>
-              <FormattedMessage id="results.netAnnual" />
-            </dt>
-            <dd className="qg-result-card__primary-value">
-              {formatCurrencyWhole(result.netAnnual)}
-            </dd>
-          </div>
-          <div className="qg-result-card__secondary">
-            <div>
+        <div className="qg-result-card">
+          <p className="qg-result-card__primary-label">
+            <FormattedMessage id="results.netAnnual" />
+          </p>
+          <p className="qg-result-card__primary-value">{formatCurrencyWhole(result.netAnnual)}</p>
+          <dl className="qg-result-card__secondary">
+            <div className="qg-result-card__metric">
               <dt>
                 <FormattedMessage id="results.netMonthly" />
               </dt>
               <dd>{formatCurrency(result.netMonthly)}</dd>
             </div>
-            <div>
+            <div className="qg-result-card__metric">
               <dt>
                 <FormattedMessage id="results.effectiveRate" />
               </dt>
               <dd>{formatPercentage(result.effectiveTaxRate)}</dd>
             </div>
-          </div>
-        </dl>
+          </dl>
+        </div>
 
         <details className="qg-disclosure">
           <summary>

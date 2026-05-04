@@ -176,19 +176,11 @@
 .qg-result-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  margin: 0;
-}
-
-.qg-result-card__primary {
-  display: flex;
-  flex-direction: column;
   gap: var(--space-1);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--rule-color);
 }
 
-.qg-result-card__primary dt {
+.qg-result-card__primary-label {
+  margin: 0;
   font-size: var(--text-label);
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -196,7 +188,7 @@
 }
 
 .qg-result-card__primary-value {
-  margin: 0;
+  margin: 0 0 var(--space-4);
   font-family: var(--font-display);
   font-size: var(--text-hero);
   line-height: 1;
@@ -208,16 +200,19 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
+  margin: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule-color);
 }
 
-.qg-result-card__secondary dt {
+.qg-result-card__metric dt {
   font-size: var(--text-caption);
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.qg-result-card__secondary dd {
+.qg-result-card__metric dd {
   margin: var(--space-1) 0 0;
   font-family: var(--font-mono);
   font-size: var(--text-subtitle);

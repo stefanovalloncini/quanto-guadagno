@@ -8,12 +8,14 @@ export const en: Record<MessageKey, string> = {
 
   "page.employee.title": "Net salary calculator",
   "page.employee.subtitle":
-    "Enter your gross annual salary. The calculation applies IRPEF, INPS, regional and municipal addizionale for 2026.",
-  "page.employee.year2026": "Tax year 2026",
+    "Enter your gross annual salary. The calculation applies IRPEF, INPS, regional and municipal addizionale for the selected year.",
+  "page.employee.eyebrow": "Tax year {year}",
 
   "form.section.title": "Your inputs",
   "form.gross.label": "Gross annual salary (RAL)",
   "form.gross.hint": "Annual gross amount, before withholdings.",
+  "form.year.label": "Tax year",
+  "form.year.hint": "Rates and policies change year to year.",
   "form.regional.label": "Regional addizionale rate",
   "form.regional.hint": "Regional rate, percentage. Default: 1.73%.",
   "form.municipal.label": "Municipal addizionale rate",
@@ -28,11 +30,7 @@ export const en: Record<MessageKey, string> = {
   "breakdown.gross": "Gross salary",
   "breakdown.inps": "INPS contributions",
   "breakdown.taxable": "Taxable income",
-  "breakdown.irpefGross": "IRPEF gross",
-  "breakdown.workDeduction": "Employee work deduction",
-  "breakdown.detrazioneAggiuntiva": "Additional deduction (tax wedge cut)",
-  "breakdown.totalDeductions": "Total deductions",
-  "breakdown.irpefNet": "IRPEF net",
+  "breakdown.irpefNet": "IRPEF",
   "breakdown.regional": "Regional addizionale",
   "breakdown.municipal": "Municipal addizionale",
   "breakdown.trattamentoIntegrativo": "Trattamento integrativo bonus",
@@ -41,5 +39,5 @@ export const en: Record<MessageKey, string> = {
 
   "scope.title": "What's included today",
   "scope.body":
-    "Tax year 2026. Private-sector employee. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, years 2024 and 2025.",
+    "Private-sector employee. Tax years 2024, 2025 and 2026. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, public sector, apprenticeship contracts.",
 };

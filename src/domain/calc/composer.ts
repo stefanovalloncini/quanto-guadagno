@@ -8,6 +8,8 @@ import type { TrattamentoIntegrativoConfig } from "./trattamentoIntegrativo.ts";
 import { calculateTrattamentoIntegrativo } from "./trattamentoIntegrativo.ts";
 import type { TaxWedgeCutConfig } from "./taxWedgeCut.ts";
 import { calculateTaxWedgeCut } from "./taxWedgeCut.ts";
+import type { InpsExemption2024Config } from "./inpsExemption2024.ts";
+import { calculateInpsExemption2024 } from "./inpsExemption2024.ts";
 
 export interface YearTaxConfig {
   readonly year: number;
@@ -16,6 +18,7 @@ export interface YearTaxConfig {
   readonly workDeduction: WorkDeductionConfig;
   readonly trattamentoIntegrativo: TrattamentoIntegrativoConfig;
   readonly taxWedgeCut: TaxWedgeCutConfig | null;
+  readonly inpsExemption2024: InpsExemption2024Config | null;
 }
 
 export interface SalaryInput {
@@ -27,6 +30,7 @@ export interface SalaryInput {
 export interface SalaryBreakdown {
   readonly grossAnnual: number;
   readonly inps: number;
+  readonly inpsExemption: number;
   readonly taxableIncome: number;
   readonly irpefGross: number;
   readonly workDeduction: number;
@@ -46,8 +50,12 @@ const round = (n: number): number => Math.round(n * 100) / 100;
 
 export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig): SalaryBreakdown {
   const grossAnnual = Math.max(0, input.grossAnnual);
-  const inps = calculateInps(grossAnnual, cfg.inps);
-  const taxableIncome = Math.max(0, grossAnnual - inps.contribution);
+  const inpsGross = calculateInps(grossAnnual, cfg.inps);
+  const inpsExemption = cfg.inpsExemption2024
+    ? calculateInpsExemption2024(grossAnnual, cfg.inpsExemption2024)
+    : 0;
+  const inps = Math.max(0, inpsGross.contribution - inpsExemption);
+  const taxableIncome = Math.max(0, grossAnnual - inps);
 
   const irpefGross = calculateIrpefGross(taxableIncome, cfg.irpefBrackets);
   const workDeduction = calculateWorkDeduction(taxableIncome, cfg.workDeduction);
@@ -71,7 +79,7 @@ export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig)
 
   const netAnnual =
     grossAnnual -
-    inps.contribution -
+    inps -
     irpefNet -
     regionalAddizionale -
     municipalAddizionale +
@@ -82,7 +90,8 @@ export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig)
 
   return {
     grossAnnual: round(grossAnnual),
-    inps: round(inps.contribution),
+    inps: round(inps),
+    inpsExemption: round(inpsExemption),
     taxableIncome: round(taxableIncome),
     irpefGross: round(irpefGross),
     workDeduction: round(workDeduction),

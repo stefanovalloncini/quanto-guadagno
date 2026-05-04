@@ -1,16 +1,16 @@
 import type { YearTaxConfig } from "@/domain/calc/composer.ts";
 
-export const TAX_CONFIG_2026: YearTaxConfig = {
-  year: 2026,
+export const TAX_CONFIG_2025: YearTaxConfig = {
+  year: 2025,
   inps: {
     standardRate: 0.0919,
     aboveCeilingRate: 0.1019,
-    ceiling: 56_224,
-    massimale: 122_295,
+    ceiling: 55_448,
+    massimale: 120_607,
   },
   irpefBrackets: [
     { min: 0, max: 28_000, rate: 0.23 },
-    { min: 28_000, max: 50_000, rate: 0.33 },
+    { min: 28_000, max: 50_000, rate: 0.35 },
     { min: 50_000, max: null, rate: 0.43 },
   ],
   workDeduction: {

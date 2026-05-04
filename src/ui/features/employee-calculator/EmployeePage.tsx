@@ -12,7 +12,7 @@ export function EmployeePage() {
       <Stack gap="xl">
         <header className="qg-page__header">
           <p className="qg-page__eyebrow">
-            <FormattedMessage id="page.employee.year2026" />
+            <FormattedMessage id="page.employee.eyebrow" values={{ year: calc.state.taxYear }} />
           </p>
           <h1 className="qg-page__title">
             <FormattedMessage id="page.employee.title" />
@@ -27,15 +27,17 @@ export function EmployeePage() {
             grossAnnual={calc.state.grossAnnual}
             regionalRatePercent={calc.state.regionalRatePercent}
             municipalRatePercent={calc.state.municipalRatePercent}
+            taxYear={calc.state.taxYear}
             onGrossChange={calc.setGross}
             onRegionalChange={calc.setRegionalPercent}
             onMunicipalChange={calc.setMunicipalPercent}
+            onTaxYearChange={calc.setTaxYear}
           />
           <EmployeeResults result={calc.result} />
         </div>
 
-        <aside className="qg-scope-note" aria-label="scope">
-          <h3 className="qg-scope-note__title">
+        <aside className="qg-scope-note" aria-labelledby="qg-scope-title">
+          <h3 id="qg-scope-title" className="qg-scope-note__title">
             <FormattedMessage id="scope.title" />
           </h3>
           <p>

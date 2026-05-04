@@ -1,13 +1,18 @@
 import { FormattedMessage } from "react-intl";
-import { Field, Stack } from "@/ui/design-system";
+import { Field, Select, Stack } from "@/ui/design-system";
+import { SUPPORTED_YEARS, type SupportedYear } from "@/domain/data";
+
+const yearOptions = SUPPORTED_YEARS.map((y) => ({ value: y, label: String(y) }));
 
 export interface EmployeeFormProps {
   readonly grossAnnual: number;
   readonly regionalRatePercent: number;
   readonly municipalRatePercent: number;
+  readonly taxYear: SupportedYear;
   readonly onGrossChange: (n: number) => void;
   readonly onRegionalChange: (n: number) => void;
   readonly onMunicipalChange: (n: number) => void;
+  readonly onTaxYearChange: (year: SupportedYear) => void;
 }
 
 export function EmployeeForm(props: EmployeeFormProps) {
@@ -24,6 +29,13 @@ export function EmployeeForm(props: EmployeeFormProps) {
           hint={<FormattedMessage id="form.gross.hint" />}
           value={props.grossAnnual}
           onChange={props.onGrossChange}
+        />
+        <Select<SupportedYear>
+          label={<FormattedMessage id="form.year.label" />}
+          hint={<FormattedMessage id="form.year.hint" />}
+          value={props.taxYear}
+          options={yearOptions}
+          onChange={props.onTaxYearChange}
         />
         <Field
           type="percentage"
