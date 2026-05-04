@@ -1,0 +1,6 @@
+export * from "./irpef.ts";
+export * from "./inps.ts";
+export * from "./workDeduction.ts";
+export * from "./trattamentoIntegrativo.ts";
+export * from "./taxWedgeCut.ts";
+export * from "./composer.ts";
