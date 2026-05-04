@@ -1,0 +1,324 @@
+/* ===== DESIGN TOKENS ========================================
+ *
+ *  Italian Financial Editorial — refined, warm, data-centric.
+ *  All --ui-* tokens are aliases into the unified palette.
+ *
+ * ============================================================ */
+
+/* ── LIGHT MODE ──────────────────────────────────────────────── */
+:root {
+  /* Accent: Deep Teal (Mediterranean warmth) */
+  --ui-accent: #1b6b6d;
+  --ui-accent-light: #2d9b9e;
+  --ui-accent-dark: #145455;
+  --ui-accent-deep: #0e3f40;
+  --ui-accent-vivid: #1b6b6d;
+  --ui-blue: #60a5fa;
+  --ui-black: #0d0d0c;
+  --ui-white: #ffffff;
+  --ui-ink: #252420;
+  --ui-canvas: #ffffff;
+  --ui-shadow: 0 2px 8px rgba(37, 36, 32, 0.05), 0 1px 2px rgba(37, 36, 32, 0.06);
+
+  /* Secondary accent — warm burnt orange */
+  --ui-secondary: #c4572a;
+  --ui-secondary-light: #e27035;
+
+  /* Neutrals — warm ivory undertones */
+  --gray-50: #fdfcfa;
+  --gray-100: #f8f7f4;
+  --gray-200: #efeee9;
+  --gray-300: #dbd9d3;
+  --gray-400: #9c9a94;
+  --gray-500: #706e68;
+  --gray-600: #565550;
+  --gray-700: #3d3c38;
+  --gray-800: #252420;
+  --gray-900: #0d0d0c;
+
+  /* Primary — rich sapphire blue */
+  --primary-50: #f4f7fb;
+  --primary-100: #e4ecf7;
+  --primary-200: #c5d7f0;
+  --primary-300: #94b8e4;
+  --primary-400: #5c93d5;
+  --primary-500: #2e6bc4;
+  --primary-600: #2356a4;
+  --primary-700: #1e4585;
+  --primary-800: #1a3968;
+  --primary-900: #162d52;
+
+  /* Accent — burnt orange */
+  --accent-50: #fef6f2;
+  --accent-100: #fceae0;
+  --accent-200: #f8d2c0;
+  --accent-300: #f0a87a;
+  --accent-400: #e88b55;
+  --accent-500: #e27035;
+  --accent-600: #c4592a;
+  --accent-700: #a34820;
+  --accent-800: #83391a;
+  --accent-900: #6b2f16;
+
+  /* Success — verdant green */
+  --success-50: #f2f9f4;
+  --success-100: #e0f2e5;
+  --success-200: #b8e6c8;
+  --success-300: #85d4a0;
+  --success-400: #52c278;
+  --success-500: #2d9e5a;
+  --success-600: #258b4e;
+  --success-700: #1f7342;
+
+  /* Error — venetian red */
+  --error-50: #fdf4f3;
+  --error-100: #fce8e6;
+  --error-200: #f5c4c0;
+  --error-300: #ec9490;
+  --error-400: #e36860;
+  --error-500: #d93d30;
+  --error-600: #c23228;
+  --error-700: #a32a22;
+
+  /* Warning — golden amber */
+  --warning-50: #fefbf3;
+  --warning-100: #fdf3dc;
+  --warning-200: #f8dda0;
+  --warning-300: #f2c86a;
+  --warning-400: #edb340;
+  --warning-500: #e89b1c;
+  --warning-600: #d08a16;
+  --warning-700: #b47712;
+
+  /* Semantic surfaces */
+  --background: #fdfcfa;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-secondary: #f8f7f4;
+  --text-primary: #252420;
+  --text-secondary: #706e68;
+  --text-muted: #736f68;
+
+  /* Borders */
+  --border-primary: rgba(37, 36, 32, 0.09);
+  --border-secondary: rgba(37, 36, 32, 0.05);
+  --rule-color: #efeee9;
+
+  /* Chart colors */
+  --chart-primary: #2e6bc4;
+  --chart-primary-light: #94b8e4;
+  --chart-primary-dark: #1e4585;
+  --chart-accent: #e27035;
+  --chart-success: #2d9e5a;
+  --chart-error: #d93d30;
+  --chart-warning: #d4890e;
+  --chart-info: #94b8e4;
+  --chart-neutral: #706e68;
+  --chart-neutral-light: #dbd9d3;
+  --chart-muted: #efeee9;
+
+  /* Semantic chart colors */
+  --chart-net: #2d9e5a;
+  --chart-inps: #2e6bc4;
+  --chart-irpef: #d93d30;
+  --chart-regional: #d4890e;
+  --chart-municipal: #706e68;
+  --chart-employer: #1e4585;
+  --chart-tfr: #94b8e4;
+  --chart-other: #9c9a94;
+
+  /* Chart — purple (scenarios, categories) */
+  --chart-purple: #7c3aed;
+
+  /* Heatmap gradient (7-step) */
+  --heatmap-very-high: #15803d;
+  --heatmap-high: #2d8e52;
+  --heatmap-medium-high: #6db87a;
+  --heatmap-neutral: #d4890e;
+  --heatmap-medium-low: #e06b4d;
+  --heatmap-low: #d93d30;
+  --heatmap-very-low: #b91c1c;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Z-Index Scale */
+  --z-dropdown: 20;
+  --z-sticky: 30;
+  --z-fixed: 40;
+  --z-modal: 50;
+  --z-skip: 9999;
+
+  /* Transition Durations */
+  --duration-fast: 150ms;
+  --duration-default: 200ms;
+  --duration-slow: 350ms;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(37, 36, 32, 0.04);
+  --shadow-card: 0 2px 8px rgba(37, 36, 32, 0.05), 0 1px 2px rgba(37, 36, 32, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(37, 36, 32, 0.09), 0 4px 8px rgba(37, 36, 32, 0.05);
+  --shadow-elevated: 0 12px 40px rgba(37, 36, 32, 0.12), 0 4px 12px rgba(37, 36, 32, 0.07);
+
+  /* Glass effect */
+  --glass-bg: rgba(253, 252, 250, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+/* ── DARK MODE ───────────────────────────────────────────────── */
+.dark {
+  /* Accent: Lifted Teal for dark backgrounds */
+  --ui-accent: #5cb8ba;
+  --ui-accent-light: #7ed0d2;
+  --ui-accent-dark: #3a9c9e;
+  --ui-accent-deep: #2d8b8d;
+  --ui-accent-vivid: #5cb8ba;
+  --ui-ink: #e2e4e8;
+  --ui-canvas: #181a1e;
+  --ui-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03), 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.25);
+
+  --ui-blue: #93c5fd;
+  --ui-secondary: #e8945f;
+  --ui-secondary-light: #eda87a;
+
+  /* Neutrals — warm dark with consistent undertone */
+  --gray-50: #101114;
+  --gray-100: #18191d;
+  --gray-200: #232529;
+  --gray-300: #2e3035;
+  --gray-400: #484b52;
+  --gray-500: #6b6f78;
+  --gray-600: #9ca0a9;
+  --gray-700: #c4c7cd;
+  --gray-800: #e2e4e8;
+  --gray-900: #f4f5f7;
+
+  /* Primary — sapphire blue (lifted for dark bg) */
+  --primary-50: #0e1724;
+  --primary-100: #162c44;
+  --primary-200: #1e4168;
+  --primary-300: #2e6bc4;
+  --primary-400: #5590d0;
+  --primary-500: #6b9dd6;
+  --primary-600: #89b3e0;
+  --primary-700: #a7c9ea;
+  --primary-800: #c5dff4;
+  --primary-900: #e3f0fc;
+
+  /* Accent — burnt orange (lifted for dark bg) */
+  --accent-50: #1c0f08;
+  --accent-100: #351c10;
+  --accent-200: #522c1a;
+  --accent-300: #7a4228;
+  --accent-400: #b55f38;
+  --accent-500: #e8945f;
+  --accent-600: #eda87a;
+  --accent-700: #f2bc96;
+  --accent-800: #f7d0b2;
+  --accent-900: #fce4ce;
+
+  /* Success — muted green */
+  --success-50: #0a1a10;
+  --success-100: #12301c;
+  --success-200: #1a4a2c;
+  --success-300: #26633e;
+  --success-400: #3a9c5c;
+  --success-500: #5cb87a;
+  --success-600: #78c990;
+  --success-700: #94daa6;
+
+  /* Error — muted coral-red */
+  --error-50: #1a0c0c;
+  --error-100: #301414;
+  --error-200: #4a1c1a;
+  --error-300: #7a2c28;
+  --error-400: #c24a44;
+  --error-500: #e8706a;
+  --error-600: #ed8a85;
+  --error-700: #f2a4a0;
+
+  /* Warning — muted amber */
+  --warning-50: #1a140a;
+  --warning-100: #2a1e0e;
+  --warning-200: #4a3418;
+  --warning-300: #7a5820;
+  --warning-400: #b8842e;
+  --warning-500: #e8a84d;
+  --warning-600: #edc070;
+  --warning-700: #f2d093;
+
+  /* Semantic surfaces */
+  --background: #0f1012;
+  --surface: #181a1e;
+  --surface-elevated: #24262c;
+  --surface-secondary: #1c1d22;
+  --text-primary: #f4f5f7;
+  --text-secondary: #9ca0a9;
+  --text-muted: #8a8e96;
+
+  /* Borders */
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-secondary: rgba(255, 255, 255, 0.04);
+  --rule-color: #232529;
+
+  /* Chart colors — muted, not neon */
+  --chart-primary: #6b9dd6;
+  --chart-primary-light: #89b3e0;
+  --chart-primary-dark: #4a6e9b;
+  --chart-accent: #e8945f;
+  --chart-success: #5cb87a;
+  --chart-error: #e8706a;
+  --chart-warning: #e8a84d;
+  --chart-info: #89b3e0;
+  --chart-neutral: #6b6f78;
+  --chart-neutral-light: #9ca0a9;
+  --chart-muted: #2a2b30;
+
+  /* Semantic chart colors — dark mode */
+  --chart-net: #5cb87a;
+  --chart-inps: #6b9dd6;
+  --chart-irpef: #e8706a;
+  --chart-regional: #e8a84d;
+  --chart-municipal: #9ca0a9;
+  --chart-employer: #4a6e9b;
+  --chart-tfr: #89b3e0;
+  --chart-other: #6b6f78;
+
+  /* Chart — purple (scenarios, categories) */
+  --chart-purple: #a78bfa;
+
+  /* Heatmap gradient — dark mode (7 steps) */
+  --heatmap-very-high: #4ade80;
+  --heatmap-high: #5cb87a;
+  --heatmap-medium-high: #7dcc92;
+  --heatmap-neutral: #e8a84d;
+  --heatmap-medium-low: #e08870;
+  --heatmap-low: #e8706a;
+  --heatmap-very-low: #f87171;
+
+  /* Shadows — layered depth with subtle glow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-card:
+    0 0 0 1px rgba(255, 255, 255, 0.03), 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover:
+    0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 8px rgba(0, 0, 0, 0.25),
+    0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-elevated:
+    0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 16px rgba(0, 0, 0, 0.3),
+    0 24px 64px rgba(0, 0, 0, 0.4);
+
+  /* Glass effect — frosted glass with depth */
+  --glass-bg: rgba(16, 17, 20, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.06);
+
+  /* Subtle glow for interactive elements */
+  --glow-primary: 0 0 20px rgba(107, 157, 214, 0.15);
+  --glow-success: 0 0 20px rgba(92, 184, 122, 0.15);
+}

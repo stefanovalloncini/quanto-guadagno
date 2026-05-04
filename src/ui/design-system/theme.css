@@ -1,0 +1,170 @@
+/* ===== TAILWIND THEME ======================================== */
+
+@theme {
+  --breakpoint-xs: 480px;
+
+  /* Gray scale */
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+
+  /* Primary colors */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  /* Accent colors */
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+
+  /* Success */
+  --color-success-50: var(--success-50);
+  --color-success-100: var(--success-100);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+
+  /* Error */
+  --color-error-50: var(--error-50);
+  --color-error-100: var(--error-100);
+  --color-error-500: var(--error-500);
+  --color-error-600: var(--error-600);
+  --color-error-700: var(--error-700);
+
+  /* Warning */
+  --color-warning-50: var(--warning-50);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+
+  /* Success — fill gaps */
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+
+  /* Error — fill gaps */
+  --color-error-200: var(--error-200);
+  --color-error-300: var(--error-300);
+  --color-error-400: var(--error-400);
+
+  /* Warning — fill gaps */
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+  --color-warning-400: var(--warning-400);
+
+  /* Border Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
+
+  /* Transition Durations */
+  --duration-fast: var(--duration-fast);
+  --duration-default: var(--duration-default);
+  --duration-slow: var(--duration-slow);
+
+  /* Semantic colors */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Chart colors */
+  --color-chart-primary: var(--chart-primary);
+  --color-chart-primary-light: var(--chart-primary-light);
+  --color-chart-primary-dark: var(--chart-primary-dark);
+  --color-chart-accent: var(--chart-accent);
+  --color-chart-success: var(--chart-success);
+  --color-chart-error: var(--chart-error);
+  --color-chart-warning: var(--chart-warning);
+  --color-chart-info: var(--chart-info);
+  --color-chart-neutral: var(--chart-neutral);
+  --color-chart-neutral-light: var(--chart-neutral-light);
+  --color-chart-muted: var(--chart-muted);
+
+  /* Semantic chart colors */
+  --color-chart-net: var(--chart-net);
+  --color-chart-inps: var(--chart-inps);
+  --color-chart-irpef: var(--chart-irpef);
+  --color-chart-regional: var(--chart-regional);
+  --color-chart-municipal: var(--chart-municipal);
+  --color-chart-employer: var(--chart-employer);
+  --color-chart-tfr: var(--chart-tfr);
+  --color-chart-other: var(--chart-other);
+  --color-chart-purple: var(--chart-purple);
+
+  /* Typography */
+  --font-sans: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Typography Scale (8pt grid) */
+  --text-hero: 4rem; /* 64px */
+  --text-display: 2.5rem; /* 40px */
+  --text-title: 1.75rem; /* 28px */
+  --text-subtitle: 1.25rem; /* 20px */
+  --text-body: 1rem; /* 16px */
+  --text-label: 0.875rem; /* 14px */
+  --text-caption: 0.75rem; /* 12px */
+  --text-micro: 0.625rem; /* 10px */
+
+  /* Spacing Scale (4px base) */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+
+  /* Shadows */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-elevated: var(--shadow-elevated);
+
+  --transition-default: 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* UI Tokens */
+  --color-ui-accent: var(--ui-accent);
+  --color-ui-accent-light: var(--ui-accent-light);
+  --color-ui-accent-dark: var(--ui-accent-dark);
+  --color-ui-accent-deep: var(--ui-accent-deep);
+  --color-ui-accent-vivid: var(--ui-accent-vivid);
+  --color-ui-blue: var(--ui-blue);
+  --color-ui-black: var(--ui-black);
+  --color-ui-white: var(--ui-white);
+  --color-ui-ink: var(--ui-ink);
+  --color-ui-canvas: var(--ui-canvas);
+  --color-ui-secondary: var(--ui-secondary);
+  --color-ui-secondary-light: var(--ui-secondary-light);
+}
