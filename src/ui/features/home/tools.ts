@@ -15,6 +15,6 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
   { id: "tfr", to: null, available: false },
   { id: "apprenticeship", to: null, available: false },
   { id: "tax-system", to: null, available: false },
-  { id: "data-sources", to: null, available: false },
+  { id: "data-sources", to: "/fonti-dati", available: true },
   { id: "europe", to: null, available: false },
 ];

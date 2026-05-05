@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { ComparisonPage } from "@/ui/features/comparison";
+import { DataSourcesPage } from "@/ui/features/data-sources";
 import { EmployeePage } from "@/ui/features/employee-calculator";
 import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <StatisticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/fonti-dati",
+    element: (
+      <AppLayout>
+        <DataSourcesPage />
       </AppLayout>
     ),
   },
