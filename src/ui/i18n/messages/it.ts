@@ -4,6 +4,18 @@ export const it = {
   "error.boundary.title": "Qualcosa è andato storto",
   "error.boundary.body": "Ricarica la pagina per riprovare.",
 
+  "nav.home": "Home",
+  "nav.employee": "Calcolatore stipendio",
+
+  "theme.toggle.label": "Passa al tema {mode}",
+  "theme.light": "chiaro",
+  "theme.dark": "scuro",
+
+  "footer.attribution":
+    "Calcoli basati su norme e circolari ufficiali. Vedi i documenti di verifica nelle sorgenti.",
+  "footer.disclaimer":
+    "Strumento informativo. Per situazioni complesse rivolgersi a un commercialista.",
+
   "page.employee.title": "Calcolatore stipendio netto",
   "page.employee.subtitle":
     "Inserisci la retribuzione annua lorda. Il calcolo applica IRPEF, INPS, addizionale regionale e comunale per l'anno selezionato.",
