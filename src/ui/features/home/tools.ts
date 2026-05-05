@@ -7,7 +7,7 @@ export interface ToolEntry {
 export const TOOLS: ReadonlyArray<ToolEntry> = [
   { id: "employee", to: "/calcola-stipendio", available: true },
   { id: "freelancer", to: "/calcolo-partita-iva", available: true },
-  { id: "comparison", to: null, available: false },
+  { id: "comparison", to: "/confronto-scenari", available: true },
   { id: "statistics", to: null, available: false },
   { id: "tools", to: null, available: false },
   { id: "payslip", to: null, available: false },
