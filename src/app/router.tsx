@@ -6,6 +6,7 @@ import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
 import { PayslipPage } from "@/ui/features/payslip";
 import { StatisticsPage } from "@/ui/features/statistics";
+import { TfrPage } from "@/ui/features/tfr";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
 const router = createBrowserRouter([
@@ -62,6 +63,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <PayslipPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/simulatore-tfr",
+    element: (
+      <AppLayout>
+        <TfrPage />
       </AppLayout>
     ),
   },
