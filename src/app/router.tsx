@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { ApprenticeshipPage } from "@/ui/features/apprenticeship";
 import { ComparisonPage } from "@/ui/features/comparison";
 import { DataSourcesPage } from "@/ui/features/data-sources";
 import { EmployeePage } from "@/ui/features/employee-calculator";
@@ -71,6 +72,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <TfrPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/progressione-apprendistato",
+    element: (
+      <AppLayout>
+        <ApprenticeshipPage />
       </AppLayout>
     ),
   },
