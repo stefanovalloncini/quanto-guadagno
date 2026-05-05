@@ -4,6 +4,7 @@ import { DataSourcesPage } from "@/ui/features/data-sources";
 import { EmployeePage } from "@/ui/features/employee-calculator";
 import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
+import { PayslipPage } from "@/ui/features/payslip";
 import { StatisticsPage } from "@/ui/features/statistics";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <DataSourcesPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/busta-paga",
+    element: (
+      <AppLayout>
+        <PayslipPage />
       </AppLayout>
     ),
   },
