@@ -14,6 +14,26 @@ export const en: Record<MessageKey, string> = {
   "nav.sources": "Sources",
   "nav.payslip": "Payslip",
   "nav.tfr": "Severance",
+  "nav.apprenticeship": "Apprenticeship",
+
+  "apprenticeship.page.eyebrow": "Apprenticeship contracts",
+  "apprenticeship.page.title": "Salary progression",
+  "apprenticeship.page.subtitle":
+    "Estimate the salary year by year during apprenticeship, starting from the target salary.",
+  "apprenticeship.form.title": "Parameters",
+  "apprenticeship.form.target.label": "Target salary (RAL)",
+  "apprenticeship.form.target.hint":
+    "Gross annual salary at the final level, after apprenticeship.",
+  "apprenticeship.form.years.label": "Duration in years",
+  "apprenticeship.form.years.hint": "Typically 3 years; some CCNLs allow up to 5.",
+  "apprenticeship.results.title": "Salary schedule",
+  "apprenticeship.col.year": "Year",
+  "apprenticeship.col.percent": "% of target",
+  "apprenticeship.col.gross": "Gross annual",
+  "apprenticeship.row.yearN": "Year {n}",
+  "apprenticeship.scope.title": "What's included today",
+  "apprenticeship.scope.body":
+    "Typical market progression (85%, 90%, 95%, 100%). Specific CCNLs may vary by a few points. Reduced contribution rates (5.84% vs 9.19%) should be applied in the salary calculator.",
 
   "tfr.page.eyebrow": "End-of-employment severance",
   "tfr.page.title": "TFR simulator",
