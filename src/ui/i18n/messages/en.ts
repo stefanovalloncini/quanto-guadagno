@@ -8,6 +8,38 @@ export const en: Record<MessageKey, string> = {
 
   "nav.home": "Home",
   "nav.employee": "Salary calculator",
+  "nav.freelancer": "Freelancer",
+
+  "freelancer.page.eyebrow": "Tax year {year}",
+  "freelancer.page.title": "Freelancer calculator — flat-rate regime",
+  "freelancer.page.subtitle":
+    "Enter your annual revenue. The calculation applies the profitability coefficient, INPS gestione separata contributions, and the substitute tax (5% or 15%).",
+  "freelancer.form.revenue.label": "Annual revenue",
+  "freelancer.form.revenue.hint": "Annual gross compensation, excluding VAT.",
+  "freelancer.form.year.hint": "Minimum contributions change year to year.",
+  "freelancer.form.coefficient.label": "Profitability coefficient",
+  "freelancer.form.coefficient.hint":
+    "Depends on the ATECO code. Default: 78% (professional services).",
+  "freelancer.form.regime.label": "Regime",
+  "freelancer.form.regime.hint": "Startup is valid for the first 5 years of activity.",
+  "freelancer.form.regime.standard": "Standard (15%)",
+  "freelancer.form.regime.startup": "Startup (5%)",
+  "freelancer.form.inps.label": "INPS contribution",
+  "freelancer.form.inps.hint":
+    "Full rate if you have no other coverage, reduced rate if you're already covered elsewhere.",
+  "freelancer.form.inps.full": "Full rate (26.07%)",
+  "freelancer.form.inps.reduced": "Reduced rate (24%)",
+  "freelancer.warn.aboveLimit":
+    "Revenue above the flat-rate regime threshold (€85,000). The calculator shows the estimate but the regime no longer applies.",
+  "freelancer.breakdown.revenue": "Revenue",
+  "freelancer.breakdown.taxableGross": "Taxable (revenue × coefficient)",
+  "freelancer.breakdown.inps": "Gestione separata contributions",
+  "freelancer.breakdown.taxableNet": "Substitute tax base",
+  "freelancer.breakdown.substitute": "Substitute tax",
+  "freelancer.breakdown.netAnnual": "Annual net",
+  "freelancer.scope.title": "What's included today",
+  "freelancer.scope.body":
+    "Flat-rate regime only, INPS gestione separata, 2024-2026. Not yet supported: ordinary regime, professional funds (Inarcassa, Cassa Forense, ENPAM etc.), artigiani and commercianti.",
 
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Understand what actually lands in your paycheck",

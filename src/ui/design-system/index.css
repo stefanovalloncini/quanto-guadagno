@@ -245,6 +245,16 @@
   border-radius: var(--radius-sm);
 }
 
+.qg-warn {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--warning-50);
+  border-left: 3px solid var(--warning-500);
+  color: var(--text-primary);
+  font-size: var(--text-label);
+  border-radius: var(--radius-sm);
+}
+
 .qg-page__header {
   display: flex;
   flex-direction: column;
