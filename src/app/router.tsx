@@ -1,8 +1,17 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { EmployeePage } from "@/ui/features/employee-calculator";
+import { HomePage } from "@/ui/features/home";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <AppLayout>
+        <HomePage />
+      </AppLayout>
+    ),
+  },
   {
     path: "/calcola-stipendio",
     element: (
@@ -11,8 +20,7 @@ const router = createBrowserRouter([
       </AppLayout>
     ),
   },
-  { path: "/", element: <Navigate to="/calcola-stipendio" replace /> },
-  { path: "*", element: <Navigate to="/calcola-stipendio" replace /> },
+  { path: "*", element: <Navigate to="/" replace /> },
 ]);
 
 export function AppRouter() {
