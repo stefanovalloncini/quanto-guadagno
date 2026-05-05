@@ -10,6 +10,27 @@ export const it = {
   "nav.comparison": "Confronto",
   "nav.statistics": "Statistiche",
   "nav.sources": "Fonti",
+  "nav.payslip": "Busta paga",
+
+  "payslip.page.eyebrow": "Simulatore",
+  "payslip.page.title": "Busta paga mensile",
+  "payslip.page.subtitle":
+    "Modifica i parametri e stampa la busta paga simulata. Le voci derivano dal calcolatore stipendio.",
+  "payslip.form.title": "Parametri",
+  "payslip.action.print": "Stampa",
+  "payslip.note":
+    "Questa è una simulazione: una busta paga reale può includere voci aggiuntive (fringe benefit, premi, ferie, malattia, sindacato).",
+  "payslip.doc.title": "Cedolino mensile simulato",
+  "payslip.doc.year": "Anno fiscale {year}",
+  "payslip.row.gross": "Retribuzione lorda",
+  "payslip.row.inps": "Contributi INPS",
+  "payslip.row.taxable": "Imponibile fiscale",
+  "payslip.row.irpef": "IRPEF",
+  "payslip.row.regional": "Addizionale regionale",
+  "payslip.row.municipal": "Addizionale comunale",
+  "payslip.row.integrativo": "Trattamento integrativo",
+  "payslip.row.wedge": "Somma aggiuntiva (taglio cuneo)",
+  "payslip.row.net": "Netto in busta",
 
   "sources.page.eyebrow": "Trasparenza",
   "sources.page.title": "Fonti dei dati",
