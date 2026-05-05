@@ -245,6 +245,72 @@
   border-radius: var(--radius-sm);
 }
 
+.qg-comparison-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.qg-comparison-actions__buttons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.qg-comparison-empty {
+  margin: 0;
+  padding: var(--space-6);
+  background: var(--surface-secondary);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-label);
+  text-align: center;
+}
+
+.qg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-label);
+}
+
+.qg-table th,
+.qg-table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--rule-color);
+}
+
+.qg-table thead th {
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: var(--text-caption);
+  letter-spacing: 0.06em;
+}
+
+.qg-table__num {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.qg-table__remove {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.qg-table__remove:hover {
+  color: var(--error-600);
+  background: var(--error-50);
+}
+
 .qg-warn {
   margin: 0;
   padding: var(--space-3) var(--space-4);
