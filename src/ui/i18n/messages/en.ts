@@ -10,6 +10,33 @@ export const en: Record<MessageKey, string> = {
   "nav.employee": "Salary calculator",
   "nav.freelancer": "Freelancer",
   "nav.comparison": "Comparison",
+  "nav.statistics": "Statistics",
+
+  "statistics.page.eyebrow": "Income distribution",
+  "statistics.page.title": "Where your salary sits",
+  "statistics.page.subtitle":
+    "Enter your annual net salary and see your bracket against the Italian distribution.",
+  "statistics.form.title": "Your annual net",
+  "statistics.form.input.label": "Annual net",
+  "statistics.form.input.hint": "What you take home after taxes, per year.",
+  "statistics.results.title": "Income bracket",
+  "statistics.results.bracket": "Position",
+  "statistics.results.thresholdLabel": "Bracket threshold",
+  "statistics.results.nextLabel": "Next bracket",
+  "statistics.explainer":
+    "Thresholds are based on Italian tax filings. Indicative of combined employee and self-employment income.",
+  "statistics.source.title": "Source",
+  "statistics.source.body":
+    "ISTAT income and living conditions surveys; MEF tax filing statistics 2023. See docs/data-verification/percentili.md for details.",
+  "percentile.bottom1": "Bottom 1%",
+  "percentile.bottom10": "Bottom 10%",
+  "percentile.bottom20": "Bottom 20%",
+  "percentile.median": "Italian median",
+  "percentile.top30": "Top 30%",
+  "percentile.top20": "Top 20%",
+  "percentile.top10": "Top 10%",
+  "percentile.top5": "Top 5%",
+  "percentile.top1": "Top 1%",
 
   "comparison.page.eyebrow": "Comparison",
   "comparison.page.title": "Scenario comparison",

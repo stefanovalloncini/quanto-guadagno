@@ -3,6 +3,7 @@ import { ComparisonPage } from "@/ui/features/comparison";
 import { EmployeePage } from "@/ui/features/employee-calculator";
 import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
+import { StatisticsPage } from "@/ui/features/statistics";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
 const router = createBrowserRouter([
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <ComparisonPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/statistiche",
+    element: (
+      <AppLayout>
+        <StatisticsPage />
       </AppLayout>
     ),
   },

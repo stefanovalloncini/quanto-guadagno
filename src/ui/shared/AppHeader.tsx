@@ -13,6 +13,7 @@ const navEntries: ReadonlyArray<NavEntry> = [
   { to: "/calcola-stipendio", id: "nav.employee", available: true },
   { to: "/calcolo-partita-iva", id: "nav.freelancer", available: true },
   { to: "/confronto-scenari", id: "nav.comparison", available: true },
+  { to: "/statistiche", id: "nav.statistics", available: true },
 ];
 
 export function AppHeader() {
