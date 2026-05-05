@@ -6,6 +6,17 @@ export const en: Record<MessageKey, string> = {
   "error.boundary.title": "Something went wrong",
   "error.boundary.body": "Reload the page to try again.",
 
+  "nav.home": "Home",
+  "nav.employee": "Salary calculator",
+
+  "theme.toggle.label": "Switch to {mode} theme",
+  "theme.light": "light",
+  "theme.dark": "dark",
+
+  "footer.attribution":
+    "Calculations based on official rules and circulars. See the verification documents in sources.",
+  "footer.disclaimer": "Informational tool. For complex situations consult a commercialista.",
+
   "page.employee.title": "Net salary calculator",
   "page.employee.subtitle":
     "Enter your gross annual salary. The calculation applies IRPEF, INPS, regional and municipal addizionale for the selected year.",
