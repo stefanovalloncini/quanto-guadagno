@@ -15,6 +15,26 @@ export const en: Record<MessageKey, string> = {
   "nav.payslip": "Payslip",
   "nav.tfr": "Severance",
   "nav.apprenticeship": "Apprenticeship",
+  "nav.inflation": "Inflation",
+
+  "inflation.page.eyebrow": "Purchasing power",
+  "inflation.page.title": "Inflation analysis",
+  "inflation.page.subtitle":
+    "Compare the purchasing power of an amount across two years, using the ISTAT FOI index.",
+  "inflation.form.title": "Parameters",
+  "inflation.form.amount.label": "Amount",
+  "inflation.form.amount.hint": "Starting amount, in euros.",
+  "inflation.form.from.label": "From year",
+  "inflation.form.to.label": "To year",
+  "inflation.results.title": "Equivalent value",
+  "inflation.results.equivalentLabel": "Equivalent in {year} euros",
+  "inflation.results.nominalLabel": "Nominal amount",
+  "inflation.results.cumulativeLabel": "Cumulative inflation",
+  "inflation.explainer":
+    "The FOI index reflects the consumption of a typical wage-earner household. For specific goods (energy, food, housing) the actual dynamics may differ from the average.",
+  "inflation.source.title": "Source",
+  "inflation.source.body":
+    "ISTAT, consumer price index for households of workers and employees (FOI), national time series. 2026 rates are estimates. See docs/data-verification/inflazione.md.",
 
   "apprenticeship.page.eyebrow": "Apprenticeship contracts",
   "apprenticeship.page.title": "Salary progression",

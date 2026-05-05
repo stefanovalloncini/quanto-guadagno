@@ -29,3 +29,6 @@ export {
 export type { FreelancerYear, FreelancerYearConfig } from "./freelancer.ts";
 
 export { ITALIAN_NET_PERCENTILES_2023 } from "./percentiles.ts";
+
+export { ITALIAN_INFLATION_FOI } from "./inflation.ts";
+export type { InflationEntry } from "./inflation.ts";
