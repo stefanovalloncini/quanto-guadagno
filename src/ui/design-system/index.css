@@ -30,6 +30,125 @@
   top: 0;
 }
 
+.qg-app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.qg-app-shell__content {
+  flex: 1 0 auto;
+}
+
+.qg-app-header {
+  border-bottom: 1px solid var(--rule-color);
+  background: var(--surface);
+}
+
+.qg-app-header__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.qg-app-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.qg-app-header__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  background: var(--ui-accent);
+  color: var(--ui-white);
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  letter-spacing: 0.05em;
+}
+
+.qg-app-header__brand-name {
+  font-family: var(--font-display);
+  font-size: var(--text-subtitle);
+  color: var(--text-primary);
+}
+
+.qg-app-header__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.qg-app-header__link {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: var(--text-label);
+  border-radius: var(--radius-sm);
+}
+
+.qg-app-header__link:hover {
+  color: var(--text-primary);
+  background: var(--surface-secondary);
+}
+
+.qg-app-header__link--active {
+  color: var(--text-primary);
+  background: var(--surface-secondary);
+}
+
+.qg-theme-toggle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.qg-theme-toggle:hover {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.qg-app-footer {
+  border-top: 1px solid var(--rule-color);
+  background: var(--surface-secondary);
+  margin-top: var(--space-12);
+}
+
+.qg-app-footer__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.qg-app-footer__attribution,
+.qg-app-footer__disclaimer {
+  margin: 0;
+}
+
 .qg-page {
   max-width: 72rem;
   margin: 0 auto;
