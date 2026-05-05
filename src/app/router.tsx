@@ -5,6 +5,7 @@ import { DataSourcesPage } from "@/ui/features/data-sources";
 import { EmployeePage } from "@/ui/features/employee-calculator";
 import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
+import { InflationPage } from "@/ui/features/inflation";
 import { PayslipPage } from "@/ui/features/payslip";
 import { StatisticsPage } from "@/ui/features/statistics";
 import { TfrPage } from "@/ui/features/tfr";
@@ -80,6 +81,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <ApprenticeshipPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/analisi-inflazione",
+    element: (
+      <AppLayout>
+        <InflationPage />
       </AppLayout>
     ),
   },

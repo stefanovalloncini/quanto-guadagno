@@ -10,3 +10,4 @@ export * from "./forfettario.ts";
 export * from "./percentile.ts";
 export * from "./tfr.ts";
 export * from "./apprenticeship.ts";
+export * from "./inflation.ts";

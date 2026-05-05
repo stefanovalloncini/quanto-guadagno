@@ -11,7 +11,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
   { id: "statistics", to: "/statistiche", available: true },
   { id: "tools", to: null, available: false },
   { id: "payslip", to: "/busta-paga", available: true },
-  { id: "inflation", to: null, available: false },
+  { id: "inflation", to: "/analisi-inflazione", available: true },
   { id: "tfr", to: "/simulatore-tfr", available: true },
   { id: "apprenticeship", to: "/progressione-apprendistato", available: true },
   { id: "tax-system", to: null, available: false },
