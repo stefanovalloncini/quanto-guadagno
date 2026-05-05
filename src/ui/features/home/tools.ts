@@ -12,7 +12,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
   { id: "tools", to: null, available: false },
   { id: "payslip", to: "/busta-paga", available: true },
   { id: "inflation", to: null, available: false },
-  { id: "tfr", to: null, available: false },
+  { id: "tfr", to: "/simulatore-tfr", available: true },
   { id: "apprenticeship", to: null, available: false },
   { id: "tax-system", to: null, available: false },
   { id: "data-sources", to: "/fonti-dati", available: true },
