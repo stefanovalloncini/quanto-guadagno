@@ -10,7 +10,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
   { id: "comparison", to: "/confronto-scenari", available: true },
   { id: "statistics", to: "/statistiche", available: true },
   { id: "tools", to: null, available: false },
-  { id: "payslip", to: null, available: false },
+  { id: "payslip", to: "/busta-paga", available: true },
   { id: "inflation", to: null, available: false },
   { id: "tfr", to: null, available: false },
   { id: "apprenticeship", to: null, available: false },

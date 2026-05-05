@@ -12,6 +12,27 @@ export const en: Record<MessageKey, string> = {
   "nav.comparison": "Comparison",
   "nav.statistics": "Statistics",
   "nav.sources": "Sources",
+  "nav.payslip": "Payslip",
+
+  "payslip.page.eyebrow": "Simulator",
+  "payslip.page.title": "Monthly payslip",
+  "payslip.page.subtitle":
+    "Tweak parameters and print the simulated payslip. Line items come from the salary calculator.",
+  "payslip.form.title": "Parameters",
+  "payslip.action.print": "Print",
+  "payslip.note":
+    "This is a simulation: a real payslip may include extra items (fringe benefits, bonuses, leave, sickness, union dues).",
+  "payslip.doc.title": "Simulated monthly payslip",
+  "payslip.doc.year": "Tax year {year}",
+  "payslip.row.gross": "Gross salary",
+  "payslip.row.inps": "INPS contributions",
+  "payslip.row.taxable": "Taxable income",
+  "payslip.row.irpef": "IRPEF",
+  "payslip.row.regional": "Regional addizionale",
+  "payslip.row.municipal": "Municipal addizionale",
+  "payslip.row.integrativo": "Trattamento integrativo bonus",
+  "payslip.row.wedge": "Tax wedge cut bonus",
+  "payslip.row.net": "Net in hand",
 
   "sources.page.eyebrow": "Transparency",
   "sources.page.title": "Data sources",
