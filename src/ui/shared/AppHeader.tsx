@@ -11,6 +11,7 @@ interface NavEntry {
 const navEntries: ReadonlyArray<NavEntry> = [
   { to: "/", id: "nav.home", available: true },
   { to: "/calcola-stipendio", id: "nav.employee", available: true },
+  { to: "/calcolo-partita-iva", id: "nav.freelancer", available: true },
 ];
 
 export function AppHeader() {
