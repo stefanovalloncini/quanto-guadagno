@@ -92,4 +92,11 @@ export default tseslint.config(
       "i18next/no-literal-string": "off",
     },
   },
+  {
+    files: ["src/ui/i18n/messages/**/*.ts", "src/domain/data/**/*.ts"],
+    rules: {
+      "max-lines": "off",
+      "i18next/no-literal-string": "off",
+    },
+  },
 );
