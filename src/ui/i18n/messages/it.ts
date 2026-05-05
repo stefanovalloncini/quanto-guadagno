@@ -9,6 +9,21 @@ export const it = {
   "nav.freelancer": "Partita IVA",
   "nav.comparison": "Confronto",
   "nav.statistics": "Statistiche",
+  "nav.sources": "Fonti",
+
+  "sources.page.eyebrow": "Trasparenza",
+  "sources.page.title": "Fonti dei dati",
+  "sources.page.subtitle":
+    "Ogni numero usato dal calcolatore è documentato qui sotto, con norma di riferimento, esempio di calcolo e data dell'ultima verifica.",
+  "sources.doc.irpef": "IRPEF",
+  "sources.doc.inps": "INPS dipendenti",
+  "sources.doc.workDeduction": "Detrazione lavoro dipendente",
+  "sources.doc.trattamentoIntegrativo": "Trattamento integrativo",
+  "sources.doc.taxWedgeCut": "Taglio cuneo fiscale",
+  "sources.doc.inpsExemption2024": "Esonero INPS 2024",
+  "sources.doc.forfettario": "Regime forfettario",
+  "sources.doc.gestioneSeparata": "Gestione separata",
+  "sources.doc.percentili": "Percentili di reddito",
 
   "statistics.page.eyebrow": "Distribuzione redditi",
   "statistics.page.title": "Dove si colloca il tuo stipendio",
