@@ -27,3 +27,5 @@ export {
   getFreelancerConfig,
 } from "./freelancer.ts";
 export type { FreelancerYear, FreelancerYearConfig } from "./freelancer.ts";
+
+export { ITALIAN_NET_PERCENTILES_2023 } from "./percentiles.ts";

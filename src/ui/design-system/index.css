@@ -311,6 +311,13 @@
   background: var(--error-50);
 }
 
+.qg-stats-explainer {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-label);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 .qg-warn {
   margin: 0;
   padding: var(--space-3) var(--space-4);
