@@ -3,6 +3,7 @@ export interface InpsConfig {
   readonly aboveCeilingRate: number;
   readonly ceiling: number;
   readonly massimale: number;
+  readonly apprenticeshipRate?: number;
 }
 
 export interface InpsResult {
