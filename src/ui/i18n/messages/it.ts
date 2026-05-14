@@ -282,6 +282,33 @@ export const it = {
   "scope.title": "Cosa è incluso oggi",
   "scope.body":
     "Lavoratore dipendente, settore privato. Anni 2024, 2025 e 2026. Le aliquote regionali e comunali sono inserite manualmente. Non sono ancora supportati: detrazioni per familiari, fringe benefit, regimi speciali, settore pubblico, contratti di apprendistato.",
+
+  "notFound.title": "Pagina non trovata",
+  "notFound.body": "L'indirizzo cercato non esiste.",
+  "notFound.home": "Torna alla home",
+
+  "about.eyebrow": "Informazioni",
+  "about.title": "Cos'è quanto guadagno",
+  "about.lede": "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
+  "about.body1": "Il progetto nasce per dare una stima onesta dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
+  "about.body2": "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
+  "about.github": "Codice su GitHub",
+
+  "sources.eyebrow": "Fonti",
+  "sources.title": "Da dove vengono i numeri",
+  "sources.lede": "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
+  "sources.irpef.title": "Scaglioni IRPEF",
+  "sources.irpef.body": "Aliquote progressive 2024–2026 da Agenzia delle Entrate (D.lgs. 216/2023 e successive).",
+  "sources.inps.title": "Contributi INPS lavoratore dipendente",
+  "sources.inps.body": "Aliquota 9,19% nella parte ordinaria, +1% oltre il primo massimale. Circolari INPS annuali.",
+  "sources.workDeduction.title": "Detrazione da lavoro dipendente",
+  "sources.workDeduction.body": "Calcolo a scaglioni progressivi, riferimento art. 13 TUIR.",
+  "sources.trattamento.title": "Trattamento integrativo",
+  "sources.trattamento.body": "Bonus mensile fino a soglia, definito dal D.L. 3/2020 e modifiche successive.",
+  "sources.taxWedge.title": "Taglio del cuneo fiscale",
+  "sources.taxWedge.body": "Riduzione contributi a carico lavoratore in vigore per il 2024–2026, ridisegnata in legge di bilancio.",
+  "sources.exemption.title": "Esonero contributivo 2024",
+  "sources.exemption.body": "Esonero parziale dei contributi INPS per il solo 2024, condizionato a reddito.",
 } as const;
 
 export type MessageKey = keyof typeof it;
