@@ -121,6 +121,24 @@ export const en: Record<MessageKey, string> = {
   "employee.form.municipal": "Municipal addizionale rate",
   "employee.form.municipal.hint": "Changes by municipality of residence.",
 
+  "employee.results.monthly": "Net monthly",
+  "employee.results.annual": "Net annual",
+  "employee.results.annual.sub": "estimate over 12 months",
+  "employee.results.detail": "Calculation breakdown",
+  "employee.results.effective": "Effective tax rate:",
+  "employee.breakdown.gross": "Gross annual",
+  "employee.breakdown.inps": "INPS contributions",
+  "employee.breakdown.irpefNet": "IRPEF net",
+  "employee.breakdown.regional": "Regional surcharge",
+  "employee.breakdown.municipal": "Municipal surcharge",
+  "employee.breakdown.deductions": "Work deductions + bonus",
+  "employee.breakdown.trattamento": "Trattamento integrativo",
+  "employee.breakdown.net": "Net annual",
+
+  "employee.eyebrow": "Tool",
+  "employee.title": "Net salary from <em>gross</em>.",
+  "employee.lede": "Tax years 2024–2026. Regional and municipal rates are editable. Numbers are an estimate — not a substitute for the actual payslip.",
+
   "scope.title": "What's included today",
   "scope.body":
     "Private-sector employee. Tax years 2024, 2025 and 2026. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, public sector, apprenticeship contracts.",

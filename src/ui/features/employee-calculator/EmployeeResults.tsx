@@ -1,85 +1,106 @@
 import { FormattedMessage } from "react-intl";
-import { Stack } from "@/ui/design-system";
-import { formatCurrency, formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
+import { MetricBlock, Money, Stack } from "@/ui/design-system/primitives";
 import type { SalaryBreakdown } from "@/domain/calc";
 
-interface BreakdownRow {
-  readonly id: string;
-  readonly value: number;
-  readonly emphasis?: "muted" | "total";
+interface EmployeeResultsProps {
+  readonly result: SalaryBreakdown;
 }
 
-function buildRows(result: SalaryBreakdown): ReadonlyArray<BreakdownRow> {
-  const rows: BreakdownRow[] = [
-    { id: "breakdown.gross", value: result.grossAnnual },
-    { id: "breakdown.inps", value: -result.inps },
-    { id: "breakdown.taxable", value: result.taxableIncome, emphasis: "muted" },
-    { id: "breakdown.irpefNet", value: -result.irpefNet },
-    { id: "breakdown.regional", value: -result.regionalAddizionale },
-    { id: "breakdown.municipal", value: -result.municipalAddizionale },
-  ];
-  if (result.trattamentoIntegrativo > 0) {
-    rows.push({ id: "breakdown.trattamentoIntegrativo", value: result.trattamentoIntegrativo });
-  }
-  if (result.sommaAggiuntiva > 0) {
-    rows.push({ id: "breakdown.sommaAggiuntiva", value: result.sommaAggiuntiva });
-  }
-  rows.push({ id: "breakdown.netAnnual", value: result.netAnnual, emphasis: "total" });
-  return rows;
-}
-
-export function EmployeeResults({ result }: { readonly result: SalaryBreakdown }) {
-  const rows = buildRows(result);
+export function EmployeeResults({ result }: EmployeeResultsProps) {
+  const effectiveRate = result.effectiveTaxRate * 100;
 
   return (
-    <section className="qg-results" aria-live="polite">
-      <h2 className="qg-results__title">
-        <FormattedMessage id="results.section.title" />
-      </h2>
+    <Stack gap="md">
+      <MetricBlock
+        label={<FormattedMessage id="employee.results.monthly" />}
+        amount={result.netMonthly}
+        announce
+      />
+      <MetricBlock
+        label={<FormattedMessage id="employee.results.annual" />}
+        amount={result.netAnnual}
+        sublabel={<FormattedMessage id="employee.results.annual.sub" />}
+        whole
+      />
 
-      <Stack gap="lg">
-        <div className="qg-result-card">
-          <p className="qg-result-card__primary-label">
-            <FormattedMessage id="results.netAnnual" />
-          </p>
-          <p className="qg-result-card__primary-value">{formatCurrencyWhole(result.netAnnual)}</p>
-          <dl className="qg-result-card__secondary">
-            <div className="qg-result-card__metric">
-              <dt>
-                <FormattedMessage id="results.netMonthly" />
-              </dt>
-              <dd>{formatCurrency(result.netMonthly)}</dd>
-            </div>
-            <div className="qg-result-card__metric">
-              <dt>
-                <FormattedMessage id="results.effectiveRate" />
-              </dt>
-              <dd>{formatPercentage(result.effectiveTaxRate)}</dd>
-            </div>
-          </dl>
-        </div>
+      <details className="qg-breakdown">
+        <summary>
+          <FormattedMessage id="employee.results.detail" />
+        </summary>
+        <table className="qg-breakdown__table">
+          <tbody>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.gross" />
+              </th>
+              <td>
+                <Money amount={result.grossAnnual} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.inps" />
+              </th>
+              <td>
+                <Money amount={-result.inps} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.irpefNet" />
+              </th>
+              <td>
+                <Money amount={-result.irpefNet} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.regional" />
+              </th>
+              <td>
+                <Money amount={-result.regionalAddizionale} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.municipal" />
+              </th>
+              <td>
+                <Money amount={-result.municipalAddizionale} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.deductions" />
+              </th>
+              <td>
+                <Money amount={result.workDeduction + result.detrazioneAggiuntiva} whole />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.trattamento" />
+              </th>
+              <td>
+                <Money amount={result.trattamentoIntegrativo + result.sommaAggiuntiva} whole />
+              </td>
+            </tr>
+            <tr className="qg-breakdown__total">
+              <th scope="row">
+                <FormattedMessage id="employee.breakdown.net" />
+              </th>
+              <td>
+                <Money amount={result.netAnnual} whole />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
 
-        <details className="qg-disclosure">
-          <summary>
-            <FormattedMessage id="breakdown.title" />
-          </summary>
-          <table className="qg-breakdown">
-            <tbody>
-              {rows.map((row) => (
-                <tr
-                  key={row.id}
-                  className={`qg-breakdown__row qg-breakdown__row--${row.emphasis ?? "default"}`}
-                >
-                  <th scope="row">
-                    <FormattedMessage id={row.id} />
-                  </th>
-                  <td>{formatCurrency(row.value)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </details>
-      </Stack>
-    </section>
+      <p className="qg-effective">
+        <FormattedMessage id="employee.results.effective" />{" "}
+        <span className="qg-effective__rate">{effectiveRate.toFixed(1)}%</span>
+      </p>
+    </Stack>
   );
 }
