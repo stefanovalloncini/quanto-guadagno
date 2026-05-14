@@ -5,5 +5,4 @@ export * from "./trattamentoIntegrativo.ts";
 export * from "./taxWedgeCut.ts";
 export * from "./inpsExemption2024.ts";
 export * from "./composer.ts";
-export * from "./apprenticeship.ts";
 export * from "./inflation.ts";
