@@ -17,7 +17,7 @@ function getFormatter(whole: boolean): Intl.NumberFormat {
       currency: "EUR",
       minimumFractionDigits: whole ? 0 : 2,
       maximumFractionDigits: whole ? 0 : 2,
-      useGrouping: "always",
+      useGrouping: true,
     });
     FORMATTERS.set(key, f);
   }
