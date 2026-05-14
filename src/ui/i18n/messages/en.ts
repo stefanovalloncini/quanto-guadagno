@@ -11,7 +11,6 @@ export const en: Record<MessageKey, string> = {
 
   "nav.home": "Home",
   "nav.employee": "Salary calculator",
-  "nav.statistics": "Statistics",
   "nav.sources": "Sources",
   "nav.about": "About",
   "nav.payslip": "Payslip",
@@ -114,32 +113,6 @@ export const en: Record<MessageKey, string> = {
   "sources.doc.forfettario": "Flat-rate regime",
   "sources.doc.gestioneSeparata": "Gestione separata",
   "sources.doc.percentili": "Income percentiles",
-
-  "statistics.page.eyebrow": "Income distribution",
-  "statistics.page.title": "Where your salary sits",
-  "statistics.page.subtitle":
-    "Enter your annual net salary and see your bracket against the Italian distribution.",
-  "statistics.form.title": "Your annual net",
-  "statistics.form.input.label": "Annual net",
-  "statistics.form.input.hint": "What you take home after taxes, per year.",
-  "statistics.results.title": "Income bracket",
-  "statistics.results.bracket": "Position",
-  "statistics.results.thresholdLabel": "Bracket threshold",
-  "statistics.results.nextLabel": "Next bracket",
-  "statistics.explainer":
-    "Thresholds are based on Italian tax filings. Indicative of combined employee and self-employment income.",
-  "statistics.source.title": "Source",
-  "statistics.source.body":
-    "ISTAT income and living conditions surveys; MEF tax filing statistics 2023. See docs/data-verification/percentili.md for details.",
-  "percentile.bottom1": "Bottom 1%",
-  "percentile.bottom10": "Bottom 10%",
-  "percentile.bottom20": "Bottom 20%",
-  "percentile.median": "Italian median",
-  "percentile.top30": "Top 30%",
-  "percentile.top20": "Top 20%",
-  "percentile.top10": "Top 10%",
-  "percentile.top5": "Top 5%",
-  "percentile.top1": "Top 1%",
 
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Understand what actually lands in your paycheck",
