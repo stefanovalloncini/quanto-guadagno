@@ -8,14 +8,54 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--text-primary);
-  background: var(--background);
-  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "ss03";
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
 }
 
 img,
@@ -24,33 +64,13 @@ svg {
   max-width: 100%;
 }
 
-button {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-}
-
-input,
-select,
-textarea {
-  font: inherit;
-}
-
 :focus-visible {
-  outline: 2px solid var(--ui-accent);
+  outline: 2px solid var(--warm);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
 }
