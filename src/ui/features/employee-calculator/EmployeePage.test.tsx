@@ -40,16 +40,61 @@ describe("EmployeePage", () => {
     render(wrap(<EmployeePage />));
 
     const input = screen.getByLabelText(/Stipendio lordo annuo/);
-
-    // Record the initial monthly display text
     const live = document.querySelector("[aria-live='polite']") as HTMLElement;
     const before = live.textContent;
 
-    // Change gross to a higher value
     await user.clear(input);
     await user.type(input, "60000");
 
-    const after = live.textContent;
-    expect(after).not.toBe(before);
+    expect(live.textContent).not.toBe(before);
+  });
+
+  it("advanced settings is collapsed by default", () => {
+    render(wrap(<EmployeePage />));
+    const details = document.querySelector("details.qg-advanced-panel");
+    expect(details).toBeTruthy();
+    expect(details).not.toHaveAttribute("open");
+  });
+
+  it("opening advanced settings reveals the tab list", async () => {
+    const user = userEvent.setup();
+    render(wrap(<EmployeePage />));
+
+    const summary = screen.getByText(/Impostazioni avanzate/);
+    await user.click(summary);
+
+    expect(screen.getByRole("tablist")).toBeInTheDocument();
+    expect(screen.getAllByRole("tab").length).toBe(5);
+  });
+
+  it("clicking a tab makes its panel visible", async () => {
+    const user = userEvent.setup();
+    render(wrap(<EmployeePage />));
+
+    const summary = screen.getByText(/Impostazioni avanzate/);
+    await user.click(summary);
+
+    const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });
+    await user.click(dependentsTab);
+
+    expect(dependentsTab).toHaveAttribute("aria-selected", "true");
+    const panel = document.getElementById("tabpanel-dependents");
+    expect(panel).not.toHaveAttribute("hidden");
+  });
+
+  it("clicking the active tab again collapses the panel", async () => {
+    const user = userEvent.setup();
+    render(wrap(<EmployeePage />));
+
+    const summary = screen.getByText(/Impostazioni avanzate/);
+    await user.click(summary);
+
+    const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });
+    await user.click(dependentsTab);
+    await user.click(dependentsTab);
+
+    expect(dependentsTab).toHaveAttribute("aria-selected", "false");
+    const panel = document.getElementById("tabpanel-dependents");
+    expect(panel).toHaveAttribute("hidden");
   });
 });

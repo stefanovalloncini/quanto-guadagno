@@ -876,6 +876,106 @@
   color: var(--ink-2);
 }
 
+/* Employee page: below-fold detail section */
+.qg-employee-detail {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+/* Advanced settings collapsible panel */
+.qg-advanced-panel {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--paper-3);
+}
+.qg-advanced-panel summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  list-style: none;
+  color: var(--ink);
+}
+.qg-advanced-panel summary::-webkit-details-marker {
+  display: none;
+}
+.qg-advanced-panel summary::after {
+  content: " +";
+  color: var(--ink-2);
+}
+.qg-advanced-panel[open] summary::after {
+  content: " −";
+}
+.qg-advanced-panel__body {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.qg-advanced-panel__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-4);
+}
+.qg-advanced-panel__region {
+  grid-column: span 2;
+}
+.qg-advanced-panel__lookup {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  text-decoration: none;
+}
+.qg-advanced-panel__lookup:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 880px) {
+  .qg-advanced-panel__row {
+    grid-template-columns: 1fr;
+  }
+  .qg-advanced-panel__region {
+    grid-column: span 1;
+  }
+}
+
+/* Tab bar for optional sections inside advanced settings */
+.qg-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-5);
+}
+.qg-tabs__tab {
+  font: inherit;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+.qg-tabs__tab[aria-selected="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.qg-tabs__tab--active::after {
+  content: "•";
+  margin-left: 0.4rem;
+  color: var(--accent);
+}
+.qg-tabpanel {
+  margin-top: var(--space-5);
+}
+
 /* Mode selector (simple/detailed buttons) */
 .qg-mode-selector {
   display: flex;
