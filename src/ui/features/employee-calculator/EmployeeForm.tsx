@@ -1,43 +1,48 @@
 import { FormattedMessage } from "react-intl";
-import { Field, Select, Stack } from "@/ui/design-system/primitives";
-import type { SupportedYear } from "@/domain/data";
+import { Field, Stack } from "@/ui/design-system/primitives";
+import { SUPPORTED_YEARS } from "@/domain/data";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
-
-const SUPPORTED_YEARS: ReadonlyArray<SupportedYear> = [2024, 2025, 2026];
+import {
+  SalaryInput,
+  YearSelector,
+  ContractTypeSelect,
+  PaymentFrequencySelector,
+  RegionSelector,
+} from "./components/index.ts";
 
 interface EmployeeFormProps {
   readonly calc: EmployeeCalculator;
 }
 
 export function EmployeeForm({ calc }: EmployeeFormProps) {
-  const { state, setGross, setMunicipalTaxRate, setTaxYear } = calc;
+  const {
+    state,
+    setGross,
+    setTaxYear,
+    setContractType,
+    setPaymentFrequency,
+    setRegionCode,
+    setMunicipalTaxRate,
+  } = calc;
+
   const municipalRatePercent = state.municipalTaxRate * 100;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Stack gap="md">
-        <Field
-          label={<FormattedMessage id="employee.form.gross" />}
-          type="number"
-          min={1}
-          max={1_000_000}
-          step={100}
+        <SalaryInput
           value={state.grossAnnual}
-          onChange={(e) => setGross(Number(e.target.value))}
-          trailing="€"
-          inputMode="numeric"
+          onChange={setGross}
+          grossMonthly={calc.result.grossMonthly}
         />
-        <Select
-          label={<FormattedMessage id="employee.form.year" />}
+        <YearSelector
           value={state.taxYear}
-          onChange={(e) => setTaxYear(Number(e.target.value) as SupportedYear)}
-        >
-          {SUPPORTED_YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
+          supportedYears={SUPPORTED_YEARS}
+          onChange={setTaxYear}
+        />
+        <ContractTypeSelect value={state.contractType} onChange={setContractType} />
+        <PaymentFrequencySelector value={state.paymentFrequency} onChange={setPaymentFrequency} />
+        <RegionSelector value={state.regionCode} onChange={setRegionCode} />
         <Field
           label={<FormattedMessage id="employee.form.municipal" />}
           hint={<FormattedMessage id="employee.form.municipal.hint" />}
