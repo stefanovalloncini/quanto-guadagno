@@ -9,7 +9,6 @@ export const it = {
 
   "nav.home": "Home",
   "nav.employee": "Calcolatore stipendio",
-  "nav.freelancer": "Partita IVA",
   "nav.comparison": "Confronto",
   "nav.statistics": "Statistiche",
   "nav.sources": "Fonti",
@@ -163,37 +162,6 @@ export const it = {
   "comparison.table.actions": "Azioni",
   "comparison.table.remove": "Rimuovi",
   "comparison.table.removeLabel": "Rimuovi lo scenario {name}",
-
-  "freelancer.page.eyebrow": "Anno fiscale {year}",
-  "freelancer.page.title": "Calcolatore Partita IVA — regime forfettario",
-  "freelancer.page.subtitle":
-    "Inserisci il fatturato annuo. Il calcolo applica il coefficiente di redditività, i contributi alla gestione separata INPS e l'imposta sostitutiva (5% o 15%).",
-  "freelancer.form.revenue.label": "Fatturato annuo",
-  "freelancer.form.revenue.hint": "Compensi lordi annuali, IVA esclusa.",
-  "freelancer.form.year.hint": "I minimali contributivi cambiano da un anno all'altro.",
-  "freelancer.form.coefficient.label": "Coefficiente di redditività",
-  "freelancer.form.coefficient.hint":
-    "Dipende dal codice ATECO. Default: 78% (servizi professionali).",
-  "freelancer.form.regime.label": "Regime",
-  "freelancer.form.regime.hint": "Lo startup è valido per i primi 5 anni di attività.",
-  "freelancer.form.regime.standard": "Standard (15%)",
-  "freelancer.form.regime.startup": "Startup (5%)",
-  "freelancer.form.inps.label": "Contribuzione INPS",
-  "freelancer.form.inps.hint":
-    "Aliquota piena se non hai altre coperture, ridotta se sei già coperto da un'altra gestione.",
-  "freelancer.form.inps.full": "Aliquota piena (26,07%)",
-  "freelancer.form.inps.reduced": "Aliquota ridotta (24%)",
-  "freelancer.warn.aboveLimit":
-    "Fatturato sopra la soglia del regime forfettario (85.000 €). Il calcolatore mostra comunque la stima ma il regime decade.",
-  "freelancer.breakdown.revenue": "Fatturato",
-  "freelancer.breakdown.taxableGross": "Imponibile (fatturato × coefficiente)",
-  "freelancer.breakdown.inps": "Contributi gestione separata",
-  "freelancer.breakdown.taxableNet": "Imponibile per la sostitutiva",
-  "freelancer.breakdown.substitute": "Imposta sostitutiva",
-  "freelancer.breakdown.netAnnual": "Netto annuo",
-  "freelancer.scope.title": "Cosa è incluso oggi",
-  "freelancer.scope.body":
-    "Solo regime forfettario, contribuzione gestione separata INPS, anni 2024-2026. Non sono ancora supportati: regime ordinario, casse professionali (Inarcassa, Cassa Forense, ENPAM, ecc.), artigiani e commercianti.",
 
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Capire davvero quanto resta in busta",

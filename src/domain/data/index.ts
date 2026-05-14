@@ -19,15 +19,6 @@ export function getTaxConfig(year: SupportedYear): YearTaxConfig {
   return REGISTRY[year];
 }
 
-export {
-  FREELANCER_CONFIG_2024,
-  FREELANCER_CONFIG_2025,
-  FREELANCER_CONFIG_2026,
-  FREELANCER_YEARS,
-  getFreelancerConfig,
-} from "./freelancer.ts";
-export type { FreelancerYear, FreelancerYearConfig } from "./freelancer.ts";
-
 export { ITALIAN_NET_PERCENTILES_2023 } from "./percentiles.ts";
 
 export { ITALIAN_INFLATION_FOI } from "./inflation.ts";
