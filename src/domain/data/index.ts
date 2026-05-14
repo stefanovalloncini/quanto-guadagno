@@ -1,7 +1,58 @@
-import type { YearTaxConfig } from "@/domain/calc/composer.ts";
+export type {
+  TaxYear,
+  RegionCode,
+  RegionalTaxBracket,
+  Region,
+  SpouseDeductionThreshold,
+  DependentsDeductionConfig,
+  ExpenseDeductionsConfig,
+  EmployerInpsConfig,
+  TfrConfig,
+  OtherEmployerCostsConfig,
+  PowertrainType,
+  CompanyCarCo2Threshold,
+  CompanyCarPowertrainRate,
+  FringeBenefitsConfig,
+  MadreLavoratriceConfig,
+  RegimeImpatriatiConfig,
+  PdrSostitutivaConfig,
+  TaxDataSource,
+  TaxDataSources,
+  YearlyTaxConfig,
+  // Re-exported calc-layer types
+  InpsConfig,
+  WorkDeductionConfig,
+  TrattamentoIntegrativoConfig,
+  TaxWedgeCutConfig,
+  InpsExemption2024Config,
+} from "./types.ts";
+
+export { REGIONS, REGIONS_LIST } from "./regions.ts";
+
+export {
+  SHARED_WORK_DEDUCTION,
+  SHARED_TRATTAMENTO_INTEGRATIVO,
+  SHARED_DEPENDENTS_DEDUCTION,
+  SHARED_EXPENSE_DEDUCTIONS,
+  SHARED_EMPLOYER_INPS,
+  SHARED_TFR_CONFIG,
+  SHARED_OTHER_EMPLOYER_COSTS,
+  SHARED_MADRE_LAVORATRICE,
+  SHARED_REGIME_IMPATRIATI,
+  SHARED_INPS_STANDARD_RATE,
+  SHARED_INPS_ABOVE_CEILING_RATE,
+  SHARED_INPS_APPRENTICESHIP_RATE,
+  SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
+  SHARED_HEALTH_INSURANCE_THRESHOLD,
+  SHARED_DEFAULT_CONVENTIONAL_KM,
+  SHARED_COMPANY_CAR_CO2_THRESHOLDS,
+  SHARED_TAX_WEDGE_CUT_PARAMS,
+} from "./shared.ts";
+
 import { TAX_CONFIG_2024 } from "./2024.ts";
 import { TAX_CONFIG_2025 } from "./2025.ts";
 import { TAX_CONFIG_2026 } from "./2026.ts";
+import type { YearlyTaxConfig } from "./types.ts";
 
 export { TAX_CONFIG_2024, TAX_CONFIG_2025, TAX_CONFIG_2026 };
 
@@ -9,12 +60,12 @@ export type SupportedYear = 2024 | 2025 | 2026;
 
 export const SUPPORTED_YEARS: ReadonlyArray<SupportedYear> = [2024, 2025, 2026];
 
-const REGISTRY: Record<SupportedYear, YearTaxConfig> = {
+const REGISTRY: Record<SupportedYear, YearlyTaxConfig> = {
   2024: TAX_CONFIG_2024,
   2025: TAX_CONFIG_2025,
   2026: TAX_CONFIG_2026,
 };
 
-export function getTaxConfig(year: SupportedYear): YearTaxConfig {
+export function getTaxConfig(year: SupportedYear): YearlyTaxConfig {
   return REGISTRY[year];
 }
