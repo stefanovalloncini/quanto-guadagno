@@ -2,14 +2,19 @@ import { FormattedMessage } from "react-intl";
 
 export function AppFooter() {
   return (
-    <footer className="qg-app-footer">
-      <div className="qg-app-footer__inner">
-        <p className="qg-app-footer__attribution">
+    <footer className="qg-footer">
+      <div className="qg-footer__inner">
+        <span className="qg-footer__copy">
           <FormattedMessage id="footer.attribution" />
-        </p>
-        <p className="qg-app-footer__disclaimer">
-          <FormattedMessage id="footer.disclaimer" />
-        </p>
+        </span>
+        <span aria-hidden="true">·</span>
+        <a
+          className="qg-footer__link"
+          href="https://github.com/stefanovalloncini/quanto-guadagno"
+          rel="noreferrer"
+        >
+          <FormattedMessage id="footer.repo" />
+        </a>
       </div>
     </footer>
   );
