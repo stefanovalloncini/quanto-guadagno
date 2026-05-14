@@ -1,0 +1,35 @@
+@keyframes qg-sweep {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.qg-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    color-mix(in oklab, var(--accent) 60%, white) 25%,
+    var(--warm) 50%,
+    color-mix(in oklab, var(--accent) 60%, white) 75%,
+    var(--accent) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: qg-sweep 6s ease-in-out infinite;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qg-shimmer {
+    animation: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--accent);
+    background: none;
+  }
+}
