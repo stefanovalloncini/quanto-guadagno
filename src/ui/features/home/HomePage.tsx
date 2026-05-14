@@ -13,6 +13,7 @@ const soonTiles: ReadonlyArray<SoonTile> = [
   { titleId: "home.soon.payslip.title", bodyId: "home.soon.payslip.body" },
   { titleId: "home.soon.statistics.title", bodyId: "home.soon.statistics.body" },
   { titleId: "home.soon.inflation.title", bodyId: "home.soon.inflation.body" },
+  { titleId: "home.soon.taxSystem.title", bodyId: "home.soon.taxSystem.body" },
 ];
 
 export function HomePage() {
