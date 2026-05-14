@@ -30,7 +30,7 @@ export function Tile(props: TileProps) {
   const body = (
     <>
       <span className="qg-tile__badge">{badge}</span>
-      <h3 className="qg-tile__title">{title}</h3>
+      <h2 className="qg-tile__title">{title}</h2>
       <div className="qg-tile__body">{children}</div>
     </>
   );
