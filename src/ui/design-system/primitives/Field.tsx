@@ -1,75 +1,53 @@
-import { useId, type ChangeEvent, type ReactNode } from "react";
+import {
+  forwardRef,
+  type InputHTMLAttributes,
+  type ReactNode,
+  useId,
+} from "react";
 
-export interface FieldProps {
+interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label: ReactNode;
   readonly hint?: ReactNode;
-  readonly value: number;
-  readonly onChange: (value: number) => void;
-  readonly type?: "currency" | "percentage";
-  readonly min?: number;
-  readonly max?: number;
-  readonly step?: number;
+  readonly error?: ReactNode;
+  readonly trailing?: ReactNode;
 }
 
-const config = {
-  currency: { step: 100, suffix: undefined, mono: true },
-  percentage: { step: 0.01, suffix: "%", mono: false },
-} as const;
-
-export function Field({
-  label,
-  hint,
-  value,
-  onChange,
-  type = "currency",
-  min = 0,
-  max,
-  step,
-}: FieldProps) {
-  const inputId = useId();
-  const hintId = useId();
-  const c = config[type];
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const next = Number.parseFloat(e.target.value);
-    if (!Number.isFinite(next)) return;
-    onChange(next);
-  };
-
-  const wrapperClass = c.suffix ? "qg-field__suffix-wrap" : undefined;
-  const inputClass = ["qg-field__input", c.mono ? "qg-field__input--mono" : null]
-    .filter(Boolean)
-    .join(" ");
+export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
+  { label, hint, error, trailing, id, ...rest },
+  ref,
+) {
+  const autoId = useId();
+  const inputId = id ?? autoId;
+  const hintId = hint ? `${inputId}-hint` : undefined;
+  const errorId = error ? `${inputId}-err` : undefined;
+  const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <div className="qg-field">
-      <label htmlFor={inputId} className="qg-field__label">
+      <label className="qg-field__label" htmlFor={inputId}>
         {label}
       </label>
-      <div className={wrapperClass}>
+      <div className="qg-field__row">
         <input
+          ref={ref}
           id={inputId}
-          type="number"
-          inputMode={type === "currency" ? "numeric" : "decimal"}
-          className={inputClass}
-          value={value}
-          min={min}
-          max={max}
-          step={step ?? c.step}
-          aria-describedby={hint ? hintId : undefined}
-          onChange={handleChange}
+          aria-describedby={describedBy}
+          aria-invalid={error ? true : undefined}
+          className="qg-field__input"
+          {...rest}
         />
-        {c.suffix ? (
-          <span className="qg-field__suffix" aria-hidden="true">
-            {c.suffix}
-          </span>
-        ) : null}
+        {trailing ? <span className="qg-field__trailing">{trailing}</span> : null}
       </div>
-      {hint ? (
+      {hint && !error ? (
         <p id={hintId} className="qg-field__hint">
           {hint}
         </p>
       ) : null}
+      {error ? (
+        <p id={errorId} className="qg-field__error" role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
-}
+});

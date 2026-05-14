@@ -1,58 +1,51 @@
-import { useId, type ChangeEvent, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ReactNode,
+  type SelectHTMLAttributes,
+  useId,
+} from "react";
 
-export interface SelectOption<T extends string | number> {
-  readonly value: T;
-  readonly label: ReactNode;
-}
-
-export interface SelectProps<T extends string | number> {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   readonly label: ReactNode;
   readonly hint?: ReactNode;
-  readonly value: T;
-  readonly options: ReadonlyArray<SelectOption<T>>;
-  readonly onChange: (value: T) => void;
+  readonly error?: ReactNode;
 }
 
-export function Select<T extends string | number>({
-  label,
-  hint,
-  value,
-  options,
-  onChange,
-}: SelectProps<T>) {
-  const inputId = useId();
-  const hintId = useId();
-
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const raw = e.target.value;
-    const sample = options[0]?.value;
-    const next = (typeof sample === "number" ? Number(raw) : raw) as T;
-    onChange(next);
-  };
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
+  { label, hint, error, id, children, ...rest },
+  ref,
+) {
+  const autoId = useId();
+  const selId = id ?? autoId;
+  const hintId = hint ? `${selId}-hint` : undefined;
+  const errorId = error ? `${selId}-err` : undefined;
+  const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <div className="qg-field">
-      <label htmlFor={inputId} className="qg-field__label">
+      <label className="qg-field__label" htmlFor={selId}>
         {label}
       </label>
       <select
-        id={inputId}
-        className="qg-field__input qg-field__input--select"
-        value={value}
-        aria-describedby={hint ? hintId : undefined}
-        onChange={handleChange}
+        ref={ref}
+        id={selId}
+        aria-describedby={describedBy}
+        aria-invalid={error ? true : undefined}
+        className="qg-field__select"
+        {...rest}
       >
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
+        {children}
       </select>
-      {hint ? (
+      {hint && !error ? (
         <p id={hintId} className="qg-field__hint">
           {hint}
         </p>
       ) : null}
+      {error ? (
+        <p id={errorId} className="qg-field__error" role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
-}
+});
