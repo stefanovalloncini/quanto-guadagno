@@ -3,3 +3,8 @@ export { YearSelector } from "./YearSelector.tsx";
 export { ContractTypeSelect } from "./ContractTypeSelect.tsx";
 export { PaymentFrequencySelector } from "./PaymentFrequencySelector.tsx";
 export { RegionSelector } from "./RegionSelector.tsx";
+export { DependentsInput } from "./DependentsInput.tsx";
+export { ExpenseDeductionsInput } from "./ExpenseDeductionsInput.tsx";
+export { PremioRisultatoInput } from "./PremioRisultatoInput.tsx";
+export { FringeBenefitsInput } from "./FringeBenefitsInput.tsx";
+export { SpecialConditionsInput } from "./SpecialConditionsInput.tsx";
