@@ -40,6 +40,18 @@ export function HomePage() {
           </p>
         </Tile>
 
+        <Tile
+          variant="available"
+          to="/progressione-apprendistato"
+          title={<FormattedMessage id="home.available.apprenticeship.title" />}
+          badge={<FormattedMessage id="home.feature.badge" />}
+          cta={<FormattedMessage id="home.feature.cta" />}
+        >
+          <p>
+            <FormattedMessage id="home.available.apprenticeship.body" />
+          </p>
+        </Tile>
+
         {soonTiles.map((t) => (
           <Tile
             key={t.titleId}

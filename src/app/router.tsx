@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EmployeePage } from "@/ui/features/employee-calculator";
+import { ApprenticeshipPage } from "@/ui/features/apprenticeship";
 import { HomePage } from "@/ui/features/home";
 import { SourcesPage } from "@/ui/features/sources";
 import { AboutPage } from "@/ui/features/about";
@@ -20,6 +21,14 @@ const router = createBrowserRouter([
     element: (
       <AppLayout>
         <EmployeePage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: "/progressione-apprendistato",
+    element: (
+      <AppLayout>
+        <ApprenticeshipPage />
       </AppLayout>
     ),
   },

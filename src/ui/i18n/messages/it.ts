@@ -28,6 +28,9 @@ export const it = {
   "home.feature.body":
     "Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo.",
   "home.feature.cta": "Apri →",
+  "home.available.apprenticeship.title": "Progressione apprendistato",
+  "home.available.apprenticeship.body":
+    "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante.",
   "home.soon.badge": "In arrivo",
   "home.soon.freelancer.title": "Partita IVA forfettario",
   "home.soon.freelancer.body": "Aliquota al 5% o 15%, coefficienti per codice ATECO.",
@@ -106,6 +109,21 @@ export const it = {
   "sources.exemption.title": "Esonero contributivo 2024",
   "sources.exemption.body":
     "Esonero parziale dei contributi INPS per il solo 2024, condizionato a reddito.",
+
+  "apprenticeship.eyebrow": "Strumento",
+  "apprenticeship.title": "Progressione <em>apprendistato</em>.",
+  "apprenticeship.lede":
+    "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante, a partire dalla retribuzione di destinazione. Le percentuali tipiche partono dall'85% del livello finale e crescono ogni anno.",
+
+  "apprenticeship.form.target": "Retribuzione di destinazione (RAL)",
+  "apprenticeship.form.target.hint":
+    "Lo stipendio annuo lordo del livello finale, dopo l'apprendistato.",
+  "apprenticeship.form.years": "Durata in anni",
+  "apprenticeship.form.years.hint": "Tipicamente 3 anni; alcuni CCNL prevedono fino a 5.",
+
+  "apprenticeship.col.year": "Anno",
+  "apprenticeship.col.percent": "% della destinazione",
+  "apprenticeship.col.gross": "Lordo annuo",
 } as const;
 
 export type MessageKey = keyof typeof it;
