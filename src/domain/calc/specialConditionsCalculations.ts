@@ -1,4 +1,8 @@
-import type { MadreLavoratriceConfig, RegimeImpatriatiConfig } from "@/domain/data/types.ts";
+import type {
+  MadreLavoratriceConfig,
+  RegimeImpatriatiConfig,
+  InpsConfig,
+} from "@/domain/data/types.ts";
 import { round } from "./_math.ts";
 
 export type EmployeeSector = "private" | "public";
@@ -75,4 +79,14 @@ export function calculateRegimeImpatriatiSavings(
 
 export function getDefaultSpecialConditions(): SpecialConditionsInput {
   return { sector: "private" };
+}
+
+// Returns the INPS rates applicable to the given sector.
+// Public sector is not yet fully supported (config not in YearlyTaxConfig),
+// so both branches return the standard private rates for now.
+export function getSectorInpsRates(
+  _sector: EmployeeSector,
+  cfg: InpsConfig,
+): { readonly standardRate: number; readonly aboveCeilingRate: number } {
+  return { standardRate: cfg.standardRate, aboveCeilingRate: cfg.aboveCeilingRate };
 }

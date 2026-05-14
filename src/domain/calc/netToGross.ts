@@ -1,4 +1,3 @@
-import type { YearlyTaxConfig } from "@/domain/data/types.ts";
 import { calculateSalaryBreakdown } from "./composer.ts";
 import type { SalaryInput, SalaryBreakdown } from "./composer.ts";
 
@@ -18,27 +17,26 @@ export function estimateGrossFromNet(targetNet: number): number {
 }
 
 // Binary-search for the gross that produces a net within TOLERANCE of targetNet.
-// Uses the standard calculateSalaryBreakdown; optional baseInput lets callers
-// carry region/municipalRate through to the inner loop.
+// baseInput carries taxYear, regionCode, municipalTaxRate (and any advanced options)
+// through to the inner loop. grossAnnual is overridden on each iteration.
 export function calculateGrossFromNet(
   targetNet: number,
-  baseInput: Pick<SalaryInput, "regionalRate" | "municipalRate">,
-  cfg: YearlyTaxConfig,
+  baseInput: Omit<SalaryInput, "grossAnnual">,
 ): NetToGrossResult {
+  const makeInput = (g: number): SalaryInput => ({ ...baseInput, grossAnnual: g });
+
   if (targetNet <= 0) {
-    const breakdown = calculateSalaryBreakdown({ grossAnnual: 0, ...baseInput }, cfg);
+    const breakdown = calculateSalaryBreakdown(makeInput(0));
     return { grossAnnual: 0, netAnnual: 0, breakdown, converged: true, iterations: 0 };
   }
 
   let low = targetNet;
   let high = targetNet * 2.5;
 
-  const makeInput = (g: number): SalaryInput => ({ grossAnnual: g, ...baseInput });
-
-  let highBreakdown = calculateSalaryBreakdown(makeInput(high), cfg);
+  let highBreakdown = calculateSalaryBreakdown(makeInput(high));
   while (highBreakdown.netAnnual < targetNet && high < 10_000_000) {
     high *= 1.5;
-    highBreakdown = calculateSalaryBreakdown(makeInput(high), cfg);
+    highBreakdown = calculateSalaryBreakdown(makeInput(high));
   }
 
   let iterations = 0;
@@ -48,7 +46,7 @@ export function calculateGrossFromNet(
 
   while (iterations < MAX_ITERATIONS && high - low > TOLERANCE) {
     const mid = Math.round((low + high) / 2);
-    const breakdown = calculateSalaryBreakdown(makeInput(mid), cfg);
+    const breakdown = calculateSalaryBreakdown(makeInput(mid));
     const netAtMid = breakdown.netAnnual;
     iterations++;
 
