@@ -10,6 +10,7 @@ import type { TaxWedgeCutConfig } from "./taxWedgeCut.ts";
 import { calculateTaxWedgeCut } from "./taxWedgeCut.ts";
 import type { InpsExemption2024Config } from "./inpsExemption2024.ts";
 import { calculateInpsExemption2024 } from "./inpsExemption2024.ts";
+import { round } from "./_math.ts";
 
 export interface YearTaxConfig {
   readonly year: number;
@@ -45,8 +46,6 @@ export interface SalaryBreakdown {
   readonly netMonthly: number;
   readonly effectiveTaxRate: number;
 }
-
-const round = (n: number): number => Math.round(n * 100) / 100;
 
 export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig): SalaryBreakdown {
   const grossAnnual = Math.max(0, input.grossAnnual);
@@ -104,6 +103,6 @@ export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig)
     municipalAddizionale: round(municipalAddizionale),
     netAnnual: round(netAnnual),
     netMonthly: round(netAnnual / 12),
-    effectiveTaxRate: Math.round(effectiveTaxRate * 10000) / 10000,
+    effectiveTaxRate: round(effectiveTaxRate, 4),
   };
 }
