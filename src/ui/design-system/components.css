@@ -1,0 +1,7 @@
+/* Reusable class-level components consumed by the primitives. */
+
+.qg-money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
