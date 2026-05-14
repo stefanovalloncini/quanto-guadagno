@@ -1,59 +1,66 @@
 import { FormattedMessage } from "react-intl";
-import { Field, Select, Stack } from "@/ui/design-system";
-import { SUPPORTED_YEARS, type SupportedYear } from "@/domain/data";
+import { Field, Select, Stack } from "@/ui/design-system/primitives";
+import type { SupportedYear } from "@/domain/data";
+import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
 
-const yearOptions = SUPPORTED_YEARS.map((y) => ({ value: y, label: String(y) }));
+const SUPPORTED_YEARS: ReadonlyArray<SupportedYear> = [2024, 2025, 2026];
 
-export interface EmployeeFormProps {
-  readonly grossAnnual: number;
-  readonly regionalRatePercent: number;
-  readonly municipalRatePercent: number;
-  readonly taxYear: SupportedYear;
-  readonly onGrossChange: (n: number) => void;
-  readonly onRegionalChange: (n: number) => void;
-  readonly onMunicipalChange: (n: number) => void;
-  readonly onTaxYearChange: (year: SupportedYear) => void;
+interface EmployeeFormProps {
+  readonly calc: EmployeeCalculator;
 }
 
-export function EmployeeForm(props: EmployeeFormProps) {
+export function EmployeeForm({ calc }: EmployeeFormProps) {
+  const { state, setGross, setRegionalPercent, setMunicipalPercent, setTaxYear } = calc;
   return (
-    <section className="qg-form" aria-labelledby="qg-form-title">
-      <h2 id="qg-form-title" className="qg-form__title">
-        <FormattedMessage id="form.section.title" />
-      </h2>
-
-      <Stack gap="lg">
+    <form onSubmit={(e) => e.preventDefault()}>
+      <Stack gap="md">
         <Field
-          type="currency"
-          label={<FormattedMessage id="form.gross.label" />}
-          hint={<FormattedMessage id="form.gross.hint" />}
-          value={props.grossAnnual}
-          onChange={props.onGrossChange}
+          label={<FormattedMessage id="employee.form.gross" />}
+          type="number"
+          min={1}
+          max={1_000_000}
+          step={100}
+          value={state.grossAnnual}
+          onChange={(e) => setGross(Number(e.target.value))}
+          trailing="€"
+          inputMode="numeric"
         />
-        <Select<SupportedYear>
-          label={<FormattedMessage id="form.year.label" />}
-          hint={<FormattedMessage id="form.year.hint" />}
-          value={props.taxYear}
-          options={yearOptions}
-          onChange={props.onTaxYearChange}
+        <Select
+          label={<FormattedMessage id="employee.form.year" />}
+          value={state.taxYear}
+          onChange={(e) => setTaxYear(Number(e.target.value) as SupportedYear)}
+        >
+          {SUPPORTED_YEARS.map((y) => (
+            <option key={y} value={y}>
+              {y}
+            </option>
+          ))}
+        </Select>
+        <Field
+          label={<FormattedMessage id="employee.form.regional" />}
+          hint={<FormattedMessage id="employee.form.regional.hint" />}
+          type="number"
+          min={0}
+          max={5}
+          step={0.01}
+          value={state.regionalRatePercent}
+          onChange={(e) => setRegionalPercent(Number(e.target.value))}
+          trailing="%"
+          inputMode="decimal"
         />
         <Field
-          type="percentage"
-          label={<FormattedMessage id="form.regional.label" />}
-          hint={<FormattedMessage id="form.regional.hint" />}
-          value={props.regionalRatePercent}
-          onChange={props.onRegionalChange}
-          max={10}
-        />
-        <Field
-          type="percentage"
-          label={<FormattedMessage id="form.municipal.label" />}
-          hint={<FormattedMessage id="form.municipal.hint" />}
-          value={props.municipalRatePercent}
-          onChange={props.onMunicipalChange}
+          label={<FormattedMessage id="employee.form.municipal" />}
+          hint={<FormattedMessage id="employee.form.municipal.hint" />}
+          type="number"
+          min={0}
           max={1}
+          step={0.01}
+          value={state.municipalRatePercent}
+          onChange={(e) => setMunicipalPercent(Number(e.target.value))}
+          trailing="%"
+          inputMode="decimal"
         />
       </Stack>
-    </section>
+    </form>
   );
 }

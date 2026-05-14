@@ -116,6 +116,13 @@ export const it = {
   "breakdown.sommaAggiuntiva": "Somma aggiuntiva (taglio cuneo)",
   "breakdown.netAnnual": "Netto annuo",
 
+  "employee.form.gross": "Stipendio lordo annuo",
+  "employee.form.year": "Anno fiscale",
+  "employee.form.regional": "Aliquota addizionale regionale",
+  "employee.form.regional.hint": "Cambia in base alla regione di residenza.",
+  "employee.form.municipal": "Aliquota addizionale comunale",
+  "employee.form.municipal.hint": "Cambia in base al comune di residenza.",
+
   "scope.title": "Cosa è incluso oggi",
   "scope.body":
     "Lavoratore dipendente, settore privato. Anni 2024, 2025 e 2026. Le aliquote regionali e comunali sono inserite manualmente. Non sono ancora supportati: detrazioni per familiari, fringe benefit, regimi speciali, settore pubblico, contratti di apprendistato.",

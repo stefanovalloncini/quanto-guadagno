@@ -114,6 +114,13 @@ export const en: Record<MessageKey, string> = {
   "breakdown.sommaAggiuntiva": "Tax wedge cut bonus",
   "breakdown.netAnnual": "Annual net",
 
+  "employee.form.gross": "Annual gross salary",
+  "employee.form.year": "Tax year",
+  "employee.form.regional": "Regional addizionale rate",
+  "employee.form.regional.hint": "Changes by region of residence.",
+  "employee.form.municipal": "Municipal addizionale rate",
+  "employee.form.municipal.hint": "Changes by municipality of residence.",
+
   "scope.title": "What's included today",
   "scope.body":
     "Private-sector employee. Tax years 2024, 2025 and 2026. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, public sector, apprenticeship contracts.",
