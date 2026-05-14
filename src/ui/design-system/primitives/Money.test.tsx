@@ -4,17 +4,17 @@ import { Money } from "./Money.tsx";
 
 describe("Money", () => {
   it("renders an Italian-formatted euro amount with the qg-money class", () => {
-    render(<Money amount={12847.32} />);
+    render(<Money amount={1847.32} />);
     const el = screen.getByText(/€/);
-    expect(el).toHaveTextContent("12.847,32");
+    expect(el).toHaveTextContent("1.847,32");
     expect(el.className).toContain("qg-money");
   });
 
   it("rounds to whole euros when whole=true", () => {
-    render(<Money amount={12847.32} whole />);
+    render(<Money amount={1847.32} whole />);
     const el = screen.getByText(/€/);
     expect(el.textContent).not.toMatch(/,/);
-    expect(el).toHaveTextContent("12.847");
+    expect(el).toHaveTextContent("1.847");
   });
 
   it("formats larger amounts with the Italian thousand-separator (dot)", () => {
