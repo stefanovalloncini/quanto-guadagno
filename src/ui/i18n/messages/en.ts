@@ -13,7 +13,6 @@ export const en: Record<MessageKey, string> = {
   "nav.employee": "Salary calculator",
   "nav.sources": "Sources",
   "nav.about": "About",
-  "nav.tfr": "Severance",
   "nav.apprenticeship": "Apprenticeship",
   "nav.inflation": "Inflation",
 
@@ -54,30 +53,6 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.scope.title": "What's included today",
   "apprenticeship.scope.body":
     "Typical market progression (85%, 90%, 95%, 100%). Specific CCNLs may vary by a few points. Reduced contribution rates (5.84% vs 9.19%) should be applied in the salary calculator.",
-
-  "tfr.page.eyebrow": "End-of-employment severance",
-  "tfr.page.title": "TFR simulator",
-  "tfr.page.subtitle":
-    "Estimate how much TFR accrues over time, with yearly revaluation and the substitute tax on revaluation (17%).",
-  "tfr.form.title": "Parameters",
-  "tfr.form.gross.hint": "Estimated average annual gross salary.",
-  "tfr.form.years.label": "Years of service",
-  "tfr.form.years.hint": "Number of years of continuous employment.",
-  "tfr.form.inflation.label": "Average annual inflation",
-  "tfr.form.inflation.hint": "Estimated average inflation over the period. Default: 2%.",
-  "tfr.results.title": "TFR estimate",
-  "tfr.results.netLabel": "Estimated net TFR",
-  "tfr.results.accruedLabel": "Total accrued",
-  "tfr.results.revaluationLabel": "Revaluation",
-  "tfr.row.annualAccrual": "Annual accrual",
-  "tfr.row.years": "Years",
-  "tfr.row.accrued": "Capital (with revaluation)",
-  "tfr.row.revaluation": "Gross revaluation",
-  "tfr.row.tax": "Revaluation tax (17%)",
-  "tfr.row.net": "Estimated net TFR",
-  "tfr.scope.title": "Model limits",
-  "tfr.scope.body":
-    "Assumes constant salary and inflation. Does not model advances, complementary pension funds, or the final taxation when paid (separate, at the average IRPEF rate). See docs/data-verification/tfr.md.",
 
   "sources.page.eyebrow": "Transparency",
   "sources.page.title": "Data sources",

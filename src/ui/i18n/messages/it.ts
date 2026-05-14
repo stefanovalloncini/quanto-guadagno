@@ -11,7 +11,6 @@ export const it = {
   "nav.employee": "Calcolatore stipendio",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
-  "nav.tfr": "TFR",
   "nav.apprenticeship": "Apprendistato",
   "nav.inflation": "Inflazione",
 
@@ -52,30 +51,6 @@ export const it = {
   "apprenticeship.scope.title": "Cosa è incluso oggi",
   "apprenticeship.scope.body":
     "Progressione tipica di mercato (85%, 90%, 95%, 100%). I CCNL specifici possono variare di pochi punti. Le aliquote contributive ridotte (5,84% in luogo del 9,19%) vanno applicate nel calcolatore stipendio.",
-
-  "tfr.page.eyebrow": "Trattamento di fine rapporto",
-  "tfr.page.title": "Simulatore TFR",
-  "tfr.page.subtitle":
-    "Stima quanto TFR matura nel tempo, con rivalutazione annuale e imposta sostitutiva sulla rivalutazione (17%).",
-  "tfr.form.title": "Parametri",
-  "tfr.form.gross.hint": "Retribuzione annua lorda media stimata.",
-  "tfr.form.years.label": "Anni di servizio",
-  "tfr.form.years.hint": "Numero di anni di lavoro continuativo.",
-  "tfr.form.inflation.label": "Inflazione media annua",
-  "tfr.form.inflation.hint": "Stima dell'inflazione media nel periodo. Default: 2%.",
-  "tfr.results.title": "Stima TFR",
-  "tfr.results.netLabel": "TFR netto stimato",
-  "tfr.results.accruedLabel": "Capitale accumulato",
-  "tfr.results.revaluationLabel": "Rivalutazione",
-  "tfr.row.annualAccrual": "Quota annua",
-  "tfr.row.years": "Anni",
-  "tfr.row.accrued": "Capitale (con rivalutazione)",
-  "tfr.row.revaluation": "Rivalutazione lorda",
-  "tfr.row.tax": "Imposta sulla rivalutazione (17%)",
-  "tfr.row.net": "TFR netto stimato",
-  "tfr.scope.title": "Limiti del modello",
-  "tfr.scope.body":
-    "Assume retribuzione e inflazione costanti. Non modella anticipazioni, fondi pensione complementari, né la tassazione finale del TFR all'erogazione (separata, con aliquota media IRPEF). Vedi docs/data-verification/tfr.md.",
 
   "sources.page.eyebrow": "Trasparenza",
   "sources.page.title": "Fonti dei dati",
