@@ -26,10 +26,10 @@ describe("HomePage", () => {
     expect(tile).toHaveAttribute("href", "/calcola-stipendio");
   });
 
-  it("renders exactly six coming-soon tiles (badge text 'In arrivo')", () => {
+  it("renders exactly seven coming-soon tiles (badge text 'In arrivo')", () => {
     render(wrap(<HomePage />));
     const soon = screen.getAllByText(/In arrivo/i);
-    expect(soon).toHaveLength(6);
+    expect(soon).toHaveLength(7);
   });
 
   it("renders the open-source shimmer span in the footnote", () => {

@@ -44,6 +44,8 @@ export const it = {
   "home.soon.statistics.body": "Dove si colloca il tuo reddito rispetto ai dati ISTAT.",
   "home.soon.inflation.title": "Inflazione",
   "home.soon.inflation.body": "Potere d'acquisto del tuo stipendio nel tempo.",
+  "home.soon.taxSystem.title": "Sistema fiscale",
+  "home.soon.taxSystem.body": "Come funziona, chi paga, cuneo, dove vanno le tasse.",
   "home.footnote":
     "Progetto <shimmer>open source</shimmer> · nessun account · nessun tracker · codice su GitHub",
 

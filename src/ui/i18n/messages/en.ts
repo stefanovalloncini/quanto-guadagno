@@ -46,6 +46,8 @@ export const en: Record<MessageKey, string> = {
   "home.soon.statistics.body": "Where you sit relative to ISTAT data.",
   "home.soon.inflation.title": "Inflation",
   "home.soon.inflation.body": "Purchasing power of your salary over time.",
+  "home.soon.taxSystem.title": "How the tax system works",
+  "home.soon.taxSystem.body": "Who pays, the tax wedge, where the money goes.",
   "home.footnote":
     "Project <shimmer>open source</shimmer> · no account · no tracker · code on GitHub",
 
