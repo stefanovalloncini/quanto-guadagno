@@ -5,8 +5,6 @@ export * from "./trattamentoIntegrativo.ts";
 export * from "./taxWedgeCut.ts";
 export * from "./inpsExemption2024.ts";
 export * from "./composer.ts";
-export * from "./inpsGestioneSeparata.ts";
-export * from "./forfettario.ts";
 export * from "./percentile.ts";
 export * from "./tfr.ts";
 export * from "./apprenticeship.ts";
