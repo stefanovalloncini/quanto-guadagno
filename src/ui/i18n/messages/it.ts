@@ -123,6 +123,24 @@ export const it = {
   "employee.form.municipal": "Aliquota addizionale comunale",
   "employee.form.municipal.hint": "Cambia in base al comune di residenza.",
 
+  "employee.results.monthly": "Netto mensile",
+  "employee.results.annual": "Netto annuo",
+  "employee.results.annual.sub": "stima su 12 mensilità",
+  "employee.results.detail": "Dettaglio del calcolo",
+  "employee.results.effective": "Aliquota effettiva:",
+  "employee.breakdown.gross": "Lordo annuo",
+  "employee.breakdown.inps": "Contributi INPS",
+  "employee.breakdown.irpefNet": "IRPEF netta",
+  "employee.breakdown.regional": "Addizionale regionale",
+  "employee.breakdown.municipal": "Addizionale comunale",
+  "employee.breakdown.deductions": "Detrazioni lavoro + bonus",
+  "employee.breakdown.trattamento": "Trattamento integrativo",
+  "employee.breakdown.net": "Netto annuo",
+
+  "employee.eyebrow": "Strumento",
+  "employee.title": "Stipendio netto da <em>lordo</em>.",
+  "employee.lede": "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
+
   "scope.title": "Cosa è incluso oggi",
   "scope.body":
     "Lavoratore dipendente, settore privato. Anni 2024, 2025 e 2026. Le aliquote regionali e comunali sono inserite manualmente. Non sono ancora supportati: detrazioni per familiari, fringe benefit, regimi speciali, settore pubblico, contratti di apprendistato.",
