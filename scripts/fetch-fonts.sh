@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 # Fetch self-hosted WOFF2 fonts into public/fonts/.
-# Idempotent: re-running is safe (curl --fail will skip on success).
+# Idempotent: re-running is safe — files with non-zero size are kept as-is.
 #
-# Fonts:
-#   - Satoshi 400/500/700 (Fontshare, free for commercial)
-#   - Instrument Serif 400 normal + italic (Google Fonts, OFL)
-#   - IBM Plex Mono 400/500 (Google Fonts, OFL)
+# Fonts (all SIL OFL, free for commercial use):
+#   - Hanken Grotesk 400 / 400 italic / 500 / 700 — UI and body
+#   - JetBrains Mono  400 / 500                   — every monetary amount
 #
-# Note: Satoshi's free release has weights 300/400/500/700/900 — no 600 (Semibold).
-# We use 400/500/700 and treat 700 as the heaviest emphasis.
+# Google Fonts serves multiple unicode-range subsets per face. For Italian
+# we want the "latin" subset (U+0000-00FF — covers ASCII plus è/ò/à/é etc.)
+# plus the "latin-ext" subset (U+0100-02BA — extended European characters).
+# We grab both and the browser picks at render time.
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DEST="$ROOT/public/fonts"
-UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
 mkdir -p "$DEST"
 cd "$DEST"
@@ -22,55 +23,37 @@ cd "$DEST"
 download() {
     local url="$1"
     local out="$2"
-    if [ -f "$out" ] && [ -s "$out" ]; then
+    if [ -f "$out" ] && [ -s "$out" ] && [ "$(stat -f%z "$out" 2>/dev/null || stat -c%s "$out")" -gt 3000 ]; then
         echo "✓ $out (cached)"
         return 0
+    fi
+    if [ -z "$url" ]; then
+        echo "✗ $out (no URL extracted)" >&2
+        return 1
     fi
     echo "→ $out"
     curl -fsSL -A "$UA" -o "$out.tmp" "$url"
     mv "$out.tmp" "$out"
 }
 
-# --- Satoshi (Fontshare) ---
-SAT_CSS="$(curl -fsSL "https://api.fontshare.com/v2/css?f%5B%5D=satoshi@400,500,700&display=swap")"
-
-sat_url() {
-    local weight="$1"
-    # Pick the woff2 URL inside the @font-face block whose weight matches.
-    echo "$SAT_CSS" \
-        | awk -v w="$weight" '
+# Extract a woff2 URL from a Google Fonts CSS block matching weight+style+latin-range.
+# $1 = full CSS text
+# $2 = weight (e.g. 400)
+# $3 = style (normal|italic)
+# $4 = range-marker — either "0000-00FF" (latin) or "0100-02BA" (latin-ext)
+gf_url() {
+    local css="$1"
+    local weight="$2"
+    local style="$3"
+    local marker="$4"
+    echo "$css" \
+        | awk -v w="$weight" -v s="$style" -v m="$marker" '
             /@font-face/ { buf=""; in_block=1 }
             in_block { buf = buf "\n" $0 }
             /^}/ && in_block {
-                if (buf ~ ("font-weight: " w ";")) {
-                    if (match(buf, /url\(\047\/\/[^\047]+\.woff2\047\)/)) {
-                        u = substr(buf, RSTART, RLENGTH)
-                        sub(/^url\(\047\/\//, "https://", u)
-                        sub(/\047\)$/, "", u)
-                        print u
-                        exit
-                    }
-                }
-                in_block=0; buf=""
-            }
-        '
-}
-
-download "$(sat_url 400)" "Satoshi-Regular.woff2"
-download "$(sat_url 500)" "Satoshi-Medium.woff2"
-download "$(sat_url 700)" "Satoshi-Bold.woff2"
-
-# --- Instrument Serif (Google Fonts) ---
-IS_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap')"
-
-is_url() {
-    local style="$1"
-    echo "$IS_CSS" \
-        | awk -v s="$style" '
-            /@font-face/ { buf=""; in_block=1 }
-            in_block { buf = buf "\n" $0 }
-            /^}/ && in_block {
-                if (buf ~ ("font-style: " s ";")) {
+                if (buf ~ ("font-weight: " w ";") \
+                    && buf ~ ("font-style: " s ";") \
+                    && buf ~ m) {
                     if (match(buf, /url\(https:\/\/[^)]+\.woff2\)/)) {
                         u = substr(buf, RSTART + 4, RLENGTH - 5)
                         print u
@@ -82,33 +65,25 @@ is_url() {
         '
 }
 
-download "$(is_url normal)" "InstrumentSerif-Regular.woff2"
-download "$(is_url italic)" "InstrumentSerif-Italic.woff2"
+# --- Hanken Grotesk ---
+HG_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400&display=swap')"
 
-# --- IBM Plex Mono (Google Fonts) ---
-IBM_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap')"
+download "$(gf_url "$HG_CSS" 400 normal 0000-00FF)" "HankenGrotesk-Regular-latin.woff2"
+download "$(gf_url "$HG_CSS" 400 normal 0100-02BA)" "HankenGrotesk-Regular-latinExt.woff2"
+download "$(gf_url "$HG_CSS" 400 italic 0000-00FF)" "HankenGrotesk-Italic-latin.woff2"
+download "$(gf_url "$HG_CSS" 400 italic 0100-02BA)" "HankenGrotesk-Italic-latinExt.woff2"
+download "$(gf_url "$HG_CSS" 500 normal 0000-00FF)" "HankenGrotesk-Medium-latin.woff2"
+download "$(gf_url "$HG_CSS" 500 normal 0100-02BA)" "HankenGrotesk-Medium-latinExt.woff2"
+download "$(gf_url "$HG_CSS" 700 normal 0000-00FF)" "HankenGrotesk-Bold-latin.woff2"
+download "$(gf_url "$HG_CSS" 700 normal 0100-02BA)" "HankenGrotesk-Bold-latinExt.woff2"
 
-ibm_url() {
-    local weight="$1"
-    echo "$IBM_CSS" \
-        | awk -v w="$weight" '
-            /@font-face/ { buf=""; in_block=1 }
-            in_block { buf = buf "\n" $0 }
-            /^}/ && in_block {
-                if (buf ~ ("font-weight: " w ";")) {
-                    if (match(buf, /url\(https:\/\/[^)]+\.woff2\)/)) {
-                        u = substr(buf, RSTART + 4, RLENGTH - 5)
-                        print u
-                        exit
-                    }
-                }
-                in_block=0; buf=""
-            }
-        '
-}
+# --- JetBrains Mono ---
+JBM_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap')"
 
-download "$(ibm_url 400)" "IBMPlexMono-Regular.woff2"
-download "$(ibm_url 500)" "IBMPlexMono-Medium.woff2"
+download "$(gf_url "$JBM_CSS" 400 normal 0000-00FF)" "JetBrainsMono-Regular-latin.woff2"
+download "$(gf_url "$JBM_CSS" 400 normal 0100-02BA)" "JetBrainsMono-Regular-latinExt.woff2"
+download "$(gf_url "$JBM_CSS" 500 normal 0000-00FF)" "JetBrainsMono-Medium-latin.woff2"
+download "$(gf_url "$JBM_CSS" 500 normal 0100-02BA)" "JetBrainsMono-Medium-latinExt.woff2"
 
 echo
 echo "Done. Contents of $DEST:"
