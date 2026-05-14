@@ -1,26 +1,14 @@
-import type { IrpefBracket } from "./irpef.ts";
+import type { YearlyTaxConfig } from "@/domain/data/types.ts";
 import { calculateIrpefGross } from "./irpef.ts";
-import type { InpsConfig } from "./inps.ts";
 import { calculateInps } from "./inps.ts";
-import type { WorkDeductionConfig } from "./workDeduction.ts";
 import { calculateWorkDeduction } from "./workDeduction.ts";
-import type { TrattamentoIntegrativoConfig } from "./trattamentoIntegrativo.ts";
 import { calculateTrattamentoIntegrativo } from "./trattamentoIntegrativo.ts";
-import type { TaxWedgeCutConfig } from "./taxWedgeCut.ts";
 import { calculateTaxWedgeCut } from "./taxWedgeCut.ts";
-import type { InpsExemption2024Config } from "./inpsExemption2024.ts";
 import { calculateInpsExemption2024 } from "./inpsExemption2024.ts";
 import { round } from "./_math.ts";
 
-export interface YearTaxConfig {
-  readonly year: number;
-  readonly inps: InpsConfig;
-  readonly irpefBrackets: ReadonlyArray<IrpefBracket>;
-  readonly workDeduction: WorkDeductionConfig;
-  readonly trattamentoIntegrativo: TrattamentoIntegrativoConfig;
-  readonly taxWedgeCut: TaxWedgeCutConfig | null;
-  readonly inpsExemption2024: InpsExemption2024Config | null;
-}
+// YearTaxConfig is the name consumers already depend on. Keep it stable.
+export type { YearlyTaxConfig as YearTaxConfig };
 
 export interface SalaryInput {
   readonly grossAnnual: number;
@@ -47,7 +35,10 @@ export interface SalaryBreakdown {
   readonly effectiveTaxRate: number;
 }
 
-export function calculateSalaryBreakdown(input: SalaryInput, cfg: YearTaxConfig): SalaryBreakdown {
+export function calculateSalaryBreakdown(
+  input: SalaryInput,
+  cfg: YearlyTaxConfig,
+): SalaryBreakdown {
   const grossAnnual = Math.max(0, input.grossAnnual);
   const inpsGross = calculateInps(grossAnnual, cfg.inps);
   const inpsExemption = cfg.inpsExemption2024
