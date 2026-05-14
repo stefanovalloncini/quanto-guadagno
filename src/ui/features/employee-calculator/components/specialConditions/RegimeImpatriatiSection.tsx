@@ -29,7 +29,7 @@ export function RegimeImpatriatiSection({ value, onChange }: RegimeImpatriatiSec
       </p>
 
       {enabled && value && (
-        <div className="qg-advanced__indent" style={{ marginTop: "var(--space-3)" }}>
+        <div className="qg-extras__indent" style={{ marginTop: "var(--space-3)" }}>
           <label className="qg-toggle">
             <input
               type="checkbox"

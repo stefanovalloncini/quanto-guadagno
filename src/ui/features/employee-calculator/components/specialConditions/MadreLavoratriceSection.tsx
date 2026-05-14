@@ -42,7 +42,7 @@ export function MadreLavoratriceSection({ value, onChange }: MadreLavoratriceSec
       </p>
 
       {enabled && value && (
-        <div className="qg-advanced__indent" style={{ marginTop: "var(--space-3)" }}>
+        <div className="qg-extras__indent" style={{ marginTop: "var(--space-3)" }}>
           <div className="qg-field">
             <label className="qg-field__label" htmlFor={countId}>
               <FormattedMessage id="employee.specialConditions.madreLavoratrice.numberOfChildren" />

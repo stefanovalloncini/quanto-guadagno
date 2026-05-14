@@ -62,11 +62,11 @@ export function SpecialConditionsInput({ value, onChange }: SpecialConditionsInp
   const toggle = (checked: boolean) => onChange(checked ? DEFAULT_VALUE : null);
 
   return (
-    <details className="qg-advanced">
+    <details className="qg-extras">
       <summary>
         <FormattedMessage id="employee.specialConditions.title" />
       </summary>
-      <div className="qg-advanced__body">
+      <div className="qg-extras__body">
         <label className="qg-toggle">
           <input
             type="checkbox"

@@ -26,11 +26,11 @@ export function PremioRisultatoInput({ value, onChange, taxYear }: PremioRisulta
   });
 
   return (
-    <details className="qg-advanced">
+    <details className="qg-extras">
       <summary>
         <FormattedMessage id="employee.premio.title" />
       </summary>
-      <div className="qg-advanced__body">
+      <div className="qg-extras__body">
         <label className="qg-toggle">
           <input
             type="checkbox"

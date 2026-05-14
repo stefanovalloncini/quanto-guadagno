@@ -37,11 +37,11 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
   const enabled = value !== null;
 
   return (
-    <details className="qg-advanced">
+    <details className="qg-extras">
       <summary>
         <FormattedMessage id="employee.fringe.title" />
       </summary>
-      <div className="qg-advanced__body">
+      <div className="qg-extras__body">
         <label className="qg-toggle">
           <input
             type="checkbox"

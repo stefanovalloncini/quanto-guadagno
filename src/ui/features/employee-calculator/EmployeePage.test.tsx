@@ -49,18 +49,18 @@ describe("EmployeePage", () => {
     expect(live.textContent).not.toBe(before);
   });
 
-  it("advanced settings is collapsed by default", () => {
+  it("extras section is collapsed by default", () => {
     render(wrap(<EmployeePage />));
-    const details = document.querySelector("details.qg-advanced-panel");
+    const details = document.querySelector("details.qg-extras-panel");
     expect(details).toBeTruthy();
     expect(details).not.toHaveAttribute("open");
   });
 
-  it("opening advanced settings reveals the tab list", async () => {
+  it("opening extras section reveals the tab list", async () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni avanzate/);
+    const summary = screen.getByText(/Impostazioni opzionali/);
     await user.click(summary);
 
     expect(screen.getByRole("tablist")).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("EmployeePage", () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni avanzate/);
+    const summary = screen.getByText(/Impostazioni opzionali/);
     await user.click(summary);
 
     const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });
@@ -86,7 +86,7 @@ describe("EmployeePage", () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni avanzate/);
+    const summary = screen.getByText(/Impostazioni opzionali/);
     await user.click(summary);
 
     const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });

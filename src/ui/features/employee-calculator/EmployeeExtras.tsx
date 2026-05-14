@@ -23,18 +23,18 @@ interface TabDef {
 }
 
 const TABS: ReadonlyArray<TabDef> = [
-  { key: "dependents", labelId: "employee.advanced.tab.dependents" },
-  { key: "expenses", labelId: "employee.advanced.tab.expenses" },
-  { key: "conditions", labelId: "employee.advanced.tab.specialConditions" },
-  { key: "premio", labelId: "employee.advanced.tab.premio" },
-  { key: "benefits", labelId: "employee.advanced.tab.fringe" },
+  { key: "dependents", labelId: "employee.extras.tab.dependents" },
+  { key: "expenses", labelId: "employee.extras.tab.expenses" },
+  { key: "conditions", labelId: "employee.extras.tab.specialConditions" },
+  { key: "premio", labelId: "employee.extras.tab.premio" },
+  { key: "benefits", labelId: "employee.extras.tab.fringe" },
 ];
 
-interface EmployeeAdvancedSettingsProps {
+interface EmployeeExtrasProps {
   readonly calc: EmployeeCalculator;
 }
 
-export function EmployeeAdvancedSettings({ calc }: EmployeeAdvancedSettingsProps) {
+export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
   const intl = useIntl();
   const [activeTab, setActiveTab] = useState<OptionKey | null>(null);
 
@@ -51,13 +51,13 @@ export function EmployeeAdvancedSettings({ calc }: EmployeeAdvancedSettingsProps
   const municipalPercent = state.municipalTaxRate * 100;
 
   return (
-    <details className="qg-advanced-panel">
+    <details className="qg-extras-panel">
       <summary>
-        <FormattedMessage id="employee.advanced.title" />
+        <FormattedMessage id="employee.extras.title" />
       </summary>
 
-      <div className="qg-advanced-panel__body">
-        <div className="qg-advanced-panel__row">
+      <div className="qg-extras-panel__body">
+        <div className="qg-extras-panel__row">
           <YearSelector
             value={state.taxYear}
             supportedYears={SUPPORTED_YEARS}
@@ -70,20 +70,20 @@ export function EmployeeAdvancedSettings({ calc }: EmployeeAdvancedSettingsProps
           />
         </div>
 
-        <div className="qg-advanced-panel__row">
-          <div className="qg-advanced-panel__region">
+        <div className="qg-extras-panel__row">
+          <div className="qg-extras-panel__region">
             <RegionSelector value={state.regionCode} onChange={calc.setRegionCode} />
           </div>
           <Field
-            label={<FormattedMessage id="employee.advanced.municipal" />}
+            label={<FormattedMessage id="employee.extras.municipal" />}
             hint={
               <a
                 href="https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/nuova_addcomirpef/sceltaregione.htm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="qg-advanced-panel__lookup"
+                className="qg-extras-panel__lookup"
               >
-                <FormattedMessage id="employee.advanced.municipal.lookup" />
+                <FormattedMessage id="employee.extras.municipal.lookup" />
               </a>
             }
             type="number"
@@ -99,7 +99,7 @@ export function EmployeeAdvancedSettings({ calc }: EmployeeAdvancedSettingsProps
 
         <div
           role="tablist"
-          aria-label={intl.formatMessage({ id: "employee.advanced.tabs.label" })}
+          aria-label={intl.formatMessage({ id: "employee.extras.tabs.label" })}
           className="qg-tabs"
         >
           {TABS.map((tab) => {

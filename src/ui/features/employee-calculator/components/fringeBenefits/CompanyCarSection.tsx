@@ -17,7 +17,7 @@ export function CompanyCarSection({ value, onChange, taxYear }: CompanyCarSectio
   const usesPowertrain = taxYear >= 2025;
 
   return (
-    <div className="qg-advanced__body">
+    <div className="qg-extras__body">
       <div
         className="qg-mode-selector"
         role="group"
