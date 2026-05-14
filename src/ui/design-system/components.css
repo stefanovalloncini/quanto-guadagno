@@ -464,31 +464,31 @@
   color: var(--ink);
 }
 
-.qg-employee__hero {
+.qg-calc__hero {
   margin-bottom: var(--space-7);
 }
-.qg-employee__hero h1 {
+.qg-calc__hero h1 {
   font-size: var(--text-2xl);
   line-height: var(--leading-tight);
   margin: var(--space-2) 0 var(--space-3);
 }
-.qg-employee__hero h1 em {
+.qg-calc__hero h1 em {
   font-style: italic;
   color: var(--accent);
 }
-.qg-employee__grid {
+.qg-calc__grid {
   display: grid;
   grid-template-columns: 5fr 7fr;
   gap: var(--space-7);
 }
-.qg-employee__result {
+.qg-calc__result {
   background: var(--paper-3);
   border: 1px solid var(--rule);
   border-radius: var(--radius-4);
   padding: var(--space-6);
 }
 @media (max-width: 880px) {
-  .qg-employee__grid {
+  .qg-calc__grid {
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
