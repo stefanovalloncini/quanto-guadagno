@@ -1,61 +1,25 @@
-import { useEffect, useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useTheme } from "./theme/useTheme.ts";
 
-type Theme = "light" | "dark";
-
-const STORAGE_KEY = "qg.theme";
-
-const readStored = (): Theme | null => {
-  try {
-    const v = window.localStorage.getItem(STORAGE_KEY);
-    return v === "light" || v === "dark" ? v : null;
-  } catch {
-    return null;
-  }
-};
-
-const detect = (): Theme => {
-  const stored = readStored();
-  if (stored) return stored;
-  if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark";
-  }
-  return "light";
-};
-
-const apply = (theme: Theme) => {
-  const root = document.documentElement;
-  root.classList.toggle("dark", theme === "dark");
-  root.dataset.theme = theme;
-};
+const LABEL_BY_THEME = {
+  light: "theme.label.light",
+  dark: "theme.label.dark",
+  system: "theme.label.system",
+} as const;
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(detect);
+  const { theme, cycle } = useTheme();
   const intl = useIntl();
-
-  useEffect(() => {
-    apply(theme);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, theme);
-    } catch {
-      // ignore quota or privacy mode
-    }
-  }, [theme]);
-
-  const next: Theme = theme === "light" ? "dark" : "light";
-  const label = intl.formatMessage(
-    { id: "theme.toggle.label" },
-    { mode: intl.formatMessage({ id: theme === "light" ? "theme.dark" : "theme.light" }) },
-  );
-
   return (
     <button
       type="button"
       className="qg-theme-toggle"
-      aria-label={label}
-      onClick={() => setTheme(next)}
+      onClick={cycle}
+      aria-label={intl.formatMessage({ id: "theme.aria.cycle" })}
     >
-      <span aria-hidden="true">{theme === "light" ? "◐" : "◑"}</span>
+      <span className="qg-theme-toggle__label">
+        <FormattedMessage id="theme.prefix" /> <FormattedMessage id={LABEL_BY_THEME[theme]} />
+      </span>
     </button>
   );
 }
