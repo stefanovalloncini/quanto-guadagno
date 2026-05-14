@@ -25,9 +25,9 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
 
   return (
     <div className="qg-results-breakdown">
-      <h3 className="qg-results-breakdown__title">
+      <h2 className="qg-results-breakdown__title">
         <FormattedMessage id="employee.results.detail" />
-      </h3>
+      </h2>
 
       <div className="qg-results-breakdown__flow">
         <BreakdownRow labelId="employee.breakdown.gross" amount={breakdown.grossAnnual} />

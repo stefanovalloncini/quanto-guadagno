@@ -21,9 +21,9 @@ export function TaxBreakdownCard({ breakdown, paymentFrequency }: TaxBreakdownCa
 
   return (
     <div className="qg-breakdown-card">
-      <h3 className="qg-breakdown-card__title">
+      <h2 className="qg-breakdown-card__title">
         <FormattedMessage id="employee.breakdown.title" />
-      </h3>
+      </h2>
 
       <div className="qg-breakdown-card__section">
         <p className="qg-breakdown-card__section-label">
