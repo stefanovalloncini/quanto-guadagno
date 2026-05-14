@@ -3,6 +3,9 @@ import type { MessageKey } from "./it.ts";
 export const en: Record<MessageKey, string> = {
   "app.title": "Quanto Guadagno",
   "a11y.skipLink": "Skip to content",
+  "a11y.skipToMain": "Skip to main content",
+  "brand.first": "quanto",
+  "brand.second": "guadagno",
   "error.boundary.title": "Something went wrong",
   "error.boundary.body": "Reload the page to try again.",
 
@@ -12,6 +15,7 @@ export const en: Record<MessageKey, string> = {
   "nav.comparison": "Comparison",
   "nav.statistics": "Statistics",
   "nav.sources": "Sources",
+  "nav.about": "About",
   "nav.payslip": "Payslip",
   "nav.tfr": "Severance",
   "nav.apprenticeship": "Apprenticeship",
@@ -232,9 +236,14 @@ export const en: Record<MessageKey, string> = {
   "theme.toggle.label": "Switch to {mode} theme",
   "theme.light": "light",
   "theme.dark": "dark",
+  "theme.prefix": "Theme:",
+  "theme.label.light": "light",
+  "theme.label.dark": "dark",
+  "theme.label.system": "system",
+  "theme.aria.cycle": "Change theme",
 
-  "footer.attribution":
-    "Calculations based on official rules and circulars. See the verification documents in sources.",
+  "footer.attribution": "Net salary calculator · for personal and informational use",
+  "footer.repo": "Code on GitHub",
   "footer.disclaimer": "Informational tool. For complex situations consult a commercialista.",
 
   "page.employee.title": "Net salary calculator",

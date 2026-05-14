@@ -1,6 +1,9 @@
 export const it = {
   "app.title": "Quanto Guadagno",
   "a11y.skipLink": "Salta al contenuto",
+  "a11y.skipToMain": "Vai al contenuto principale",
+  "brand.first": "quanto",
+  "brand.second": "guadagno",
   "error.boundary.title": "Qualcosa è andato storto",
   "error.boundary.body": "Ricarica la pagina per riprovare.",
 
@@ -10,6 +13,7 @@ export const it = {
   "nav.comparison": "Confronto",
   "nav.statistics": "Statistiche",
   "nav.sources": "Fonti",
+  "nav.about": "Informazioni",
   "nav.payslip": "Busta paga",
   "nav.tfr": "TFR",
   "nav.apprenticeship": "Apprendistato",
@@ -233,9 +237,14 @@ export const it = {
   "theme.toggle.label": "Passa al tema {mode}",
   "theme.light": "chiaro",
   "theme.dark": "scuro",
+  "theme.prefix": "Tema:",
+  "theme.label.light": "chiaro",
+  "theme.label.dark": "scuro",
+  "theme.label.system": "sistema",
+  "theme.aria.cycle": "Cambia tema",
 
-  "footer.attribution":
-    "Calcoli basati su norme e circolari ufficiali. Vedi i documenti di verifica nelle sorgenti.",
+  "footer.attribution": "Calcolatore di stipendio netto · uso personale e informativo",
+  "footer.repo": "Codice su GitHub",
   "footer.disclaimer":
     "Strumento informativo. Per situazioni complesse rivolgersi a un commercialista.",
 
