@@ -139,4 +139,83 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.col.year": "Year",
   "apprenticeship.col.percent": "% of target",
   "apprenticeship.col.gross": "Gross annual",
+
+  "employee.dependents.title": "Dependent family members",
+  "employee.dependents.spouse": "Dependent spouse",
+  "employee.dependents.spouseIncome": "Annual spouse income",
+  "employee.dependents.spouseIncome.hint": "Maximum to be considered dependent: {limit}",
+  "employee.dependents.spouseIncome.warning": "Income exceeds the limit",
+  "employee.dependents.spouseIncome.warningDetails":
+    "With income above {limit}, the spouse is not considered dependent and the deduction does not apply.",
+  "employee.dependents.childrenOver21": "Dependent children (over 21)",
+  "employee.dependents.childrenOver21.hint":
+    "Children under 21 are covered by the Universal Allowance",
+  "employee.dependents.otherDependents": "Other dependent family members",
+  "employee.dependents.otherDependents.hint":
+    "Parents, cohabiting grandparents, and other family members",
+
+  "employee.expenses.title": "Expense deductions",
+  "employee.expenses.mortgageInterest": "Mortgage interest",
+  "employee.expenses.mortgageInterest.hint": "Deductible at 19% up to €4,000",
+  "employee.expenses.medicalExpenses": "Medical expenses",
+  "employee.expenses.medicalExpenses.hint": "Deductible at 19% above the threshold of €129.11",
+  "employee.expenses.otherDeductions": "Other deductions at 19%",
+  "employee.expenses.otherDeductions.hint": "Education, insurance, etc.",
+
+  "employee.premio.title": "Performance bonus (PdR)",
+  "employee.premio.amount": "Gross amount (max {max})",
+  "employee.premio.hint": "{rate} flat tax for incomes under €80,000",
+
+  "employee.fringe.title": "Fringe benefits",
+  "employee.fringe.companyCar.title": "Company car",
+  "employee.fringe.companyCar.mode.simple": "Simple",
+  "employee.fringe.companyCar.mode.detailed": "Detailed",
+  "employee.fringe.companyCar.modeLabel": "Calculation mode",
+  "employee.fringe.companyCar.annualValue": "Annual taxable value",
+  "employee.fringe.companyCar.annualValue.hint": "Annual amount provided by employer",
+  "employee.fringe.companyCar.co2": "CO2 emissions (g/km)",
+  "employee.fringe.companyCar.co2.hint":
+    "From registration: ≤60 = 25%, 61–160 = 30%, 161–190 = 50%, >190 = 60%",
+  "employee.fringe.companyCar.aciCost": "ACI cost per km (cents)",
+  "employee.fringe.companyCar.aciCost.hint": "From ACI tables (e.g., 42 for €0.42/km)",
+  "employee.fringe.companyCar.conventionalKm": "Conventional annual km",
+  "employee.fringe.companyCar.conventionalKm.hint": "Default: 15,000 km/year",
+  "employee.fringe.companyCar.powertrain.label": "Powertrain type",
+  "employee.fringe.companyCar.powertrain.bev": "Electric (BEV): 10%",
+  "employee.fringe.companyCar.powertrain.phev": "Plug-in hybrid (PHEV): 20%",
+  "employee.fringe.companyCar.powertrain.other": "Other (ICE/mild hybrid): 50%",
+  "employee.fringe.mealVouchers.title": "Electronic meal vouchers",
+  "employee.fringe.mealVouchers.dailyValue": "Daily value (€)",
+  "employee.fringe.mealVouchers.dailyValue.hint": "Tax-free up to €8/day (electronic)",
+  "employee.fringe.mealVouchers.workingDays": "Working days/month",
+  "employee.fringe.mealVouchers.workingDays.hint": "Typically 20–22 days",
+  "employee.fringe.healthInsurance.title": "Health insurance",
+  "employee.fringe.healthInsurance.annualPremium": "Annual premium",
+  "employee.fringe.healthInsurance.annualPremium.hint": "Tax-free up to €3,615.20/year",
+  "employee.fringe.welfare.title": "Company welfare",
+  "employee.fringe.welfare.annualAmount": "Annual welfare amount",
+  "employee.fringe.welfare.annualAmount.hint": "Tax-free up to €258.23/year",
+  "employee.fringe.welfare.annualAmount.hintWithChildren":
+    "Tax-free up to €3,000/year (with children under 18)",
+  "employee.fringe.welfare.hasChildren": "I have dependent children under 18",
+
+  "employee.specialConditions.title": "Special conditions",
+  "employee.specialConditions.regimeImpatriati.label": "Impatriate Regime (Return of Talent)",
+  "employee.specialConditions.regimeImpatriati.hint":
+    "50% of income exempt from IRPEF for 5 years (Art. 5 Legislative Decree 209/2023)",
+  "employee.specialConditions.regimeImpatriati.minorChildren": "I have minor children",
+  "employee.specialConditions.regimeImpatriati.minorChildren.hint":
+    "Increases exemption from 50% to 60%",
+  "employee.specialConditions.madreLavoratrice.label": "Esonero Madre Lavoratrice",
+  "employee.specialConditions.madreLavoratrice.hint":
+    "100% INPS exemption (max €3,000/year) for mothers with 3+ children",
+  "employee.specialConditions.madreLavoratrice.numberOfChildren": "Number of children",
+  "employee.specialConditions.madreLavoratrice.youngestChildAge": "Age of youngest child",
+  "employee.specialConditions.madreLavoratrice.years": "years",
+  "employee.specialConditions.madreLavoratrice.notEligible.children":
+    "At least 3 children are required for full exemption",
+  "employee.specialConditions.madreLavoratrice.notEligible.age":
+    "The exemption ends when the youngest child turns 18",
+  "employee.specialConditions.madreLavoratrice.eligible":
+    "You are entitled to the 100% contribution exemption (max €3,000/year)",
 };

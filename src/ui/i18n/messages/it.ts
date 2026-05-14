@@ -140,6 +140,84 @@ export const it = {
   "apprenticeship.col.year": "Anno",
   "apprenticeship.col.percent": "% della destinazione",
   "apprenticeship.col.gross": "Lordo annuo",
+
+  "employee.dependents.title": "Familiari a carico",
+  "employee.dependents.spouse": "Coniuge a carico",
+  "employee.dependents.spouseIncome": "Reddito annuo del coniuge",
+  "employee.dependents.spouseIncome.hint":
+    "Limite massimo per essere considerato a carico: {limit}",
+  "employee.dependents.spouseIncome.warning": "Reddito superiore al limite",
+  "employee.dependents.spouseIncome.warningDetails":
+    "Con reddito sopra {limit} il coniuge non è considerato a carico e la detrazione non si applica.",
+  "employee.dependents.childrenOver21": "Figli a carico (oltre 21 anni)",
+  "employee.dependents.childrenOver21.hint": "I figli under 21 sono coperti dall'Assegno Unico",
+  "employee.dependents.otherDependents": "Altri familiari a carico",
+  "employee.dependents.otherDependents.hint": "Genitori, nonni conviventi e altri familiari",
+
+  "employee.expenses.title": "Detrazioni spese",
+  "employee.expenses.mortgageInterest": "Interessi sul mutuo",
+  "employee.expenses.mortgageInterest.hint": "Detrazione al 19% fino a 4.000 €",
+  "employee.expenses.medicalExpenses": "Spese sanitarie",
+  "employee.expenses.medicalExpenses.hint": "Detrazione al 19% sulla parte eccedente 129,11 €",
+  "employee.expenses.otherDeductions": "Altre detrazioni al 19%",
+  "employee.expenses.otherDeductions.hint": "Istruzione, assicurazioni, ecc.",
+
+  "employee.premio.title": "Premio di risultato",
+  "employee.premio.amount": "Importo lordo (max {max})",
+  "employee.premio.hint": "Tassazione sostitutiva {rate} per redditi inferiori a 80.000 €",
+
+  "employee.fringe.title": "Fringe benefit",
+  "employee.fringe.companyCar.title": "Auto aziendale",
+  "employee.fringe.companyCar.mode.simple": "Semplificato",
+  "employee.fringe.companyCar.mode.detailed": "Dettagliato",
+  "employee.fringe.companyCar.modeLabel": "Modalità di calcolo",
+  "employee.fringe.companyCar.annualValue": "Valore annuo imponibile",
+  "employee.fringe.companyCar.annualValue.hint": "Importo annuo comunicato dal datore di lavoro",
+  "employee.fringe.companyCar.co2": "Emissioni CO2 (g/km)",
+  "employee.fringe.companyCar.co2.hint":
+    "Dal libretto: ≤60 = 25%, 61–160 = 30%, 161–190 = 50%, >190 = 60%",
+  "employee.fringe.companyCar.aciCost": "Costo ACI al km (centesimi)",
+  "employee.fringe.companyCar.aciCost.hint": "Dalle tabelle ACI (es. 42 per €0,42/km)",
+  "employee.fringe.companyCar.conventionalKm": "Km convenzionali annui",
+  "employee.fringe.companyCar.conventionalKm.hint": "Default: 15.000 km/anno",
+  "employee.fringe.companyCar.powertrain.label": "Tipo di alimentazione",
+  "employee.fringe.companyCar.powertrain.bev": "Elettrico (BEV): 10%",
+  "employee.fringe.companyCar.powertrain.phev": "Ibrido plug-in (PHEV): 20%",
+  "employee.fringe.companyCar.powertrain.other": "Altro (termico/mild hybrid): 50%",
+  "employee.fringe.mealVouchers.title": "Buoni pasto elettronici",
+  "employee.fringe.mealVouchers.dailyValue": "Valore giornaliero (€)",
+  "employee.fringe.mealVouchers.dailyValue.hint": "Esente fino a 8 €/giorno (elettronici)",
+  "employee.fringe.mealVouchers.workingDays": "Giorni lavorativi al mese",
+  "employee.fringe.mealVouchers.workingDays.hint": "Di solito 20–22 giorni",
+  "employee.fringe.healthInsurance.title": "Polizza sanitaria",
+  "employee.fringe.healthInsurance.annualPremium": "Premio annuo",
+  "employee.fringe.healthInsurance.annualPremium.hint": "Esente fino a 3.615,20 €/anno",
+  "employee.fringe.welfare.title": "Welfare aziendale",
+  "employee.fringe.welfare.annualAmount": "Importo welfare annuo",
+  "employee.fringe.welfare.annualAmount.hint": "Esente fino a 258,23 €/anno",
+  "employee.fringe.welfare.annualAmount.hintWithChildren":
+    "Esente fino a 3.000 €/anno (con figli under 18)",
+  "employee.fringe.welfare.hasChildren": "Ho figli a carico under 18",
+
+  "employee.specialConditions.title": "Condizioni speciali",
+  "employee.specialConditions.regimeImpatriati.label": "Regime impatriati (rientro dei cervelli)",
+  "employee.specialConditions.regimeImpatriati.hint":
+    "50% del reddito esente IRPEF per 5 anni (art. 5 D.lgs. 209/2023)",
+  "employee.specialConditions.regimeImpatriati.minorChildren": "Ho figli minorenni",
+  "employee.specialConditions.regimeImpatriati.minorChildren.hint":
+    "Aumenta l'esenzione dal 50% al 60%",
+  "employee.specialConditions.madreLavoratrice.label": "Esonero madre lavoratrice",
+  "employee.specialConditions.madreLavoratrice.hint":
+    "Esonero INPS al 100% (max 3.000 €/anno) per madri con 3 o più figli",
+  "employee.specialConditions.madreLavoratrice.numberOfChildren": "Numero di figli",
+  "employee.specialConditions.madreLavoratrice.youngestChildAge": "Età del figlio più giovane",
+  "employee.specialConditions.madreLavoratrice.years": "anni",
+  "employee.specialConditions.madreLavoratrice.notEligible.children":
+    "Servono almeno 3 figli per l'esonero completo",
+  "employee.specialConditions.madreLavoratrice.notEligible.age":
+    "L'esonero termina quando il figlio più giovane compie 18 anni",
+  "employee.specialConditions.madreLavoratrice.eligible":
+    "Hai diritto all'esonero contributivo al 100% (max 3.000 €/anno)",
 } as const;
 
 export type MessageKey = keyof typeof it;

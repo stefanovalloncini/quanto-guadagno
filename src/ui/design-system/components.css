@@ -526,3 +526,121 @@
 .qg-progression tbody tr + tr td {
   border-top: 1px solid var(--rule);
 }
+
+/* Toggle checkbox used in advanced input sections */
+.qg-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+.qg-toggle__input {
+  width: 1.1em;
+  height: 1.1em;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.qg-toggle__label {
+  font-size: var(--text-sm);
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Card wrapping a single benefit within FringeBenefitsInput */
+.qg-benefit-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.qg-benefit-card__body {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Collapsible advanced-settings section */
+.qg-advanced {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-3);
+}
+.qg-advanced summary {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.qg-advanced summary::-webkit-details-marker {
+  display: none;
+}
+.qg-advanced summary::after {
+  content: "+";
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  margin-left: auto;
+}
+.qg-advanced[open] summary::after {
+  content: "−";
+}
+.qg-advanced__body {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-advanced__indent {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Inline note / eligibility alert within advanced inputs */
+.qg-note {
+  padding: var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--paper-2);
+}
+.qg-note__text {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
+/* Mode selector (simple/detailed buttons) */
+.qg-mode-selector {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+.qg-mode-selector__btn {
+  flex: 1;
+  padding: 0.45rem 0.75rem;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  border: none;
+  background: var(--paper-3);
+  color: var(--ink-2);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+.qg-mode-selector__btn + .qg-mode-selector__btn {
+  border-left: 1px solid var(--rule);
+}
+.qg-mode-selector__btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-on);
+}
