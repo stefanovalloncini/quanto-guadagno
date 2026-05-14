@@ -2,14 +2,21 @@ import type { ReactNode } from "react";
 import { AppHeader } from "./AppHeader.tsx";
 import { AppFooter } from "./AppFooter.tsx";
 import { SkipLink } from "./SkipLink.tsx";
+import { ErrorBoundary } from "./ErrorBoundary.tsx";
 
-export function AppLayout({ children }: { readonly children: ReactNode }) {
+interface AppLayoutProps {
+  readonly children: ReactNode;
+}
+
+export function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div className="qg-app-shell">
-      <SkipLink targetId="main" />
+    <>
+      <SkipLink />
       <AppHeader />
-      <div className="qg-app-shell__content">{children}</div>
+      <main id="main" className="qg-main">
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </main>
       <AppFooter />
-    </div>
+    </>
   );
 }
