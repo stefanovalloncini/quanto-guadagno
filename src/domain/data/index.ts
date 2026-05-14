@@ -19,5 +19,3 @@ export function getTaxConfig(year: SupportedYear): YearTaxConfig {
   return REGISTRY[year];
 }
 
-export { ITALIAN_INFLATION_FOI } from "./inflation.ts";
-export type { InflationEntry } from "./inflation.ts";

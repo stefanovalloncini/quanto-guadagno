@@ -11,27 +11,6 @@ export const it = {
   "nav.employee": "Calcolatore stipendio",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
-  "nav.inflation": "Inflazione",
-
-  "inflation.page.eyebrow": "Potere d'acquisto",
-  "inflation.page.title": "Analisi inflazione",
-  "inflation.page.subtitle":
-    "Confronta il potere d'acquisto di una somma in due anni diversi, usando l'indice ISTAT FOI.",
-  "inflation.form.title": "Parametri",
-  "inflation.form.amount.label": "Importo",
-  "inflation.form.amount.hint": "Somma di partenza, in euro.",
-  "inflation.form.from.label": "Dall'anno",
-  "inflation.form.to.label": "All'anno",
-  "inflation.results.title": "Equivalenza",
-  "inflation.results.equivalentLabel": "Equivalente in euro {year}",
-  "inflation.results.nominalLabel": "Importo nominale",
-  "inflation.results.cumulativeLabel": "Inflazione cumulata",
-  "inflation.explainer":
-    "L'indice FOI riflette i consumi di una famiglia tipo di lavoratori dipendenti. Per beni specifici (energia, alimentari, casa) la dinamica reale può differire dalla media.",
-  "inflation.source.title": "Fonte",
-  "inflation.source.body":
-    "ISTAT, indice dei prezzi al consumo per le famiglie di operai e impiegati (FOI), serie storica nazionale. I tassi 2026 sono stime. Vedi docs/data-verification/inflazione.md.",
-
   "sources.page.eyebrow": "Trasparenza",
   "sources.page.title": "Fonti dei dati",
   "sources.page.subtitle":
