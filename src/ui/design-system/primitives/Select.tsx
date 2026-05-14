@@ -1,9 +1,4 @@
-import {
-  forwardRef,
-  type ReactNode,
-  type SelectHTMLAttributes,
-  useId,
-} from "react";
+import { forwardRef, type ReactNode, type SelectHTMLAttributes, useId } from "react";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   readonly label: ReactNode;

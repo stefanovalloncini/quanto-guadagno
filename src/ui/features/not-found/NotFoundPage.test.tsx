@@ -12,7 +12,7 @@ describe("NotFoundPage", () => {
         <MemoryRouter>
           <NotFoundPage />
         </MemoryRouter>
-      </IntlProvider>
+      </IntlProvider>,
     );
     expect(screen.getByText("404")).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/pagina/i);

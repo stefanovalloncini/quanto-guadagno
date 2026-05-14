@@ -10,15 +10,10 @@ describe("Tile", () => {
   it("renders feature variant as a Link with correct href and class", () => {
     render(
       wrap(
-        <Tile
-          variant="feature"
-          to="/calcola-stipendio"
-          title="Stipendio netto"
-          badge="Disponibile"
-        >
+        <Tile variant="feature" to="/calcola-stipendio" title="Stipendio netto" badge="Disponibile">
           <p>Descrizione</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     const link = screen.getByRole("link", { name: /Stipendio netto/ });
     expect(link).toHaveAttribute("href", "/calcola-stipendio");
@@ -30,8 +25,8 @@ describe("Tile", () => {
       wrap(
         <Tile variant="available" to="/foo" title="Foo" badge="Disponibile">
           <p>x</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     const link = screen.getByRole("link", { name: /Foo/ });
     expect(link).toHaveAttribute("href", "/foo");
@@ -43,8 +38,8 @@ describe("Tile", () => {
       wrap(
         <Tile variant="soon" title="Partita IVA" badge="In arrivo">
           <p>Descrizione</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     expect(screen.queryByRole("link")).toBeNull();
     const root = screen.getByText("Partita IVA").closest(".qg-tile");
@@ -56,8 +51,8 @@ describe("Tile", () => {
       wrap(
         <Tile variant="soon" title="TFR" badge="In arrivo">
           <p>x</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     expect(screen.getByText("In arrivo")).toBeInTheDocument();
     expect(screen.getByText("TFR")).toBeInTheDocument();
@@ -66,16 +61,10 @@ describe("Tile", () => {
   it("renders cta when provided on a Link variant", () => {
     render(
       wrap(
-        <Tile
-          variant="feature"
-          to="/foo"
-          title="Foo"
-          badge="b"
-          cta="Apri →"
-        >
+        <Tile variant="feature" to="/foo" title="Foo" badge="b" cta="Apri →">
           <p>x</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     expect(screen.getByText("Apri →")).toBeInTheDocument();
   });
@@ -89,8 +78,8 @@ describe("Tile", () => {
           badge={<span data-testid="b">x-badge</span>}
         >
           <p>x</p>
-        </Tile>
-      )
+        </Tile>,
+      ),
     );
     expect(screen.getByTestId("t")).toBeInTheDocument();
     expect(screen.getByTestId("b")).toBeInTheDocument();

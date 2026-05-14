@@ -21,10 +21,7 @@ export function AboutPage() {
         </p>
       </div>
       <p>
-        <a
-          href="https://github.com/stefanovalloncini/quanto-guadagno"
-          rel="noreferrer"
-        >
+        <a href="https://github.com/stefanovalloncini/quanto-guadagno" rel="noreferrer">
           <FormattedMessage id="about.github" />
         </a>
       </p>

@@ -12,7 +12,7 @@ describe("AboutPage", () => {
         <MemoryRouter>
           <AboutPage />
         </MemoryRouter>
-      </IntlProvider>
+      </IntlProvider>,
     );
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
     const link = screen.getByRole("link");
