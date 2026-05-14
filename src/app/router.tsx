@@ -1,14 +1,9 @@
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import { ApprenticeshipPage } from "@/ui/features/apprenticeship";
-import { ComparisonPage } from "@/ui/features/comparison";
-import { DataSourcesPage } from "@/ui/features/data-sources";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EmployeePage } from "@/ui/features/employee-calculator";
-import { FreelancerPage } from "@/ui/features/freelancer-calculator";
 import { HomePage } from "@/ui/features/home";
-import { InflationPage } from "@/ui/features/inflation";
-import { PayslipPage } from "@/ui/features/payslip";
-import { StatisticsPage } from "@/ui/features/statistics";
-import { TfrPage } from "@/ui/features/tfr";
+import { SourcesPage } from "@/ui/features/sources";
+import { AboutPage } from "@/ui/features/about";
+import { NotFoundPage } from "@/ui/features/not-found";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
 const router = createBrowserRouter([
@@ -29,70 +24,29 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/calcolo-partita-iva",
+    path: "/fonti",
     element: (
       <AppLayout>
-        <FreelancerPage />
+        <SourcesPage />
       </AppLayout>
     ),
   },
   {
-    path: "/confronto-scenari",
+    path: "/informazioni",
     element: (
       <AppLayout>
-        <ComparisonPage />
+        <AboutPage />
       </AppLayout>
     ),
   },
   {
-    path: "/statistiche",
+    path: "*",
     element: (
       <AppLayout>
-        <StatisticsPage />
+        <NotFoundPage />
       </AppLayout>
     ),
   },
-  {
-    path: "/fonti-dati",
-    element: (
-      <AppLayout>
-        <DataSourcesPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/busta-paga",
-    element: (
-      <AppLayout>
-        <PayslipPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/simulatore-tfr",
-    element: (
-      <AppLayout>
-        <TfrPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/progressione-apprendistato",
-    element: (
-      <AppLayout>
-        <ApprenticeshipPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/analisi-inflazione",
-    element: (
-      <AppLayout>
-        <InflationPage />
-      </AppLayout>
-    ),
-  },
-  { path: "*", element: <Navigate to="/" replace /> },
 ]);
 
 export function AppRouter() {
