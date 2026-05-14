@@ -1,53 +1,26 @@
 import type { MessageKey } from "./it.ts";
 
 export const en: Record<MessageKey, string> = {
-  "app.title": "Quanto Guadagno",
-  "a11y.skipLink": "Skip to content",
   "a11y.skipToMain": "Skip to main content",
+
   "brand.first": "quanto",
   "brand.second": "guadagno",
+
   "error.boundary.title": "Something went wrong",
   "error.boundary.body": "Reload the page to try again.",
 
-  "nav.home": "Home",
-  "nav.employee": "Salary calculator",
+  "nav.employee": "Calculator",
   "nav.sources": "Sources",
   "nav.about": "About",
-  "home.eyebrow": "Quanto Guadagno",
-  "home.title": "Understand what actually lands in your paycheck",
-  "home.subtitle":
-    "A set of tools for reading the Italian payslip. Calculations verified against rules and circulars, no promises and no fluff.",
-  "home.tools.heading": "Tools",
-  "home.tools.open": "Open",
-  "home.tools.soon": "Coming",
-  "home.tools.employee.title": "Net salary calculator",
-  "home.tools.employee.desc":
-    "From gross to net: IRPEF, INPS, addizionali for 2024, 2025 and 2026.",
-  "home.tools.freelancer.title": "Freelancer (Partita IVA)",
-  "home.tools.freelancer.desc": "Forfettario or ordinario, gestione separata or professional fund.",
-  "home.tools.comparison.title": "Scenario comparison",
-  "home.tools.comparison.desc": "Side-by-side salary scenarios, with CSV export.",
-  "home.tools.statistics.title": "Statistics",
-  "home.tools.statistics.desc": "Where your salary sits in the ISTAT distribution.",
-  "home.tools.tools.title": "Employee deep dive",
-  "home.tools.tools.desc": "Employer cost, payslip breakdown, analysis.",
-  "home.tools.payslip.title": "Payslip",
-  "home.tools.payslip.desc": "Monthly payslip line items, ready to print.",
-  "home.tools.inflation.title": "Inflation analysis",
-  "home.tools.inflation.desc": "Real purchasing power of salaries over time.",
-  "home.tools.tfr.title": "Severance (TFR)",
-  "home.tools.tfr.desc": "TFR projection and taxation.",
-  "home.tools.apprenticeship.title": "Apprenticeship progression",
-  "home.tools.apprenticeship.desc": "Year-by-year salary growth in apprenticeship contracts.",
-  "home.tools.tax-system.title": "Tax system",
-  "home.tools.tax-system.desc": "How it works, who pays, tax wedge, where taxes go.",
-  "home.tools.data-sources.title": "Data sources",
-  "home.tools.data-sources.desc": "Every number the calculator uses, with its source.",
-  "home.tools.europe.title": "Europe comparison",
-  "home.tools.europe.desc": "Net salary across European countries for the same gross.",
-  "home.disclaimer.title": "Work in progress",
-  "home.disclaimer.body":
-    "The project is coming back online one module at a time. Only the salary calculator is live. The others appear here as soon as they pass verification.",
+
+  "theme.prefix": "Theme:",
+  "theme.label.light": "light",
+  "theme.label.dark": "dark",
+  "theme.label.system": "system",
+  "theme.aria.cycle": "Change theme",
+
+  "footer.attribution": "Net salary calculator · for personal and informational use",
+  "footer.repo": "Code on GitHub",
 
   "home.hero.title": "What I really <em>take home</em>.",
   "home.hero.lede":
@@ -73,49 +46,10 @@ export const en: Record<MessageKey, string> = {
   "home.footnote":
     "Project <shimmer>open source</shimmer> · no account · no tracker · code on GitHub",
 
-  "theme.toggle.label": "Switch to {mode} theme",
-  "theme.light": "light",
-  "theme.dark": "dark",
-  "theme.prefix": "Theme:",
-  "theme.label.light": "light",
-  "theme.label.dark": "dark",
-  "theme.label.system": "system",
-  "theme.aria.cycle": "Change theme",
-
-  "footer.attribution": "Net salary calculator · for personal and informational use",
-  "footer.repo": "Code on GitHub",
-  "footer.disclaimer": "Informational tool. For complex situations consult a commercialista.",
-
-  "page.employee.title": "Net salary calculator",
-  "page.employee.subtitle":
-    "Enter your gross annual salary. The calculation applies IRPEF, INPS, regional and municipal addizionale for the selected year.",
-  "page.employee.eyebrow": "Tax year {year}",
-
-  "form.section.title": "Your inputs",
-  "form.gross.label": "Gross annual salary (RAL)",
-  "form.gross.hint": "Annual gross amount, before withholdings.",
-  "form.year.label": "Tax year",
-  "form.year.hint": "Rates and policies change year to year.",
-  "form.regional.label": "Regional addizionale rate",
-  "form.regional.hint": "Regional rate, percentage. Default: 1.73%.",
-  "form.municipal.label": "Municipal addizionale rate",
-  "form.municipal.hint": "Municipal rate, percentage. Default: 0.80%.",
-
-  "results.section.title": "Result",
-  "results.netAnnual": "Annual net",
-  "results.netMonthly": "Monthly net",
-  "results.effectiveRate": "Effective tax rate",
-
-  "breakdown.title": "Breakdown",
-  "breakdown.gross": "Gross salary",
-  "breakdown.inps": "INPS contributions",
-  "breakdown.taxable": "Taxable income",
-  "breakdown.irpefNet": "IRPEF",
-  "breakdown.regional": "Regional addizionale",
-  "breakdown.municipal": "Municipal addizionale",
-  "breakdown.trattamentoIntegrativo": "Trattamento integrativo bonus",
-  "breakdown.sommaAggiuntiva": "Tax wedge cut bonus",
-  "breakdown.netAnnual": "Annual net",
+  "employee.eyebrow": "Tool",
+  "employee.title": "Net salary from <em>gross</em>.",
+  "employee.lede":
+    "Tax years 2024–2026. Regional and municipal rates are editable. Numbers are an estimate — not a substitute for the actual payslip.",
 
   "employee.form.gross": "Annual gross salary",
   "employee.form.year": "Tax year",
@@ -129,6 +63,7 @@ export const en: Record<MessageKey, string> = {
   "employee.results.annual.sub": "estimate over 12 months",
   "employee.results.detail": "Calculation breakdown",
   "employee.results.effective": "Effective tax rate:",
+
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",
   "employee.breakdown.irpefNet": "IRPEF net",
@@ -137,15 +72,6 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.deductions": "Work deductions + bonus",
   "employee.breakdown.trattamento": "Trattamento integrativo",
   "employee.breakdown.net": "Net annual",
-
-  "employee.eyebrow": "Tool",
-  "employee.title": "Net salary from <em>gross</em>.",
-  "employee.lede":
-    "Tax years 2024–2026. Regional and municipal rates are editable. Numbers are an estimate — not a substitute for the actual payslip.",
-
-  "scope.title": "What's included today",
-  "scope.body":
-    "Private-sector employee. Tax years 2024, 2025 and 2026. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, public sector, apprenticeship contracts.",
 
   "notFound.title": "Page not found",
   "notFound.body": "The page you requested does not exist.",
