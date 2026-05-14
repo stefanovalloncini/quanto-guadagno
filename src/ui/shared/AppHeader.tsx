@@ -5,39 +5,35 @@ import { ThemeToggle } from "./ThemeToggle.tsx";
 interface NavEntry {
   readonly to: string;
   readonly id: string;
-  readonly available: boolean;
 }
 
 const navEntries: ReadonlyArray<NavEntry> = [
-  { to: "/", id: "nav.home", available: true },
-  { to: "/calcola-stipendio", id: "nav.employee", available: true },
-  { to: "/calcolo-partita-iva", id: "nav.freelancer", available: true },
-  { to: "/confronto-scenari", id: "nav.comparison", available: true },
-  { to: "/statistiche", id: "nav.statistics", available: true },
+  { to: "/calcola-stipendio", id: "nav.employee" },
+  { to: "/fonti", id: "nav.sources" },
+  { to: "/informazioni", id: "nav.about" },
 ];
 
 export function AppHeader() {
   return (
-    <header className="qg-app-header">
-      <div className="qg-app-header__inner">
-        <NavLink to="/" className="qg-app-header__brand">
-          <span className="qg-app-header__brand-mark">QG</span>
-          <span className="qg-app-header__brand-name">
-            <FormattedMessage id="app.title" />
+    <header className="qg-header">
+      <div className="qg-header__inner">
+        <NavLink to="/" className="qg-header__brand" end>
+          <span>
+            <FormattedMessage id="brand.first" />{" "}
+            <em>
+              <FormattedMessage id="brand.second" />
+            </em>
           </span>
         </NavLink>
-        <nav aria-label="primary">
-          <ul className="qg-app-header__nav">
+        <nav aria-label="primary" className="qg-header__nav">
+          <ul>
             {navEntries.map((entry) => (
               <li key={entry.to}>
                 <NavLink
                   to={entry.to}
                   className={({ isActive }) =>
-                    isActive
-                      ? "qg-app-header__link qg-app-header__link--active"
-                      : "qg-app-header__link"
+                    isActive ? "qg-header__link qg-header__link--active" : "qg-header__link"
                   }
-                  end={entry.to === "/"}
                 >
                   <FormattedMessage id={entry.id} />
                 </NavLink>
