@@ -23,10 +23,7 @@ export function CalculatorLayout({
           <FormattedMessage id={eyebrowId} />
         </p>
         <h1>
-          <FormattedMessage
-            id={titleId}
-            values={{ em: (chunks) => <em>{chunks}</em> }}
-          />
+          <FormattedMessage id={titleId} values={{ em: (chunks) => <em>{chunks}</em> }} />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id={ledeId} />

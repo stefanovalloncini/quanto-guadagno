@@ -4,6 +4,7 @@ import { axe, toHaveNoViolations } from "jest-axe";
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from "@/ui/i18n";
 import { EmployeePage } from "@/ui/features/employee-calculator";
+import { ApprenticeshipPage } from "@/ui/features/apprenticeship";
 import { HomePage } from "@/ui/features/home";
 import { AboutPage } from "@/ui/features/about";
 import { SourcesPage } from "@/ui/features/sources";
@@ -20,6 +21,12 @@ const wrap = (node: React.ReactNode) => (
 describe("accessibility", () => {
   it("EmployeePage has no axe violations", async () => {
     const { container } = render(wrap(<EmployeePage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("ApprenticeshipPage has no axe violations", async () => {
+    const { container } = render(wrap(<ApprenticeshipPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

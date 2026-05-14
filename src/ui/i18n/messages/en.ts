@@ -30,6 +30,9 @@ export const en: Record<MessageKey, string> = {
   "home.feature.body":
     "Employee, tax year 2024, 2025 or 2026. Regional rate, work deduction, trattamento integrativo, tax-wedge cut.",
   "home.feature.cta": "Open →",
+  "home.available.apprenticeship.title": "Apprenticeship progression",
+  "home.available.apprenticeship.body":
+    "Estimate year-by-year salary during professional apprenticeship contracts.",
   "home.soon.badge": "Coming back",
   "home.soon.freelancer.title": "Self-employed (forfettario)",
   "home.soon.freelancer.body": "Flat rate 5% or 15%, coefficients per ATECO code.",
@@ -107,4 +110,18 @@ export const en: Record<MessageKey, string> = {
     "Reduction of employee social contributions in force for 2024–2026, redesigned each budget law.",
   "sources.exemption.title": "2024 contribution exemption",
   "sources.exemption.body": "Partial INPS exemption for 2024 only, conditional on income.",
+
+  "apprenticeship.eyebrow": "Tool",
+  "apprenticeship.title": "Apprenticeship <em>progression</em>.",
+  "apprenticeship.lede":
+    "Estimate year-by-year salary during the apprenticeship period, starting from the target salary. Typical progressions start at 85% of the final level and grow each year.",
+
+  "apprenticeship.form.target": "Target gross salary (RAL)",
+  "apprenticeship.form.target.hint": "Final-level annual gross, after the apprenticeship ends.",
+  "apprenticeship.form.years": "Duration in years",
+  "apprenticeship.form.years.hint": "Typically 3 years; some CCNL contracts allow up to 5.",
+
+  "apprenticeship.col.year": "Year",
+  "apprenticeship.col.percent": "% of target",
+  "apprenticeship.col.gross": "Gross annual",
 };
