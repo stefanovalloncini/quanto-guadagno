@@ -36,11 +36,7 @@ export function Tile(props: TileProps) {
   );
 
   if (props.variant === "soon") {
-    return (
-      <div className="qg-tile qg-tile--soon">
-        {body}
-      </div>
-    );
+    return <div className="qg-tile qg-tile--soon">{body}</div>;
   }
 
   const { to, cta } = props;

@@ -51,10 +51,12 @@ export const it = {
     "Il progetto sta tornando online un modulo alla volta. Solo il calcolatore stipendio è operativo. Gli altri strumenti compaiono qui appena passano la verifica.",
 
   "home.hero.title": "Quanto guadagno <em>davvero</em>.",
-  "home.hero.lede": "Calcolatore di stipendio netto basato sulle aliquote IRPEF e i contributi INPS in vigore. Open source, senza account, senza tracker.",
+  "home.hero.lede":
+    "Calcolatore di stipendio netto basato sulle aliquote IRPEF e i contributi INPS in vigore. Open source, senza account, senza tracker.",
   "home.feature.badge": "Disponibile",
   "home.feature.title": "Stipendio netto da lordo",
-  "home.feature.body": "Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo.",
+  "home.feature.body":
+    "Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo.",
   "home.feature.cta": "Apri →",
   "home.soon.badge": "In arrivo",
   "home.soon.freelancer.title": "Partita IVA forfettario",
@@ -69,7 +71,8 @@ export const it = {
   "home.soon.statistics.body": "Dove si colloca il tuo reddito rispetto ai dati ISTAT.",
   "home.soon.inflation.title": "Inflazione",
   "home.soon.inflation.body": "Potere d'acquisto del tuo stipendio nel tempo.",
-  "home.footnote": "Progetto <shimmer>open source</shimmer> · nessun account · nessun tracker · codice su GitHub",
+  "home.footnote":
+    "Progetto <shimmer>open source</shimmer> · nessun account · nessun tracker · codice su GitHub",
 
   "theme.toggle.label": "Passa al tema {mode}",
   "theme.light": "chiaro",
@@ -139,7 +142,8 @@ export const it = {
 
   "employee.eyebrow": "Strumento",
   "employee.title": "Stipendio netto da <em>lordo</em>.",
-  "employee.lede": "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
+  "employee.lede":
+    "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
 
   "scope.title": "Cosa è incluso oggi",
   "scope.body":
@@ -151,26 +155,35 @@ export const it = {
 
   "about.eyebrow": "Informazioni",
   "about.title": "Cos'è quanto guadagno",
-  "about.lede": "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
-  "about.body1": "Il progetto nasce per dare una stima onesta dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
-  "about.body2": "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
+  "about.lede":
+    "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
+  "about.body1":
+    "Il progetto nasce per dare una stima onesta dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
+  "about.body2":
+    "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
   "about.github": "Codice su GitHub",
 
   "sources.eyebrow": "Fonti",
   "sources.title": "Da dove vengono i numeri",
-  "sources.lede": "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
+  "sources.lede":
+    "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
   "sources.irpef.title": "Scaglioni IRPEF",
-  "sources.irpef.body": "Aliquote progressive 2024–2026 da Agenzia delle Entrate (D.lgs. 216/2023 e successive).",
+  "sources.irpef.body":
+    "Aliquote progressive 2024–2026 da Agenzia delle Entrate (D.lgs. 216/2023 e successive).",
   "sources.inps.title": "Contributi INPS lavoratore dipendente",
-  "sources.inps.body": "Aliquota 9,19% nella parte ordinaria, +1% oltre il primo massimale. Circolari INPS annuali.",
+  "sources.inps.body":
+    "Aliquota 9,19% nella parte ordinaria, +1% oltre il primo massimale. Circolari INPS annuali.",
   "sources.workDeduction.title": "Detrazione da lavoro dipendente",
   "sources.workDeduction.body": "Calcolo a scaglioni progressivi, riferimento art. 13 TUIR.",
   "sources.trattamento.title": "Trattamento integrativo",
-  "sources.trattamento.body": "Bonus mensile fino a soglia, definito dal D.L. 3/2020 e modifiche successive.",
+  "sources.trattamento.body":
+    "Bonus mensile fino a soglia, definito dal D.L. 3/2020 e modifiche successive.",
   "sources.taxWedge.title": "Taglio del cuneo fiscale",
-  "sources.taxWedge.body": "Riduzione contributi a carico lavoratore in vigore per il 2024–2026, ridisegnata in legge di bilancio.",
+  "sources.taxWedge.body":
+    "Riduzione contributi a carico lavoratore in vigore per il 2024–2026, ridisegnata in legge di bilancio.",
   "sources.exemption.title": "Esonero contributivo 2024",
-  "sources.exemption.body": "Esonero parziale dei contributi INPS per il solo 2024, condizionato a reddito.",
+  "sources.exemption.body":
+    "Esonero parziale dei contributi INPS per il solo 2024, condizionato a reddito.",
 } as const;
 
 export type MessageKey = keyof typeof it;

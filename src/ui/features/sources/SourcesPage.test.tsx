@@ -12,7 +12,7 @@ describe("SourcesPage", () => {
         <MemoryRouter>
           <SourcesPage />
         </MemoryRouter>
-      </IntlProvider>
+      </IntlProvider>,
     );
     expect(screen.getByText(/Scaglioni IRPEF/)).toBeInTheDocument();
     expect(screen.getByText(/Contributi INPS/)).toBeInTheDocument();

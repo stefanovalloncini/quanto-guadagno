@@ -1,9 +1,4 @@
-import {
-  forwardRef,
-  type InputHTMLAttributes,
-  type ReactNode,
-  useId,
-} from "react";
+import { forwardRef, type InputHTMLAttributes, type ReactNode, useId } from "react";
 
 interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label: ReactNode;

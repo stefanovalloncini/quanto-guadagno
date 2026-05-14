@@ -10,19 +10,12 @@ describe("MetricBlock", () => {
   });
 
   it("renders the optional sublabel", () => {
-    render(
-      <MetricBlock label="Netto annuo" amount={25800} sublabel="su 14 mensilità" />,
-    );
+    render(<MetricBlock label="Netto annuo" amount={25800} sublabel="su 14 mensilità" />);
     expect(screen.getByText("su 14 mensilità")).toBeInTheDocument();
   });
 
   it("accepts ReactNode labels (not just strings)", () => {
-    render(
-      <MetricBlock
-        label={<span data-testid="custom-label">Custom</span>}
-        amount={100}
-      />,
-    );
+    render(<MetricBlock label={<span data-testid="custom-label">Custom</span>} amount={100} />);
     expect(screen.getByTestId("custom-label")).toHaveTextContent("Custom");
   });
 

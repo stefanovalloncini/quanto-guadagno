@@ -20,10 +20,7 @@ export function HomePage() {
     <section className="qg-home">
       <header className="qg-home__hero">
         <h1>
-          <FormattedMessage
-            id="home.hero.title"
-            values={{ em: (chunks) => <em>{chunks}</em> }}
-          />
+          <FormattedMessage id="home.hero.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id="home.hero.lede" />

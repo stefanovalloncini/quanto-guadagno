@@ -18,4 +18,3 @@ const REGISTRY: Record<SupportedYear, YearTaxConfig> = {
 export function getTaxConfig(year: SupportedYear): YearTaxConfig {
   return REGISTRY[year];
 }
-

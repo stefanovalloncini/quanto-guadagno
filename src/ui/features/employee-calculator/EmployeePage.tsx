@@ -12,10 +12,7 @@ export function EmployeePage() {
           <FormattedMessage id="employee.eyebrow" />
         </p>
         <h1>
-          <FormattedMessage
-            id="employee.title"
-            values={{ em: (chunks) => <em>{chunks}</em> }}
-          />
+          <FormattedMessage id="employee.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id="employee.lede" />
