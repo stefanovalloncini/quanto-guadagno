@@ -9,7 +9,6 @@ export const it = {
 
   "nav.home": "Home",
   "nav.employee": "Calcolatore stipendio",
-  "nav.statistics": "Statistiche",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
   "nav.payslip": "Busta paga",
@@ -112,32 +111,6 @@ export const it = {
   "sources.doc.forfettario": "Regime forfettario",
   "sources.doc.gestioneSeparata": "Gestione separata",
   "sources.doc.percentili": "Percentili di reddito",
-
-  "statistics.page.eyebrow": "Distribuzione redditi",
-  "statistics.page.title": "Dove si colloca il tuo stipendio",
-  "statistics.page.subtitle":
-    "Inserisci il netto annuo e scopri in quale fascia rientri rispetto alla distribuzione italiana.",
-  "statistics.form.title": "Il tuo netto annuo",
-  "statistics.form.input.label": "Netto annuo",
-  "statistics.form.input.hint": "Quanto resta in busta dopo le tasse, in un anno.",
-  "statistics.results.title": "Fascia di reddito",
-  "statistics.results.bracket": "Posizione",
-  "statistics.results.thresholdLabel": "Soglia di ingresso",
-  "statistics.results.nextLabel": "Prossima fascia",
-  "statistics.explainer":
-    "Le soglie sono basate sulle dichiarazioni dei redditi italiane. Sono indicative del lavoro dipendente e autonomo combinati.",
-  "statistics.source.title": "Fonte",
-  "statistics.source.body":
-    "ISTAT, indagini sui redditi e sulle condizioni di vita; MEF, statistiche sulle dichiarazioni dei redditi 2023. Vedi docs/data-verification/percentili.md per i dettagli.",
-  "percentile.bottom1": "Bottom 1%",
-  "percentile.bottom10": "Bottom 10%",
-  "percentile.bottom20": "Bottom 20%",
-  "percentile.median": "Mediana italiana",
-  "percentile.top30": "Top 30%",
-  "percentile.top20": "Top 20%",
-  "percentile.top10": "Top 10%",
-  "percentile.top5": "Top 5%",
-  "percentile.top1": "Top 1%",
 
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Capire davvero quanto resta in busta",
