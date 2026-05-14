@@ -11,20 +11,6 @@ export const it = {
   "nav.employee": "Calcolatore stipendio",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
-  "sources.page.eyebrow": "Trasparenza",
-  "sources.page.title": "Fonti dei dati",
-  "sources.page.subtitle":
-    "Ogni numero usato dal calcolatore è documentato qui sotto, con norma di riferimento, esempio di calcolo e data dell'ultima verifica.",
-  "sources.doc.irpef": "IRPEF",
-  "sources.doc.inps": "INPS dipendenti",
-  "sources.doc.workDeduction": "Detrazione lavoro dipendente",
-  "sources.doc.trattamentoIntegrativo": "Trattamento integrativo",
-  "sources.doc.taxWedgeCut": "Taglio cuneo fiscale",
-  "sources.doc.inpsExemption2024": "Esonero INPS 2024",
-  "sources.doc.forfettario": "Regime forfettario",
-  "sources.doc.gestioneSeparata": "Gestione separata",
-  "sources.doc.percentili": "Percentili di reddito",
-
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Capire davvero quanto resta in busta",
   "home.subtitle":
