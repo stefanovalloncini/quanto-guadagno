@@ -26,3 +26,86 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
+
+.qg-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  border-radius: var(--radius-4);
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  position: relative;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+.qg-tile:hover {
+  text-decoration: none;
+}
+.qg-tile__badge {
+  align-self: flex-start;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  background: var(--paper-2);
+}
+.qg-tile__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: var(--space-1);
+}
+.qg-tile__body {
+  color: var(--ink-2);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+.qg-tile__cta {
+  margin-top: auto;
+  font-size: var(--text-sm);
+  color: var(--accent);
+}
+
+.qg-tile--feature {
+  background: var(--accent);
+  color: var(--accent-on);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-paper);
+}
+.qg-tile--feature .qg-tile__title {
+  color: var(--accent-on);
+  font-size: var(--text-2xl);
+}
+.qg-tile--feature .qg-tile__body {
+  color: color-mix(in oklab, var(--accent-on) 75%, var(--accent));
+}
+.qg-tile--feature .qg-tile__badge {
+  background: color-mix(in oklab, var(--accent-on) 12%, transparent);
+  border-color: color-mix(in oklab, var(--accent-on) 22%, transparent);
+  color: color-mix(in oklab, var(--accent-on) 88%, var(--accent));
+}
+.qg-tile--feature .qg-tile__cta {
+  color: var(--accent-on);
+}
+
+.qg-tile--available:hover {
+  background: var(--paper-2);
+}
+
+.qg-tile--soon {
+  background: transparent;
+  border-style: dashed;
+  border-color: color-mix(in oklab, var(--rule) 70%, var(--ink-2));
+}
+.qg-tile--soon .qg-tile__title {
+  color: var(--ink-2);
+}
