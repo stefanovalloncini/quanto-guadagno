@@ -11,7 +11,6 @@ export const it = {
   "nav.employee": "Calcolatore stipendio",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
-  "nav.payslip": "Busta paga",
   "nav.tfr": "TFR",
   "nav.apprenticeship": "Apprendistato",
   "nav.inflation": "Inflazione",
@@ -77,26 +76,6 @@ export const it = {
   "tfr.scope.title": "Limiti del modello",
   "tfr.scope.body":
     "Assume retribuzione e inflazione costanti. Non modella anticipazioni, fondi pensione complementari, né la tassazione finale del TFR all'erogazione (separata, con aliquota media IRPEF). Vedi docs/data-verification/tfr.md.",
-
-  "payslip.page.eyebrow": "Simulatore",
-  "payslip.page.title": "Busta paga mensile",
-  "payslip.page.subtitle":
-    "Modifica i parametri e stampa la busta paga simulata. Le voci derivano dal calcolatore stipendio.",
-  "payslip.form.title": "Parametri",
-  "payslip.action.print": "Stampa",
-  "payslip.note":
-    "Questa è una simulazione: una busta paga reale può includere voci aggiuntive (fringe benefit, premi, ferie, malattia, sindacato).",
-  "payslip.doc.title": "Cedolino mensile simulato",
-  "payslip.doc.year": "Anno fiscale {year}",
-  "payslip.row.gross": "Retribuzione lorda",
-  "payslip.row.inps": "Contributi INPS",
-  "payslip.row.taxable": "Imponibile fiscale",
-  "payslip.row.irpef": "IRPEF",
-  "payslip.row.regional": "Addizionale regionale",
-  "payslip.row.municipal": "Addizionale comunale",
-  "payslip.row.integrativo": "Trattamento integrativo",
-  "payslip.row.wedge": "Somma aggiuntiva (taglio cuneo)",
-  "payslip.row.net": "Netto in busta",
 
   "sources.page.eyebrow": "Trasparenza",
   "sources.page.title": "Fonti dei dati",
