@@ -2,17 +2,19 @@ import { describe, expect, it } from "vitest";
 import { calculateSalaryBreakdown } from "@/domain/calc";
 import { TAX_CONFIG_2026 } from "@/domain/data";
 
-const run = (grossAnnual: number, regional = 0.0173, municipal = 0.008) =>
-  calculateSalaryBreakdown(
-    { grossAnnual, regionalRate: regional, municipalRate: municipal },
-    TAX_CONFIG_2026,
-  );
+const run = (grossAnnual: number, municipalTaxRate = 0.008) =>
+  calculateSalaryBreakdown({
+    grossAnnual,
+    taxYear: 2026,
+    regionCode: "lombardia",
+    municipalTaxRate,
+  });
 
 describe("salary breakdown 2026", () => {
   it("zero gross produces zero everything", () => {
     const r = run(0);
     expect(r.netAnnual).toBe(0);
-    expect(r.inps).toBe(0);
+    expect(r.inpsContribution).toBe(0);
     expect(r.irpefGross).toBe(0);
   });
 
@@ -25,7 +27,7 @@ describe("salary breakdown 2026", () => {
 
   it("median income (30k) sits in second IRPEF bracket at 33%", () => {
     const r = run(30_000);
-    expect(r.taxableIncome).toBeCloseTo(30_000 - r.inps, 0);
+    expect(r.taxableIncome).toBeCloseTo(30_000 - r.inpsContribution, 0);
     expect(r.irpefGross).toBeGreaterThan(0);
     expect(r.netAnnual).toBeGreaterThan(20_000);
     expect(r.netAnnual).toBeLessThan(25_000);
@@ -45,8 +47,8 @@ describe("salary breakdown 2026", () => {
     const expectedInps =
       TAX_CONFIG_2026.inps.ceiling * TAX_CONFIG_2026.inps.standardRate +
       (inpsBase - TAX_CONFIG_2026.inps.ceiling) * TAX_CONFIG_2026.inps.aboveCeilingRate;
-    expect(highGross.inps).toBeCloseTo(expectedInps, 0);
-    expect(highGross.inps).toBeGreaterThanOrEqual(lowGross.inps);
+    expect(highGross.inpsContribution).toBeCloseTo(expectedInps, 0);
+    expect(highGross.inpsContribution).toBeGreaterThanOrEqual(lowGross.inpsContribution);
   });
 
   it("effective tax rate increases with income", () => {
@@ -56,10 +58,9 @@ describe("salary breakdown 2026", () => {
   });
 
   it("regional and municipal rates apply to taxable income", () => {
-    const noLocal = run(40_000, 0, 0);
-    const withLocal = run(40_000, 0.0173, 0.008);
-    expect(withLocal.regionalAddizionale).toBeCloseTo(noLocal.taxableIncome * 0.0173, 1);
-    expect(withLocal.municipalAddizionale).toBeCloseTo(noLocal.taxableIncome * 0.008, 1);
+    const noLocal = run(40_000, 0);
+    const withLocal = run(40_000, 0.008);
+    expect(withLocal.municipalTax).toBeCloseTo(noLocal.taxableIncome * 0.008, 1);
     expect(withLocal.netAnnual).toBeLessThan(noLocal.netAnnual);
   });
 

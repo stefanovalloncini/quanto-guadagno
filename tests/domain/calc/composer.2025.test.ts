@@ -2,11 +2,13 @@ import { describe, expect, it } from "vitest";
 import { calculateSalaryBreakdown } from "@/domain/calc";
 import { TAX_CONFIG_2025 } from "@/domain/data";
 
-const run = (grossAnnual: number, regional = 0, municipal = 0) =>
-  calculateSalaryBreakdown(
-    { grossAnnual, regionalRate: regional, municipalRate: municipal },
-    TAX_CONFIG_2025,
-  );
+const run = (grossAnnual: number) =>
+  calculateSalaryBreakdown({
+    grossAnnual,
+    taxYear: 2025,
+    regionCode: "lombardia",
+    municipalTaxRate: 0,
+  });
 
 describe("salary breakdown 2025", () => {
   it("uses 35% mid IRPEF bracket", () => {
