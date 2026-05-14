@@ -1,4 +1,16 @@
 export type {
+  CompanyCarMode,
+  CO2EmissionCategory,
+  FringePowertrainType,
+  CompanyCarInput,
+  MealVouchersInput,
+  HealthInsuranceInput,
+  WelfareInput,
+  FringeBenefitsInput,
+  FringeBenefitsBreakdown,
+} from "./fringeBenefits.ts";
+
+export type {
   TaxYear,
   RegionCode,
   RegionalTaxBracket,
