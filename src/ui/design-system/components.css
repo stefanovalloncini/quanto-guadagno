@@ -109,3 +109,100 @@
 .qg-tile--soon .qg-tile__title {
   color: var(--ink-2);
 }
+
+.qg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+.qg-btn--solid {
+  background: var(--accent);
+  color: var(--accent-on);
+  border-color: var(--accent);
+}
+.qg-btn--solid:hover {
+  background: color-mix(in oklab, var(--accent) 88%, var(--ink));
+}
+.qg-btn--quiet {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+.qg-btn--quiet:hover {
+  background: var(--paper-2);
+}
+.qg-btn--link {
+  background: transparent;
+  color: var(--accent);
+  border-color: transparent;
+  padding: 0;
+}
+.qg-btn--link:hover {
+  text-decoration: underline;
+}
+.qg-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.qg-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.qg-field__label {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+}
+.qg-field__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.qg-field__input,
+.qg-field__select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background: var(--paper-3);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+.qg-field__input:focus,
+.qg-field__select:focus {
+  border-color: var(--accent);
+}
+.qg-field__trailing {
+  position: absolute;
+  right: var(--space-3);
+  color: var(--ink-2);
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-sm);
+}
+.qg-field__hint {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-field__error {
+  font-size: var(--text-sm);
+  color: var(--danger);
+}
