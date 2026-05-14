@@ -617,6 +617,265 @@
   color: var(--ink-2);
 }
 
+/* Net salary summary panel */
+.qg-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-summary__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-summary__delta {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-summary__delta-amount {
+  color: var(--ink);
+}
+.qg-summary__rate {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-summary__rate-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.qg-summary__gross {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--rule);
+}
+.qg-summary__gross-label {
+  color: var(--ink-2);
+}
+.qg-summary__tfr {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-summary__tfr-label {
+  flex: 1;
+}
+.qg-summary__tfr-unit {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.qg-summary__pdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-summary__pdr-label {
+  color: var(--ink-2);
+}
+
+/* Breakdown row — shared by TaxBreakdownCard and ResultsBreakdown */
+.qg-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.qg-breakdown-row__label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex: 1;
+}
+.qg-breakdown-row__rate {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.qg-breakdown-row__amount {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.qg-breakdown-row--subtract .qg-breakdown-row__amount {
+  color: var(--warm);
+}
+.qg-breakdown-row--add .qg-breakdown-row__amount {
+  color: var(--accent);
+}
+.qg-breakdown-row--total {
+  border-top: 1px solid var(--rule);
+  font-weight: 500;
+  margin-top: var(--space-1);
+  padding-top: var(--space-3);
+}
+.qg-breakdown-row--highlight {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+.qg-breakdown-row--highlight .qg-breakdown-row__amount {
+  color: var(--ink);
+}
+
+/* TaxBreakdownCard */
+.qg-breakdown-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-breakdown-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  margin: 0;
+}
+.qg-breakdown-card__section {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--rule);
+}
+.qg-breakdown-card__section-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-2);
+}
+.qg-breakdown-card__total {
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--rule);
+}
+.qg-breakdown-card__monthly {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin: var(--space-2) 0 0;
+}
+
+/* ResultsBreakdown — cascade flow view */
+.qg-results-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-results-breakdown__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  margin: 0;
+}
+.qg-results-breakdown__flow {
+  display: flex;
+  flex-direction: column;
+}
+.qg-results-breakdown__group-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: var(--space-4) 0 var(--space-1);
+}
+
+/* EmployerCostView */
+.qg-employer-cost {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+}
+.qg-employer-cost__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  text-align: left;
+}
+.qg-employer-cost__trigger:hover {
+  background: var(--paper-2);
+  border-radius: var(--radius-3);
+}
+.qg-employer-cost__trigger-label {
+  font-weight: 500;
+}
+.qg-employer-cost__trigger-chevron {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-employer-cost__panel {
+  padding: 0 var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-top: 1px solid var(--rule);
+}
+.qg-employer-cost__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-2) 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.qg-employer-cost__row--sub {
+  padding-left: var(--space-4);
+  color: var(--ink-2);
+}
+.qg-employer-cost__row--total {
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+}
+.qg-employer-cost__value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.qg-employer-cost__rate {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.qg-employer-cost__group-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: var(--space-3) 0 0;
+}
+.qg-employer-cost__other {
+  border-left: 2px solid var(--rule);
+  padding-left: var(--space-3);
+}
+.qg-employer-cost__note {
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+}
+.qg-employer-cost__disclaimer {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
 /* Mode selector (simple/detailed buttons) */
 .qg-mode-selector {
   display: flex;
