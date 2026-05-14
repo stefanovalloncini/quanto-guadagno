@@ -280,4 +280,31 @@ export const en: Record<MessageKey, string> = {
   "scope.title": "What's included today",
   "scope.body":
     "Private-sector employee. Tax years 2024, 2025 and 2026. Regional and municipal rates are entered manually. Not yet supported: family deductions, fringe benefits, special regimes, public sector, apprenticeship contracts.",
+
+  "notFound.title": "Page not found",
+  "notFound.body": "The page you requested does not exist.",
+  "notFound.home": "Back to home",
+
+  "about.eyebrow": "About",
+  "about.title": "About quanto guadagno",
+  "about.lede": "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. No account, no tracker.",
+  "about.body1": "The project exists to give an honest estimate of net salary starting from gross. Regional rates are editable because they differ between regions.",
+  "about.body2": "The calculation follows the Agenzia delle Entrate brackets and current INPS circulars. No estimate replaces the real payslip: this tool is for orientation.",
+  "about.github": "Code on GitHub",
+
+  "sources.eyebrow": "Sources",
+  "sources.title": "Where the numbers come from",
+  "sources.lede": "Every calculation is grounded in public documents. Below, in compact form, the origin of each component.",
+  "sources.irpef.title": "IRPEF brackets",
+  "sources.irpef.body": "Progressive rates 2024–2026 from Agenzia delle Entrate (D.lgs. 216/2023 and amendments).",
+  "sources.inps.title": "INPS contributions, employees",
+  "sources.inps.body": "Rate 9.19% on ordinary income, +1% above the first cap. Annual INPS circulars.",
+  "sources.workDeduction.title": "Work-income deduction",
+  "sources.workDeduction.body": "Bracketed progressive calculation per article 13 of TUIR.",
+  "sources.trattamento.title": "Trattamento integrativo",
+  "sources.trattamento.body": "Monthly bonus up to an income threshold, defined by D.L. 3/2020 and subsequent changes.",
+  "sources.taxWedge.title": "Tax-wedge cut",
+  "sources.taxWedge.body": "Reduction of employee social contributions in force for 2024–2026, redesigned each budget law.",
+  "sources.exemption.title": "2024 contribution exemption",
+  "sources.exemption.body": "Partial INPS exemption for 2024 only, conditional on income.",
 };
