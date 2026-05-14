@@ -13,20 +13,6 @@ export const en: Record<MessageKey, string> = {
   "nav.employee": "Salary calculator",
   "nav.sources": "Sources",
   "nav.about": "About",
-  "sources.page.eyebrow": "Transparency",
-  "sources.page.title": "Data sources",
-  "sources.page.subtitle":
-    "Every number the calculator uses is documented here, with the reference rule, a worked example, and the last verification date.",
-  "sources.doc.irpef": "IRPEF",
-  "sources.doc.inps": "INPS employees",
-  "sources.doc.workDeduction": "Employee work deduction",
-  "sources.doc.trattamentoIntegrativo": "Trattamento integrativo bonus",
-  "sources.doc.taxWedgeCut": "Tax wedge cut",
-  "sources.doc.inpsExemption2024": "INPS exemption 2024",
-  "sources.doc.forfettario": "Flat-rate regime",
-  "sources.doc.gestioneSeparata": "Gestione separata",
-  "sources.doc.percentili": "Income percentiles",
-
   "home.eyebrow": "Quanto Guadagno",
   "home.title": "Understand what actually lands in your paycheck",
   "home.subtitle":
