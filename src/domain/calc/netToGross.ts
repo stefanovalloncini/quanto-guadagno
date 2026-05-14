@@ -17,7 +17,7 @@ export function estimateGrossFromNet(targetNet: number): number {
 }
 
 // Binary-search for the gross that produces a net within TOLERANCE of targetNet.
-// baseInput carries taxYear, regionCode, municipalTaxRate (and any advanced options)
+// baseInput carries taxYear, regionCode, municipalTaxRate (and any extra options)
 // through to the inner loop. grossAnnual is overridden on each iteration.
 export function calculateGrossFromNet(
   targetNet: number,

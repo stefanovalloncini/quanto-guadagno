@@ -36,11 +36,11 @@ export function DependentsInput({ value, onChange }: DependentsInputProps) {
   const spouseExceedsLimit = current.hasSpouse && (current.spouseIncome ?? 0) > SPOUSE_INCOME_LIMIT;
 
   return (
-    <details className="qg-advanced">
+    <details className="qg-extras">
       <summary id={sectionId}>
         <FormattedMessage id="employee.dependents.title" />
       </summary>
-      <div className="qg-advanced__body">
+      <div className="qg-extras__body">
         <label className="qg-toggle">
           <input
             type="checkbox"
@@ -80,7 +80,7 @@ export function DependentsInput({ value, onChange }: DependentsInputProps) {
             </label>
 
             {current.hasSpouse && (
-              <div className="qg-advanced__indent">
+              <div className="qg-extras__indent">
                 <Field
                   label={<FormattedMessage id="employee.dependents.spouseIncome" />}
                   hint={

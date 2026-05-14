@@ -5,7 +5,7 @@ import { EmployerCostView } from "./components/EmployerCostView.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
 import { EmployeeFormPrimary } from "./EmployeeFormPrimary.tsx";
 import { EmployeeOverview } from "./EmployeeOverview.tsx";
-import { EmployeeAdvancedSettings } from "./EmployeeAdvancedSettings.tsx";
+import { EmployeeExtras } from "./EmployeeExtras.tsx";
 
 export function EmployeePage() {
   const calc = useEmployeeCalculator();
@@ -21,7 +21,7 @@ export function EmployeePage() {
       />
 
       <section className="qg-employee-detail">
-        <EmployeeAdvancedSettings calc={calc} />
+        <EmployeeExtras calc={calc} />
 
         <TaxBreakdownCard breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
 

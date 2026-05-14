@@ -527,7 +527,7 @@
   border-top: 1px solid var(--rule);
 }
 
-/* Toggle checkbox used in advanced input sections */
+/* Toggle checkbox used in extras input sections */
 .qg-toggle {
   display: flex;
   align-items: center;
@@ -565,12 +565,12 @@
   gap: var(--space-3);
 }
 
-/* Collapsible advanced-settings section */
-.qg-advanced {
+/* Collapsible extras-settings section */
+.qg-extras {
   border-top: 1px solid var(--rule);
   padding-top: var(--space-3);
 }
-.qg-advanced summary {
+.qg-extras summary {
   cursor: pointer;
   font-size: var(--text-sm);
   color: var(--ink-2);
@@ -579,25 +579,25 @@
   align-items: center;
   gap: var(--space-2);
 }
-.qg-advanced summary::-webkit-details-marker {
+.qg-extras summary::-webkit-details-marker {
   display: none;
 }
-.qg-advanced summary::after {
+.qg-extras summary::after {
   content: "+";
   font-size: var(--text-xs);
   color: var(--ink-2);
   margin-left: auto;
 }
-.qg-advanced[open] summary::after {
+.qg-extras[open] summary::after {
   content: "−";
 }
-.qg-advanced__body {
+.qg-extras__body {
   margin-top: var(--space-3);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
-.qg-advanced__indent {
+.qg-extras__indent {
   padding-left: var(--space-4);
   border-left: 2px solid var(--rule);
   display: flex;
@@ -605,7 +605,7 @@
   gap: var(--space-3);
 }
 
-/* Inline note / eligibility alert within advanced inputs */
+/* Inline note / eligibility alert within extras inputs */
 .qg-note {
   padding: var(--space-3);
   border: 1px solid var(--rule);
@@ -884,63 +884,63 @@
   gap: var(--space-7);
 }
 
-/* Advanced settings collapsible panel */
-.qg-advanced-panel {
+/* Optional settings collapsible panel */
+.qg-extras-panel {
   border: 1px solid var(--rule);
   border-radius: var(--radius-4);
   padding: var(--space-5) var(--space-6);
   background: var(--paper-3);
 }
-.qg-advanced-panel summary {
+.qg-extras-panel summary {
   cursor: pointer;
   font-family: var(--font-display);
   font-size: var(--text-lg);
   list-style: none;
   color: var(--ink);
 }
-.qg-advanced-panel summary::-webkit-details-marker {
+.qg-extras-panel summary::-webkit-details-marker {
   display: none;
 }
-.qg-advanced-panel summary::after {
+.qg-extras-panel summary::after {
   content: " +";
   color: var(--ink-2);
 }
-.qg-advanced-panel[open] summary::after {
+.qg-extras-panel[open] summary::after {
   content: " −";
 }
-.qg-advanced-panel__body {
+.qg-extras-panel__body {
   margin-top: var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
 }
-.qg-advanced-panel__row {
+.qg-extras-panel__row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-4);
 }
-.qg-advanced-panel__region {
+.qg-extras-panel__region {
   grid-column: span 2;
 }
-.qg-advanced-panel__lookup {
+.qg-extras-panel__lookup {
   font-size: var(--text-xs);
   color: var(--accent);
   text-decoration: none;
 }
-.qg-advanced-panel__lookup:hover {
+.qg-extras-panel__lookup:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 880px) {
-  .qg-advanced-panel__row {
+  .qg-extras-panel__row {
     grid-template-columns: 1fr;
   }
-  .qg-advanced-panel__region {
+  .qg-extras-panel__region {
     grid-column: span 1;
   }
 }
 
-/* Tab bar for optional sections inside advanced settings */
+/* Tab bar for optional sections inside extras section */
 .qg-tabs {
   display: flex;
   flex-wrap: wrap;

@@ -20,11 +20,11 @@ export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInp
   const toggle = (checked: boolean) => onChange(checked ? DEFAULT_VALUE : null);
 
   return (
-    <details className="qg-advanced">
+    <details className="qg-extras">
       <summary>
         <FormattedMessage id="employee.expenses.title" />
       </summary>
-      <div className="qg-advanced__body">
+      <div className="qg-extras__body">
         <label className="qg-toggle">
           <input
             type="checkbox"
