@@ -10,7 +10,9 @@ interface EmployeeFormProps {
 }
 
 export function EmployeeForm({ calc }: EmployeeFormProps) {
-  const { state, setGross, setRegionalPercent, setMunicipalPercent, setTaxYear } = calc;
+  const { state, setGross, setMunicipalTaxRate, setTaxYear } = calc;
+  const municipalRatePercent = state.municipalTaxRate * 100;
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <Stack gap="md">
@@ -37,26 +39,14 @@ export function EmployeeForm({ calc }: EmployeeFormProps) {
           ))}
         </Select>
         <Field
-          label={<FormattedMessage id="employee.form.regional" />}
-          hint={<FormattedMessage id="employee.form.regional.hint" />}
-          type="number"
-          min={0}
-          max={5}
-          step={0.01}
-          value={state.regionalRatePercent}
-          onChange={(e) => setRegionalPercent(Number(e.target.value))}
-          trailing="%"
-          inputMode="decimal"
-        />
-        <Field
           label={<FormattedMessage id="employee.form.municipal" />}
           hint={<FormattedMessage id="employee.form.municipal.hint" />}
           type="number"
           min={0}
           max={1}
           step={0.01}
-          value={state.municipalRatePercent}
-          onChange={(e) => setMunicipalPercent(Number(e.target.value))}
+          value={municipalRatePercent}
+          onChange={(e) => setMunicipalTaxRate(Number(e.target.value) / 100)}
           trailing="%"
           inputMode="decimal"
         />

@@ -42,7 +42,7 @@ export function EmployeeResults({ result }: EmployeeResultsProps) {
                 <FormattedMessage id="employee.breakdown.inps" />
               </th>
               <td>
-                <Money amount={-result.inps} whole />
+                <Money amount={-result.inpsContribution} whole />
               </td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@ export function EmployeeResults({ result }: EmployeeResultsProps) {
                 <FormattedMessage id="employee.breakdown.regional" />
               </th>
               <td>
-                <Money amount={-result.regionalAddizionale} whole />
+                <Money amount={-result.regionalTax} whole />
               </td>
             </tr>
             <tr>
@@ -66,7 +66,7 @@ export function EmployeeResults({ result }: EmployeeResultsProps) {
                 <FormattedMessage id="employee.breakdown.municipal" />
               </th>
               <td>
-                <Money amount={-result.municipalAddizionale} whole />
+                <Money amount={-result.municipalTax} whole />
               </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@ export function EmployeeResults({ result }: EmployeeResultsProps) {
                 <FormattedMessage id="employee.breakdown.deductions" />
               </th>
               <td>
-                <Money amount={result.workDeduction + result.detrazioneAggiuntiva} whole />
+                <Money amount={result.irpefDeduction + result.detrazioneAggiuntiva} whole />
               </td>
             </tr>
             <tr>
