@@ -1,0 +1,94 @@
+import type { SupportedYear, RegionCode } from "@/domain/data/index.ts";
+import type { FringeBenefitsBreakdown, FringeBenefitsInput } from "@/domain/data/fringeBenefits.ts";
+import type { ContractType } from "./employerCostCalculations.ts";
+import type { DependentsInput, ExpenseDeductionsInput } from "./deductionCalculations.ts";
+import type { PremioRisultatoInput } from "./bonusCalculations.ts";
+import type { SpecialConditionsInput } from "./specialConditionsCalculations.ts";
+
+export type { ContractType };
+export type { DependentsInput, ExpenseDeductionsInput };
+export type { PremioRisultatoInput };
+export type { SpecialConditionsInput };
+export type { FringeBenefitsInput };
+
+export type PaymentFrequency = 12 | 13 | 14;
+
+export interface SalaryInput {
+  readonly grossAnnual: number;
+  readonly taxYear: SupportedYear;
+  readonly regionCode: RegionCode;
+  readonly municipalTaxRate: number;
+  readonly contractType?: ContractType;
+  readonly paymentFrequency?: PaymentFrequency;
+  readonly dependents?: DependentsInput | null;
+  readonly expenseDeductions?: ExpenseDeductionsInput | null;
+  readonly fringeBenefits?: FringeBenefitsInput | null;
+  readonly specialConditions?: SpecialConditionsInput | null;
+  readonly premioRisultato?: PremioRisultatoInput | null;
+}
+
+export interface SalaryBreakdown {
+  readonly grossAnnual: number;
+  readonly grossMonthly: number;
+
+  readonly inpsContribution: number;
+  readonly inpsRate: number;
+  readonly inpsExemption: number;
+  readonly madreLavoratriceExemption: number;
+
+  readonly taxableIncome: number;
+
+  readonly irpefGross: number;
+  readonly irpefDeduction: number;
+  readonly irpefNet: number;
+
+  readonly regimeImpatriatiSavings: number;
+  readonly regimeImpatriatiExemptionRate: number;
+
+  readonly regionalTax: number;
+  readonly regionalTaxRate: number;
+  readonly municipalTax: number;
+  readonly municipalTaxRate: number;
+
+  readonly trattamentoIntegrativo: number;
+  readonly sommaAggiuntiva: number;
+  readonly detrazioneAggiuntiva: number;
+  readonly taxWedgeCutTotal: number;
+
+  readonly dependentsDeduction: number;
+  readonly expenseDeduction: number;
+
+  readonly pdrGross: number;
+  readonly pdrInps: number;
+  readonly pdrTax: number;
+  readonly pdrNet: number;
+
+  readonly totalDeductions: number;
+  readonly totalTaxes: number;
+
+  readonly fringeBenefits?: FringeBenefitsBreakdown | undefined;
+
+  readonly netAnnual: number;
+  readonly netMonthly: number;
+  readonly effectiveTaxRate: number;
+  readonly netToGrossRatio: number;
+
+  readonly employerInps: number;
+  readonly employerInpsRate: number;
+
+  readonly tfrAnnual: number;
+  readonly tfrMonthly: number;
+  readonly tfrRate: number;
+
+  readonly inailContribution: number;
+  readonly maternityContribution: number;
+  readonly naspiContribution: number;
+  readonly naspiAdditionalContribution: number;
+  readonly cigContribution: number;
+  readonly otherEmployerContributions: number;
+  readonly totalOtherEmployerCosts: number;
+
+  readonly totalEmployerCost: number;
+  readonly totalEmployerCostMonthly: number;
+  readonly employerCostPerNetEuro: number;
+}
