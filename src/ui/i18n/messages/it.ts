@@ -11,7 +11,6 @@ export const it = {
   "nav.employee": "Calcolatore stipendio",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
-  "nav.apprenticeship": "Apprendistato",
   "nav.inflation": "Inflazione",
 
   "inflation.page.eyebrow": "Potere d'acquisto",
@@ -32,25 +31,6 @@ export const it = {
   "inflation.source.title": "Fonte",
   "inflation.source.body":
     "ISTAT, indice dei prezzi al consumo per le famiglie di operai e impiegati (FOI), serie storica nazionale. I tassi 2026 sono stime. Vedi docs/data-verification/inflazione.md.",
-
-  "apprenticeship.page.eyebrow": "Apprendistato professionalizzante",
-  "apprenticeship.page.title": "Progressione retributiva",
-  "apprenticeship.page.subtitle":
-    "Stima la retribuzione anno per anno durante il periodo di apprendistato, partendo dalla retribuzione di destinazione.",
-  "apprenticeship.form.title": "Parametri",
-  "apprenticeship.form.target.label": "Retribuzione di destinazione (RAL)",
-  "apprenticeship.form.target.hint":
-    "Lo stipendio annuo lordo del livello finale, dopo l'apprendistato.",
-  "apprenticeship.form.years.label": "Durata in anni",
-  "apprenticeship.form.years.hint": "Tipicamente 3 anni; alcuni CCNL prevedono fino a 5.",
-  "apprenticeship.results.title": "Schema retributivo",
-  "apprenticeship.col.year": "Anno",
-  "apprenticeship.col.percent": "% destinazione",
-  "apprenticeship.col.gross": "Lordo annuo",
-  "apprenticeship.row.yearN": "Anno {n}",
-  "apprenticeship.scope.title": "Cosa è incluso oggi",
-  "apprenticeship.scope.body":
-    "Progressione tipica di mercato (85%, 90%, 95%, 100%). I CCNL specifici possono variare di pochi punti. Le aliquote contributive ridotte (5,84% in luogo del 9,19%) vanno applicate nel calcolatore stipendio.",
 
   "sources.page.eyebrow": "Trasparenza",
   "sources.page.title": "Fonti dei dati",

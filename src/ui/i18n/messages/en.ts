@@ -13,7 +13,6 @@ export const en: Record<MessageKey, string> = {
   "nav.employee": "Salary calculator",
   "nav.sources": "Sources",
   "nav.about": "About",
-  "nav.apprenticeship": "Apprenticeship",
   "nav.inflation": "Inflation",
 
   "inflation.page.eyebrow": "Purchasing power",
@@ -34,25 +33,6 @@ export const en: Record<MessageKey, string> = {
   "inflation.source.title": "Source",
   "inflation.source.body":
     "ISTAT, consumer price index for households of workers and employees (FOI), national time series. 2026 rates are estimates. See docs/data-verification/inflazione.md.",
-
-  "apprenticeship.page.eyebrow": "Apprenticeship contracts",
-  "apprenticeship.page.title": "Salary progression",
-  "apprenticeship.page.subtitle":
-    "Estimate the salary year by year during apprenticeship, starting from the target salary.",
-  "apprenticeship.form.title": "Parameters",
-  "apprenticeship.form.target.label": "Target salary (RAL)",
-  "apprenticeship.form.target.hint":
-    "Gross annual salary at the final level, after apprenticeship.",
-  "apprenticeship.form.years.label": "Duration in years",
-  "apprenticeship.form.years.hint": "Typically 3 years; some CCNLs allow up to 5.",
-  "apprenticeship.results.title": "Salary schedule",
-  "apprenticeship.col.year": "Year",
-  "apprenticeship.col.percent": "% of target",
-  "apprenticeship.col.gross": "Gross annual",
-  "apprenticeship.row.yearN": "Year {n}",
-  "apprenticeship.scope.title": "What's included today",
-  "apprenticeship.scope.body":
-    "Typical market progression (85%, 90%, 95%, 100%). Specific CCNLs may vary by a few points. Reduced contribution rates (5.84% vs 9.19%) should be applied in the salary calculator.",
 
   "sources.page.eyebrow": "Transparency",
   "sources.page.title": "Data sources",
