@@ -4,6 +4,7 @@ import type { WorkDeductionConfig } from "@/domain/calc/workDeduction.ts";
 import type { TrattamentoIntegrativoConfig } from "@/domain/calc/trattamentoIntegrativo.ts";
 import type { TaxWedgeCutConfig } from "@/domain/calc/taxWedgeCut.ts";
 import type { InpsExemption2024Config } from "@/domain/calc/inpsExemption2024.ts";
+import type { ForfettarioConfig, GestioneSeparataConfig } from "@/domain/calc/forfettario.ts";
 
 // Re-export calc-layer config types so domain/data is the single import for consumers.
 export type {
@@ -12,6 +13,8 @@ export type {
   TrattamentoIntegrativoConfig,
   TaxWedgeCutConfig,
   InpsExemption2024Config,
+  ForfettarioConfig,
+  GestioneSeparataConfig,
 };
 
 export type TaxYear = 2024 | 2025 | 2026;
@@ -191,5 +194,7 @@ export interface YearlyTaxConfig {
   readonly madreLavoratrice: MadreLavoratriceConfig;
   readonly regimeImpatriati: RegimeImpatriatiConfig;
   readonly pdrSostitutiva: PdrSostitutivaConfig;
+  readonly forfettario: ForfettarioConfig;
+  readonly gestioneSeparata: GestioneSeparataConfig;
   readonly sources: TaxDataSources;
 }

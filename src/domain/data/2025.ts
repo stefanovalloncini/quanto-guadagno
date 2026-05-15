@@ -32,6 +32,9 @@ import {
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
   SHARED_TAX_WEDGE_CUT_PARAMS,
+  SHARED_FORFETTARIO,
+  SHARED_GESTIONE_SEPARATA_FULL_RATE,
+  SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
 } from "./shared.ts";
 
 export const TAX_CONFIG_2025: YearlyTaxConfig = {
@@ -91,6 +94,16 @@ export const TAX_CONFIG_2025: YearlyTaxConfig = {
   pdrSostitutiva: {
     rate: 0.05,
     maxAmount: 3000,
+  },
+
+  forfettario: SHARED_FORFETTARIO,
+
+  // Gestione Separata 2025 — Circolare INPS n. 27/2025
+  gestioneSeparata: {
+    fullRate: SHARED_GESTIONE_SEPARATA_FULL_RATE,
+    reducedRate: SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
+    massimale: 120_607,
+    minimaleReddito: 18_555,
   },
 
   sources: {

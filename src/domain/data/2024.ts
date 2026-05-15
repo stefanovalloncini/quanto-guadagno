@@ -30,6 +30,9 @@ import {
   SHARED_HEALTH_INSURANCE_THRESHOLD,
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
+  SHARED_FORFETTARIO,
+  SHARED_GESTIONE_SEPARATA_FULL_RATE,
+  SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
 } from "./shared.ts";
 
 export const TAX_CONFIG_2024: YearlyTaxConfig = {
@@ -89,6 +92,16 @@ export const TAX_CONFIG_2024: YearlyTaxConfig = {
   pdrSostitutiva: {
     rate: 0.05,
     maxAmount: 3000,
+  },
+
+  forfettario: SHARED_FORFETTARIO,
+
+  // Gestione Separata 2024 — Circolare INPS n. 8/2024
+  gestioneSeparata: {
+    fullRate: SHARED_GESTIONE_SEPARATA_FULL_RATE,
+    reducedRate: SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
+    massimale: 119_650,
+    minimaleReddito: 18_415,
   },
 
   sources: {

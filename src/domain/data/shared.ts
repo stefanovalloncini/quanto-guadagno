@@ -10,6 +10,7 @@ import type {
   RegimeImpatriatiConfig,
   CompanyCarCo2Threshold,
   TaxWedgeCutConfig,
+  ForfettarioConfig,
 } from "./types.ts";
 
 export const SHARED_WORK_DEDUCTION: WorkDeductionConfig = {
@@ -90,6 +91,21 @@ export const SHARED_REGIME_IMPATRIATI: RegimeImpatriatiConfig = {
 export const SHARED_INPS_STANDARD_RATE = 0.0919;
 export const SHARED_INPS_ABOVE_CEILING_RATE = 0.1019;
 export const SHARED_INPS_APPRENTICESHIP_RATE = 0.0584;
+
+// Forfettario — Art. 1, commi 54-89, L. 190/2014, novellato da L. 197/2022 (Bilancio 2023)
+// Soglia ricavi €85.000 e tetto costi dipendenti €20.000 in vigore dal 2023.
+export const SHARED_FORFETTARIO: ForfettarioConfig = {
+  startupRate: 0.05,
+  standardRate: 0.15,
+  startupYears: 5,
+  maxRevenue: 85_000,
+  maxEmployeeCosts: 20_000,
+};
+
+// Gestione Separata INPS — aliquota piena (no altra copertura) e ridotta (con altra)
+// Fonti: Circolari INPS n. 8/2024, n. 27/2025, n. 8/2026
+export const SHARED_GESTIONE_SEPARATA_FULL_RATE = 0.2607;
+export const SHARED_GESTIONE_SEPARATA_REDUCED_RATE = 0.24;
 
 // Fringe benefits — shared thresholds
 export const SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD = 8;

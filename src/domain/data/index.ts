@@ -37,9 +37,14 @@ export type {
   TrattamentoIntegrativoConfig,
   TaxWedgeCutConfig,
   InpsExemption2024Config,
+  ForfettarioConfig,
+  GestioneSeparataConfig,
 } from "./types.ts";
 
 export { REGIONS, REGIONS_LIST } from "./regions.ts";
+
+export type { ActivityCategory, ActivityCoefficient } from "./forfettario.ts";
+export { ACTIVITY_COEFFICIENTS, ACTIVITY_CATEGORIES } from "./forfettario.ts";
 
 export {
   SHARED_WORK_DEDUCTION,
@@ -59,6 +64,9 @@ export {
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
   SHARED_TAX_WEDGE_CUT_PARAMS,
+  SHARED_FORFETTARIO,
+  SHARED_GESTIONE_SEPARATA_FULL_RATE,
+  SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
 } from "./shared.ts";
 
 import { TAX_CONFIG_2024 } from "./2024.ts";

@@ -34,6 +34,9 @@ import {
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
   SHARED_TAX_WEDGE_CUT_PARAMS,
+  SHARED_FORFETTARIO,
+  SHARED_GESTIONE_SEPARATA_FULL_RATE,
+  SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
 } from "./shared.ts";
 
 export const TAX_CONFIG_2026: YearlyTaxConfig = {
@@ -99,6 +102,17 @@ export const TAX_CONFIG_2026: YearlyTaxConfig = {
   pdrSostitutiva: {
     rate: 0.01,
     maxAmount: 5000,
+  },
+
+  forfettario: SHARED_FORFETTARIO,
+
+  // Gestione Separata 2026 — Circolare INPS n. 8/2026
+  // Rivalutazione ISTAT +1,40% applicata a massimale e minimale (DM 19/11/2025).
+  gestioneSeparata: {
+    fullRate: SHARED_GESTIONE_SEPARATA_FULL_RATE,
+    reducedRate: SHARED_GESTIONE_SEPARATA_REDUCED_RATE,
+    massimale: 122_295,
+    minimaleReddito: 18_815,
   },
 
   sources: {
