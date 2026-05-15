@@ -3,8 +3,8 @@
 # Idempotent: re-running is safe — files with non-zero size are kept as-is.
 #
 # Fonts (all SIL OFL, free for commercial use):
-#   - Hanken Grotesk 400 / 400 italic / 500 / 700 — UI and body
-#   - JetBrains Mono  400 / 500                   — every monetary amount
+#   - Familjen Grotesk 400 / 400 italic / 500 / 700 — UI and body
+#   - IBM Plex Mono    400 / 500                    — every monetary amount
 #
 # Google Fonts serves multiple unicode-range subsets per face. For Italian
 # we want the "latin" subset (U+0000-00FF — covers ASCII plus è/ò/à/é etc.)
@@ -24,14 +24,14 @@ download() {
     local url="$1"
     local out="$2"
     if [ -f "$out" ] && [ -s "$out" ] && [ "$(stat -f%z "$out" 2>/dev/null || stat -c%s "$out")" -gt 3000 ]; then
-        echo "✓ $out (cached)"
+        echo "  $out (cached)"
         return 0
     fi
     if [ -z "$url" ]; then
-        echo "✗ $out (no URL extracted)" >&2
+        echo "no URL for $out" >&2
         return 1
     fi
-    echo "→ $out"
+    echo "  fetching $out"
     curl -fsSL -A "$UA" -o "$out.tmp" "$url"
     mv "$out.tmp" "$out"
 }
@@ -65,25 +65,25 @@ gf_url() {
         '
 }
 
-# --- Hanken Grotesk ---
-HG_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400&display=swap')"
+# --- Familjen Grotesk ---
+FG_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&display=swap')"
 
-download "$(gf_url "$HG_CSS" 400 normal 0000-00FF)" "HankenGrotesk-Regular-latin.woff2"
-download "$(gf_url "$HG_CSS" 400 normal 0100-02BA)" "HankenGrotesk-Regular-latinExt.woff2"
-download "$(gf_url "$HG_CSS" 400 italic 0000-00FF)" "HankenGrotesk-Italic-latin.woff2"
-download "$(gf_url "$HG_CSS" 400 italic 0100-02BA)" "HankenGrotesk-Italic-latinExt.woff2"
-download "$(gf_url "$HG_CSS" 500 normal 0000-00FF)" "HankenGrotesk-Medium-latin.woff2"
-download "$(gf_url "$HG_CSS" 500 normal 0100-02BA)" "HankenGrotesk-Medium-latinExt.woff2"
-download "$(gf_url "$HG_CSS" 700 normal 0000-00FF)" "HankenGrotesk-Bold-latin.woff2"
-download "$(gf_url "$HG_CSS" 700 normal 0100-02BA)" "HankenGrotesk-Bold-latinExt.woff2"
+download "$(gf_url "$FG_CSS" 400 normal 0000-00FF)" "FamiljenGrotesk-Regular-latin.woff2"
+download "$(gf_url "$FG_CSS" 400 normal 0100-02BA)" "FamiljenGrotesk-Regular-latinExt.woff2"
+download "$(gf_url "$FG_CSS" 400 italic 0000-00FF)" "FamiljenGrotesk-Italic-latin.woff2"
+download "$(gf_url "$FG_CSS" 400 italic 0100-02BA)" "FamiljenGrotesk-Italic-latinExt.woff2"
+download "$(gf_url "$FG_CSS" 500 normal 0000-00FF)" "FamiljenGrotesk-Medium-latin.woff2"
+download "$(gf_url "$FG_CSS" 500 normal 0100-02BA)" "FamiljenGrotesk-Medium-latinExt.woff2"
+download "$(gf_url "$FG_CSS" 700 normal 0000-00FF)" "FamiljenGrotesk-Bold-latin.woff2"
+download "$(gf_url "$FG_CSS" 700 normal 0100-02BA)" "FamiljenGrotesk-Bold-latinExt.woff2"
 
-# --- JetBrains Mono ---
-JBM_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap')"
+# --- IBM Plex Mono ---
+IPM_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap')"
 
-download "$(gf_url "$JBM_CSS" 400 normal 0000-00FF)" "JetBrainsMono-Regular-latin.woff2"
-download "$(gf_url "$JBM_CSS" 400 normal 0100-02BA)" "JetBrainsMono-Regular-latinExt.woff2"
-download "$(gf_url "$JBM_CSS" 500 normal 0000-00FF)" "JetBrainsMono-Medium-latin.woff2"
-download "$(gf_url "$JBM_CSS" 500 normal 0100-02BA)" "JetBrainsMono-Medium-latinExt.woff2"
+download "$(gf_url "$IPM_CSS" 400 normal 0000-00FF)" "IBMPlexMono-Regular-latin.woff2"
+download "$(gf_url "$IPM_CSS" 400 normal 0100-02BA)" "IBMPlexMono-Regular-latinExt.woff2"
+download "$(gf_url "$IPM_CSS" 500 normal 0000-00FF)" "IBMPlexMono-Medium-latin.woff2"
+download "$(gf_url "$IPM_CSS" 500 normal 0100-02BA)" "IBMPlexMono-Medium-latinExt.woff2"
 
 echo
 echo "Done. Contents of $DEST:"
