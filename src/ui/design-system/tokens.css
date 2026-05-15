@@ -11,9 +11,9 @@
   --warm: #c46b3a;
   --danger: #a13a2a;
 
-  --font-display: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Familjen Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Familjen Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
   --text-xs: 11px;
   --text-sm: 14px;
