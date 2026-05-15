@@ -1,31 +1,21 @@
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Field, Select, Stack } from "@/ui/design-system/primitives";
-import { ACTIVITY_COEFFICIENTS, ACTIVITY_CATEGORIES, SUPPORTED_YEARS } from "@/domain/data";
+import {
+  ACTIVITY_COEFFICIENTS,
+  ACTIVITY_CATEGORIES,
+  SHARED_FORFETTARIO,
+  SUPPORTED_YEARS,
+} from "@/domain/data";
+import { formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
 import type { ForfettarioCalculator } from "./useForfettarioCalculator.ts";
-
-const EMPLOYEE_COST_LIMIT = 20_000;
 
 interface ForfettarioFormProps {
   readonly calc: ForfettarioCalculator;
 }
 
 export function ForfettarioForm({ calc }: ForfettarioFormProps) {
-  const intl = useIntl();
-  const employeeCostLimit = intl.formatNumber(EMPLOYEE_COST_LIMIT, {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  });
-
-  const {
-    state,
-    setRevenue,
-    setActivity,
-    setYear,
-    setYearsOfActivity,
-    setHasOtherPension,
-    setEmployeeCosts,
-  } = calc;
+  const { state, update } = calc;
+  const employeeCostLimit = formatCurrencyWhole(SHARED_FORFETTARIO.maxEmployeeCosts);
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -38,7 +28,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           max={500_000}
           step={1000}
           value={state.revenue}
-          onChange={(e) => setRevenue(Number(e.target.value))}
+          onChange={(e) => update({ revenue: Number(e.target.value) })}
           trailing="€"
           inputMode="numeric"
         />
@@ -47,13 +37,13 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           label={<FormattedMessage id="forfettario.form.activity" />}
           hint={<FormattedMessage id="forfettario.form.activity.hint" />}
           value={state.activity}
-          onChange={(e) => setActivity(e.target.value as typeof state.activity)}
+          onChange={(e) => update({ activity: e.target.value as typeof state.activity })}
         >
           {ACTIVITY_CATEGORIES.map((cat) => {
             const def = ACTIVITY_COEFFICIENTS[cat];
             return (
               <option key={cat} value={cat}>
-                {def.label} ({intl.formatNumber(def.coefficient, { style: "percent" })})
+                {def.label} ({formatPercentage(def.coefficient)})
               </option>
             );
           })}
@@ -63,7 +53,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           label={<FormattedMessage id="forfettario.form.year" />}
           hint={<FormattedMessage id="forfettario.form.year.hint" />}
           value={state.year}
-          onChange={(e) => setYear(Number(e.target.value) as typeof state.year)}
+          onChange={(e) => update({ year: Number(e.target.value) as typeof state.year })}
         >
           {SUPPORTED_YEARS.map((y) => (
             <option key={y} value={y}>
@@ -80,7 +70,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           max={50}
           step={1}
           value={state.yearsOfActivity}
-          onChange={(e) => setYearsOfActivity(Number(e.target.value))}
+          onChange={(e) => update({ yearsOfActivity: Number(e.target.value) })}
           inputMode="numeric"
         />
 
@@ -89,7 +79,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
             type="checkbox"
             className="qg-toggle__input"
             checked={state.hasOtherPension}
-            onChange={(e) => setHasOtherPension(e.target.checked)}
+            onChange={(e) => update({ hasOtherPension: e.target.checked })}
           />
           <span className="qg-toggle__label">
             <FormattedMessage id="forfettario.form.hasOtherPension" />
@@ -109,7 +99,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           max={100_000}
           step={500}
           value={state.employeeCosts}
-          onChange={(e) => setEmployeeCosts(Number(e.target.value))}
+          onChange={(e) => update({ employeeCosts: Number(e.target.value) })}
           trailing="€"
           inputMode="numeric"
         />

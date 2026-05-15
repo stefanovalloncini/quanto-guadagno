@@ -1,12 +1,32 @@
+import { lazy, Suspense, type ReactNode } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { EmployeePage } from "@/ui/features/employee-calculator";
-import { ApprenticeshipPage } from "@/ui/features/apprenticeship";
-import { ForfettarioPage } from "@/ui/features/forfettario";
 import { HomePage } from "@/ui/features/home";
-import { SourcesPage } from "@/ui/features/sources";
-import { AboutPage } from "@/ui/features/about";
-import { NotFoundPage } from "@/ui/features/not-found";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
+
+const EmployeePage = lazy(() =>
+  import("@/ui/features/employee-calculator").then((m) => ({ default: m.EmployeePage })),
+);
+const ApprenticeshipPage = lazy(() =>
+  import("@/ui/features/apprenticeship").then((m) => ({ default: m.ApprenticeshipPage })),
+);
+const ForfettarioPage = lazy(() =>
+  import("@/ui/features/forfettario").then((m) => ({ default: m.ForfettarioPage })),
+);
+const SourcesPage = lazy(() =>
+  import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
+);
+const AboutPage = lazy(() => import("@/ui/features/about").then((m) => ({ default: m.AboutPage })));
+const NotFoundPage = lazy(() =>
+  import("@/ui/features/not-found").then((m) => ({ default: m.NotFoundPage })),
+);
+
+function lazyRoute(node: ReactNode) {
+  return (
+    <AppLayout>
+      <Suspense fallback={null}>{node}</Suspense>
+    </AppLayout>
+  );
+}
 
 const router = createBrowserRouter([
   {
@@ -17,54 +37,12 @@ const router = createBrowserRouter([
       </AppLayout>
     ),
   },
-  {
-    path: "/calcola-stipendio",
-    element: (
-      <AppLayout>
-        <EmployeePage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/progressione-apprendistato",
-    element: (
-      <AppLayout>
-        <ApprenticeshipPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/partita-iva-forfettario",
-    element: (
-      <AppLayout>
-        <ForfettarioPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/fonti",
-    element: (
-      <AppLayout>
-        <SourcesPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "/informazioni",
-    element: (
-      <AppLayout>
-        <AboutPage />
-      </AppLayout>
-    ),
-  },
-  {
-    path: "*",
-    element: (
-      <AppLayout>
-        <NotFoundPage />
-      </AppLayout>
-    ),
-  },
+  { path: "/calcola-stipendio", element: lazyRoute(<EmployeePage />) },
+  { path: "/progressione-apprendistato", element: lazyRoute(<ApprenticeshipPage />) },
+  { path: "/partita-iva-forfettario", element: lazyRoute(<ForfettarioPage />) },
+  { path: "/fonti", element: lazyRoute(<SourcesPage />) },
+  { path: "/informazioni", element: lazyRoute(<AboutPage />) },
+  { path: "*", element: lazyRoute(<NotFoundPage />) },
 ]);
 
 export function AppRouter() {

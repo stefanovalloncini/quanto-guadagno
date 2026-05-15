@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
@@ -5,7 +6,7 @@ import { IntlProvider } from "react-intl";
 import { ForfettarioPage } from "./ForfettarioPage.tsx";
 import { it as itMessages } from "@/ui/i18n/messages/it.ts";
 
-const wrap = (node: React.ReactNode) => (
+const wrap = (node: ReactNode) => (
   <IntlProvider locale="it-IT" messages={itMessages}>
     <MemoryRouter>{node}</MemoryRouter>
   </IntlProvider>

@@ -1003,3 +1003,30 @@
   background: var(--accent);
   color: var(--accent-on);
 }
+
+/* Eligibility / advisory notice — used by ForfettarioResults */
+.qg-notice {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--rule);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+.qg-notice--warning {
+  background: var(--paper-2);
+  border-color: var(--warm);
+  color: var(--ink);
+}
+.qg-notice--blocked {
+  background: var(--paper-2);
+  border-color: var(--danger);
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.qg-notice--blocked li {
+  margin: 0;
+}

@@ -1,13 +1,12 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-
-type MessageValue = string | number | bigint | boolean | ReactElement | undefined;
+import type { MessageValues } from "./intl-types.ts";
 
 interface CalculatorLayoutProps {
   readonly eyebrowId: string;
   readonly titleId: string;
   readonly ledeId: string;
-  readonly ledeValues?: Record<string, MessageValue>;
+  readonly ledeValues?: MessageValues;
   readonly form: ReactNode;
   readonly results: ReactNode;
 }

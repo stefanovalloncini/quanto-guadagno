@@ -15,9 +15,15 @@ export interface GestioneSeparataConfig {
   readonly minimaleReddito: number;
 }
 
+export type ForfettarioIneligibilityReason =
+  | "revenue-exceeds-limit"
+  | "employee-costs-exceed-limit";
+
+export type ForfettarioPhase = "startup" | "standard";
+
 export interface ForfettarioEligibility {
   readonly eligible: boolean;
-  readonly reasons: ReadonlyArray<string>;
+  readonly reasons: ReadonlyArray<ForfettarioIneligibilityReason>;
   readonly revenueLimitPercentage: number;
   readonly warning: boolean;
 }
@@ -28,6 +34,11 @@ export interface ForfettarioInput {
   readonly yearsOfActivity: number;
   readonly hasOtherPension: boolean;
   readonly employeeCosts: number;
+}
+
+export interface GestioneSeparataContribution {
+  readonly contribution: number;
+  readonly rate: number;
 }
 
 export interface ForfettarioBreakdown {
@@ -43,6 +54,7 @@ export interface ForfettarioBreakdown {
   readonly nettoAnnuale: number;
   readonly nettoMensile: number;
   readonly pressioneFiscaleEffettiva: number;
+  readonly phase: ForfettarioPhase;
   readonly eligibility: ForfettarioEligibility;
 }
 
@@ -51,15 +63,12 @@ export function calculateForfettarioEligibility(
   employeeCosts: number,
   cfg: ForfettarioConfig,
 ): ForfettarioEligibility {
-  const reasons: string[] = [];
-  const percentage = cfg.maxRevenue > 0 ? (revenue / cfg.maxRevenue) * 100 : 0;
+  const reasons: ReadonlyArray<ForfettarioIneligibilityReason> = [
+    revenue > cfg.maxRevenue ? ("revenue-exceeds-limit" as const) : null,
+    employeeCosts > cfg.maxEmployeeCosts ? ("employee-costs-exceed-limit" as const) : null,
+  ].filter((r): r is ForfettarioIneligibilityReason => r !== null);
 
-  if (revenue > cfg.maxRevenue) {
-    reasons.push("revenue-exceeds-limit");
-  }
-  if (employeeCosts > cfg.maxEmployeeCosts) {
-    reasons.push("employee-costs-exceed-limit");
-  }
+  const percentage = cfg.maxRevenue > 0 ? (revenue / cfg.maxRevenue) * 100 : 0;
 
   return {
     eligible: reasons.length === 0,
@@ -73,11 +82,11 @@ export function calculateGestioneSeparataContribution(
   imponibile: number,
   hasOtherPension: boolean,
   cfg: GestioneSeparataConfig,
-): { contribution: number; rate: number } {
-  if (imponibile <= 0) {
-    return { contribution: 0, rate: hasOtherPension ? cfg.reducedRate : cfg.fullRate };
-  }
+): GestioneSeparataContribution {
   const rate = hasOtherPension ? cfg.reducedRate : cfg.fullRate;
+  if (imponibile <= 0) {
+    return { contribution: 0, rate };
+  }
   const cappedBase = Math.min(imponibile, cfg.massimale);
   return { contribution: cappedBase * rate, rate };
 }
@@ -99,8 +108,8 @@ export function calculateForfettario(
   );
 
   const imponibileNetto = Math.max(0, imponibileLordo - inps.contribution);
-  const aliquotaSostitutiva =
-    yearsOfActivity < cfg.startupYears ? cfg.startupRate : cfg.standardRate;
+  const phase: ForfettarioPhase = yearsOfActivity < cfg.startupYears ? "startup" : "standard";
+  const aliquotaSostitutiva = phase === "startup" ? cfg.startupRate : cfg.standardRate;
   const impostaSostitutiva = imponibileNetto * aliquotaSostitutiva;
 
   const totaleImposte = inps.contribution + impostaSostitutiva;
@@ -121,6 +130,7 @@ export function calculateForfettario(
     nettoAnnuale: round(nettoAnnuale),
     nettoMensile: round(nettoMensile),
     pressioneFiscaleEffettiva,
+    phase,
     eligibility,
   };
 }

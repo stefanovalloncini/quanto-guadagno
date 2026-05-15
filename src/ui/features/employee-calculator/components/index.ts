@@ -12,4 +12,3 @@ export { NetSalarySummary } from "./NetSalarySummary.tsx";
 export { TaxBreakdownCard } from "./TaxBreakdownCard.tsx";
 export { ResultsBreakdown } from "./ResultsBreakdown.tsx";
 export { EmployerCostView } from "./EmployerCostView.tsx";
-export { BreakdownRow } from "./BreakdownRow.tsx";

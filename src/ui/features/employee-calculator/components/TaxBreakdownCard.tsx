@@ -1,7 +1,6 @@
 import { FormattedMessage } from "react-intl";
-import { Money } from "@/ui/design-system/primitives";
+import { BreakdownRow, Money } from "@/ui/design-system/primitives";
 import type { SalaryBreakdown } from "@/domain/calc";
-import { BreakdownRow } from "./BreakdownRow.tsx";
 
 interface TaxBreakdownCardProps {
   readonly breakdown: SalaryBreakdown;

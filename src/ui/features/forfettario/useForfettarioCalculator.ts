@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { calculateForfettario, type ForfettarioBreakdown } from "@/domain/calc";
 import {
   ACTIVITY_COEFFICIENTS,
@@ -27,17 +27,16 @@ const DEFAULTS: FormState = {
 
 export interface ForfettarioCalculator {
   readonly state: FormState;
-  readonly setRevenue: (n: number) => void;
-  readonly setActivity: (c: ActivityCategory) => void;
-  readonly setYear: (y: SupportedYear) => void;
-  readonly setYearsOfActivity: (n: number) => void;
-  readonly setHasOtherPension: (b: boolean) => void;
-  readonly setEmployeeCosts: (n: number) => void;
+  readonly update: (patch: Partial<FormState>) => void;
   readonly result: ForfettarioBreakdown;
 }
 
 export function useForfettarioCalculator(): ForfettarioCalculator {
   const [state, setState] = useState<FormState>(DEFAULTS);
+
+  const update = useCallback((patch: Partial<FormState>) => {
+    setState((s) => ({ ...s, ...patch }));
+  }, []);
 
   const result = useMemo(() => {
     const config = getTaxConfig(state.year);
@@ -55,14 +54,5 @@ export function useForfettarioCalculator(): ForfettarioCalculator {
     );
   }, [state]);
 
-  return {
-    state,
-    setRevenue: (revenue) => setState((s) => ({ ...s, revenue })),
-    setActivity: (activity) => setState((s) => ({ ...s, activity })),
-    setYear: (year) => setState((s) => ({ ...s, year })),
-    setYearsOfActivity: (yearsOfActivity) => setState((s) => ({ ...s, yearsOfActivity })),
-    setHasOtherPension: (hasOtherPension) => setState((s) => ({ ...s, hasOtherPension })),
-    setEmployeeCosts: (employeeCosts) => setState((s) => ({ ...s, employeeCosts })),
-    result,
-  };
+  return { state, update, result };
 }

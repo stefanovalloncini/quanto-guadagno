@@ -5,3 +5,4 @@ export { Stack } from "./Stack.tsx";
 export { Money } from "./Money.tsx";
 export { MetricBlock } from "./MetricBlock.tsx";
 export { Tile } from "./Tile.tsx";
+export { BreakdownRow } from "./BreakdownRow.tsx";

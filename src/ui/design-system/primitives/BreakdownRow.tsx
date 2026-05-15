@@ -1,13 +1,16 @@
+import type { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { Money } from "@/ui/design-system/primitives";
+import { Money } from "./Money.tsx";
+import { formatPercentage } from "@/domain/format.ts";
+import type { MessageValues } from "@/ui/shared/intl-types.ts";
 
 interface BreakdownRowProps {
   readonly labelId: string;
+  readonly labelValues?: MessageValues;
   readonly amount: number;
   readonly rate?: number;
-  /** Treat the row as a subtraction (negative contribution to net). */
+  readonly extra?: ReactNode;
   readonly subtract?: boolean;
-  /** Treat the row as an addition (positive credit). */
   readonly add?: boolean;
   readonly total?: boolean;
   readonly highlight?: boolean;
@@ -15,8 +18,10 @@ interface BreakdownRowProps {
 
 export function BreakdownRow({
   labelId,
+  labelValues,
   amount,
   rate,
+  extra,
   subtract,
   add,
   total,
@@ -37,10 +42,11 @@ export function BreakdownRow({
   return (
     <div className={cls}>
       <span className="qg-breakdown-row__label">
-        <FormattedMessage id={labelId} />
+        <FormattedMessage id={labelId} {...(labelValues && { values: labelValues })} />
         {rate !== undefined && rate > 0 && (
-          <span className="qg-breakdown-row__rate">{(rate * 100).toFixed(2)}%</span>
+          <span className="qg-breakdown-row__rate">{formatPercentage(rate)}</span>
         )}
+        {extra}
       </span>
       <span className="qg-breakdown-row__amount">
         <Money amount={displayAmount} whole />
