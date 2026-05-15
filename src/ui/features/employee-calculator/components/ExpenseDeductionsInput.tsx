@@ -20,72 +20,67 @@ export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInp
   const toggle = (checked: boolean) => onChange(checked ? DEFAULT_VALUE : null);
 
   return (
-    <details className="qg-extras">
-      <summary>
-        <FormattedMessage id="employee.expenses.title" />
-      </summary>
-      <div className="qg-extras__body">
-        <label className="qg-toggle">
-          <input
-            type="checkbox"
-            className="qg-toggle__input"
-            checked={enabled}
-            onChange={(e) => toggle(e.target.checked)}
+    <Stack gap="md">
+      <label className="qg-toggle">
+        <input
+          type="checkbox"
+          className="qg-toggle__input"
+          checked={enabled}
+          onChange={(e) => toggle(e.target.checked)}
+        />
+        <span className="qg-toggle__label">
+          <FormattedMessage id="employee.extras.toggle.enable" />
+        </span>
+      </label>
+
+      {enabled && (
+        <Stack gap="md">
+          <Field
+            label={<FormattedMessage id="employee.expenses.mortgageInterest" />}
+            hint={<FormattedMessage id="employee.expenses.mortgageInterest.hint" />}
+            type="number"
+            min={0}
+            max={100_000}
+            step={100}
+            value={current.mortgageInterest}
+            onChange={(e) =>
+              onChange({ ...current, mortgageInterest: Math.max(0, Number(e.target.value)) })
+            }
+            trailing="€"
+            inputMode="numeric"
           />
-          <span className="qg-toggle__label">
-            <FormattedMessage id="employee.expenses.title" />
-          </span>
-        </label>
 
-        {enabled && (
-          <Stack gap="md">
-            <Field
-              label={<FormattedMessage id="employee.expenses.mortgageInterest" />}
-              hint={<FormattedMessage id="employee.expenses.mortgageInterest.hint" />}
-              type="number"
-              min={0}
-              max={100_000}
-              step={100}
-              value={current.mortgageInterest}
-              onChange={(e) =>
-                onChange({ ...current, mortgageInterest: Math.max(0, Number(e.target.value)) })
-              }
-              trailing="€"
-              inputMode="numeric"
-            />
+          <Field
+            label={<FormattedMessage id="employee.expenses.medicalExpenses" />}
+            hint={<FormattedMessage id="employee.expenses.medicalExpenses.hint" />}
+            type="number"
+            min={0}
+            max={100_000}
+            step={100}
+            value={current.medicalExpenses}
+            onChange={(e) =>
+              onChange({ ...current, medicalExpenses: Math.max(0, Number(e.target.value)) })
+            }
+            trailing="€"
+            inputMode="numeric"
+          />
 
-            <Field
-              label={<FormattedMessage id="employee.expenses.medicalExpenses" />}
-              hint={<FormattedMessage id="employee.expenses.medicalExpenses.hint" />}
-              type="number"
-              min={0}
-              max={100_000}
-              step={100}
-              value={current.medicalExpenses}
-              onChange={(e) =>
-                onChange({ ...current, medicalExpenses: Math.max(0, Number(e.target.value)) })
-              }
-              trailing="€"
-              inputMode="numeric"
-            />
-
-            <Field
-              label={<FormattedMessage id="employee.expenses.otherDeductions" />}
-              hint={<FormattedMessage id="employee.expenses.otherDeductions.hint" />}
-              type="number"
-              min={0}
-              max={100_000}
-              step={100}
-              value={current.otherDeductions}
-              onChange={(e) =>
-                onChange({ ...current, otherDeductions: Math.max(0, Number(e.target.value)) })
-              }
-              trailing="€"
-              inputMode="numeric"
-            />
-          </Stack>
-        )}
-      </div>
-    </details>
+          <Field
+            label={<FormattedMessage id="employee.expenses.otherDeductions" />}
+            hint={<FormattedMessage id="employee.expenses.otherDeductions.hint" />}
+            type="number"
+            min={0}
+            max={100_000}
+            step={100}
+            value={current.otherDeductions}
+            onChange={(e) =>
+              onChange({ ...current, otherDeductions: Math.max(0, Number(e.target.value)) })
+            }
+            trailing="€"
+            inputMode="numeric"
+          />
+        </Stack>
+      )}
+    </Stack>
   );
 }

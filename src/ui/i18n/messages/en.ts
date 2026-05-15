@@ -29,7 +29,11 @@ export const en: Record<MessageKey, string> = {
   "home.feature.title": "Net salary from gross",
   "home.feature.body":
     "Employee, tax year 2024, 2025 or 2026. Regional rate, work deduction, trattamento integrativo, tax-wedge cut.",
-  "home.feature.cta": "Open →",
+  "home.feature.cta": "Open the calculator",
+  "home.feature.specimen.gross": "Annual gross ",
+  "home.feature.specimen.net": "Monthly net ",
+  "home.also.title": "Also available",
+  "home.upcoming.title": "Coming back",
   "home.available.apprenticeship.title": "Apprenticeship progression",
   "home.available.apprenticeship.body":
     "Estimate year-by-year salary during professional apprenticeship contracts.",
@@ -55,7 +59,7 @@ export const en: Record<MessageKey, string> = {
   "employee.eyebrow": "Tool",
   "employee.title": "Net salary from <em>gross</em>.",
   "employee.lede":
-    "Tax years 2024–2026. Regional and municipal rates are editable. Numbers are an estimate — not a substitute for the actual payslip.",
+    "Tax years 2024–2026. Regional and municipal rates are editable. The numbers are an estimate, not a substitute for the actual payslip.",
 
   "employee.form.gross": "Annual gross salary",
   "employee.form.salary": "Annual gross salary",
@@ -68,9 +72,9 @@ export const en: Record<MessageKey, string> = {
   "employee.form.contractType.apprendistato": "Apprenticeship",
   "employee.form.contractType.apprenticeshipLink": "See your apprenticeship salary progression",
   "employee.form.paymentFrequency": "Monthly instalments",
-  "employee.form.paymentFrequency.option12": "12 — salary over 12 months",
-  "employee.form.paymentFrequency.option13": "13 — includes 13th-month bonus",
-  "employee.form.paymentFrequency.option14": "14 — includes 13th and 14th-month bonuses",
+  "employee.form.paymentFrequency.option12": "12 instalments, salary spread over 12 months",
+  "employee.form.paymentFrequency.option13": "13 instalments, includes 13th-month bonus",
+  "employee.form.paymentFrequency.option14": "14 instalments, includes 13th and 14th-month bonuses",
   "employee.form.region": "Region of residence",
   "employee.form.regional": "Regional addizionale rate",
   "employee.form.regional.hint": "Changes by region of residence.",
@@ -78,9 +82,12 @@ export const en: Record<MessageKey, string> = {
   "employee.form.municipal.hint": "Changes by municipality of residence.",
 
   "employee.results.monthly": "Net monthly",
+  "employee.results.monthlyEquivalent":
+    "That works out to {amount} per month over {frequency} instalments.",
   "employee.results.annual": "Net annual",
   "employee.results.annual.sub": "estimate over 12 months",
   "employee.results.detail": "Calculation breakdown",
+  "employee.results.howItsCalculated": "How we get there",
   "employee.results.effective": "Effective tax rate:",
 
   "employee.breakdown.gross": "Gross annual",
@@ -188,13 +195,23 @@ export const en: Record<MessageKey, string> = {
   "forfettario.breakdown.totalTaxes": "Total taxes and contributions",
   "forfettario.breakdown.net": "Annual net",
 
-  "employee.extras.title": "Optional settings",
-  "employee.extras.tabs.label": "Optional sections",
-  "employee.extras.tab.dependents": "Dependents",
-  "employee.extras.tab.expenses": "Expenses",
-  "employee.extras.tab.specialConditions": "Special conditions",
-  "employee.extras.tab.premio": "Performance bonus",
-  "employee.extras.tab.fringe": "Fringe benefits",
+  "employee.extras.title": "Personalize the calculation",
+  "employee.extras.group.deductions": "Deductions and personal situation",
+  "employee.extras.group.compensation": "Additional compensation",
+  "employee.extras.section.dependents": "Dependents",
+  "employee.extras.section.dependents.lede": "Spouse, children over 21, other dependents.",
+  "employee.extras.section.expenses": "Deductible expenses",
+  "employee.extras.section.expenses.lede":
+    "Medical, mortgage, renovations, supplementary pension contributions.",
+  "employee.extras.section.specialConditions": "Special regimes and conditions",
+  "employee.extras.section.specialConditions.lede":
+    "Returning workers (impatriati), three-children mother exemption.",
+  "employee.extras.section.premio": "Performance bonus",
+  "employee.extras.section.premio.lede": "Variable amount with 5% substitute taxation.",
+  "employee.extras.section.fringe": "Fringe benefits",
+  "employee.extras.section.fringe.lede": "Company car, meal vouchers, company welfare.",
+  "employee.extras.status.set": "set",
+  "employee.extras.toggle.enable": "Apply to the calculation",
   "employee.extras.municipal": "Municipal addizionale rate",
   "employee.extras.municipal.lookup": "Look up your rate",
 
@@ -226,6 +243,10 @@ export const en: Record<MessageKey, string> = {
 
   "employee.fringe.title": "Fringe benefits",
   "employee.fringe.companyCar.title": "Company car",
+  "employee.fringe.companyCar.subtitle": "Taxable annual benefit on the payslip.",
+  "employee.fringe.mealVouchers.subtitle": "Exempt up to €8/day for electronic vouchers.",
+  "employee.fringe.healthInsurance.subtitle": "Exempt up to €3,615/year.",
+  "employee.fringe.welfare.subtitle": "Exempt up to €258/year (€1,000 with dependent children).",
   "employee.fringe.companyCar.mode.simple": "Simple",
   "employee.fringe.companyCar.mode.detailed": "Detailed",
   "employee.fringe.companyCar.modeLabel": "Calculation mode",
@@ -283,8 +304,8 @@ export const en: Record<MessageKey, string> = {
   "employee.summary.delta": "Gross-to-net difference:",
   "employee.summary.effectiveRate": "Effective tax rate:",
   "employee.summary.gross": "Gross annual",
-  "employee.summary.tfr": "TFR monthly",
-  "employee.summary.tfr.monthly": "(monthly)",
+  "employee.summary.tfr": "TFR accrual",
+  "employee.summary.tfr.monthly": "per month",
   "employee.summary.pdr": "Performance bonus (net)",
 
   "employee.breakdown.title": "Tax breakdown",

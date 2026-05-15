@@ -56,45 +56,50 @@ describe("EmployeePage", () => {
     expect(details).not.toHaveAttribute("open");
   });
 
-  it("opening extras section reveals the tab list", async () => {
+  it("opening extras reveals all five accordion sections plus the municipal field", async () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni opzionali/);
+    const summary = screen.getByText(/Personalizza il calcolo/);
     await user.click(summary);
 
-    expect(screen.getByRole("tablist")).toBeInTheDocument();
-    expect(screen.getAllByRole("tab").length).toBe(5);
+    const sections = document.querySelectorAll(".qg-extras-section");
+    expect(sections).toHaveLength(5);
+    expect(screen.getByLabelText(/Addizionale comunale/)).toBeInTheDocument();
   });
 
-  it("clicking a tab makes its panel visible", async () => {
+  it("each accordion section can be expanded independently", async () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni opzionali/);
-    await user.click(summary);
+    const panelSummary = screen.getByText(/Personalizza il calcolo/);
+    await user.click(panelSummary);
 
-    const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });
-    await user.click(dependentsTab);
+    const titles = document.querySelectorAll(".qg-extras-section__title");
+    const dependentsTitle = Array.from(titles).find((el) =>
+      /Familiari a carico/.test(el.textContent ?? ""),
+    ) as HTMLElement;
+    await user.click(dependentsTitle);
 
-    expect(dependentsTab).toHaveAttribute("aria-selected", "true");
-    const panel = document.getElementById("tabpanel-dependents");
-    expect(panel).not.toHaveAttribute("hidden");
+    const dependentsDetails = dependentsTitle.closest("details.qg-extras-section");
+    expect(dependentsDetails).toHaveAttribute("open");
   });
 
-  it("clicking the active tab again collapses the panel", async () => {
+  it("clicking an open section summary collapses it again", async () => {
     const user = userEvent.setup();
     render(wrap(<EmployeePage />));
 
-    const summary = screen.getByText(/Impostazioni opzionali/);
-    await user.click(summary);
+    const panelSummary = screen.getByText(/Personalizza il calcolo/);
+    await user.click(panelSummary);
 
-    const dependentsTab = screen.getByRole("tab", { name: /Familiari a carico/ });
-    await user.click(dependentsTab);
-    await user.click(dependentsTab);
+    const titles = document.querySelectorAll(".qg-extras-section__title");
+    const dependentsTitle = Array.from(titles).find((el) =>
+      /Familiari a carico/.test(el.textContent ?? ""),
+    ) as HTMLElement;
+    await user.click(dependentsTitle);
+    await user.click(dependentsTitle);
 
-    expect(dependentsTab).toHaveAttribute("aria-selected", "false");
-    const panel = document.getElementById("tabpanel-dependents");
-    expect(panel).toHaveAttribute("hidden");
+    const dependentsDetails = dependentsTitle.closest("details.qg-extras-section");
+    expect(dependentsDetails).not.toHaveAttribute("open");
   });
 });

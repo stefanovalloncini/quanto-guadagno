@@ -1,17 +1,12 @@
 import { FormattedMessage } from "react-intl";
 import type { SalaryBreakdown } from "@/domain/calc";
-import { BreakdownRow } from "@/ui/design-system/primitives";
+import { BreakdownRow, Money } from "@/ui/design-system/primitives";
 
 interface ResultsBreakdownProps {
   readonly breakdown: SalaryBreakdown;
   readonly paymentFrequency: 12 | 13 | 14;
 }
 
-/**
- * Flat cascade view: gross → contributions → taxable → taxes → credits → net.
- * Complementary to TaxBreakdownCard (which groups by category).
- * Shows the computational flow in order of application.
- */
 export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdownProps) {
   const hasInpsExemption = breakdown.inpsExemption > 0;
   const hasMadreLavoratrice = breakdown.madreLavoratriceExemption > 0;
@@ -29,10 +24,32 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
         <FormattedMessage id="employee.results.detail" />
       </h2>
 
+      <div className="qg-results-breakdown__result">
+        <p className="qg-results-breakdown__result-label">
+          <FormattedMessage id="employee.breakdown.net" />
+        </p>
+        <p className="qg-results-breakdown__result-amount">
+          <Money amount={breakdown.netAnnual} whole />
+        </p>
+        <p className="qg-results-breakdown__result-sub">
+          <FormattedMessage
+            id="employee.results.monthlyEquivalent"
+            values={{
+              amount: <Money amount={breakdown.netAnnual / paymentFrequency} whole />,
+              frequency: paymentFrequency,
+            }}
+          />
+        </p>
+      </div>
+
+      <h3 className="qg-subhead qg-subhead--md qg-results-breakdown__how">
+        <FormattedMessage id="employee.results.howItsCalculated" />
+      </h3>
+
       <div className="qg-results-breakdown__flow">
         <BreakdownRow labelId="employee.breakdown.gross" amount={breakdown.grossAnnual} />
 
-        <p className="qg-results-breakdown__group-label">
+        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
           <FormattedMessage id="employee.breakdown.section.contributions" />
         </p>
         <BreakdownRow
@@ -62,7 +79,7 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
           total
         />
 
-        <p className="qg-results-breakdown__group-label">
+        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
           <FormattedMessage id="employee.breakdown.section.taxes" />
         </p>
         <BreakdownRow
@@ -124,7 +141,7 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
 
         {(hasTrattamento || hasSommaAggiuntiva) && (
           <>
-            <p className="qg-results-breakdown__group-label">
+            <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
               <FormattedMessage id="employee.breakdown.section.credits" />
             </p>
             {hasTrattamento && (
@@ -146,7 +163,7 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
 
         {hasPdr && (
           <>
-            <p className="qg-results-breakdown__group-label">
+            <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
               <FormattedMessage id="employee.breakdown.section.pdr" />
             </p>
             <BreakdownRow labelId="employee.breakdown.pdrGross" amount={breakdown.pdrGross} add />
@@ -164,17 +181,6 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
           labelId="employee.breakdown.totalTaxes"
           amount={breakdown.totalTaxes}
           subtract
-          total
-        />
-        <BreakdownRow
-          labelId="employee.breakdown.net"
-          amount={breakdown.netAnnual}
-          total
-          highlight
-        />
-        <BreakdownRow
-          labelId="employee.results.monthly"
-          amount={breakdown.netAnnual / paymentFrequency}
           total
         />
       </div>

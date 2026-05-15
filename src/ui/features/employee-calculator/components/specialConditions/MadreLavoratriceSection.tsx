@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { FormattedMessage } from "react-intl";
 import type { MadreLavoratriceInput } from "@/domain/calc";
+import { OptionToggle, Stack } from "@/ui/design-system/primitives";
 
 interface MadreLavoratriceSectionProps {
   readonly value: MadreLavoratriceInput | undefined;
@@ -25,24 +26,14 @@ export function MadreLavoratriceSection({ value, onChange }: MadreLavoratriceSec
   const eligible = enabled && value !== undefined && !notEnoughChildren && !childTooOld;
 
   return (
-    <div>
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => onChange(e.target.checked ? DEFAULT : undefined)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.specialConditions.madreLavoratrice.label" />
-        </span>
-      </label>
-      <p className="qg-field__hint" style={{ marginTop: "var(--space-1)" }}>
-        <FormattedMessage id="employee.specialConditions.madreLavoratrice.hint" />
-      </p>
-
-      {enabled && value && (
-        <div className="qg-extras__indent" style={{ marginTop: "var(--space-3)" }}>
+    <OptionToggle
+      checked={enabled}
+      onChange={(c) => onChange(c ? DEFAULT : undefined)}
+      label={<FormattedMessage id="employee.specialConditions.madreLavoratrice.label" />}
+      hint={<FormattedMessage id="employee.specialConditions.madreLavoratrice.hint" />}
+    >
+      {value && (
+        <Stack gap="md">
           <div className="qg-field">
             <label className="qg-field__label" htmlFor={countId}>
               <FormattedMessage id="employee.specialConditions.madreLavoratrice.numberOfChildren" />
@@ -55,10 +46,7 @@ export function MadreLavoratriceSection({ value, onChange }: MadreLavoratriceSec
                 max={10}
                 value={value.numberOfChildren}
                 onChange={(e) =>
-                  onChange({
-                    ...value,
-                    numberOfChildren: clampInt(e.target.value, 1, 10),
-                  })
+                  onChange({ ...value, numberOfChildren: clampInt(e.target.value, 1, 10) })
                 }
                 className="qg-field__input"
                 style={{ maxWidth: "6rem" }}
@@ -117,8 +105,8 @@ export function MadreLavoratriceSection({ value, onChange }: MadreLavoratriceSec
               </p>
             </div>
           )}
-        </div>
+        </Stack>
       )}
-    </div>
+    </OptionToggle>
   );
 }

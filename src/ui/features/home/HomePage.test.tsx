@@ -32,10 +32,12 @@ describe("HomePage", () => {
     expect(tile).toHaveAttribute("href", "/partita-iva-forfettario");
   });
 
-  it("renders six coming-soon tiles after freelancer was promoted to available", () => {
-    render(wrap(<HomePage />));
-    const soon = screen.getAllByText(/In arrivo/i);
-    expect(soon).toHaveLength(6);
+  it("renders the upcoming list with six items under an 'In arrivo' subhead", () => {
+    const { container } = render(wrap(<HomePage />));
+    const subhead = screen.getByRole("heading", { name: /In arrivo/i });
+    expect(subhead).toBeInTheDocument();
+    const items = container.querySelectorAll(".qg-home__upcoming-list li");
+    expect(items).toHaveLength(6);
   });
 
   it("renders the open-source shimmer span in the footnote", () => {

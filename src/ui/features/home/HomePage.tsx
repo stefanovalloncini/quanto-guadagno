@@ -1,18 +1,19 @@
 import { FormattedMessage } from "react-intl";
-import { Tile } from "@/ui/design-system/primitives";
+import { Link } from "react-router-dom";
+import { Money, Tile } from "@/ui/design-system/primitives";
 
-interface SoonTile {
-  readonly titleId: string;
-  readonly bodyId: string;
+interface SoonItem {
+  readonly id: string;
+  readonly labelId: string;
 }
 
-const soonTiles: ReadonlyArray<SoonTile> = [
-  { titleId: "home.soon.comparison.title", bodyId: "home.soon.comparison.body" },
-  { titleId: "home.soon.tfr.title", bodyId: "home.soon.tfr.body" },
-  { titleId: "home.soon.payslip.title", bodyId: "home.soon.payslip.body" },
-  { titleId: "home.soon.statistics.title", bodyId: "home.soon.statistics.body" },
-  { titleId: "home.soon.inflation.title", bodyId: "home.soon.inflation.body" },
-  { titleId: "home.soon.taxSystem.title", bodyId: "home.soon.taxSystem.body" },
+const soonItems: ReadonlyArray<SoonItem> = [
+  { id: "comparison", labelId: "home.soon.comparison.title" },
+  { id: "tfr", labelId: "home.soon.tfr.title" },
+  { id: "payslip", labelId: "home.soon.payslip.title" },
+  { id: "statistics", labelId: "home.soon.statistics.title" },
+  { id: "inflation", labelId: "home.soon.inflation.title" },
+  { id: "taxSystem", labelId: "home.soon.taxSystem.title" },
 ];
 
 export function HomePage() {
@@ -27,56 +28,81 @@ export function HomePage() {
         </p>
       </header>
 
-      <div className="qg-home__tiles" aria-label="Strumenti">
-        <Tile
-          variant="feature"
-          to="/calcola-stipendio"
-          title={<FormattedMessage id="home.feature.title" />}
-          badge={<FormattedMessage id="home.feature.badge" />}
-          cta={<FormattedMessage id="home.feature.cta" />}
-        >
-          <p>
+      <Link to="/calcola-stipendio" className="qg-home__feature">
+        <span className="qg-home__feature-badge">
+          <FormattedMessage id="home.feature.badge" />
+        </span>
+        <div className="qg-home__feature-body">
+          <h2 className="qg-home__feature-title">
+            <FormattedMessage id="home.feature.title" />
+          </h2>
+          <p className="qg-home__feature-lede">
             <FormattedMessage id="home.feature.body" />
           </p>
-        </Tile>
+        </div>
+        <div className="qg-home__feature-specimen" aria-hidden="true">
+          <span className="qg-home__feature-specimen-line">
+            <FormattedMessage id="home.feature.specimen.gross" />
+            <Money amount={30000} whole className="qg-home__feature-specimen-amount" />
+          </span>
+          <span className="qg-home__feature-specimen-arrow">→</span>
+          <span className="qg-home__feature-specimen-line">
+            <FormattedMessage id="home.feature.specimen.net" />
+            <Money
+              amount={1952}
+              whole
+              className="qg-home__feature-specimen-amount qg-home__feature-specimen-amount--accent"
+            />
+          </span>
+        </div>
+        <span className="qg-home__feature-cta" aria-hidden="true">
+          <FormattedMessage id="home.feature.cta" />
+        </span>
+      </Link>
 
-        <Tile
-          variant="available"
-          to="/progressione-apprendistato"
-          title={<FormattedMessage id="home.available.apprenticeship.title" />}
-          badge={<FormattedMessage id="home.feature.badge" />}
-          cta={<FormattedMessage id="home.feature.cta" />}
-        >
-          <p>
-            <FormattedMessage id="home.available.apprenticeship.body" />
-          </p>
-        </Tile>
-
-        <Tile
-          variant="available"
-          to="/partita-iva-forfettario"
-          title={<FormattedMessage id="home.available.forfettario.title" />}
-          badge={<FormattedMessage id="home.feature.badge" />}
-          cta={<FormattedMessage id="home.feature.cta" />}
-        >
-          <p>
-            <FormattedMessage id="home.available.forfettario.body" />
-          </p>
-        </Tile>
-
-        {soonTiles.map((t) => (
+      <section className="qg-home__alsoavailable" aria-labelledby="home-also">
+        <h2 id="home-also" className="qg-subhead qg-subhead--lg qg-home__subhead">
+          <FormattedMessage id="home.also.title" />
+        </h2>
+        <div className="qg-home__pair">
           <Tile
-            key={t.titleId}
-            variant="soon"
-            title={<FormattedMessage id={t.titleId} />}
-            badge={<FormattedMessage id="home.soon.badge" />}
+            variant="available"
+            to="/partita-iva-forfettario"
+            title={<FormattedMessage id="home.available.forfettario.title" />}
+            badge={<FormattedMessage id="home.feature.badge" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
           >
             <p>
-              <FormattedMessage id={t.bodyId} />
+              <FormattedMessage id="home.available.forfettario.body" />
             </p>
           </Tile>
-        ))}
-      </div>
+
+          <Tile
+            variant="available"
+            to="/progressione-apprendistato"
+            title={<FormattedMessage id="home.available.apprenticeship.title" />}
+            badge={<FormattedMessage id="home.feature.badge" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.apprenticeship.body" />
+            </p>
+          </Tile>
+        </div>
+      </section>
+
+      <section className="qg-home__upcoming" aria-labelledby="home-upcoming">
+        <h2 id="home-upcoming" className="qg-subhead qg-subhead--lg qg-home__subhead">
+          <FormattedMessage id="home.upcoming.title" />
+        </h2>
+        <ul className="qg-home__upcoming-list">
+          {soonItems.map((item) => (
+            <li key={item.id}>
+              <FormattedMessage id={item.labelId} />
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <footer className="qg-home__footnote">
         <FormattedMessage

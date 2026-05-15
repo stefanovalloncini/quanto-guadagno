@@ -11,7 +11,7 @@
   --warm: #c46b3a;
   --danger: #a13a2a;
 
-  --font-display: "Familjen Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino", Georgia, serif;
   --font-sans: "Familjen Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -19,12 +19,14 @@
   --text-sm: 14px;
   --text-base: 16px;
   --text-md: 17px;
-  --text-lg: 19px;
-  --text-xl: 24px;
-  --text-2xl: 32px;
-  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-lg: 20px;
+  --text-xl: 26px;
+  --text-2xl: 36px;
+  --text-3xl: 48px;
+  --text-display: clamp(3rem, 7vw, 5.25rem);
 
-  --leading-tight: 1.05;
+  --leading-display: 0.98;
+  --leading-tight: 1.08;
   --leading-snug: 1.25;
   --leading-normal: 1.5;
   --leading-relaxed: 1.6;

@@ -1,5 +1,4 @@
 import { CalculatorLayout } from "@/ui/shared/CalculatorLayout.tsx";
-import { TaxBreakdownCard } from "./components/TaxBreakdownCard.tsx";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
 import { EmployerCostView } from "./components/EmployerCostView.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
@@ -22,8 +21,6 @@ export function EmployeePage() {
 
       <section className="qg-employee-detail">
         <EmployeeExtras calc={calc} />
-
-        <TaxBreakdownCard breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
 
         <ResultsBreakdown breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
 

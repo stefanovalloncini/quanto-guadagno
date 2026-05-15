@@ -9,6 +9,5 @@ export { PremioRisultatoInput } from "./PremioRisultatoInput.tsx";
 export { FringeBenefitsInput } from "./FringeBenefitsInput.tsx";
 export { SpecialConditionsInput } from "./SpecialConditionsInput.tsx";
 export { NetSalarySummary } from "./NetSalarySummary.tsx";
-export { TaxBreakdownCard } from "./TaxBreakdownCard.tsx";
 export { ResultsBreakdown } from "./ResultsBreakdown.tsx";
 export { EmployerCostView } from "./EmployerCostView.tsx";

@@ -27,7 +27,11 @@ export const it = {
   "home.feature.title": "Stipendio netto da lordo",
   "home.feature.body":
     "Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo.",
-  "home.feature.cta": "Apri →",
+  "home.feature.cta": "Apri il calcolatore",
+  "home.feature.specimen.gross": "Lordo annuo ",
+  "home.feature.specimen.net": "Netto al mese ",
+  "home.also.title": "Anche disponibili",
+  "home.upcoming.title": "In arrivo",
   "home.available.apprenticeship.title": "Progressione apprendistato",
   "home.available.apprenticeship.body":
     "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante.",
@@ -67,9 +71,9 @@ export const it = {
   "employee.form.contractType.apprenticeshipLink":
     "Vedi la progressione salariale dell'apprendistato",
   "employee.form.paymentFrequency": "Mensilità",
-  "employee.form.paymentFrequency.option12": "12 mensilità — stipendio su 12 mesi",
-  "employee.form.paymentFrequency.option13": "13 mensilità — tredicesima inclusa",
-  "employee.form.paymentFrequency.option14": "14 mensilità — tredicesima e quattordicesima",
+  "employee.form.paymentFrequency.option12": "12 mensilità, stipendio su 12 mesi",
+  "employee.form.paymentFrequency.option13": "13 mensilità, con tredicesima",
+  "employee.form.paymentFrequency.option14": "14 mensilità, con tredicesima e quattordicesima",
   "employee.form.region": "Regione di residenza",
   "employee.form.regional": "Aliquota addizionale regionale",
   "employee.form.regional.hint": "Cambia in base alla regione di residenza.",
@@ -77,9 +81,11 @@ export const it = {
   "employee.form.municipal.hint": "Cambia in base al comune di residenza.",
 
   "employee.results.monthly": "Netto mensile",
+  "employee.results.monthlyEquivalent": "Equivalente a {amount} al mese su {frequency} mensilità.",
   "employee.results.annual": "Netto annuo",
   "employee.results.annual.sub": "stima su 12 mensilità",
   "employee.results.detail": "Dettaglio del calcolo",
+  "employee.results.howItsCalculated": "Come ci si arriva",
   "employee.results.effective": "Aliquota effettiva:",
 
   "employee.breakdown.gross": "Lordo annuo",
@@ -191,13 +197,24 @@ export const it = {
   "forfettario.breakdown.totalTaxes": "Totale imposte e contributi",
   "forfettario.breakdown.net": "Netto annuo",
 
-  "employee.extras.title": "Impostazioni opzionali",
-  "employee.extras.tabs.label": "Sezioni opzionali",
-  "employee.extras.tab.dependents": "Familiari a carico",
-  "employee.extras.tab.expenses": "Detrazioni spese",
-  "employee.extras.tab.specialConditions": "Condizioni speciali",
-  "employee.extras.tab.premio": "Premio di risultato",
-  "employee.extras.tab.fringe": "Fringe benefit",
+  "employee.extras.title": "Personalizza il calcolo",
+  "employee.extras.group.deductions": "Detrazioni e situazione personale",
+  "employee.extras.group.compensation": "Compensi aggiuntivi",
+  "employee.extras.section.dependents": "Familiari a carico",
+  "employee.extras.section.dependents.lede": "Coniuge, figli over 21, altri familiari.",
+  "employee.extras.section.expenses": "Spese detraibili e deducibili",
+  "employee.extras.section.expenses.lede":
+    "Sanitarie, mutuo, ristrutturazioni, contributi previdenza complementare.",
+  "employee.extras.section.specialConditions": "Regimi e condizioni speciali",
+  "employee.extras.section.specialConditions.lede":
+    "Lavoratori impatriati, esonero per madri con tre figli.",
+  "employee.extras.section.premio": "Premio di risultato",
+  "employee.extras.section.premio.lede":
+    "Importo variabile contrattato con tassazione sostitutiva al 5%.",
+  "employee.extras.section.fringe": "Fringe benefit",
+  "employee.extras.section.fringe.lede": "Auto aziendale, buoni pasto, welfare aziendale.",
+  "employee.extras.status.set": "configurato",
+  "employee.extras.toggle.enable": "Applica al calcolo",
   "employee.extras.municipal": "Addizionale comunale",
   "employee.extras.municipal.lookup": "Cerca la tua aliquota",
 
@@ -228,6 +245,10 @@ export const it = {
 
   "employee.fringe.title": "Fringe benefit",
   "employee.fringe.companyCar.title": "Auto aziendale",
+  "employee.fringe.companyCar.subtitle": "Beneficio annuo imponibile in busta paga.",
+  "employee.fringe.mealVouchers.subtitle": "Esenti fino a 8 €/giorno per i ticket elettronici.",
+  "employee.fringe.healthInsurance.subtitle": "Esente fino a 3.615 €/anno.",
+  "employee.fringe.welfare.subtitle": "Esente fino a 258 €/anno (1.000 € con figli a carico).",
   "employee.fringe.companyCar.mode.simple": "Semplificato",
   "employee.fringe.companyCar.mode.detailed": "Dettagliato",
   "employee.fringe.companyCar.modeLabel": "Modalità di calcolo",
@@ -285,8 +306,8 @@ export const it = {
   "employee.summary.delta": "Differenza lordo-netto:",
   "employee.summary.effectiveRate": "Aliquota effettiva:",
   "employee.summary.gross": "Lordo annuo",
-  "employee.summary.tfr": "TFR mensile",
-  "employee.summary.tfr.monthly": "(mensile)",
+  "employee.summary.tfr": "Quota TFR",
+  "employee.summary.tfr.monthly": "al mese",
   "employee.summary.pdr": "Premio di risultato netto",
 
   "employee.breakdown.title": "Dettaglio imposte",

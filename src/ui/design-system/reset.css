@@ -35,8 +35,21 @@ h5,
 h6 {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin: 0;
+  color: var(--ink);
+}
+
+h1,
+h2 {
+  line-height: var(--leading-display);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--leading-tight);
 }
 
 p {
@@ -73,4 +86,15 @@ svg {
 ::selection {
   background: var(--accent-soft);
   color: var(--ink);
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }

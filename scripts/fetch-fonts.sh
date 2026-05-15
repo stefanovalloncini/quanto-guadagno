@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Fetch self-hosted WOFF2 fonts into public/fonts/.
-# Idempotent: re-running is safe — files with non-zero size are kept as-is.
+# Idempotent: re-running is safe; files with non-zero size are kept as-is.
 #
 # Fonts (all SIL OFL, free for commercial use):
-#   - Familjen Grotesk 400 / 400 italic / 500 / 700 — UI and body
-#   - IBM Plex Mono    400 / 500                    — every monetary amount
+#   - Fraunces         400 / 400 italic / 600         display headings
+#   - Familjen Grotesk 400 / 400 italic / 500 / 700   UI and body
+#   - IBM Plex Mono    400 / 500                      every monetary amount
 #
 # Google Fonts serves multiple unicode-range subsets per face. For Italian
 # we want the "latin" subset (U+0000-00FF — covers ASCII plus è/ò/à/é etc.)
@@ -64,6 +65,16 @@ gf_url() {
             }
         '
 }
+
+# --- Fraunces (display) ---
+FR_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap')"
+
+download "$(gf_url "$FR_CSS" 400 normal 0000-00FF)" "Fraunces-Regular-latin.woff2"
+download "$(gf_url "$FR_CSS" 400 normal 0100-02BA)" "Fraunces-Regular-latinExt.woff2"
+download "$(gf_url "$FR_CSS" 400 italic 0000-00FF)" "Fraunces-Italic-latin.woff2"
+download "$(gf_url "$FR_CSS" 400 italic 0100-02BA)" "Fraunces-Italic-latinExt.woff2"
+download "$(gf_url "$FR_CSS" 600 normal 0000-00FF)" "Fraunces-Semibold-latin.woff2"
+download "$(gf_url "$FR_CSS" 600 normal 0100-02BA)" "Fraunces-Semibold-latinExt.woff2"
 
 # --- Familjen Grotesk ---
 FG_CSS="$(curl -fsSL -A "$UA" 'https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&display=swap')"

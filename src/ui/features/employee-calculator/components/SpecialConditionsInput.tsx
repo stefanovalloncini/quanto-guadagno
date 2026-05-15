@@ -62,37 +62,32 @@ export function SpecialConditionsInput({ value, onChange }: SpecialConditionsInp
   const toggle = (checked: boolean) => onChange(checked ? DEFAULT_VALUE : null);
 
   return (
-    <details className="qg-extras">
-      <summary>
-        <FormattedMessage id="employee.specialConditions.title" />
-      </summary>
-      <div className="qg-extras__body">
-        <label className="qg-toggle">
-          <input
-            type="checkbox"
-            className="qg-toggle__input"
-            checked={enabled}
-            onChange={(e) => toggle(e.target.checked)}
+    <Stack gap="md">
+      <label className="qg-toggle">
+        <input
+          type="checkbox"
+          className="qg-toggle__input"
+          checked={enabled}
+          onChange={(e) => toggle(e.target.checked)}
+        />
+        <span className="qg-toggle__label">
+          <FormattedMessage id="employee.extras.toggle.enable" />
+        </span>
+      </label>
+
+      {enabled && (
+        <div className="qg-options">
+          <RegimeImpatriatiSection
+            value={current.regimeImpatriati}
+            onChange={(next) => onChange(withImpatriati(current, next))}
           />
-          <span className="qg-toggle__label">
-            <FormattedMessage id="employee.specialConditions.title" />
-          </span>
-        </label>
 
-        {enabled && (
-          <Stack gap="md">
-            <RegimeImpatriatiSection
-              value={current.regimeImpatriati}
-              onChange={(next) => onChange(withImpatriati(current, next))}
-            />
-
-            <MadreLavoratriceSection
-              value={current.madreLavoratrice}
-              onChange={(next) => onChange(withMadre(current, next))}
-            />
-          </Stack>
-        )}
-      </div>
-    </details>
+          <MadreLavoratriceSection
+            value={current.madreLavoratrice}
+            onChange={(next) => onChange(withMadre(current, next))}
+          />
+        </div>
+      )}
+    </Stack>
   );
 }

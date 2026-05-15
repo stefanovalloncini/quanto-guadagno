@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import type { RegimeImpatriatiInput } from "@/domain/calc";
+import { OptionToggle } from "@/ui/design-system/primitives";
 
 interface RegimeImpatriatiSectionProps {
   readonly value: RegimeImpatriatiInput | undefined;
@@ -10,42 +11,24 @@ export function RegimeImpatriatiSection({ value, onChange }: RegimeImpatriatiSec
   const enabled = value?.enabled ?? false;
 
   return (
-    <div>
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) =>
-            onChange(e.target.checked ? { enabled: true, hasMinorChildren: false } : undefined)
+    <OptionToggle
+      checked={enabled}
+      onChange={(c) => onChange(c ? { enabled: true, hasMinorChildren: false } : undefined)}
+      label={<FormattedMessage id="employee.specialConditions.regimeImpatriati.label" />}
+      hint={<FormattedMessage id="employee.specialConditions.regimeImpatriati.hint" />}
+    >
+      {value && (
+        <OptionToggle
+          checked={value.hasMinorChildren}
+          onChange={(c) => onChange({ ...value, hasMinorChildren: c })}
+          label={
+            <FormattedMessage id="employee.specialConditions.regimeImpatriati.minorChildren" />
+          }
+          hint={
+            <FormattedMessage id="employee.specialConditions.regimeImpatriati.minorChildren.hint" />
           }
         />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.specialConditions.regimeImpatriati.label" />
-        </span>
-      </label>
-      <p className="qg-field__hint" style={{ marginTop: "var(--space-1)" }}>
-        <FormattedMessage id="employee.specialConditions.regimeImpatriati.hint" />
-      </p>
-
-      {enabled && value && (
-        <div className="qg-extras__indent" style={{ marginTop: "var(--space-3)" }}>
-          <label className="qg-toggle">
-            <input
-              type="checkbox"
-              className="qg-toggle__input"
-              checked={value.hasMinorChildren}
-              onChange={(e) => onChange({ ...value, hasMinorChildren: e.target.checked })}
-            />
-            <span className="qg-toggle__label">
-              <FormattedMessage id="employee.specialConditions.regimeImpatriati.minorChildren" />
-            </span>
-          </label>
-          <p className="qg-field__hint" style={{ marginTop: "var(--space-1)" }}>
-            <FormattedMessage id="employee.specialConditions.regimeImpatriati.minorChildren.hint" />
-          </p>
-        </div>
       )}
-    </div>
+    </OptionToggle>
   );
 }

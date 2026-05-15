@@ -26,45 +26,38 @@ export function PremioRisultatoInput({ value, onChange, taxYear }: PremioRisulta
   });
 
   return (
-    <details className="qg-extras">
-      <summary>
-        <FormattedMessage id="employee.premio.title" />
-      </summary>
-      <div className="qg-extras__body">
-        <label className="qg-toggle">
-          <input
-            type="checkbox"
-            className="qg-toggle__input"
-            checked={enabled}
-            onChange={(e) => toggle(e.target.checked)}
-          />
-          <span className="qg-toggle__label">
-            <FormattedMessage id="employee.premio.title" />
-          </span>
-        </label>
+    <Stack gap="md">
+      <label className="qg-toggle">
+        <input
+          type="checkbox"
+          className="qg-toggle__input"
+          checked={enabled}
+          onChange={(e) => toggle(e.target.checked)}
+        />
+        <span className="qg-toggle__label">
+          <FormattedMessage id="employee.extras.toggle.enable" />
+        </span>
+      </label>
 
-        {enabled && (
-          <Stack gap="md">
-            <Field
-              label={
-                <FormattedMessage
-                  id="employee.premio.amount"
-                  values={{ max: <Money amount={pdrSostitutiva.maxAmount} whole /> }}
-                />
-              }
-              hint={<FormattedMessage id="employee.premio.hint" values={{ rate: rateFormatted }} />}
-              type="number"
-              min={0}
-              max={pdrSostitutiva.maxAmount}
-              step={100}
-              value={current.amount}
-              onChange={(e) => onChange({ amount: Math.max(0, Number(e.target.value)) })}
-              trailing="€"
-              inputMode="numeric"
+      {enabled && (
+        <Field
+          label={
+            <FormattedMessage
+              id="employee.premio.amount"
+              values={{ max: <Money amount={pdrSostitutiva.maxAmount} whole /> }}
             />
-          </Stack>
-        )}
-      </div>
-    </details>
+          }
+          hint={<FormattedMessage id="employee.premio.hint" values={{ rate: rateFormatted }} />}
+          type="number"
+          min={0}
+          max={pdrSostitutiva.maxAmount}
+          step={100}
+          value={current.amount}
+          onChange={(e) => onChange({ amount: Math.max(0, Number(e.target.value)) })}
+          trailing="€"
+          inputMode="numeric"
+        />
+      )}
+    </Stack>
   );
 }
