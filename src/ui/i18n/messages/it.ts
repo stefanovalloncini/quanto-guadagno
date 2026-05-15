@@ -31,9 +31,10 @@ export const it = {
   "home.available.apprenticeship.title": "Progressione apprendistato",
   "home.available.apprenticeship.body":
     "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante.",
+  "home.available.forfettario.title": "Partita IVA forfettario",
+  "home.available.forfettario.body":
+    "Reddito netto da fatturato con aliquota sostitutiva al 5% o 15% e contributi Gestione Separata.",
   "home.soon.badge": "In arrivo",
-  "home.soon.freelancer.title": "Partita IVA forfettario",
-  "home.soon.freelancer.body": "Aliquota al 5% o 15%, coefficienti per codice ATECO.",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
   "home.soon.tfr.title": "TFR",
@@ -140,6 +141,55 @@ export const it = {
   "apprenticeship.col.year": "Anno",
   "apprenticeship.col.percent": "% della destinazione",
   "apprenticeship.col.gross": "Lordo annuo",
+
+  "forfettario.eyebrow": "Strumento",
+  "forfettario.title": "Partita IVA <em>forfettario</em>.",
+  "forfettario.lede":
+    "Dal fatturato annuo ricavo il reddito imponibile, i contributi di Gestione Separata e l'imposta sostitutiva. Calcolo valido per i contribuenti in regime forfettario fino a {limit} di ricavi.",
+
+  "forfettario.form.revenue": "Fatturato annuo previsto",
+  "forfettario.form.revenue.hint":
+    "Compensi lordi annui che fatturerai con la partita IVA forfettaria.",
+  "forfettario.form.activity": "Attività esercitata",
+  "forfettario.form.activity.hint":
+    "Determina il coefficiente di redditività applicato al fatturato.",
+  "forfettario.form.year": "Anno fiscale",
+  "forfettario.form.year.hint": "Anno di riferimento per aliquote e massimali.",
+  "forfettario.form.yearsOfActivity": "Anni dall'apertura della partita IVA",
+  "forfettario.form.yearsOfActivity.hint":
+    "Nei primi 5 anni l'aliquota sostitutiva è ridotta al 5%.",
+  "forfettario.form.hasOtherPension": "Ho un'altra copertura previdenziale",
+  "forfettario.form.hasOtherPension.hint":
+    "Pensione, altra gestione INPS o lavoro dipendente: l'aliquota Gestione Separata scende al 24%.",
+  "forfettario.form.employeeCosts": "Spese annue per personale dipendente",
+  "forfettario.form.employeeCosts.hint": "Oltre {limit} si decade dal regime forfettario.",
+
+  "forfettario.eligibility.warning":
+    "Fatturato vicino al limite del regime ({percent}% di {limit}).",
+  "forfettario.eligibility.revenueExceeded":
+    "Fatturato oltre il limite di {limit}: il regime forfettario non è applicabile.",
+  "forfettario.eligibility.employeeCostsExceeded":
+    "Spese per personale oltre {limit}: il regime forfettario non è applicabile.",
+
+  "forfettario.summary.monthlyNet": "Netto mensile",
+  "forfettario.summary.annualNet": "Netto annuo",
+  "forfettario.summary.annualNet.sub": "fatturato meno contributi e imposta sostitutiva",
+  "forfettario.summary.effectiveRate": "Pressione fiscale effettiva:",
+  "forfettario.summary.totalTaxes": "Totale prelievo:",
+  "forfettario.summary.regimeType": "Regime {rate} ({phase})",
+  "forfettario.summary.regimeType.startup": "primi 5 anni",
+  "forfettario.summary.regimeType.standard": "a regime",
+
+  "forfettario.breakdown.title": "Dettaglio del calcolo",
+  "forfettario.breakdown.revenue": "Fatturato annuo",
+  "forfettario.breakdown.coefficient": "Coefficiente di redditività",
+  "forfettario.breakdown.imponibileLordo": "Reddito imponibile lordo",
+  "forfettario.breakdown.inps": "Contributi Gestione Separata ({rate})",
+  "forfettario.breakdown.imponibileNetto": "Reddito imponibile netto",
+  "forfettario.breakdown.imponibileNetto.sub": "(imponibile lordo meno contributi INPS dedotti)",
+  "forfettario.breakdown.impostaSostitutiva": "Imposta sostitutiva ({rate})",
+  "forfettario.breakdown.totalTaxes": "Totale imposte e contributi",
+  "forfettario.breakdown.net": "Netto annuo",
 
   "employee.extras.title": "Impostazioni opzionali",
   "employee.extras.tabs.label": "Sezioni opzionali",

@@ -7,7 +7,6 @@ interface SoonTile {
 }
 
 const soonTiles: ReadonlyArray<SoonTile> = [
-  { titleId: "home.soon.freelancer.title", bodyId: "home.soon.freelancer.body" },
   { titleId: "home.soon.comparison.title", bodyId: "home.soon.comparison.body" },
   { titleId: "home.soon.tfr.title", bodyId: "home.soon.tfr.body" },
   { titleId: "home.soon.payslip.title", bodyId: "home.soon.payslip.body" },
@@ -50,6 +49,18 @@ export function HomePage() {
         >
           <p>
             <FormattedMessage id="home.available.apprenticeship.body" />
+          </p>
+        </Tile>
+
+        <Tile
+          variant="available"
+          to="/partita-iva-forfettario"
+          title={<FormattedMessage id="home.available.forfettario.title" />}
+          badge={<FormattedMessage id="home.feature.badge" />}
+          cta={<FormattedMessage id="home.feature.cta" />}
+        >
+          <p>
+            <FormattedMessage id="home.available.forfettario.body" />
           </p>
         </Tile>
 

@@ -26,10 +26,16 @@ describe("HomePage", () => {
     expect(tile).toHaveAttribute("href", "/calcola-stipendio");
   });
 
-  it("renders exactly seven coming-soon tiles (badge text 'In arrivo')", () => {
+  it("renders the available forfettario tile with the correct route", () => {
+    render(wrap(<HomePage />));
+    const tile = screen.getByRole("link", { name: /Partita IVA forfettario/i });
+    expect(tile).toHaveAttribute("href", "/partita-iva-forfettario");
+  });
+
+  it("renders six coming-soon tiles after freelancer was promoted to available", () => {
     render(wrap(<HomePage />));
     const soon = screen.getAllByText(/In arrivo/i);
-    expect(soon).toHaveLength(7);
+    expect(soon).toHaveLength(6);
   });
 
   it("renders the open-source shimmer span in the footnote", () => {

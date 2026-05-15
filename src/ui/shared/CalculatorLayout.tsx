@@ -1,10 +1,13 @@
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
+
+type MessageValue = string | number | bigint | boolean | ReactElement | undefined;
 
 interface CalculatorLayoutProps {
   readonly eyebrowId: string;
   readonly titleId: string;
   readonly ledeId: string;
+  readonly ledeValues?: Record<string, MessageValue>;
   readonly form: ReactNode;
   readonly results: ReactNode;
 }
@@ -13,6 +16,7 @@ export function CalculatorLayout({
   eyebrowId,
   titleId,
   ledeId,
+  ledeValues,
   form,
   results,
 }: CalculatorLayoutProps) {
@@ -26,7 +30,7 @@ export function CalculatorLayout({
           <FormattedMessage id={titleId} values={{ em: (chunks) => <em>{chunks}</em> }} />
         </h1>
         <p className="qg-lede">
-          <FormattedMessage id={ledeId} />
+          <FormattedMessage id={ledeId} {...(ledeValues && { values: ledeValues })} />
         </p>
       </header>
 

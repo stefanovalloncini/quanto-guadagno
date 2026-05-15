@@ -33,9 +33,10 @@ export const en: Record<MessageKey, string> = {
   "home.available.apprenticeship.title": "Apprenticeship progression",
   "home.available.apprenticeship.body":
     "Estimate year-by-year salary during professional apprenticeship contracts.",
+  "home.available.forfettario.title": "Self-employed (forfettario)",
+  "home.available.forfettario.body":
+    "Net income from invoiced revenue: 5% or 15% substitute tax and Gestione Separata contributions.",
   "home.soon.badge": "Coming back",
-  "home.soon.freelancer.title": "Self-employed (forfettario)",
-  "home.soon.freelancer.body": "Flat rate 5% or 15%, coefficients per ATECO code.",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
   "home.soon.tfr.title": "TFR",
@@ -139,6 +140,53 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.col.year": "Year",
   "apprenticeship.col.percent": "% of target",
   "apprenticeship.col.gross": "Gross annual",
+
+  "forfettario.eyebrow": "Tool",
+  "forfettario.title": "Self-employed <em>forfettario</em>.",
+  "forfettario.lede":
+    "From annual invoiced revenue I derive taxable income, Gestione Separata contributions and the substitute tax. Valid for forfettario taxpayers up to {limit} of revenue.",
+
+  "forfettario.form.revenue": "Expected annual revenue",
+  "forfettario.form.revenue.hint":
+    "Gross amounts you will invoice over the year on your forfettario VAT number.",
+  "forfettario.form.activity": "Business activity",
+  "forfettario.form.activity.hint": "Determines the profitability coefficient applied to revenue.",
+  "forfettario.form.year": "Tax year",
+  "forfettario.form.year.hint": "Reference year for rates and ceilings.",
+  "forfettario.form.yearsOfActivity": "Years since VAT opened",
+  "forfettario.form.yearsOfActivity.hint":
+    "In the first 5 years the substitute tax is reduced to 5%.",
+  "forfettario.form.hasOtherPension": "I have other pension coverage",
+  "forfettario.form.hasOtherPension.hint":
+    "Pension, other INPS scheme or employment: Gestione Separata rate drops to 24%.",
+  "forfettario.form.employeeCosts": "Annual employee costs",
+  "forfettario.form.employeeCosts.hint": "Above {limit} you fall out of the forfettario regime.",
+
+  "forfettario.eligibility.warning": "Revenue close to the regime limit ({percent}% of {limit}).",
+  "forfettario.eligibility.revenueExceeded":
+    "Revenue above the {limit} limit: forfettario regime does not apply.",
+  "forfettario.eligibility.employeeCostsExceeded":
+    "Employee costs above {limit}: forfettario regime does not apply.",
+
+  "forfettario.summary.monthlyNet": "Monthly net",
+  "forfettario.summary.annualNet": "Annual net",
+  "forfettario.summary.annualNet.sub": "revenue minus contributions and substitute tax",
+  "forfettario.summary.effectiveRate": "Effective tax rate:",
+  "forfettario.summary.totalTaxes": "Total levy:",
+  "forfettario.summary.regimeType": "Regime {rate} ({phase})",
+  "forfettario.summary.regimeType.startup": "first 5 years",
+  "forfettario.summary.regimeType.standard": "standard",
+
+  "forfettario.breakdown.title": "Calculation breakdown",
+  "forfettario.breakdown.revenue": "Annual revenue",
+  "forfettario.breakdown.coefficient": "Profitability coefficient",
+  "forfettario.breakdown.imponibileLordo": "Gross taxable income",
+  "forfettario.breakdown.inps": "Gestione Separata contributions ({rate})",
+  "forfettario.breakdown.imponibileNetto": "Net taxable income",
+  "forfettario.breakdown.imponibileNetto.sub": "(gross taxable minus deducted INPS contributions)",
+  "forfettario.breakdown.impostaSostitutiva": "Substitute tax ({rate})",
+  "forfettario.breakdown.totalTaxes": "Total taxes and contributions",
+  "forfettario.breakdown.net": "Annual net",
 
   "employee.extras.title": "Optional settings",
   "employee.extras.tabs.label": "Optional sections",
