@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { MetricBlock, Money, Stack } from "@/ui/design-system/primitives";
+import { formatPercentage } from "@/domain/format.ts";
 import type { SalaryBreakdown } from "@/domain/calc";
 
 interface NetSalarySummaryProps {
@@ -8,7 +9,6 @@ interface NetSalarySummaryProps {
 }
 
 export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySummaryProps) {
-  const effectiveRate = breakdown.effectiveTaxRate * 100;
   const delta = breakdown.netAnnual - breakdown.grossAnnual;
 
   return (
@@ -39,7 +39,9 @@ export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySumma
         </span>
         <span className="qg-summary__rate">
           <FormattedMessage id="employee.summary.effectiveRate" />{" "}
-          <span className="qg-summary__rate-value">{effectiveRate.toFixed(1)}%</span>
+          <span className="qg-summary__rate-value">
+            {formatPercentage(breakdown.effectiveTaxRate)}
+          </span>
         </span>
       </div>
 
@@ -49,18 +51,6 @@ export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySumma
         </span>
         <Money amount={breakdown.grossAnnual} whole />
       </div>
-
-      {breakdown.tfrAnnual > 0 && (
-        <div className="qg-summary__tfr">
-          <span className="qg-summary__tfr-label">
-            <FormattedMessage id="employee.summary.tfr" />
-          </span>
-          <Money amount={breakdown.tfrMonthly} whole />
-          <span className="qg-summary__tfr-unit">
-            <FormattedMessage id="employee.summary.tfr.monthly" />
-          </span>
-        </div>
-      )}
 
       {breakdown.pdrNet > 0 && (
         <div className="qg-summary__pdr">

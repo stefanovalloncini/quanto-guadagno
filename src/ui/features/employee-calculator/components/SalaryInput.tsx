@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { Field, Money } from "@/ui/design-system/primitives";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
 
 const MAX_GROSS = 1_000_000;
 
@@ -19,14 +20,15 @@ export function SalaryInput({ value, onChange, grossMonthly }: SalaryInputProps)
           values={{ amount: <Money amount={grossMonthly} whole /> }}
         />
       }
-      type="number"
-      min={1}
-      max={MAX_GROSS}
-      step={100}
-      value={value}
-      onChange={(e) => onChange(Number(e.target.value))}
-      trailing="€"
+      type="text"
       inputMode="numeric"
+      autoComplete="off"
+      value={formatThousands(value)}
+      onChange={(e) => {
+        const n = Math.min(parseDigits(e.target.value), MAX_GROSS);
+        onChange(n);
+      }}
+      trailing="€"
     />
   );
 }

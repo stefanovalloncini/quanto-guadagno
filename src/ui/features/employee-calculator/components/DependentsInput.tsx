@@ -1,10 +1,10 @@
 import { FormattedMessage } from "react-intl";
 import type { DependentsInput as DependentsInputType } from "@/domain/calc";
-import { Field, Money, Stack } from "@/ui/design-system/primitives";
+import { SHARED_DEPENDENTS_DEDUCTION } from "@/domain/data";
+import { EnableToggle, Field, Money, Stack } from "@/ui/design-system/primitives";
+import { clampInt } from "@/ui/shared/numeric.ts";
 
-// Income limit for spouse dependent deduction (Art. 12 TUIR).
-// Matches the value in domain config (shared across all years).
-const SPOUSE_INCOME_LIMIT = 2_840.51;
+const SPOUSE_INCOME_LIMIT = SHARED_DEPENDENTS_DEDUCTION.dependentIncomeLimit;
 const MAX_CHILDREN = 10;
 const MAX_OTHER = 10;
 
@@ -19,12 +19,6 @@ const DEFAULT_VALUE: DependentsInputType = {
   otherDependents: 0,
 };
 
-function clampInt(raw: string, min: number, max: number): number {
-  const n = parseInt(raw, 10);
-  if (Number.isNaN(n)) return min;
-  return Math.max(min, Math.min(max, n));
-}
-
 export function DependentsInput({ value, onChange }: DependentsInputProps) {
   const current = value ?? DEFAULT_VALUE;
   const enabled = value !== null;
@@ -35,43 +29,25 @@ export function DependentsInput({ value, onChange }: DependentsInputProps) {
 
   return (
     <Stack gap="md">
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => toggle(e.target.checked)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.extras.toggle.enable" />
-        </span>
-      </label>
+      <EnableToggle checked={enabled} onChange={toggle} />
 
       {enabled && (
         <Stack gap="md">
-          <label className="qg-toggle">
-            <input
-              type="checkbox"
-              className="qg-toggle__input"
-              checked={current.hasSpouse}
-              onChange={(e) => {
-                const checked = e.target.checked;
-                if (checked) {
-                  onChange({ ...current, hasSpouse: true, spouseIncome: 0 });
-                } else {
-                  // Drop spouseIncome key entirely (exactOptionalPropertyTypes)
-                  onChange({
-                    hasSpouse: false,
-                    childrenOver21: current.childrenOver21,
-                    otherDependents: current.otherDependents,
-                  });
-                }
-              }}
-            />
-            <span className="qg-toggle__label">
-              <FormattedMessage id="employee.dependents.spouse" />
-            </span>
-          </label>
+          <EnableToggle
+            checked={current.hasSpouse}
+            onChange={(checked) => {
+              if (checked) {
+                onChange({ ...current, hasSpouse: true, spouseIncome: 0 });
+              } else {
+                onChange({
+                  hasSpouse: false,
+                  childrenOver21: current.childrenOver21,
+                  otherDependents: current.otherDependents,
+                });
+              }
+            }}
+            labelId="employee.dependents.spouse"
+          />
 
           {current.hasSpouse && (
             <div className="qg-extras__indent">

@@ -1,9 +1,9 @@
 export * from "./irpef.ts";
-export * from "./inps.ts";
 export * from "./workDeduction.ts";
 export * from "./trattamentoIntegrativo.ts";
 export * from "./taxWedgeCut.ts";
 export * from "./inpsExemption2024.ts";
+export * from "./inpsRates.ts";
 export * from "./composerTypes.ts";
 export * from "./composer.ts";
 export * from "./apprenticeship.ts";
@@ -13,5 +13,4 @@ export * from "./bonusCalculations.ts";
 export * from "./specialConditionsCalculations.ts";
 export * from "./fringeBenefitsCalculations.ts";
 export * from "./employerCostCalculations.ts";
-export * from "./netToGross.ts";
 export * from "./forfettario.ts";

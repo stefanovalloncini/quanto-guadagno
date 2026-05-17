@@ -7,6 +7,7 @@ import {
   SpecialConditionsInput,
   PremioRisultatoInput,
   FringeBenefitsInput,
+  InpsRateInput,
 } from "./components/index.ts";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
 
@@ -28,10 +29,34 @@ interface EmployeeExtrasProps {
 }
 
 export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
-  const { state } = calc;
+  const { state, update } = calc;
   const municipalPercent = state.municipalTaxRate * 100;
 
+  const inpsRatesActive =
+    state.companySize === "large" || state.isPublicEmployee || state.inpsOverride !== null;
+
   const groups: ReadonlyArray<GroupDef> = [
+    {
+      titleId: "employee.extras.group.contract",
+      sections: [
+        {
+          key: "inpsRates",
+          titleId: "employee.extras.section.inpsRates",
+          ledeId: "employee.extras.section.inpsRates.lede",
+          active: inpsRatesActive,
+          render: () => (
+            <InpsRateInput
+              value={{
+                companySize: state.companySize,
+                isPublicEmployee: state.isPublicEmployee,
+                inpsOverride: state.inpsOverride,
+              }}
+              onChange={(next) => update(next)}
+            />
+          ),
+        },
+      ],
+    },
     {
       titleId: "employee.extras.group.deductions",
       sections: [
@@ -40,7 +65,12 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
           titleId: "employee.extras.section.dependents",
           ledeId: "employee.extras.section.dependents.lede",
           active: state.dependents !== null,
-          render: () => <DependentsInput value={state.dependents} onChange={calc.setDependents} />,
+          render: () => (
+            <DependentsInput
+              value={state.dependents}
+              onChange={(dependents) => update({ dependents })}
+            />
+          ),
         },
         {
           key: "expenses",
@@ -50,7 +80,7 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
           render: () => (
             <ExpenseDeductionsInput
               value={state.expenseDeductions}
-              onChange={calc.setExpenseDeductions}
+              onChange={(expenseDeductions) => update({ expenseDeductions })}
             />
           ),
         },
@@ -62,7 +92,7 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
           render: () => (
             <SpecialConditionsInput
               value={state.specialConditions}
-              onChange={calc.setSpecialConditions}
+              onChange={(specialConditions) => update({ specialConditions })}
             />
           ),
         },
@@ -79,7 +109,7 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
           render: () => (
             <PremioRisultatoInput
               value={state.premioRisultato}
-              onChange={calc.setPremioRisultato}
+              onChange={(premioRisultato) => update({ premioRisultato })}
               taxYear={state.taxYear}
             />
           ),
@@ -92,7 +122,7 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
           render: () => (
             <FringeBenefitsInput
               value={state.fringeBenefits}
-              onChange={calc.setFringeBenefits}
+              onChange={(fringeBenefits) => update({ fringeBenefits })}
               taxYear={state.taxYear}
             />
           ),
@@ -126,7 +156,7 @@ export function EmployeeExtras({ calc }: EmployeeExtrasProps) {
             max={1}
             step={0.1}
             value={municipalPercent}
-            onChange={(e) => calc.setMunicipalTaxRate(Number(e.target.value) / 100)}
+            onChange={(e) => update({ municipalTaxRate: Number(e.target.value) / 100 })}
             trailing="%"
             inputMode="decimal"
           />

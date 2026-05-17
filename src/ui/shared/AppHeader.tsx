@@ -1,6 +1,7 @@
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle.tsx";
+import { LocaleToggle } from "./LocaleToggle.tsx";
 
 interface NavEntry {
   readonly to: string;
@@ -9,6 +10,8 @@ interface NavEntry {
 
 const navEntries: ReadonlyArray<NavEntry> = [
   { to: "/calcola-stipendio", id: "nav.employee" },
+  { to: "/progressione-apprendistato", id: "nav.apprenticeship" },
+  { to: "/partita-iva-forfettario", id: "nav.forfettario" },
   { to: "/fonti", id: "nav.sources" },
   { to: "/informazioni", id: "nav.about" },
 ];
@@ -41,7 +44,10 @@ export function AppHeader() {
             ))}
           </ul>
         </nav>
-        <ThemeToggle />
+        <div className="qg-header__actions">
+          <LocaleToggle />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

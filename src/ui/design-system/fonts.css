@@ -1,4 +1,4 @@
-/* Fraunces — display headings and editorial accents */
+/* Fraunces: display headings and editorial accents */
 
 @font-face {
   font-family: "Fraunces";
@@ -64,7 +64,7 @@
     U+A720-A7FF;
 }
 
-/* Familjen Grotesk — UI and body */
+/* Familjen Grotesk: UI and body */
 
 @font-face {
   font-family: "Familjen Grotesk";
@@ -154,7 +154,7 @@
     U+A720-A7FF;
 }
 
-/* IBM Plex Mono — monetary / numeric */
+/* IBM Plex Mono: monetary / numeric */
 
 @font-face {
   font-family: "IBM Plex Mono";

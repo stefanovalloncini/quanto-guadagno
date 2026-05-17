@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 interface MoneyProps {
   readonly amount: number;
   readonly whole?: boolean;
@@ -25,7 +23,6 @@ function getFormatter(whole: boolean): Intl.NumberFormat {
 }
 
 export function Money({ amount, whole = false, className }: MoneyProps) {
-  const formatted = useMemo(() => getFormatter(whole).format(amount), [amount, whole]);
   const cls = ["qg-money", className].filter(Boolean).join(" ");
-  return <span className={cls}>{formatted}</span>;
+  return <span className={cls}>{getFormatter(whole).format(amount)}</span>;
 }

@@ -1,3 +1,5 @@
+import { linearPhaseOut } from "./_math.ts";
+
 export interface SommaAggiuntivaBracket {
   readonly maxIncome: number;
   readonly rate: number;
@@ -19,12 +21,6 @@ export interface TaxWedgeCutResult {
   readonly detrazioneAggiuntiva: number;
   readonly total: number;
 }
-
-const linearPhaseOut = (value: number, start: number, end: number): number => {
-  if (end === start) return 0;
-  const span = end - start;
-  return Math.max(0, Math.min(1, (end - value) / span));
-};
 
 export function calculateSommaAggiuntiva(taxableIncome: number, cfg: TaxWedgeCutConfig): number {
   if (taxableIncome <= 0) return 0;

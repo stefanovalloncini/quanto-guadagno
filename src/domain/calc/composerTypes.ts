@@ -4,12 +4,14 @@ import type { ContractType } from "./employerCostCalculations.ts";
 import type { DependentsInput, ExpenseDeductionsInput } from "./deductionCalculations.ts";
 import type { PremioRisultatoInput } from "./bonusCalculations.ts";
 import type { SpecialConditionsInput } from "./specialConditionsCalculations.ts";
+import type { CompanySize, InpsRateOverride } from "./inpsRates.ts";
 
 export type { ContractType };
 export type { DependentsInput, ExpenseDeductionsInput };
 export type { PremioRisultatoInput };
 export type { SpecialConditionsInput };
 export type { FringeBenefitsInput };
+export type { CompanySize, InpsRateOverride };
 
 export type PaymentFrequency = 12 | 13 | 14;
 
@@ -20,6 +22,9 @@ export interface SalaryInput {
   readonly municipalTaxRate: number;
   readonly contractType?: ContractType;
   readonly paymentFrequency?: PaymentFrequency;
+  readonly companySize?: CompanySize;
+  readonly isPublicEmployee?: boolean;
+  readonly inpsOverride?: InpsRateOverride | null;
   readonly dependents?: DependentsInput | null;
   readonly expenseDeductions?: ExpenseDeductionsInput | null;
   readonly fringeBenefits?: FringeBenefitsInput | null;

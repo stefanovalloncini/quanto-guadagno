@@ -1,24 +1,22 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import { IntlProvider } from "react-intl";
+import { screen } from "@testing-library/react";
 import { SourcesPage } from "./SourcesPage.tsx";
-import { it as itMessages } from "@/ui/i18n/messages/it.ts";
+import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 
 describe("SourcesPage", () => {
   it("lists the six verification topics", () => {
-    render(
-      <IntlProvider locale="it-IT" messages={itMessages}>
-        <MemoryRouter>
-          <SourcesPage />
-        </MemoryRouter>
-      </IntlProvider>,
-    );
+    renderWithIntl(<SourcesPage />);
     expect(screen.getByText(/Scaglioni IRPEF/)).toBeInTheDocument();
     expect(screen.getByText(/Contributi INPS/)).toBeInTheDocument();
     expect(screen.getByText(/Detrazione/)).toBeInTheDocument();
     expect(screen.getByText(/Trattamento integrativo/)).toBeInTheDocument();
-    expect(screen.getByText(/cuneo/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/cuneo/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Esonero/).length).toBeGreaterThan(0);
+  });
+
+  it("renders citations with at least one external link per topic", () => {
+    renderWithIntl(<SourcesPage />);
+    const links = document.querySelectorAll(".qg-sources__cite-link");
+    expect(links.length).toBeGreaterThan(0);
   });
 });

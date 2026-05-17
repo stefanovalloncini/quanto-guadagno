@@ -74,7 +74,7 @@ describe("calculateGestioneSeparataContribution", () => {
   });
 });
 
-describe("calculateForfettario — golden vectors", () => {
+describe("calculateForfettario: golden vectors", () => {
   it("startup professionisti 30k, year 1 (5% sostitutiva)", () => {
     const result = calculateForfettario(
       {

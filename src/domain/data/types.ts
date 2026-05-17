@@ -1,14 +1,11 @@
 import type { IrpefBracket } from "@/domain/calc/irpef.ts";
-import type { InpsConfig } from "@/domain/calc/inps.ts";
 import type { WorkDeductionConfig } from "@/domain/calc/workDeduction.ts";
 import type { TrattamentoIntegrativoConfig } from "@/domain/calc/trattamentoIntegrativo.ts";
 import type { TaxWedgeCutConfig } from "@/domain/calc/taxWedgeCut.ts";
 import type { InpsExemption2024Config } from "@/domain/calc/inpsExemption2024.ts";
 import type { ForfettarioConfig, GestioneSeparataConfig } from "@/domain/calc/forfettario.ts";
 
-// Re-export calc-layer config types so domain/data is the single import for consumers.
 export type {
-  InpsConfig,
   WorkDeductionConfig,
   TrattamentoIntegrativoConfig,
   TaxWedgeCutConfig,
@@ -19,7 +16,18 @@ export type {
 
 export type TaxYear = 2024 | 2025 | 2026;
 
-// ─── Region ──────────────────────────────────────────────────────────────────
+export interface InpsConfig {
+  readonly standardRate: number;
+  readonly aboveCeilingRate: number;
+  readonly ceiling: number;
+  readonly massimale: number;
+  readonly apprenticeshipRate?: number;
+  // Addizionale CIGS (Cassa Integrazione Guadagni Straordinaria) per aziende
+  // industriali con più di 15 dipendenti. Art. 9 L. 407/1990.
+  readonly largeCompanyAdditionalRate?: number;
+  // Aliquota IVS dipendenti pubblici (Gestione Dipendenti Pubblici, ex-INPDAP).
+  readonly publicEmployeeRate?: number;
+}
 
 export type RegionCode =
   | "piemonte"
@@ -57,8 +65,6 @@ export interface Region {
   readonly exemptionThreshold?: number;
 }
 
-// ─── Dependents deduction ────────────────────────────────────────────────────
-
 export interface SpouseDeductionThreshold {
   readonly income: number;
   readonly deduction: number;
@@ -72,8 +78,6 @@ export interface DependentsDeductionConfig {
   readonly dependentIncomeLimitYoung: number;
 }
 
-// ─── Expense deductions ───────────────────────────────────────────────────────
-
 export interface ExpenseDeductionsConfig {
   readonly maxMortgageInterest: number;
   readonly medicalExpenseFloor: number;
@@ -81,15 +85,11 @@ export interface ExpenseDeductionsConfig {
   readonly standardDeductionRate: number;
 }
 
-// ─── Employer INPS ────────────────────────────────────────────────────────────
-
 export interface EmployerInpsConfig {
   readonly rate: number;
   readonly aboveCeilingRate?: number;
   readonly apprenticeshipRate: number;
 }
-
-// ─── TFR ─────────────────────────────────────────────────────────────────────
 
 export interface TfrConfig {
   readonly accrualDivisor: number;
@@ -97,8 +97,6 @@ export interface TfrConfig {
   readonly inflationPercentage: number;
   readonly revaluationTaxRate: number;
 }
-
-// ─── Other employer costs ─────────────────────────────────────────────────────
 
 export interface OtherEmployerCostsConfig {
   readonly inailRate: number;
@@ -108,8 +106,6 @@ export interface OtherEmployerCostsConfig {
   readonly cigRate: number;
   readonly otherRate: number;
 }
-
-// ─── Fringe benefits ─────────────────────────────────────────────────────────
 
 export type PowertrainType = "bev" | "phev" | "other";
 
@@ -133,16 +129,12 @@ export interface FringeBenefitsConfig {
   readonly defaultConventionalKm: number;
 }
 
-// ─── Madre lavoratrice ────────────────────────────────────────────────────────
-
 export interface MadreLavoratriceConfig {
   readonly maxAnnualExemption: number;
   readonly maxMonthlyExemption: number;
   readonly minChildrenFullExemption: number;
   readonly maxYoungestChildAge: number;
 }
-
-// ─── Regime impatriati ────────────────────────────────────────────────────────
 
 export interface RegimeImpatriatiConfig {
   readonly standardExemptionRate: number;
@@ -151,14 +143,10 @@ export interface RegimeImpatriatiConfig {
   readonly durationYears: number;
 }
 
-// ─── Premio di risultato ──────────────────────────────────────────────────────
-
 export interface PdrSostitutivaConfig {
   readonly rate: number;
   readonly maxAmount: number;
 }
-
-// ─── Data sources ─────────────────────────────────────────────────────────────
 
 export interface TaxDataSource {
   readonly name: string;
@@ -173,18 +161,14 @@ export interface TaxDataSources {
   readonly irpef?: TaxDataSource;
 }
 
-// ─── Full yearly tax config ───────────────────────────────────────────────────
-
 export interface YearlyTaxConfig {
   readonly year: TaxYear;
   readonly inps: InpsConfig;
   readonly irpefBrackets: ReadonlyArray<IrpefBracket>;
   readonly workDeduction: WorkDeductionConfig;
   readonly trattamentoIntegrativo: TrattamentoIntegrativoConfig;
-  // Composer-layer convenience fields (derived from temporaryPolicies in the old repo)
   readonly taxWedgeCut: TaxWedgeCutConfig | null;
   readonly inpsExemption2024: InpsExemption2024Config | null;
-  // Extended fields
   readonly dependentsDeduction: DependentsDeductionConfig;
   readonly expenseDeductions: ExpenseDeductionsConfig;
   readonly employerInps: EmployerInpsConfig;

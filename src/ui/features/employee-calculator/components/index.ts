@@ -8,6 +8,7 @@ export { ExpenseDeductionsInput } from "./ExpenseDeductionsInput.tsx";
 export { PremioRisultatoInput } from "./PremioRisultatoInput.tsx";
 export { FringeBenefitsInput } from "./FringeBenefitsInput.tsx";
 export { SpecialConditionsInput } from "./SpecialConditionsInput.tsx";
+export { InpsRateInput } from "./InpsRateInput.tsx";
 export { NetSalarySummary } from "./NetSalarySummary.tsx";
 export { ResultsBreakdown } from "./ResultsBreakdown.tsx";
 export { EmployerCostView } from "./EmployerCostView.tsx";

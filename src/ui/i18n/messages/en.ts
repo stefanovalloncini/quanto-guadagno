@@ -10,8 +10,13 @@ export const en: Record<MessageKey, string> = {
   "error.boundary.body": "Reload the page to try again.",
 
   "nav.employee": "Calculator",
+  "nav.apprenticeship": "Apprenticeship",
+  "nav.forfettario": "Forfettario",
   "nav.sources": "Sources",
   "nav.about": "About",
+
+  "locale.aria.switch":
+    "Switch to {next, select, it {Italian} en {English} other {other language}}",
 
   "theme.prefix": "Theme:",
   "theme.label.light": "light",
@@ -24,14 +29,14 @@ export const en: Record<MessageKey, string> = {
 
   "home.hero.title": "What I really <em>take home</em>.",
   "home.hero.lede":
-    "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. Open source, no account, no tracker.",
+    "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. <shimmer>Open source</shimmer>, no account, no tracker.",
   "home.feature.badge": "Available",
   "home.feature.title": "Net salary from gross",
   "home.feature.body":
     "Employee, tax year 2024, 2025 or 2026. Regional rate, work deduction, trattamento integrativo, tax-wedge cut.",
   "home.feature.cta": "Open the calculator",
-  "home.feature.specimen.gross": "Annual gross ",
-  "home.feature.specimen.net": "Monthly net ",
+  "home.feature.specimen.gross": "Annual gross",
+  "home.feature.specimen.net": "Monthly net",
   "home.also.title": "Also available",
   "home.upcoming.title": "Coming back",
   "home.available.apprenticeship.title": "Apprenticeship progression",
@@ -46,22 +51,19 @@ export const en: Record<MessageKey, string> = {
   "home.soon.tfr.title": "TFR",
   "home.soon.tfr.body": "Long-term severance simulation.",
   "home.soon.payslip.title": "Payslip",
-  "home.soon.payslip.body": "Monthly view with deductions and contributions separated.",
+  "home.soon.payslip.body": "Monthly view, deductions and contributions broken out.",
   "home.soon.statistics.title": "Income percentile",
   "home.soon.statistics.body": "Where you sit relative to ISTAT data.",
   "home.soon.inflation.title": "Inflation",
   "home.soon.inflation.body": "Purchasing power of your salary over time.",
   "home.soon.taxSystem.title": "How the tax system works",
   "home.soon.taxSystem.body": "Who pays, the tax wedge, where the money goes.",
-  "home.footnote":
-    "Project <shimmer>open source</shimmer> · no account · no tracker · code on GitHub",
 
   "employee.eyebrow": "Tool",
   "employee.title": "Net salary from <em>gross</em>.",
   "employee.lede":
     "Tax years 2024–2026. Regional and municipal rates are editable. The numbers are an estimate, not a substitute for the actual payslip.",
 
-  "employee.form.gross": "Annual gross salary",
   "employee.form.salary": "Annual gross salary",
   "employee.form.salary.monthly": "Monthly gross: {amount}",
   "employee.form.year": "Tax year",
@@ -81,21 +83,13 @@ export const en: Record<MessageKey, string> = {
   "employee.form.municipal": "Municipal addizionale rate",
   "employee.form.municipal.hint": "Changes by municipality of residence.",
 
-  "employee.results.monthly": "Net monthly",
-  "employee.results.monthlyEquivalent":
-    "That works out to {amount} per month over {frequency} instalments.",
-  "employee.results.annual": "Net annual",
-  "employee.results.annual.sub": "estimate over 12 months",
   "employee.results.detail": "Calculation breakdown",
-  "employee.results.howItsCalculated": "How we get there",
-  "employee.results.effective": "Effective tax rate:",
 
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",
   "employee.breakdown.irpefNet": "IRPEF net",
   "employee.breakdown.regional": "Regional surcharge",
   "employee.breakdown.municipal": "Municipal surcharge",
-  "employee.breakdown.deductions": "Work deductions + bonus",
   "employee.breakdown.trattamento": "Trattamento integrativo",
   "employee.breakdown.net": "Net annual",
 
@@ -117,6 +111,7 @@ export const en: Record<MessageKey, string> = {
   "sources.title": "Where the numbers come from",
   "sources.lede":
     "Every calculation is grounded in public documents. Below, in compact form, the origin of each component.",
+  "sources.citations": "References",
   "sources.irpef.title": "IRPEF brackets",
   "sources.irpef.body":
     "Progressive rates 2024–2026 from Agenzia delle Entrate (D.lgs. 216/2023 and amendments).",
@@ -147,6 +142,11 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.col.year": "Year",
   "apprenticeship.col.percent": "% of target",
   "apprenticeship.col.gross": "Gross annual",
+  "apprenticeship.col.net": "Monthly net (estimate)",
+  "apprenticeship.row.netUnit": "/ month",
+  "apprenticeship.row.openLink": "Open the calculator for year {year}",
+  "apprenticeship.results.footnote":
+    "Monthly net is estimated with Lombardy rates, 0.8% municipal addizionale and an apprenticeship contract. Open any row to refine region, deductions and other inputs.",
 
   "forfettario.eyebrow": "Tool",
   "forfettario.title": "Self-employed <em>forfettario</em>.",
@@ -196,8 +196,12 @@ export const en: Record<MessageKey, string> = {
   "forfettario.breakdown.net": "Annual net",
 
   "employee.extras.title": "Personalize the calculation",
+  "employee.extras.group.contract": "Contract and INPS contributions",
   "employee.extras.group.deductions": "Deductions and personal situation",
   "employee.extras.group.compensation": "Additional compensation",
+  "employee.extras.section.inpsRates": "INPS rates",
+  "employee.extras.section.inpsRates.lede":
+    "Company size, public-sector employees, custom CCNL rates.",
   "employee.extras.section.dependents": "Dependents",
   "employee.extras.section.dependents.lede": "Spouse, children over 21, other dependents.",
   "employee.extras.section.expenses": "Deductible expenses",
@@ -214,6 +218,18 @@ export const en: Record<MessageKey, string> = {
   "employee.extras.toggle.enable": "Apply to the calculation",
   "employee.extras.municipal": "Municipal addizionale rate",
   "employee.extras.municipal.lookup": "Look up your rate",
+
+  "employee.inpsRates.largeCompany.label": "Company with more than 15 employees",
+  "employee.inpsRates.largeCompany.hint":
+    "Adds the 0.30% CIGS contribution to the employee rate, taking it from 9.19% to 9.49%.",
+  "employee.inpsRates.publicEmployee.label": "Public-sector employee",
+  "employee.inpsRates.publicEmployee.hint":
+    "Uses the 8.80% IVS rate from the INPS Public Employees scheme (ex-INPDAP).",
+  "employee.inpsRates.override.label": "Custom INPS rates",
+  "employee.inpsRates.override.hint":
+    "Overrides the computed rates. Use only when your CCNL specifies non-standard values.",
+  "employee.inpsRates.override.employee": "Employee rate",
+  "employee.inpsRates.override.employer": "Employer rate",
 
   "employee.dependents.title": "Dependent family members",
   "employee.dependents.spouse": "Dependent spouse",
@@ -304,8 +320,6 @@ export const en: Record<MessageKey, string> = {
   "employee.summary.delta": "Gross-to-net difference:",
   "employee.summary.effectiveRate": "Effective tax rate:",
   "employee.summary.gross": "Gross annual",
-  "employee.summary.tfr": "TFR accrual",
-  "employee.summary.tfr.monthly": "per month",
   "employee.summary.pdr": "Performance bonus (net)",
 
   "employee.breakdown.title": "Tax breakdown",
@@ -330,7 +344,10 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.pdrNet": "Bonus net",
   "employee.breakdown.netMonthly": "Net monthly:",
 
-  "employee.employer.title": "Cost to employer",
+  "employee.employer.section": "Employer side",
+  "employee.employer.youTake": "You take home",
+  "employee.employer.companyPays": "The company pays",
+  "employee.employer.insight": "Every net euro you receive costs the company {ratio}.",
   "employee.employer.inps": "Employer INPS contributions",
   "employee.employer.tfr": "TFR accrual",
   "employee.employer.otherCosts": "Other employer costs",
@@ -342,7 +359,6 @@ export const en: Record<MessageKey, string> = {
   "employee.employer.other": "Other contributions",
   "employee.employer.totalOtherCosts": "Total other costs",
   "employee.employer.total": "Total company cost",
-  "employee.employer.multiplier": "The employee costs {percent}% more than their gross salary",
   "employee.employer.disclaimer":
     "Does not include non-contractual costs (training, equipment, benefits, etc.)",
 };

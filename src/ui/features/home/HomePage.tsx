@@ -24,7 +24,10 @@ export function HomePage() {
           <FormattedMessage id="home.hero.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
         </h1>
         <p className="qg-lede">
-          <FormattedMessage id="home.hero.lede" />
+          <FormattedMessage
+            id="home.hero.lede"
+            values={{ shimmer: (chunks) => <span className="qg-shimmer">{chunks}</span> }}
+          />
         </p>
       </header>
 
@@ -69,7 +72,6 @@ export function HomePage() {
             variant="available"
             to="/partita-iva-forfettario"
             title={<FormattedMessage id="home.available.forfettario.title" />}
-            badge={<FormattedMessage id="home.feature.badge" />}
             cta={<FormattedMessage id="home.feature.cta" />}
           >
             <p>
@@ -81,7 +83,6 @@ export function HomePage() {
             variant="available"
             to="/progressione-apprendistato"
             title={<FormattedMessage id="home.available.apprenticeship.title" />}
-            badge={<FormattedMessage id="home.feature.badge" />}
             cta={<FormattedMessage id="home.feature.cta" />}
           >
             <p>
@@ -103,15 +104,6 @@ export function HomePage() {
           ))}
         </ul>
       </section>
-
-      <footer className="qg-home__footnote">
-        <FormattedMessage
-          id="home.footnote"
-          values={{
-            shimmer: (chunks) => <span className="qg-shimmer">{chunks}</span>,
-          }}
-        />
-      </footer>
     </section>
   );
 }

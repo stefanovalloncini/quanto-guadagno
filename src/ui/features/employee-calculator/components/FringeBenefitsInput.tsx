@@ -6,7 +6,7 @@ import type {
   HealthInsuranceInput,
   WelfareInput,
 } from "@/domain/data";
-import { Field, OptionToggle, Stack } from "@/ui/design-system/primitives";
+import { EnableToggle, Field, OptionToggle, Stack } from "@/ui/design-system/primitives";
 import { CompanyCarSection } from "./fringeBenefits/CompanyCarSection.tsx";
 import { MealVouchersCard } from "./fringeBenefits/MealVouchersCard.tsx";
 import { WelfareCard } from "./fringeBenefits/WelfareCard.tsx";
@@ -37,17 +37,7 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
 
   return (
     <Stack gap="md">
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => onChange(e.target.checked ? EMPTY : null)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.extras.toggle.enable" />
-        </span>
-      </label>
+      <EnableToggle checked={enabled} onChange={(c) => onChange(c ? EMPTY : null)} />
 
       {enabled && (
         <div className="qg-options">

@@ -1,7 +1,7 @@
 import { FormattedMessage, useIntl } from "react-intl";
 import type { PremioRisultatoInput as PremioRisultatoInputType } from "@/domain/calc";
 import { getTaxConfig, type SupportedYear } from "@/domain/data";
-import { Field, Money, Stack } from "@/ui/design-system/primitives";
+import { EnableToggle, Field, Money, Stack } from "@/ui/design-system/primitives";
 
 interface PremioRisultatoInputProps {
   readonly value: PremioRisultatoInputType | null;
@@ -27,17 +27,7 @@ export function PremioRisultatoInput({ value, onChange, taxYear }: PremioRisulta
 
   return (
     <Stack gap="md">
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => toggle(e.target.checked)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.extras.toggle.enable" />
-        </span>
-      </label>
+      <EnableToggle checked={enabled} onChange={toggle} />
 
       {enabled && (
         <Field

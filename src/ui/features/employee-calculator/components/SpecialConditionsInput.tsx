@@ -1,51 +1,36 @@
-import { FormattedMessage } from "react-intl";
 import type {
   SpecialConditionsInput as SpecialConditionsInputType,
   RegimeImpatriatiInput,
   MadreLavoratriceInput,
 } from "@/domain/calc";
-import { Stack } from "@/ui/design-system/primitives";
+import { EnableToggle, Stack } from "@/ui/design-system/primitives";
 import { RegimeImpatriatiSection } from "./specialConditions/RegimeImpatriatiSection.tsx";
 import { MadreLavoratriceSection } from "./specialConditions/MadreLavoratriceSection.tsx";
-
-// The old UI had a separate "sector" selector (private/public) here.
-// In our model ContractType already captures this distinction, so sector
-// is derived in the hook and never surfaced as a user input.
 
 function withImpatriati(
   current: SpecialConditionsInputType,
   next: RegimeImpatriatiInput | undefined,
 ): SpecialConditionsInputType {
-  if (next === undefined) {
-    const { madreLavoratrice } = current;
-    if (madreLavoratrice !== undefined) {
-      return { sector: current.sector, madreLavoratrice };
-    }
-    return { sector: current.sector };
-  }
   const { madreLavoratrice } = current;
-  if (madreLavoratrice !== undefined) {
-    return { sector: current.sector, regimeImpatriati: next, madreLavoratrice };
+  if (next === undefined) {
+    return madreLavoratrice !== undefined ? { madreLavoratrice } : {};
   }
-  return { sector: current.sector, regimeImpatriati: next };
+  return madreLavoratrice !== undefined
+    ? { regimeImpatriati: next, madreLavoratrice }
+    : { regimeImpatriati: next };
 }
 
 function withMadre(
   current: SpecialConditionsInputType,
   next: MadreLavoratriceInput | undefined,
 ): SpecialConditionsInputType {
-  if (next === undefined) {
-    const { regimeImpatriati } = current;
-    if (regimeImpatriati !== undefined) {
-      return { sector: current.sector, regimeImpatriati };
-    }
-    return { sector: current.sector };
-  }
   const { regimeImpatriati } = current;
-  if (regimeImpatriati !== undefined) {
-    return { sector: current.sector, regimeImpatriati, madreLavoratrice: next };
+  if (next === undefined) {
+    return regimeImpatriati !== undefined ? { regimeImpatriati } : {};
   }
-  return { sector: current.sector, madreLavoratrice: next };
+  return regimeImpatriati !== undefined
+    ? { regimeImpatriati, madreLavoratrice: next }
+    : { madreLavoratrice: next };
 }
 
 interface SpecialConditionsInputProps {
@@ -53,27 +38,15 @@ interface SpecialConditionsInputProps {
   readonly onChange: (next: SpecialConditionsInputType | null) => void;
 }
 
-const DEFAULT_VALUE: SpecialConditionsInputType = { sector: "private" };
-
 export function SpecialConditionsInput({ value, onChange }: SpecialConditionsInputProps) {
-  const current = value ?? DEFAULT_VALUE;
+  const current = value ?? {};
   const enabled = value !== null;
 
-  const toggle = (checked: boolean) => onChange(checked ? DEFAULT_VALUE : null);
+  const toggle = (checked: boolean) => onChange(checked ? {} : null);
 
   return (
     <Stack gap="md">
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => toggle(e.target.checked)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.extras.toggle.enable" />
-        </span>
-      </label>
+      <EnableToggle checked={enabled} onChange={toggle} />
 
       {enabled && (
         <div className="qg-options">

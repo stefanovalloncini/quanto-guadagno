@@ -87,10 +87,15 @@ export const SHARED_REGIME_IMPATRIATI: RegimeImpatriatiConfig = {
   durationYears: 5,
 };
 
-// Raw INPS rates — used directly in per-year config objects
 export const SHARED_INPS_STANDARD_RATE = 0.0919;
 export const SHARED_INPS_ABOVE_CEILING_RATE = 0.1019;
 export const SHARED_INPS_APPRENTICESHIP_RATE = 0.0584;
+// Addizionale CIGS 0,30% a carico lavoratore per aziende > 15 dipendenti.
+// Fonte: Art. 9 c. 1 L. 407/1990, confermato dalle circolari INPS annuali.
+export const SHARED_INPS_LARGE_COMPANY_ADDITIONAL_RATE = 0.003;
+// Aliquota IVS dipendenti pubblici 8,80%.
+// Fonte: Gestione Dipendenti Pubblici INPS (ex-INPDAP), Art. 22 L. 335/1995.
+export const SHARED_INPS_PUBLIC_EMPLOYEE_RATE = 0.088;
 
 // Forfettario — Art. 1, commi 54-89, L. 190/2014, novellato da L. 197/2022 (Bilancio 2023)
 // Soglia ricavi €85.000 e tetto costi dipendenti €20.000 in vigore dal 2023.
@@ -107,7 +112,6 @@ export const SHARED_FORFETTARIO: ForfettarioConfig = {
 export const SHARED_GESTIONE_SEPARATA_FULL_RATE = 0.2607;
 export const SHARED_GESTIONE_SEPARATA_REDUCED_RATE = 0.24;
 
-// Fringe benefits — shared thresholds
 export const SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD = 8;
 export const SHARED_HEALTH_INSURANCE_THRESHOLD = 3615.2;
 export const SHARED_DEFAULT_CONVENTIONAL_KM = 15_000;

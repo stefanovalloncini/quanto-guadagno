@@ -6,7 +6,7 @@ type Variant = "feature" | "available" | "soon";
 interface TileBase {
   readonly variant: Variant;
   readonly title: ReactNode;
-  readonly badge: ReactNode;
+  readonly badge?: ReactNode;
   readonly children: ReactNode;
 }
 
@@ -29,7 +29,7 @@ export function Tile(props: TileProps) {
 
   const body = (
     <>
-      <span className="qg-tile__badge">{badge}</span>
+      {badge !== undefined && <span className="qg-tile__badge">{badge}</span>}
       <h2 className="qg-tile__title">{title}</h2>
       <div className="qg-tile__body">{children}</div>
     </>

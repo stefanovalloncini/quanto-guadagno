@@ -18,7 +18,10 @@ export function ThemeToggle() {
       aria-label={intl.formatMessage({ id: "theme.aria.cycle" })}
     >
       <span className="qg-theme-toggle__label">
-        <FormattedMessage id="theme.prefix" /> <FormattedMessage id={LABEL_BY_THEME[theme]} />
+        <span className="qg-theme-toggle__prefix">
+          <FormattedMessage id="theme.prefix" />
+        </span>{" "}
+        <FormattedMessage id={LABEL_BY_THEME[theme]} />
       </span>
     </button>
   );

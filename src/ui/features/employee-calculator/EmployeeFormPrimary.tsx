@@ -13,13 +13,13 @@ interface EmployeeFormPrimaryProps {
 }
 
 export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
-  const { state } = calc;
+  const { state, update } = calc;
 
   return (
     <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
       <SalaryInput
         value={state.grossAnnual}
-        onChange={calc.setGross}
+        onChange={(grossAnnual) => update({ grossAnnual })}
         grossMonthly={calc.result.grossMonthly}
       />
 
@@ -27,17 +27,20 @@ export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
         <YearSelector
           value={state.taxYear}
           supportedYears={SUPPORTED_YEARS}
-          onChange={calc.setTaxYear}
+          onChange={(taxYear) => update({ taxYear })}
         />
         <PaymentFrequencySelector
           value={state.paymentFrequency}
-          onChange={calc.setPaymentFrequency}
+          onChange={(paymentFrequency) => update({ paymentFrequency })}
         />
       </div>
 
-      <ContractTypeSelect value={state.contractType} onChange={calc.setContractType} />
+      <ContractTypeSelect
+        value={state.contractType}
+        onChange={(contractType) => update({ contractType })}
+      />
 
-      <RegionSelector value={state.regionCode} onChange={calc.setRegionCode} />
+      <RegionSelector value={state.regionCode} onChange={(regionCode) => update({ regionCode })} />
     </form>
   );
 }

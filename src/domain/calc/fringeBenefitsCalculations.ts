@@ -127,8 +127,6 @@ export function calculateWelfareBenefit(
   readonly taxFreeThreshold: number;
   readonly taxableValue: number;
 } {
-  // Threshold depends on whether there are children — welfare may be undefined,
-  // so fall back to the general threshold.
   const threshold = welfare?.hasChildrenUnder18
     ? cfg.welfareThresholdWithChildren
     : cfg.welfareThresholdGeneral;

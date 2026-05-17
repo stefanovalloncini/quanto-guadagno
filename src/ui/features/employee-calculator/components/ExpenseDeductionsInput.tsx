@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import type { ExpenseDeductionsInput as ExpenseDeductionsInputType } from "@/domain/calc";
-import { Field, Stack } from "@/ui/design-system/primitives";
+import { EnableToggle, Field, Stack } from "@/ui/design-system/primitives";
 
 interface ExpenseDeductionsInputProps {
   readonly value: ExpenseDeductionsInputType | null;
@@ -21,17 +21,7 @@ export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInp
 
   return (
     <Stack gap="md">
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={enabled}
-          onChange={(e) => toggle(e.target.checked)}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="employee.extras.toggle.enable" />
-        </span>
-      </label>
+      <EnableToggle checked={enabled} onChange={toggle} />
 
       {enabled && (
         <Stack gap="md">

@@ -3,9 +3,10 @@ import { FormattedMessage } from "react-intl";
 import { Money } from "./Money.tsx";
 import { formatPercentage } from "@/domain/format.ts";
 import type { MessageValues } from "@/ui/shared/intl-types.ts";
+import type { MessageKey } from "@/ui/i18n/messages/it.ts";
 
 interface BreakdownRowProps {
-  readonly labelId: string;
+  readonly labelId: MessageKey;
   readonly labelValues?: MessageValues;
   readonly amount: number;
   readonly rate?: number;

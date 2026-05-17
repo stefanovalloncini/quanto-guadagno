@@ -1,13 +1,12 @@
 import { FormattedMessage } from "react-intl";
 import type { SalaryBreakdown } from "@/domain/calc";
-import { BreakdownRow, Money } from "@/ui/design-system/primitives";
+import { BreakdownRow } from "@/ui/design-system/primitives";
 
 interface ResultsBreakdownProps {
   readonly breakdown: SalaryBreakdown;
-  readonly paymentFrequency: 12 | 13 | 14;
 }
 
-export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdownProps) {
+export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
   const hasInpsExemption = breakdown.inpsExemption > 0;
   const hasMadreLavoratrice = breakdown.madreLavoratriceExemption > 0;
   const hasDependents = breakdown.dependentsDeduction > 0;
@@ -23,28 +22,6 @@ export function ResultsBreakdown({ breakdown, paymentFrequency }: ResultsBreakdo
       <h2 className="qg-results-breakdown__title">
         <FormattedMessage id="employee.results.detail" />
       </h2>
-
-      <div className="qg-results-breakdown__result">
-        <p className="qg-results-breakdown__result-label">
-          <FormattedMessage id="employee.breakdown.net" />
-        </p>
-        <p className="qg-results-breakdown__result-amount">
-          <Money amount={breakdown.netAnnual} whole />
-        </p>
-        <p className="qg-results-breakdown__result-sub">
-          <FormattedMessage
-            id="employee.results.monthlyEquivalent"
-            values={{
-              amount: <Money amount={breakdown.netAnnual / paymentFrequency} whole />,
-              frequency: paymentFrequency,
-            }}
-          />
-        </p>
-      </div>
-
-      <h3 className="qg-subhead qg-subhead--md qg-results-breakdown__how">
-        <FormattedMessage id="employee.results.howItsCalculated" />
-      </h3>
 
       <div className="qg-results-breakdown__flow">
         <BreakdownRow labelId="employee.breakdown.gross" amount={breakdown.grossAnnual} />

@@ -1,8 +1,7 @@
 import type { DependentsDeductionConfig, ExpenseDeductionsConfig } from "@/domain/data/types.ts";
-import { clamp } from "./_math.ts";
+import { clamp, linearPhaseOut } from "./_math.ts";
 
 // Phase-out thresholds for dependents deductions (Art. 12 TUIR).
-// Fonte: MEF — TUIR art. 12, commi 1 e 2.
 const SPOUSE_PHASE_OUT_RANGE = 40_000;
 const CHILD_PHASE_OUT_START = 95_000;
 const CHILD_PHASE_OUT_END = 120_000;
@@ -40,12 +39,6 @@ function calculateSpouseDeduction(
 
   const reductionFactor = clamp(1 - (taxableIncome - last.income) / SPOUSE_PHASE_OUT_RANGE, 0, 1);
   return last.deduction * reductionFactor;
-}
-
-function linearPhaseOut(value: number, phaseStart: number, phaseEnd: number): number {
-  if (value <= phaseStart) return 1;
-  if (value >= phaseEnd || phaseEnd === phaseStart) return 0;
-  return (phaseEnd - value) / (phaseEnd - phaseStart);
 }
 
 export function calculateDependentsDeduction(

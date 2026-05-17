@@ -8,6 +8,8 @@ export const it = {
   "error.boundary.body": "Ricarica la pagina per riprovare.",
 
   "nav.employee": "Calcolatore",
+  "nav.apprenticeship": "Apprendistato",
+  "nav.forfettario": "Forfettario",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
@@ -17,19 +19,21 @@ export const it = {
   "theme.label.system": "sistema",
   "theme.aria.cycle": "Cambia tema",
 
+  "locale.aria.switch": "Passa a {next, select, it {italiano} en {inglese} other {altra lingua}}",
+
   "footer.attribution": "Calcolatore di stipendio netto · uso personale e informativo",
   "footer.repo": "Codice su GitHub",
 
   "home.hero.title": "Quanto guadagno <em>davvero</em>.",
   "home.hero.lede":
-    "Calcolatore di stipendio netto basato sulle aliquote IRPEF e i contributi INPS in vigore. Open source, senza account, senza tracker.",
+    "Calcolatore di stipendio netto basato sulle aliquote IRPEF e i contributi INPS in vigore. <shimmer>Open source</shimmer>, senza account, senza tracker.",
   "home.feature.badge": "Disponibile",
   "home.feature.title": "Stipendio netto da lordo",
   "home.feature.body":
     "Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo.",
   "home.feature.cta": "Apri il calcolatore",
-  "home.feature.specimen.gross": "Lordo annuo ",
-  "home.feature.specimen.net": "Netto al mese ",
+  "home.feature.specimen.gross": "Lordo annuo",
+  "home.feature.specimen.net": "Netto al mese",
   "home.also.title": "Anche disponibili",
   "home.upcoming.title": "In arrivo",
   "home.available.apprenticeship.title": "Progressione apprendistato",
@@ -51,15 +55,12 @@ export const it = {
   "home.soon.inflation.body": "Potere d'acquisto del tuo stipendio nel tempo.",
   "home.soon.taxSystem.title": "Sistema fiscale",
   "home.soon.taxSystem.body": "Come funziona, chi paga, cuneo, dove vanno le tasse.",
-  "home.footnote":
-    "Progetto <shimmer>open source</shimmer> · nessun account · nessun tracker · codice su GitHub",
 
   "employee.eyebrow": "Strumento",
   "employee.title": "Stipendio netto da <em>lordo</em>.",
   "employee.lede":
     "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
 
-  "employee.form.gross": "Stipendio lordo annuo",
   "employee.form.salary": "Stipendio lordo annuo",
   "employee.form.salary.monthly": "Lordo mensile: {amount}",
   "employee.form.year": "Anno fiscale",
@@ -80,20 +81,13 @@ export const it = {
   "employee.form.municipal": "Aliquota addizionale comunale",
   "employee.form.municipal.hint": "Cambia in base al comune di residenza.",
 
-  "employee.results.monthly": "Netto mensile",
-  "employee.results.monthlyEquivalent": "Equivalente a {amount} al mese su {frequency} mensilità.",
-  "employee.results.annual": "Netto annuo",
-  "employee.results.annual.sub": "stima su 12 mensilità",
   "employee.results.detail": "Dettaglio del calcolo",
-  "employee.results.howItsCalculated": "Come ci si arriva",
-  "employee.results.effective": "Aliquota effettiva:",
 
   "employee.breakdown.gross": "Lordo annuo",
   "employee.breakdown.inps": "Contributi INPS",
   "employee.breakdown.irpefNet": "IRPEF netta",
   "employee.breakdown.regional": "Addizionale regionale",
   "employee.breakdown.municipal": "Addizionale comunale",
-  "employee.breakdown.deductions": "Detrazioni lavoro + bonus",
   "employee.breakdown.trattamento": "Trattamento integrativo",
   "employee.breakdown.net": "Netto annuo",
 
@@ -115,6 +109,7 @@ export const it = {
   "sources.title": "Da dove vengono i numeri",
   "sources.lede":
     "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
+  "sources.citations": "Riferimenti",
   "sources.irpef.title": "Scaglioni IRPEF",
   "sources.irpef.body":
     "Aliquote progressive 2024–2026 da Agenzia delle Entrate (D.lgs. 216/2023 e successive).",
@@ -147,6 +142,11 @@ export const it = {
   "apprenticeship.col.year": "Anno",
   "apprenticeship.col.percent": "% della destinazione",
   "apprenticeship.col.gross": "Lordo annuo",
+  "apprenticeship.col.net": "Netto mensile (stima)",
+  "apprenticeship.row.netUnit": "/ mese",
+  "apprenticeship.row.openLink": "Apri il calcolatore per l'anno {year}",
+  "apprenticeship.results.footnote":
+    "Il netto mensile è stimato con aliquota Lombardia, addizionale comunale 0,8% e contratto di apprendistato. Apri una riga per personalizzare regione, detrazioni e altre voci.",
 
   "forfettario.eyebrow": "Strumento",
   "forfettario.title": "Partita IVA <em>forfettario</em>.",
@@ -198,8 +198,12 @@ export const it = {
   "forfettario.breakdown.net": "Netto annuo",
 
   "employee.extras.title": "Personalizza il calcolo",
+  "employee.extras.group.contract": "Contratto e contributi INPS",
   "employee.extras.group.deductions": "Detrazioni e situazione personale",
   "employee.extras.group.compensation": "Compensi aggiuntivi",
+  "employee.extras.section.inpsRates": "Aliquote INPS",
+  "employee.extras.section.inpsRates.lede":
+    "Dimensione azienda, dipendenti pubblici, aliquote da CCNL non standard.",
   "employee.extras.section.dependents": "Familiari a carico",
   "employee.extras.section.dependents.lede": "Coniuge, figli over 21, altri familiari.",
   "employee.extras.section.expenses": "Spese detraibili e deducibili",
@@ -217,6 +221,18 @@ export const it = {
   "employee.extras.toggle.enable": "Applica al calcolo",
   "employee.extras.municipal": "Addizionale comunale",
   "employee.extras.municipal.lookup": "Cerca la tua aliquota",
+
+  "employee.inpsRates.largeCompany.label": "Azienda con più di 15 dipendenti",
+  "employee.inpsRates.largeCompany.hint":
+    "Applica l'addizionale CIGS dello 0,30% a carico del dipendente. L'aliquota passa da 9,19% a 9,49%.",
+  "employee.inpsRates.publicEmployee.label": "Dipendente pubblico",
+  "employee.inpsRates.publicEmployee.hint":
+    "Usa l'aliquota IVS dell'8,80% prevista dalla Gestione Dipendenti Pubblici INPS (ex-INPDAP).",
+  "employee.inpsRates.override.label": "Aliquote INPS personalizzate",
+  "employee.inpsRates.override.hint":
+    "Sostituisce le aliquote calcolate. Da usare solo se il CCNL prevede valori fuori standard.",
+  "employee.inpsRates.override.employee": "Aliquota a carico dipendente",
+  "employee.inpsRates.override.employer": "Aliquota a carico azienda",
 
   "employee.dependents.title": "Familiari a carico",
   "employee.dependents.spouse": "Coniuge a carico",
@@ -306,8 +322,6 @@ export const it = {
   "employee.summary.delta": "Differenza lordo-netto:",
   "employee.summary.effectiveRate": "Aliquota effettiva:",
   "employee.summary.gross": "Lordo annuo",
-  "employee.summary.tfr": "Quota TFR",
-  "employee.summary.tfr.monthly": "al mese",
   "employee.summary.pdr": "Premio di risultato netto",
 
   "employee.breakdown.title": "Dettaglio imposte",
@@ -332,7 +346,10 @@ export const it = {
   "employee.breakdown.pdrNet": "Premio netto",
   "employee.breakdown.netMonthly": "Netto mensile:",
 
-  "employee.employer.title": "Costo per il datore di lavoro",
+  "employee.employer.section": "Lato datore di lavoro",
+  "employee.employer.youTake": "Tu ricevi netto",
+  "employee.employer.companyPays": "Il datore paga",
+  "employee.employer.insight": "Ogni euro netto che ricevi costa {ratio} all'azienda.",
   "employee.employer.inps": "Contributi INPS datoriali",
   "employee.employer.tfr": "TFR (accantonamento)",
   "employee.employer.otherCosts": "Altri oneri datoriali",
@@ -344,7 +361,6 @@ export const it = {
   "employee.employer.other": "Altri contributi",
   "employee.employer.totalOtherCosts": "Totale altri oneri",
   "employee.employer.total": "Costo totale azienda",
-  "employee.employer.multiplier": "Il dipendente costa il {percent}% in più rispetto al lordo",
   "employee.employer.disclaimer":
     "Non include costi non contrattuali (formazione, attrezzatura, benefit, ecc.)",
 } as const;

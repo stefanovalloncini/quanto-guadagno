@@ -1,10 +1,9 @@
 import type { YearlyTaxConfig } from "@/domain/data/types.ts";
 import { getTaxConfig } from "@/domain/data/index.ts";
-import { calculateIrpefGross } from "./irpef.ts";
+import { applyProgressiveBrackets } from "./irpef.ts";
 import { calculateWorkDeduction } from "./workDeduction.ts";
 import { calculateTrattamentoIntegrativo } from "./trattamentoIntegrativo.ts";
 import { calculateTaxWedgeCut } from "./taxWedgeCut.ts";
-import { calculateInpsExemption2024 } from "./inpsExemption2024.ts";
 import { calculateLocalTaxes } from "./regionalTaxCalculations.ts";
 import {
   calculateDependentsDeduction,
@@ -15,9 +14,8 @@ import { calculateFringeBenefits, hasFringeBenefits } from "./fringeBenefitsCalc
 import {
   calculateRegimeImpatriatiAdjustment,
   calculateRegimeImpatriatiSavings,
-  calculateMadreLavoratriceExemption,
-  getSectorInpsRates,
 } from "./specialConditionsCalculations.ts";
+import { calculateEmployeeInps } from "./inpsContribution.ts";
 import {
   calculateTFR,
   calculateOtherEmployerCosts,
@@ -26,8 +24,7 @@ import {
 import { round } from "./_math.ts";
 import type { SalaryInput, SalaryBreakdown } from "./composerTypes.ts";
 
-// YearTaxConfig is the name consumers already depend on. Keep it stable.
-export type { YearlyTaxConfig as YearTaxConfig };
+export type { YearlyTaxConfig };
 export type { SalaryInput, SalaryBreakdown, PaymentFrequency } from "./composerTypes.ts";
 export type {
   ContractType,
@@ -38,57 +35,6 @@ export type {
   FringeBenefitsInput,
 } from "./composerTypes.ts";
 
-function calcEmployeeInps(
-  grossAnnual: number,
-  input: SalaryInput,
-  cfg: YearlyTaxConfig,
-): {
-  contribution: number;
-  effectiveRate: number;
-  exemption: number;
-  madreLavoratriceExemption: number;
-} {
-  const contractType = input.contractType ?? "indeterminato";
-  const specialConditions = input.specialConditions ?? null;
-  const paymentFrequency = input.paymentFrequency ?? 12;
-
-  const sector = specialConditions?.sector ?? "private";
-  const { standardRate, aboveCeilingRate } = getSectorInpsRates(sector, cfg.inps);
-  const baseRate =
-    contractType === "apprendistato" ? (cfg.inps.apprenticeshipRate ?? standardRate) : standardRate;
-  const aboveRate =
-    contractType === "apprendistato"
-      ? (cfg.inps.apprenticeshipRate ?? aboveCeilingRate)
-      : aboveCeilingRate;
-
-  const cappedGross = Math.min(grossAnnual, cfg.inps.massimale);
-  const belowCeiling = Math.min(cappedGross, cfg.inps.ceiling);
-  const aboveCeiling = Math.max(0, cappedGross - cfg.inps.ceiling);
-  const baseContribution = belowCeiling * baseRate + aboveCeiling * aboveRate;
-
-  const exemption = cfg.inpsExemption2024
-    ? calculateInpsExemption2024(
-        (grossAnnual / paymentFrequency) * (paymentFrequency === 14 ? 12 : paymentFrequency),
-        cfg.inpsExemption2024,
-      )
-    : 0;
-
-  const afterExemption = Math.max(0, baseContribution - exemption);
-
-  const madreLavoratriceExemption = cfg.madreLavoratrice
-    ? calculateMadreLavoratriceExemption(
-        afterExemption,
-        specialConditions?.madreLavoratrice,
-        cfg.madreLavoratrice,
-      )
-    : 0;
-
-  const contribution = Math.max(0, afterExemption - madreLavoratriceExemption);
-  const effectiveRate = grossAnnual > 0 ? contribution / grossAnnual : 0;
-
-  return { contribution, effectiveRate, exemption, madreLavoratriceExemption };
-}
-
 export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
   const cfg = getTaxConfig(input.taxYear);
   const grossAnnual = Math.max(0, input.grossAnnual);
@@ -98,9 +44,7 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
   const dependents = input.dependents ?? undefined;
   const expenseDeductions = input.expenseDeductions ?? undefined;
   const fringeBenefitsInput = input.fringeBenefits ?? undefined;
-  const specialConditions = input.specialConditions ?? undefined;
   const premioRisultato = input.premioRisultato ?? undefined;
-
   const fringeBenefitsBreakdown = calculateFringeBenefits(fringeBenefitsInput, cfg.fringeBenefits);
   const hasBenefits = hasFringeBenefits(fringeBenefitsInput);
 
@@ -110,18 +54,22 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
     effectiveRate: inpsRate,
     exemption: inpsExemption,
     madreLavoratriceExemption,
-  } = calcEmployeeInps(inpsBase, input, cfg);
+    standardRate: pdrInpsRate,
+  } = calculateEmployeeInps(inpsBase, input, cfg);
 
   const taxableIncome = inpsBase - inpsContribution;
 
   const regimeImpatriati = calculateRegimeImpatriatiAdjustment(
     taxableIncome,
-    specialConditions?.regimeImpatriati,
+    input.specialConditions?.regimeImpatriati,
     cfg.regimeImpatriati,
   );
 
-  const irpefGross = calculateIrpefGross(regimeImpatriati.adjustedTaxableIncome, cfg.irpefBrackets);
-  const irpefGrossFullIncome = calculateIrpefGross(taxableIncome, cfg.irpefBrackets);
+  const irpefGross = applyProgressiveBrackets(
+    regimeImpatriati.adjustedTaxableIncome,
+    cfg.irpefBrackets,
+  );
+  const irpefGrossFullIncome = applyProgressiveBrackets(taxableIncome, cfg.irpefBrackets);
   const regimeImpatriatiSavings = calculateRegimeImpatriatiSavings(
     irpefGrossFullIncome,
     irpefGross,
@@ -158,13 +106,6 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
 
   const totalTaxes = inpsContribution + irpefNet + regionalTax + municipalTax;
 
-  const sector = specialConditions?.sector ?? "private";
-  const { standardRate: inpsStandardRate } = getSectorInpsRates(sector, cfg.inps);
-  const pdrInpsRate =
-    contractType === "apprendistato"
-      ? (cfg.inps.apprenticeshipRate ?? inpsStandardRate)
-      : inpsStandardRate;
-
   const pdr = calculatePremioRisultato(
     premioRisultato,
     taxableIncome,
@@ -187,6 +128,7 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
     totalGrossForEmployer,
     contractType,
     cfg.employerInps,
+    input.inpsOverride ?? undefined,
   );
   const tfrResult = calculateTFR(totalGrossForEmployer, cfg.tfr);
   const otherCosts = calculateOtherEmployerCosts(

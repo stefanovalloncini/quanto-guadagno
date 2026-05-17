@@ -5,10 +5,11 @@ interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly hint?: ReactNode;
   readonly error?: ReactNode;
   readonly trailing?: ReactNode;
+  readonly compact?: boolean;
 }
 
 export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
-  { label, hint, error, trailing, id, ...rest },
+  { label, hint, error, trailing, compact, id, ...rest },
   ref,
 ) {
   const autoId = useId();
@@ -16,9 +17,10 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
   const hintId = hint ? `${inputId}-hint` : undefined;
   const errorId = error ? `${inputId}-err` : undefined;
   const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
+  const className = compact ? "qg-field qg-field--compact" : "qg-field";
 
   return (
-    <div className="qg-field">
+    <div className={className}>
       <label className="qg-field__label" htmlFor={inputId}>
         {label}
       </label>

@@ -1,8 +1,11 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { calculateSalaryBreakdown, type SalaryBreakdown } from "@/domain/calc";
 import type {
   ContractType,
   PaymentFrequency,
+  CompanySize,
+  InpsRateOverride,
   DependentsInput,
   ExpenseDeductionsInput,
   FringeBenefitsInput,
@@ -18,6 +21,9 @@ interface FormState {
   readonly municipalTaxRate: number;
   readonly contractType: ContractType;
   readonly paymentFrequency: PaymentFrequency;
+  readonly companySize: CompanySize;
+  readonly isPublicEmployee: boolean;
+  readonly inpsOverride: InpsRateOverride | null;
   readonly dependents: DependentsInput | null;
   readonly expenseDeductions: ExpenseDeductionsInput | null;
   readonly fringeBenefits: FringeBenefitsInput | null;
@@ -31,7 +37,10 @@ const DEFAULTS: FormState = {
   regionCode: "lombardia",
   municipalTaxRate: 0.008,
   contractType: "indeterminato",
-  paymentFrequency: 12,
+  paymentFrequency: 13,
+  companySize: "small",
+  isPublicEmployee: false,
+  inpsOverride: null,
   dependents: null,
   expenseDeductions: null,
   fringeBenefits: null,
@@ -39,56 +48,40 @@ const DEFAULTS: FormState = {
   premioRisultato: null,
 };
 
+const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
+  "indeterminato",
+  "determinato",
+  "apprendistato",
+];
+
+function isContractType(v: string | null): v is ContractType {
+  return v !== null && (CONTRACT_TYPES as ReadonlyArray<string>).includes(v);
+}
+
 export interface EmployeeCalculator {
   readonly state: FormState;
-  readonly setGross: (n: number) => void;
-  readonly setTaxYear: (year: SupportedYear) => void;
-  readonly setRegionCode: (code: RegionCode) => void;
-  readonly setMunicipalTaxRate: (rate: number) => void;
-  readonly setContractType: (type: ContractType) => void;
-  readonly setPaymentFrequency: (freq: PaymentFrequency) => void;
-  readonly setDependents: (value: DependentsInput | null) => void;
-  readonly setExpenseDeductions: (value: ExpenseDeductionsInput | null) => void;
-  readonly setFringeBenefits: (value: FringeBenefitsInput | null) => void;
-  readonly setSpecialConditions: (value: SpecialConditionsInput | null) => void;
-  readonly setPremioRisultato: (value: PremioRisultatoInput | null) => void;
+  readonly update: (patch: Partial<FormState>) => void;
   readonly result: SalaryBreakdown;
 }
 
 export function useEmployeeCalculator(): EmployeeCalculator {
-  const [state, setState] = useState<FormState>(DEFAULTS);
+  const [params] = useSearchParams();
+  const [state, setState] = useState<FormState>(() => {
+    const lordoParam = params.get("lordo");
+    const lordo = lordoParam !== null ? Number(lordoParam) : NaN;
+    const contratto = params.get("contratto");
+    return {
+      ...DEFAULTS,
+      grossAnnual: Number.isFinite(lordo) && lordo > 0 ? Math.floor(lordo) : DEFAULTS.grossAnnual,
+      contractType: isContractType(contratto) ? contratto : DEFAULTS.contractType,
+    };
+  });
 
-  const result = useMemo(
-    () =>
-      calculateSalaryBreakdown({
-        grossAnnual: state.grossAnnual,
-        taxYear: state.taxYear,
-        regionCode: state.regionCode,
-        municipalTaxRate: state.municipalTaxRate,
-        contractType: state.contractType,
-        paymentFrequency: state.paymentFrequency,
-        dependents: state.dependents,
-        expenseDeductions: state.expenseDeductions,
-        fringeBenefits: state.fringeBenefits,
-        specialConditions: state.specialConditions,
-        premioRisultato: state.premioRisultato,
-      }),
-    [state],
-  );
+  const update = useCallback((patch: Partial<FormState>) => {
+    setState((s) => ({ ...s, ...patch }));
+  }, []);
 
-  return {
-    state,
-    setGross: (grossAnnual) => setState((s) => ({ ...s, grossAnnual })),
-    setTaxYear: (taxYear) => setState((s) => ({ ...s, taxYear })),
-    setRegionCode: (regionCode) => setState((s) => ({ ...s, regionCode })),
-    setMunicipalTaxRate: (municipalTaxRate) => setState((s) => ({ ...s, municipalTaxRate })),
-    setContractType: (contractType) => setState((s) => ({ ...s, contractType })),
-    setPaymentFrequency: (paymentFrequency) => setState((s) => ({ ...s, paymentFrequency })),
-    setDependents: (dependents) => setState((s) => ({ ...s, dependents })),
-    setExpenseDeductions: (expenseDeductions) => setState((s) => ({ ...s, expenseDeductions })),
-    setFringeBenefits: (fringeBenefits) => setState((s) => ({ ...s, fringeBenefits })),
-    setSpecialConditions: (specialConditions) => setState((s) => ({ ...s, specialConditions })),
-    setPremioRisultato: (premioRisultato) => setState((s) => ({ ...s, premioRisultato })),
-    result,
-  };
+  const result = useMemo(() => calculateSalaryBreakdown(state), [state]);
+
+  return { state, update, result };
 }

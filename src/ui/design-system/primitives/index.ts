@@ -7,3 +7,4 @@ export { MetricBlock } from "./MetricBlock.tsx";
 export { Tile } from "./Tile.tsx";
 export { BreakdownRow } from "./BreakdownRow.tsx";
 export { OptionToggle } from "./OptionToggle.tsx";
+export { EnableToggle } from "./EnableToggle.tsx";

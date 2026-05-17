@@ -3,6 +3,7 @@ import type {
   TfrConfig,
   OtherEmployerCostsConfig,
 } from "@/domain/data/types.ts";
+import type { InpsRateOverride } from "./inpsRates.ts";
 
 export type ContractType = "indeterminato" | "determinato" | "apprendistato";
 
@@ -66,7 +67,11 @@ export function calculateEmployerInps(
   grossAnnual: number,
   contractType: ContractType,
   cfg: EmployerInpsConfig,
+  override?: InpsRateOverride,
 ): EmployerInpsResult {
+  if (override) {
+    return { contribution: grossAnnual * override.employerRate, rate: override.employerRate };
+  }
   const rate = contractType === "apprendistato" ? cfg.apprenticeshipRate : cfg.rate;
   return { contribution: grossAnnual * rate, rate };
 }

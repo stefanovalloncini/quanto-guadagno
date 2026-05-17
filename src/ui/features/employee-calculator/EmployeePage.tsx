@@ -1,4 +1,4 @@
-import { CalculatorLayout } from "@/ui/shared/CalculatorLayout.tsx";
+import { FormattedMessage } from "react-intl";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
 import { EmployerCostView } from "./components/EmployerCostView.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
@@ -10,22 +10,32 @@ export function EmployeePage() {
   const calc = useEmployeeCalculator();
 
   return (
-    <>
-      <CalculatorLayout
-        eyebrowId="employee.eyebrow"
-        titleId="employee.title"
-        ledeId="employee.lede"
-        form={<EmployeeFormPrimary calc={calc} />}
-        results={<EmployeeOverview calc={calc} />}
-      />
+    <section className="qg-employee">
+      <header className="qg-calc__hero">
+        <p className="qg-eyebrow">
+          <FormattedMessage id="employee.eyebrow" />
+        </p>
+        <h1>
+          <FormattedMessage id="employee.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
+        </h1>
+        <p className="qg-lede">
+          <FormattedMessage id="employee.lede" />
+        </p>
+      </header>
 
-      <section className="qg-employee-detail">
-        <EmployeeExtras calc={calc} />
-
-        <ResultsBreakdown breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
-
-        <EmployerCostView breakdown={calc.result} />
-      </section>
-    </>
+      <div className="qg-employee__grid">
+        <div className="qg-employee__main">
+          <EmployeeFormPrimary calc={calc} />
+          <EmployeeExtras calc={calc} />
+          <ResultsBreakdown breakdown={calc.result} />
+          <EmployerCostView breakdown={calc.result} />
+        </div>
+        <aside className="qg-employee__aside">
+          <div className="qg-calc__result">
+            <EmployeeOverview calc={calc} />
+          </div>
+        </aside>
+      </div>
+    </section>
   );
 }

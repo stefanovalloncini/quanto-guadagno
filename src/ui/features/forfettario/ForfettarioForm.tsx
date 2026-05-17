@@ -98,7 +98,8 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           min={0}
           max={100_000}
           step={500}
-          value={state.employeeCosts}
+          value={state.employeeCosts === 0 ? "" : state.employeeCosts}
+          placeholder="0"
           onChange={(e) => update({ employeeCosts: Number(e.target.value) })}
           trailing="€"
           inputMode="numeric"
