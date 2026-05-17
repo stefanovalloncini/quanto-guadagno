@@ -1420,3 +1420,104 @@
 .qg-notice--blocked li {
   margin: 0;
 }
+
+/* Money Journey — Sankey-style flow from costo azienda to netto. */
+.qg-journey {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-journey__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.qg-journey__lede {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  max-width: 62ch;
+}
+.qg-journey__figure {
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+.qg-journey__svg {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  display: block;
+}
+.qg-journey__flow {
+  fill: color-mix(in oklab, var(--ink-2) 18%, transparent);
+  transition: fill var(--transition);
+}
+.qg-journey__flow--kept {
+  fill: color-mix(in oklab, var(--accent) 55%, transparent);
+}
+.qg-journey__flow--cost {
+  fill: color-mix(in oklab, var(--warm) 38%, transparent);
+}
+.qg-journey__flow--employer {
+  fill: color-mix(in oklab, var(--ink-2) 22%, transparent);
+}
+.qg-journey__node {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 1;
+}
+.qg-journey__node--kept {
+  fill: var(--accent);
+}
+.qg-journey__node--cost {
+  fill: color-mix(in oklab, var(--warm) 80%, var(--ink));
+}
+.qg-journey__node--employer {
+  fill: var(--ink-2);
+}
+.qg-journey__node--source {
+  fill: var(--ink);
+}
+.qg-journey__legend {
+  display: grid;
+  gap: var(--space-2);
+}
+.qg-journey__legend-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-2) var(--space-4);
+}
+.qg-journey__legend-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--rule);
+  font-size: var(--text-sm);
+}
+.qg-journey__legend-item--source {
+  border-left-color: var(--ink);
+}
+.qg-journey__legend-item--passthrough,
+.qg-journey__legend-item--kept {
+  border-left-color: var(--accent);
+}
+.qg-journey__legend-item--employee-cost {
+  border-left-color: var(--warm);
+}
+.qg-journey__legend-item--employer-cost {
+  border-left-color: var(--ink-2);
+}
+.qg-journey__legend-label {
+  color: var(--ink-2);
+  flex: 1;
+}
+.qg-journey__legend-amount {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}

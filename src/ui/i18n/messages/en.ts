@@ -231,6 +231,18 @@ export const en: Record<MessageKey, string> = {
   "employee.inpsRates.override.employee": "Employee rate",
   "employee.inpsRates.override.employer": "Employer rate",
 
+  "moneyJourney.title": "From company cost to take-home pay",
+  "moneyJourney.lede":
+    "Every euro the company spends on you breaks down like this: part goes to contributions and accruals, the rest is your gross salary. The gross salary then splits between net pay, employee INPS, and taxes.",
+  "moneyJourney.node.costo": "Company cost",
+  "moneyJourney.node.ral": "Gross salary",
+  "moneyJourney.node.inpsAzienda": "Employer INPS",
+  "moneyJourney.node.tfr": "TFR accrual",
+  "moneyJourney.node.oneri": "Insurance and other costs",
+  "moneyJourney.node.netto": "Take-home net",
+  "moneyJourney.node.inpsDip": "Employee INPS",
+  "moneyJourney.node.tasse": "IRPEF and surcharges",
+
   "employee.dependents.title": "Dependent family members",
   "employee.dependents.spouse": "Dependent spouse",
   "employee.dependents.spouseIncome": "Annual spouse income",

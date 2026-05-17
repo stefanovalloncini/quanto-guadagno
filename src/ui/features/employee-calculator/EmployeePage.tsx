@@ -5,6 +5,7 @@ import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
 import { EmployeeFormPrimary } from "./EmployeeFormPrimary.tsx";
 import { EmployeeOverview } from "./EmployeeOverview.tsx";
 import { EmployeeExtras } from "./EmployeeExtras.tsx";
+import { MoneyJourney } from "./MoneyJourney.tsx";
 
 export function EmployeePage() {
   const calc = useEmployeeCalculator();
@@ -28,6 +29,7 @@ export function EmployeePage() {
           <EmployeeFormPrimary calc={calc} />
           <EmployeeExtras calc={calc} />
           <ResultsBreakdown breakdown={calc.result} />
+          <MoneyJourney breakdown={calc.result} />
           <EmployerCostView breakdown={calc.result} />
         </div>
         <aside className="qg-employee__aside">
