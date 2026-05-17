@@ -84,7 +84,13 @@ describe("computeMoneyJourney", () => {
   });
 
   it("stage 1 fills the available height once gaps are subtracted", () => {
-    const layout = computeMoneyJourney(makeBreakdown(), { width: 800, height: 400, gap: 4 });
+    const layout = computeMoneyJourney(makeBreakdown(), {
+      width: 800,
+      height: 400,
+      gap: 4,
+      leftPad: 0,
+      rightPad: 0,
+    });
     const byId = indexById(layout.nodes);
     const stage1Sum =
       byId.ral.height + byId.inpsAzienda.height + byId.tfr.height + byId.oneri.height;

@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import type { SalaryBreakdown } from "@/domain/calc";
-import { Money } from "@/ui/design-system/primitives";
-import { computeMoneyJourney, type NodeRole } from "./moneyJourneyLayout.ts";
+import { computeMoneyJourney, type JourneyNode, type NodeRole } from "./moneyJourneyLayout.ts";
 
 interface MoneyJourneyProps {
   readonly breakdown: SalaryBreakdown;
@@ -24,16 +23,72 @@ const NODE_CLASS_BY_ROLE: Record<NodeRole, string> = {
   "employer-cost": "qg-journey__node qg-journey__node--employer",
 };
 
+const CURRENCY = new Intl.NumberFormat("it-IT", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
+interface LabelPos {
+  readonly nodeId: string;
+  readonly x: number;
+  readonly y: number;
+  readonly anchor: "start" | "end";
+}
+
+const MIN_LABEL_SPACING = 32;
+
+function initialLabelPositions(nodes: ReadonlyArray<JourneyNode>): LabelPos[] {
+  return nodes.map((n) => ({
+    nodeId: n.id,
+    x: n.x + n.width + 10,
+    y: n.y + n.height / 2,
+    anchor: "start",
+  }));
+}
+
+// Stagger labels within a column so two adjacent small bars don't pile their
+// text on top of each other. We sort by y, then push later labels down until
+// they clear the previous one by MIN_LABEL_SPACING.
+function deconflict(positions: LabelPos[]): LabelPos[] {
+  const sorted = [...positions].sort((a, b) => a.y - b.y);
+  const out: LabelPos[] = [];
+  let lastY = -Infinity;
+  for (const pos of sorted) {
+    const y = Math.max(pos.y, lastY + MIN_LABEL_SPACING);
+    out.push({ ...pos, y });
+    lastY = y;
+  }
+  return out;
+}
+
+function applyAntiOverlap(nodes: ReadonlyArray<JourneyNode>): Map<string, LabelPos> {
+  const byColumn = new Map<number, LabelPos[]>();
+  for (const pos of initialLabelPositions(nodes)) {
+    const node = nodes.find((n) => n.id === pos.nodeId);
+    if (!node) continue;
+    const list = byColumn.get(node.column) ?? [];
+    list.push(pos);
+    byColumn.set(node.column, list);
+  }
+  const result = new Map<string, LabelPos>();
+  for (const list of byColumn.values()) {
+    for (const pos of deconflict(list)) result.set(pos.nodeId, pos);
+  }
+  return result;
+}
+
 export function MoneyJourney({ breakdown }: MoneyJourneyProps) {
   const intl = useIntl();
   const layout = useMemo(() => computeMoneyJourney(breakdown), [breakdown]);
+  const labelPositions = useMemo(() => applyAntiOverlap(layout.nodes), [layout.nodes]);
 
   if (layout.nodes.length === 0) return null;
 
-  const labelFor = (id: string, key: string): string =>
-    intl.formatMessage({ id: key, defaultMessage: id });
+  const labelFor = (node: JourneyNode): string =>
+    intl.formatMessage({ id: node.labelKey, defaultMessage: node.id });
 
-  // Lookup the target node for each flow so we can colour the flow by destination role.
   const nodeById = new Map(layout.nodes.map((n) => [n.id, n]));
 
   return (
@@ -50,7 +105,7 @@ export function MoneyJourney({ breakdown }: MoneyJourneyProps) {
       <figure className="qg-journey__figure">
         <svg
           className="qg-journey__svg"
-          viewBox={`0 0 ${layout.width} ${layout.height}`}
+          viewBox={`0 -8 ${layout.width} ${layout.height + 48}`}
           preserveAspectRatio="xMidYMid meet"
           role="img"
           aria-label={intl.formatMessage({ id: "moneyJourney.title" })}
@@ -84,17 +139,34 @@ export function MoneyJourney({ breakdown }: MoneyJourneyProps) {
               />
             ))}
           </g>
+          <g className="qg-journey__labels">
+            {layout.nodes.map((node) => {
+              const pos = labelPositions.get(node.id);
+              if (!pos) return null;
+              return (
+                <g
+                  key={node.id}
+                  className={`qg-journey__label qg-journey__label--${node.role}`}
+                  transform={`translate(${pos.x} ${pos.y})`}
+                >
+                  <text className="qg-journey__label-name" textAnchor={pos.anchor} y={-2}>
+                    {labelFor(node)}
+                  </text>
+                  <text className="qg-journey__label-amount" textAnchor={pos.anchor} y={14}>
+                    {CURRENCY.format(node.amount)}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
         </svg>
 
-        <figcaption className="qg-journey__legend">
-          <ul className="qg-journey__legend-list">
+        <figcaption className="qg-visually-hidden">
+          <FormattedMessage id="moneyJourney.title" />:
+          <ul>
             {layout.nodes.map((node) => (
-              <li
-                key={node.id}
-                className={`qg-journey__legend-item qg-journey__legend-item--${node.role}`}
-              >
-                <span className="qg-journey__legend-label">{labelFor(node.id, node.labelKey)}</span>
-                <Money amount={node.amount} whole className="qg-journey__legend-amount" />
+              <li key={node.id}>
+                {labelFor(node)}: {CURRENCY.format(node.amount)}
               </li>
             ))}
           </ul>

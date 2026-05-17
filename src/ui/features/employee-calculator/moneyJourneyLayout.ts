@@ -42,13 +42,17 @@ interface LayoutOptions {
   readonly height: number;
   readonly nodeWidth: number;
   readonly gap: number;
+  readonly leftPad: number;
+  readonly rightPad: number;
 }
 
 const DEFAULTS: LayoutOptions = {
-  width: 800,
-  height: 400,
-  nodeWidth: 18,
+  width: 960,
+  height: 320,
+  nodeWidth: 12,
   gap: 4,
+  leftPad: 0,
+  rightPad: 200,
 };
 
 function flowPath(
@@ -73,7 +77,7 @@ export function computeMoneyJourney(
   breakdown: SalaryBreakdown,
   opts: Partial<LayoutOptions> = {},
 ): JourneyLayout {
-  const { width, height, nodeWidth, gap } = { ...DEFAULTS, ...opts };
+  const { width, height, nodeWidth, gap, leftPad, rightPad } = { ...DEFAULTS, ...opts };
   const costo = breakdown.totalEmployerCost;
   const ral = breakdown.grossAnnual;
   const netto = breakdown.netAnnual;
@@ -93,9 +97,10 @@ export function computeMoneyJourney(
   const stage1Available = height - 3 * gap;
   const stage1Scale = stage1Available / stage1Total;
 
-  const x0 = 0;
-  const x1 = (width - nodeWidth) / 2;
-  const x2 = width - nodeWidth;
+  const chartWidth = width - rightPad - leftPad;
+  const x0 = leftPad;
+  const x1 = leftPad + (chartWidth - nodeWidth) / 2;
+  const x2 = leftPad + chartWidth - nodeWidth;
 
   // Stage 0: Costo, full column height
   const costoNode: JourneyNode = {

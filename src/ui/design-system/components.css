@@ -1441,32 +1441,27 @@
 }
 .qg-journey__figure {
   margin: 0;
-  display: grid;
-  gap: var(--space-4);
+  display: block;
 }
 .qg-journey__svg {
   width: 100%;
   height: auto;
-  max-height: 360px;
   display: block;
 }
 .qg-journey__flow {
-  fill: color-mix(in oklab, var(--ink-2) 18%, transparent);
-  transition: fill var(--transition);
+  fill: color-mix(in oklab, var(--ink-2) 16%, transparent);
 }
 .qg-journey__flow--kept {
   fill: color-mix(in oklab, var(--accent) 55%, transparent);
 }
 .qg-journey__flow--cost {
-  fill: color-mix(in oklab, var(--warm) 38%, transparent);
+  fill: color-mix(in oklab, var(--warm) 42%, transparent);
 }
 .qg-journey__flow--employer {
-  fill: color-mix(in oklab, var(--ink-2) 22%, transparent);
+  fill: color-mix(in oklab, var(--ink-2) 24%, transparent);
 }
 .qg-journey__node {
   fill: var(--ink);
-  stroke: var(--paper);
-  stroke-width: 1;
 }
 .qg-journey__node--kept {
   fill: var(--accent);
@@ -1480,46 +1475,37 @@
 .qg-journey__node--source {
   fill: var(--ink);
 }
-.qg-journey__legend {
-  display: grid;
-  gap: var(--space-2);
+.qg-journey__label-name {
+  font-family: var(--font-sans, inherit);
+  font-size: 12px;
+  fill: var(--ink-2);
+  dominant-baseline: middle;
 }
-.qg-journey__legend-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-2) var(--space-4);
-}
-.qg-journey__legend-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  padding-left: var(--space-3);
-  border-left: 3px solid var(--rule);
-  font-size: var(--text-sm);
-}
-.qg-journey__legend-item--source {
-  border-left-color: var(--ink);
-}
-.qg-journey__legend-item--passthrough,
-.qg-journey__legend-item--kept {
-  border-left-color: var(--accent);
-}
-.qg-journey__legend-item--employee-cost {
-  border-left-color: var(--warm);
-}
-.qg-journey__legend-item--employer-cost {
-  border-left-color: var(--ink-2);
-}
-.qg-journey__legend-label {
-  color: var(--ink-2);
-  flex: 1;
-}
-.qg-journey__legend-amount {
+.qg-journey__label-amount {
+  font-family: var(--font-sans, inherit);
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ink);
+  dominant-baseline: middle;
   font-variant-numeric: tabular-nums;
-  color: var(--ink);
+}
+.qg-journey__label--kept .qg-journey__label-amount,
+.qg-journey__label--passthrough .qg-journey__label-amount {
+  fill: var(--accent);
+}
+.qg-journey__label--employee-cost .qg-journey__label-amount {
+  fill: color-mix(in oklab, var(--warm) 80%, var(--ink));
+}
+.qg-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Share-link copy button */
