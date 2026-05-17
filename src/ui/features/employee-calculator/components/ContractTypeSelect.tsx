@@ -12,9 +12,17 @@ const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
 interface ContractTypeSelectProps {
   readonly value: ContractType;
   readonly onChange: (value: ContractType) => void;
+  readonly grossAnnual?: number;
 }
 
-export function ContractTypeSelect({ value, onChange }: ContractTypeSelectProps) {
+function buildProgressionHref(grossAnnual: number | undefined): string {
+  if (grossAnnual === undefined || !Number.isFinite(grossAnnual) || grossAnnual <= 0) {
+    return "/progressione-apprendistato";
+  }
+  return `/progressione-apprendistato?lordo=${Math.round(grossAnnual)}`;
+}
+
+export function ContractTypeSelect({ value, onChange, grossAnnual }: ContractTypeSelectProps) {
   const intl = useIntl();
 
   return (
@@ -32,7 +40,7 @@ export function ContractTypeSelect({ value, onChange }: ContractTypeSelectProps)
       </Select>
       {value === "apprendistato" && (
         <p className="qg-field__hint">
-          <Link to="/progressione-apprendistato" className="qg-btn--link">
+          <Link to={buildProgressionHref(grossAnnual)} className="qg-btn--link">
             <FormattedMessage id="employee.form.contractType.apprenticeshipLink" />
             {" →"}
           </Link>

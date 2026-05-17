@@ -38,6 +38,7 @@ export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
       <ContractTypeSelect
         value={state.contractType}
         onChange={(contractType) => update({ contractType })}
+        grossAnnual={state.grossAnnual}
       />
 
       <RegionSelector value={state.regionCode} onChange={(regionCode) => update({ regionCode })} />

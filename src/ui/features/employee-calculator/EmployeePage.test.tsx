@@ -59,6 +59,23 @@ describe("EmployeePage", () => {
     expect(screen.getByLabelText(/Addizionale comunale/)).toBeInTheDocument();
   });
 
+  it("the apprenticeship-progression link carries the current RAL", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<EmployeePage />);
+
+    const ral = screen.getByLabelText(/Stipendio lordo annuo/);
+    await user.clear(ral);
+    await user.type(ral, "42000");
+
+    const contractSelect = screen.getByLabelText(/Tipo di contratto/);
+    await user.selectOptions(contractSelect, "apprendistato");
+
+    const link = document.querySelector<HTMLAnchorElement>(
+      'a[href^="/progressione-apprendistato"]',
+    );
+    expect(link?.getAttribute("href")).toBe("/progressione-apprendistato?lordo=42000");
+  });
+
   it("toggling 'azienda > 15' raises the employee INPS rate to 9,49%", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

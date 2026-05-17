@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   calculateApprenticeship,
   DEFAULT_APPRENTICESHIP_PROGRESSION,
@@ -15,6 +16,8 @@ const DEFAULTS: FormState = {
   years: 3,
 };
 
+const MAX_TARGET = 1_000_000;
+
 export interface ApprenticeshipCalculator {
   readonly state: FormState;
   readonly setTarget: (n: number) => void;
@@ -23,7 +26,15 @@ export interface ApprenticeshipCalculator {
 }
 
 export function useApprenticeshipCalculator(): ApprenticeshipCalculator {
-  const [state, setState] = useState<FormState>(DEFAULTS);
+  const [params] = useSearchParams();
+  const [state, setState] = useState<FormState>(() => {
+    const lordoRaw = params.get("lordo");
+    const lordo = lordoRaw !== null ? Number(lordoRaw) : NaN;
+    if (Number.isFinite(lordo) && lordo > 0) {
+      return { ...DEFAULTS, targetGrossAnnual: Math.min(Math.floor(lordo), MAX_TARGET) };
+    }
+    return DEFAULTS;
+  });
 
   const result = useMemo(
     () =>

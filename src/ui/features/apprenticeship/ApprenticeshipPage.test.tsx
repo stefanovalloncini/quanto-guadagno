@@ -1,8 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router-dom";
 import { ApprenticeshipPage } from "./ApprenticeshipPage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
+import { it as itMessages } from "@/ui/i18n/messages/it.ts";
 
 describe("ApprenticeshipPage", () => {
   it("renders the hero with italic accent", () => {
@@ -35,5 +38,17 @@ describe("ApprenticeshipPage", () => {
         /\/calcola-stipendio\?lordo=\d+&contratto=apprendistato/,
       );
     });
+  });
+
+  it("uses the ?lordo= query param as the starting target salary", () => {
+    render(
+      <IntlProvider locale="it-IT" messages={itMessages}>
+        <MemoryRouter initialEntries={["/progressione-apprendistato?lordo=35000"]}>
+          <ApprenticeshipPage />
+        </MemoryRouter>
+      </IntlProvider>,
+    );
+    const targetField = screen.getByLabelText(/Retribuzione di destinazione/);
+    expect((targetField as HTMLInputElement).value).toBe("35000");
   });
 });
