@@ -42,6 +42,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.apprenticeship.title": "Apprenticeship progression",
   "home.available.apprenticeship.body":
     "Estimate year-by-year salary during professional apprenticeship contracts.",
+  "home.available.history.title": "Salary history",
+  "home.available.history.body":
+    "Track your gross salaries year by year and see how inflation has changed their real value.",
   "home.available.forfettario.title": "Self-employed (forfettario)",
   "home.available.forfettario.body":
     "Net income from invoiced revenue: 5% or 15% substitute tax and Gestione Separata contributions.",

@@ -89,6 +89,17 @@ export function HomePage() {
               <FormattedMessage id="home.available.apprenticeship.body" />
             </p>
           </Tile>
+
+          <Tile
+            variant="available"
+            to="/storico-stipendio"
+            title={<FormattedMessage id="home.available.history.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.history.body" />
+            </p>
+          </Tile>
         </div>
       </section>
 

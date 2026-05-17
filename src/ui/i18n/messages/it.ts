@@ -42,6 +42,9 @@ export const it = {
   "home.available.forfettario.title": "Partita IVA forfettario",
   "home.available.forfettario.body":
     "Reddito netto da fatturato con aliquota sostitutiva al 5% o 15% e contributi Gestione Separata.",
+  "home.available.history.title": "Storico stipendi",
+  "home.available.history.body":
+    "Tieni traccia dei tuoi RAL anno per anno e vedi come l'inflazione ne ha cambiato il valore reale.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
