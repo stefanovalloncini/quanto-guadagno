@@ -43,6 +43,9 @@ export type {
 
 export { REGIONS, REGIONS_LIST } from "./regions.ts";
 
+export { FOI_INDEX, FOI_BASE_YEAR, FOI_LATEST_YEAR } from "./inflation.ts";
+export type { InflationDataPoint } from "./inflation.ts";
+
 export type { ActivityCategory, ActivityCoefficient } from "./forfettario.ts";
 export { ACTIVITY_COEFFICIENTS, ACTIVITY_CATEGORIES } from "./forfettario.ts";
 

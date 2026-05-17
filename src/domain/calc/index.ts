@@ -4,6 +4,7 @@ export * from "./trattamentoIntegrativo.ts";
 export * from "./taxWedgeCut.ts";
 export * from "./inpsExemption2024.ts";
 export * from "./inpsRates.ts";
+export * from "./inflation.ts";
 export * from "./composerTypes.ts";
 export * from "./composer.ts";
 export * from "./apprenticeship.ts";
