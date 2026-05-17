@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { calculateSalaryBreakdown, type SalaryBreakdown } from "@/domain/calc";
 import type {
@@ -13,6 +13,7 @@ import type {
   PremioRisultatoInput,
 } from "@/domain/calc";
 import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { parseUrlState, writeUrlState } from "./urlState.ts";
 
 interface FormState {
   readonly grossAnnual: number;
@@ -48,16 +49,6 @@ const DEFAULTS: FormState = {
   premioRisultato: null,
 };
 
-const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
-  "indeterminato",
-  "determinato",
-  "apprendistato",
-];
-
-function isContractType(v: string | null): v is ContractType {
-  return v !== null && (CONTRACT_TYPES as ReadonlyArray<string>).includes(v);
-}
-
 export interface EmployeeCalculator {
   readonly state: FormState;
   readonly update: (patch: Partial<FormState>) => void;
@@ -65,17 +56,40 @@ export interface EmployeeCalculator {
 }
 
 export function useEmployeeCalculator(): EmployeeCalculator {
-  const [params] = useSearchParams();
-  const [state, setState] = useState<FormState>(() => {
-    const lordoParam = params.get("lordo");
-    const lordo = lordoParam !== null ? Number(lordoParam) : NaN;
-    const contratto = params.get("contratto");
-    return {
-      ...DEFAULTS,
-      grossAnnual: Number.isFinite(lordo) && lordo > 0 ? Math.floor(lordo) : DEFAULTS.grossAnnual,
-      contractType: isContractType(contratto) ? contratto : DEFAULTS.contractType,
-    };
-  });
+  const [params, setParams] = useSearchParams();
+  const [state, setState] = useState<FormState>(() => ({
+    ...DEFAULTS,
+    ...parseUrlState(params),
+  }));
+
+  useEffect(() => {
+    setParams(
+      (current) =>
+        writeUrlState(current, {
+          grossAnnual: state.grossAnnual,
+          taxYear: state.taxYear,
+          regionCode: state.regionCode,
+          municipalTaxRate: state.municipalTaxRate,
+          contractType: state.contractType,
+          paymentFrequency: state.paymentFrequency,
+          companySize: state.companySize,
+          isPublicEmployee: state.isPublicEmployee,
+          inpsOverride: state.inpsOverride,
+        }),
+      { replace: true },
+    );
+  }, [
+    state.grossAnnual,
+    state.taxYear,
+    state.regionCode,
+    state.municipalTaxRate,
+    state.contractType,
+    state.paymentFrequency,
+    state.companySize,
+    state.isPublicEmployee,
+    state.inpsOverride,
+    setParams,
+  ]);
 
   const update = useCallback((patch: Partial<FormState>) => {
     setState((s) => ({ ...s, ...patch }));

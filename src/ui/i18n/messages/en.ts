@@ -243,6 +243,10 @@ export const en: Record<MessageKey, string> = {
   "moneyJourney.node.inpsDip": "Employee INPS",
   "moneyJourney.node.tasse": "IRPEF and surcharges",
 
+  "share.button.idle": "Copy link to this calculation",
+  "share.button.copied": "Link copied",
+  "share.button.failed": "Copy failed",
+
   "employee.dependents.title": "Dependent family members",
   "employee.dependents.spouse": "Dependent spouse",
   "employee.dependents.spouseIncome": "Annual spouse income",

@@ -246,6 +246,10 @@ export const it = {
   "moneyJourney.node.inpsDip": "INPS dipendente",
   "moneyJourney.node.tasse": "IRPEF e addizionali",
 
+  "share.button.idle": "Copia link al calcolo",
+  "share.button.copied": "Link copiato",
+  "share.button.failed": "Copia non riuscita",
+
   "employee.dependents.title": "Familiari a carico",
   "employee.dependents.spouse": "Coniuge a carico",
   "employee.dependents.spouseIncome": "Reddito annuo del coniuge",
