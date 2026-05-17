@@ -65,17 +65,21 @@ export function useEmployeeCalculator(): EmployeeCalculator {
   useEffect(() => {
     setParams(
       (current) =>
-        writeUrlState(current, {
-          grossAnnual: state.grossAnnual,
-          taxYear: state.taxYear,
-          regionCode: state.regionCode,
-          municipalTaxRate: state.municipalTaxRate,
-          contractType: state.contractType,
-          paymentFrequency: state.paymentFrequency,
-          companySize: state.companySize,
-          isPublicEmployee: state.isPublicEmployee,
-          inpsOverride: state.inpsOverride,
-        }),
+        writeUrlState(
+          current,
+          {
+            grossAnnual: state.grossAnnual,
+            taxYear: state.taxYear,
+            regionCode: state.regionCode,
+            municipalTaxRate: state.municipalTaxRate,
+            contractType: state.contractType,
+            paymentFrequency: state.paymentFrequency,
+            companySize: state.companySize,
+            isPublicEmployee: state.isPublicEmployee,
+            inpsOverride: state.inpsOverride,
+          },
+          DEFAULTS,
+        ),
       { replace: true },
     );
   }, [

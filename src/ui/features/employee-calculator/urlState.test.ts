@@ -1,76 +1,103 @@
 import { describe, it, expect } from "vitest";
 import { parseUrlState, writeUrlState, type UrlState } from "./urlState.ts";
 
-const STATE: UrlState = {
+const DEFAULTS: UrlState = {
   grossAnnual: 30_000,
   taxYear: 2026,
-  regionCode: "toscana",
-  municipalTaxRate: 0.002,
+  regionCode: "lombardia",
+  municipalTaxRate: 0.008,
   contractType: "indeterminato",
-  paymentFrequency: 14,
+  paymentFrequency: 13,
   companySize: "small",
   isPublicEmployee: false,
   inpsOverride: null,
 };
 
-describe("writeUrlState", () => {
-  it("emits the core fields", () => {
-    const p = writeUrlState(new URLSearchParams(), STATE);
-    expect(p.get("lordo")).toBe("30000");
-    expect(p.get("anno")).toBe("2026");
-    expect(p.get("regione")).toBe("toscana");
-    expect(p.get("comune")).toBe("0.2");
-    expect(p.get("mens")).toBe("14");
-    expect(p.get("contratto")).toBe("indeterminato");
+describe("writeUrlState — compact output", () => {
+  it("emits no params when the state matches defaults", () => {
+    const p = writeUrlState(new URLSearchParams(), DEFAULTS, DEFAULTS);
+    expect(p.toString()).toBe("");
   });
 
-  it("omits az15 when companySize is small", () => {
-    const p = writeUrlState(new URLSearchParams(), STATE);
-    expect(p.has("az15")).toBe(false);
+  it("emits only the keys that diverge from defaults", () => {
+    const p = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, grossAnnual: 42_000, regionCode: "toscana" },
+      DEFAULTS,
+    );
+    expect(p.get("l")).toBe("42000");
+    expect(p.get("r")).toBe("toscana");
+    expect(p.has("y")).toBe(false);
+    expect(p.has("c")).toBe(false);
+    expect(p.has("m")).toBe(false);
+    expect(p.has("t")).toBe(false);
   });
 
-  it("writes az15=1 for large companies", () => {
-    const p = writeUrlState(new URLSearchParams(), { ...STATE, companySize: "large" });
-    expect(p.get("az15")).toBe("1");
+  it("writes az15 only when companySize is large", () => {
+    const off = writeUrlState(new URLSearchParams(), DEFAULTS, DEFAULTS);
+    const on = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, companySize: "large" },
+      DEFAULTS,
+    );
+    expect(off.has("a")).toBe(false);
+    expect(on.get("a")).toBe("1");
   });
 
-  it("writes pubblico=1 only when set", () => {
-    const off = writeUrlState(new URLSearchParams(), STATE);
-    const on = writeUrlState(new URLSearchParams(), { ...STATE, isPublicEmployee: true });
-    expect(off.has("pubblico")).toBe(false);
-    expect(on.get("pubblico")).toBe("1");
+  it("writes pubblico only when set", () => {
+    const off = writeUrlState(new URLSearchParams(), DEFAULTS, DEFAULTS);
+    const on = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, isPublicEmployee: true },
+      DEFAULTS,
+    );
+    expect(off.has("p")).toBe(false);
+    expect(on.get("p")).toBe("1");
   });
 
-  it("writes inpsEmp/inpsDat when override is set", () => {
-    const p = writeUrlState(new URLSearchParams(), {
-      ...STATE,
-      inpsOverride: { employeeRate: 0.0949, employerRate: 0.2381 },
-    });
-    expect(p.get("inpsEmp")).toBe("9.49");
-    expect(p.get("inpsDat")).toBe("23.81");
+  it("writes inps override when set", () => {
+    const p = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, inpsOverride: { employeeRate: 0.0949, employerRate: 0.2381 } },
+      DEFAULTS,
+    );
+    expect(p.get("e")).toBe("9.49");
+    expect(p.get("d")).toBe("23.81");
   });
 
   it("preserves unknown params already in the URL", () => {
     const base = new URLSearchParams("ref=newsletter&utm_source=foo");
-    const p = writeUrlState(base, STATE);
+    const p = writeUrlState(base, { ...DEFAULTS, grossAnnual: 42_000 }, DEFAULTS);
     expect(p.get("ref")).toBe("newsletter");
     expect(p.get("utm_source")).toBe("foo");
+  });
+
+  it("strips long alias keys so we never emit duplicates", () => {
+    const base = new URLSearchParams("lordo=99999&contratto=apprendistato");
+    const p = writeUrlState(base, { ...DEFAULTS, grossAnnual: 42_000 }, DEFAULTS);
+    expect(p.has("lordo")).toBe(false);
+    expect(p.has("contratto")).toBe(false);
+    expect(p.get("l")).toBe("42000");
   });
 });
 
 describe("parseUrlState", () => {
   it("round-trips a full state through write + parse", () => {
     const full: UrlState = {
-      ...STATE,
+      ...DEFAULTS,
+      grossAnnual: 42_000,
+      regionCode: "toscana",
+      municipalTaxRate: 0.002,
+      paymentFrequency: 14,
+      contractType: "apprendistato",
       companySize: "large",
       isPublicEmployee: true,
       inpsOverride: { employeeRate: 0.0949, employerRate: 0.2381 },
     };
-    const params = writeUrlState(new URLSearchParams(), full);
+    const params = writeUrlState(new URLSearchParams(), full, DEFAULTS);
     const parsed = parseUrlState(params);
     expect(parsed).toEqual({
       grossAnnual: full.grossAnnual,
-      taxYear: full.taxYear,
       regionCode: full.regionCode,
       municipalTaxRate: full.municipalTaxRate,
       paymentFrequency: full.paymentFrequency,
@@ -81,25 +108,33 @@ describe("parseUrlState", () => {
     });
   });
 
+  it("still reads legacy long names", () => {
+    const params = new URLSearchParams("lordo=42000&regione=toscana&contratto=apprendistato");
+    const parsed = parseUrlState(params);
+    expect(parsed.grossAnnual).toBe(42_000);
+    expect(parsed.regionCode).toBe("toscana");
+    expect(parsed.contractType).toBe("apprendistato");
+  });
+
+  it("prefers the short key when both forms are present", () => {
+    const params = new URLSearchParams("l=42000&lordo=10000");
+    expect(parseUrlState(params).grossAnnual).toBe(42_000);
+  });
+
   it("rejects an unknown regione", () => {
-    const parsed = parseUrlState(new URLSearchParams("regione=narnia"));
-    expect(parsed.regionCode).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("r=narnia")).regionCode).toBeUndefined();
   });
 
   it("rejects out-of-range lordo", () => {
-    const negative = parseUrlState(new URLSearchParams("lordo=-100"));
-    const zero = parseUrlState(new URLSearchParams("lordo=0"));
-    expect(negative.grossAnnual).toBeUndefined();
-    expect(zero.grossAnnual).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("l=-100")).grossAnnual).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("l=0")).grossAnnual).toBeUndefined();
   });
 
   it("ignores partial inps override (employee only)", () => {
-    const parsed = parseUrlState(new URLSearchParams("inpsEmp=9.49"));
-    expect(parsed.inpsOverride).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("e=9.49")).inpsOverride).toBeUndefined();
   });
 
   it("returns an empty object when no params match", () => {
-    const parsed = parseUrlState(new URLSearchParams("foo=bar"));
-    expect(parsed).toEqual({});
+    expect(parseUrlState(new URLSearchParams("foo=bar"))).toEqual({});
   });
 });
