@@ -13,6 +13,7 @@ export const en: Record<MessageKey, string> = {
   "nav.apprenticeship": "Apprenticeship",
   "nav.forfettario": "Forfettario",
   "nav.compoundInterest": "Compound interest",
+  "nav.naspi": "NASpI",
   "nav.sources": "Sources",
   "nav.about": "About",
 
@@ -52,6 +53,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.compoundInterest.title": "Compound interest",
   "home.available.compoundInterest.body":
     "How a sum grows over time with periodic contributions and expected inflation.",
+  "home.available.naspi.title": "NASpI",
+  "home.available.naspi.body":
+    "Estimate the Italian unemployment indemnity: monthly amount, duration, progressive reduction.",
   "home.soon.badge": "Coming back",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
@@ -235,6 +239,39 @@ export const en: Record<MessageKey, string> = {
   "compoundInterest.schedule.real": "Real balance",
   "compoundInterest.schedule.contributions": "Contributed",
   "compoundInterest.schedule.interest": "Interest",
+
+  "naspi.eyebrow": "Tool",
+  "naspi.title": "Unemployment <em>indemnity</em>",
+  "naspi.lede":
+    "Estimate NASpI: monthly amount, duration and progressive reduction. 2024–2026 INPS parameters.",
+  "naspi.form.year": "Year of cessation",
+  "naspi.form.grossPay4Years": "Gross pay (last 4 years)",
+  "naspi.form.grossPay4Years.hint":
+    "Sum of all taxable pay. Excludes TFR and expense reimbursements.",
+  "naspi.form.weeksContribution4Years": "Weeks of contribution (last 4 years)",
+  "naspi.form.weeksContribution4Years.hint":
+    "Minimum 13. Includes paid and figurative contributions (maternity, parental leave).",
+  "naspi.form.age": "Age at claim",
+  "naspi.form.voluntaryToggle":
+    "Voluntary resignation from a permanent contract in the last 12 months",
+  "naspi.form.weeksAfterVoluntaryResignation": "Weeks of contribution after resignation",
+  "naspi.form.weeksAfterVoluntaryResignation.hint":
+    "At least 13 weeks of contribution after the voluntary resignation are required to reopen NASpI.",
+  "naspi.ineligible.title": "Not eligible",
+  "naspi.ineligible.insufficient-weeks":
+    "At least 13 weeks of contribution in the last 4 years are required.",
+  "naspi.ineligible.voluntary-resignation-lockout":
+    "You resigned voluntarily from a permanent contract in the last 12 months. At least 13 new weeks of contribution are required before a new NASpI can be granted.",
+  "naspi.result.monthlyAmount": "Monthly amount (gross)",
+  "naspi.result.monthlyAmount.capped": "({year} cap)",
+  "naspi.result.durationMonths": "Duration",
+  "naspi.result.durationMonths.value": "{months, plural, one {# month} other {# months}}",
+  "naspi.result.totalGross": "Estimated gross total",
+  "naspi.result.referenceMonthly": "Reference monthly pay",
+  "naspi.schedule.title": "Month-by-month schedule",
+  "naspi.schedule.month": "Month",
+  "naspi.schedule.amount": "Gross amount",
+  "naspi.decalage.note": "3% monthly reduction from month {month}.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

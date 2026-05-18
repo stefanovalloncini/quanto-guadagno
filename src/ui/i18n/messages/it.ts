@@ -11,6 +11,7 @@ export const it = {
   "nav.apprenticeship": "Apprendistato",
   "nav.forfettario": "Forfettario",
   "nav.compoundInterest": "Interesse composto",
+  "nav.naspi": "NASpI",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
@@ -49,6 +50,9 @@ export const it = {
   "home.available.compoundInterest.title": "Interesse composto",
   "home.available.compoundInterest.body":
     "Quanto cresce un capitale nel tempo, con versamenti periodici e inflazione attesa.",
+  "home.available.naspi.title": "NASpI",
+  "home.available.naspi.body":
+    "Stima l'indennità di disoccupazione: importo mensile, durata, riduzione progressiva.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
@@ -237,6 +241,39 @@ export const it = {
   "compoundInterest.schedule.real": "Saldo reale",
   "compoundInterest.schedule.contributions": "Versato",
   "compoundInterest.schedule.interest": "Interessi",
+
+  "naspi.eyebrow": "Strumento",
+  "naspi.title": "Indennità di <em>disoccupazione</em>",
+  "naspi.lede":
+    "Stima la NASpI: importo mensile, durata e riduzione progressiva. Aliquote 2024–2026 da circolare INPS.",
+  "naspi.form.year": "Anno della cessazione",
+  "naspi.form.grossPay4Years": "Retribuzione lorda ultimi 4 anni",
+  "naspi.form.grossPay4Years.hint":
+    "Somma di tutte le retribuzioni imponibili. Esclusi TFR e rimborsi spese.",
+  "naspi.form.weeksContribution4Years": "Settimane di contribuzione ultimi 4 anni",
+  "naspi.form.weeksContribution4Years.hint":
+    "Minimo 13. Contano i contributi versati e figurativi (maternità, congedo parentale).",
+  "naspi.form.age": "Età alla domanda",
+  "naspi.form.voluntaryToggle":
+    "Dimissioni volontarie da contratto a tempo indeterminato negli ultimi 12 mesi",
+  "naspi.form.weeksAfterVoluntaryResignation": "Settimane di contribuzione dopo le dimissioni",
+  "naspi.form.weeksAfterVoluntaryResignation.hint":
+    "Servono almeno 13 settimane di contribuzione dopo le dimissioni volontarie per riaprire NASpI.",
+  "naspi.ineligible.title": "Diritto non maturato",
+  "naspi.ineligible.insufficient-weeks":
+    "Servono almeno 13 settimane di contribuzione negli ultimi 4 anni.",
+  "naspi.ineligible.voluntary-resignation-lockout":
+    "Hai dato dimissioni volontarie da tempo indeterminato negli ultimi 12 mesi. Servono almeno 13 settimane di contribuzione successive prima di accedere a una nuova NASpI.",
+  "naspi.result.monthlyAmount": "Importo mensile (lordo)",
+  "naspi.result.monthlyAmount.capped": "(massimale {year})",
+  "naspi.result.durationMonths": "Durata",
+  "naspi.result.durationMonths.value": "{months, plural, one {# mese} other {# mesi}}",
+  "naspi.result.totalGross": "Totale lordo stimato",
+  "naspi.result.referenceMonthly": "Retribuzione mensile di riferimento",
+  "naspi.schedule.title": "Andamento mese per mese",
+  "naspi.schedule.month": "Mese",
+  "naspi.schedule.amount": "Importo lordo",
+  "naspi.decalage.note": "Riduzione del 3% al mese a partire dal {month}° mese.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

@@ -20,6 +20,7 @@ const CompoundInterestPage = lazy(() =>
     default: m.CompoundInterestPage,
   })),
 );
+const NaspiPage = lazy(() => import("@/ui/features/naspi").then((m) => ({ default: m.NaspiPage })));
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
   { path: "/storico-stipendio", element: lazyRoute(<SalaryHistoryPage />) },
   { path: "/partita-iva-forfettario", element: lazyRoute(<ForfettarioPage />) },
   { path: "/interesse-composto", element: lazyRoute(<CompoundInterestPage />) },
+  { path: "/calcolo-naspi", element: lazyRoute(<NaspiPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },
