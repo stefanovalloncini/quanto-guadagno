@@ -1,10 +1,11 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   calculateCompoundInterest,
   type CompoundInterestBreakdown,
   type CompoundingFrequency,
   type ContributionFrequency,
 } from "@/domain/calc";
+import { buildCompoundInterestSearch, parseCompoundInterestUrlState } from "./urlState.ts";
 
 export interface CompoundInterestFormState {
   readonly principal: number;
@@ -32,11 +33,25 @@ export interface CompoundInterestCalculator {
   readonly result: CompoundInterestBreakdown;
 }
 
+function initialState(): CompoundInterestFormState {
+  if (typeof window === "undefined") return DEFAULTS;
+  return parseCompoundInterestUrlState(window.location.search, DEFAULTS);
+}
+
 export function useCompoundInterestCalculator(): CompoundInterestCalculator {
-  const [state, setState] = useState<CompoundInterestFormState>(DEFAULTS);
+  const [state, setState] = useState<CompoundInterestFormState>(initialState);
+
   const update = useCallback((patch: Partial<CompoundInterestFormState>) => {
     setState((prev) => ({ ...prev, ...patch }));
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const search = buildCompoundInterestSearch(state, DEFAULTS);
+    const url = `${window.location.pathname}${search}${window.location.hash}`;
+    window.history.replaceState(null, "", url);
+  }, [state]);
+
   const result = useMemo(() => calculateCompoundInterest(state), [state]);
   return { state, update, result };
 }
