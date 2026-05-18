@@ -539,6 +539,12 @@ export const en: Record<MessageKey, string> = {
   "employee.ccnlPreset.logistica": "Logistics",
   "employee.ccnlPreset.cooperativeSociali": "Social co-ops",
   "employee.ccnlPreset.mensilitaFmt": "{n} instalments",
+
+  "employee.irpefBracket.title": "IRPEF bracket",
+  "employee.irpefBracket.range": "{min} – {max}",
+  "employee.irpefBracket.rangeOpen": "{min} and above",
+  "employee.irpefBracket.distanceToNext": "{distance} left before the {nextRate} bracket.",
+  "employee.irpefBracket.topBracket": "You're already in the top bracket.",
   "employee.summary.pdr": "Performance bonus (net)",
 
   "employee.breakdown.title": "Tax breakdown",

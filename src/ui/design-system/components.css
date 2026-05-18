@@ -1215,6 +1215,67 @@
   color: var(--ink-2);
 }
 
+.qg-irpef-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+}
+.qg-irpef-indicator__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+.qg-irpef-indicator__row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.qg-irpef-indicator__chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-2);
+  background: color-mix(in oklab, var(--rule) 30%, var(--paper));
+  flex: 1 1 7rem;
+  min-width: 7rem;
+}
+.qg-irpef-indicator__chip--current {
+  background: color-mix(in oklab, var(--accent) 14%, var(--paper));
+  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule));
+}
+.qg-irpef-indicator__rate {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+.qg-irpef-indicator__range {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.qg-irpef-indicator__progress {
+  height: 6px;
+  border-radius: var(--radius-1);
+  background: color-mix(in oklab, var(--rule) 50%, var(--paper));
+  overflow: hidden;
+}
+.qg-irpef-indicator__progress-fill {
+  height: 100%;
+  background: color-mix(in oklab, var(--accent) 80%, var(--ink-2));
+  transition: width 0.2s ease-out;
+}
+.qg-irpef-indicator__hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+
 /* EmployerCostView: open-by-default, leads with the net-vs-cost gap */
 .qg-employer {
   display: flex;

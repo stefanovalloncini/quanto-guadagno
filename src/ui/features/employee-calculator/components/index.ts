@@ -14,3 +14,4 @@ export { ResultsBreakdown } from "./ResultsBreakdown.tsx";
 export { EmployerCostView } from "./EmployerCostView.tsx";
 export { YearComparison } from "./YearComparison.tsx";
 export { CcnlPreset } from "./CcnlPreset.tsx";
+export { IrpefBracketIndicator } from "./IrpefBracketIndicator.tsx";

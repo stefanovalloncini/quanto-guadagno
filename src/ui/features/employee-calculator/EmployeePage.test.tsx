@@ -57,6 +57,14 @@ describe("EmployeePage", () => {
     expect((frequencySelect as HTMLSelectElement).value).toBe("13");
   });
 
+  it("renders the IRPEF bracket indicator with the three current brackets", () => {
+    renderWithIntl(<EmployeePage />);
+    const indicator = document.querySelector(".qg-irpef-indicator") as HTMLElement;
+    expect(indicator).toBeTruthy();
+    expect(indicator.querySelectorAll(".qg-irpef-indicator__chip")).toHaveLength(3);
+    expect(indicator.querySelector(".qg-irpef-indicator__chip--current")).toBeTruthy();
+  });
+
   it("recomputes the net amount when gross changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

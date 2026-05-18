@@ -1,6 +1,7 @@
 import { FormattedMessage } from "react-intl";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
 import { EmployerCostView } from "./components/EmployerCostView.tsx";
+import { IrpefBracketIndicator } from "./components/IrpefBracketIndicator.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
 import { EmployeeFormPrimary } from "./EmployeeFormPrimary.tsx";
 import { EmployeeOverview } from "./EmployeeOverview.tsx";
@@ -29,6 +30,10 @@ export function EmployeePage() {
           <EmployeeFormPrimary calc={calc} />
           <EmployeeExtras calc={calc} />
           <ResultsBreakdown breakdown={calc.result} />
+          <IrpefBracketIndicator
+            taxableIncome={calc.result.taxableIncome}
+            taxYear={calc.state.taxYear}
+          />
           <MoneyJourney breakdown={calc.result} />
           <EmployerCostView breakdown={calc.result} />
         </div>

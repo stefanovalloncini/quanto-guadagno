@@ -547,6 +547,13 @@ export const it = {
   "employee.ccnlPreset.logistica": "Logistica",
   "employee.ccnlPreset.cooperativeSociali": "Cooperative Sociali",
   "employee.ccnlPreset.mensilitaFmt": "{n} mensilità",
+
+  "employee.irpefBracket.title": "Scaglione IRPEF",
+  "employee.irpefBracket.range": "{min} – {max}",
+  "employee.irpefBracket.rangeOpen": "{min} e oltre",
+  "employee.irpefBracket.distanceToNext":
+    "Mancano {distance} all'aliquota successiva al {nextRate}.",
+  "employee.irpefBracket.topBracket": "Sei già nello scaglione più alto.",
   "employee.summary.pdr": "Premio di risultato netto",
 
   "employee.breakdown.title": "Dettaglio imposte",
