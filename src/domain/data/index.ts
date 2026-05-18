@@ -92,3 +92,5 @@ const REGISTRY: Record<SupportedYear, YearlyTaxConfig> = {
 export function getTaxConfig(year: SupportedYear): YearlyTaxConfig {
   return REGISTRY[year];
 }
+
+export { getNaspiConfig, type NaspiConfig, NASPI_2024, NASPI_2025, NASPI_2026 } from "./naspi.ts";

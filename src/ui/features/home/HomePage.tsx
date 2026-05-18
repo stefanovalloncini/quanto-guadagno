@@ -111,6 +111,17 @@ export function HomePage() {
               <FormattedMessage id="home.available.compoundInterest.body" />
             </p>
           </Tile>
+
+          <Tile
+            variant="available"
+            to="/calcolo-naspi"
+            title={<FormattedMessage id="home.available.naspi.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.naspi.body" />
+            </p>
+          </Tile>
         </div>
       </section>
 
