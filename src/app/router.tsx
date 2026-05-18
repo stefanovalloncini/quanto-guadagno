@@ -24,6 +24,9 @@ const NaspiPage = lazy(() => import("@/ui/features/naspi").then((m) => ({ defaul
 const PreavvisoPage = lazy(() =>
   import("@/ui/features/preavviso").then((m) => ({ default: m.PreavvisoPage })),
 );
+const InversePage = lazy(() =>
+  import("@/ui/features/inverse").then((m) => ({ default: m.InversePage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -56,6 +59,7 @@ const router = createBrowserRouter([
   { path: "/interesse-composto", element: lazyRoute(<CompoundInterestPage />) },
   { path: "/calcolo-naspi", element: lazyRoute(<NaspiPage />) },
   { path: "/preavviso-dimissioni", element: lazyRoute(<PreavvisoPage />) },
+  { path: "/calcolo-netto-lordo", element: lazyRoute(<InversePage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

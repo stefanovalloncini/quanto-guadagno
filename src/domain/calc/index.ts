@@ -20,3 +20,4 @@ export * from "./naspi.ts";
 export * from "./preavviso.ts";
 export * from "./inpsGestioni.ts";
 export * from "./italianHolidays.ts";
+export * from "./inverseSalary.ts";
