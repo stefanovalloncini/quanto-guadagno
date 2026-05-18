@@ -15,6 +15,7 @@ export const en: Record<MessageKey, string> = {
   "nav.compoundInterest": "Compound interest",
   "nav.naspi": "NASpI",
   "nav.preavviso": "Resignation notice",
+  "nav.inverse": "Net-to-gross",
   "nav.sources": "Sources",
   "nav.about": "About",
 
@@ -60,6 +61,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.preavviso.title": "Resignation notice",
   "home.available.preavviso.body":
     "Notice days and exit date by CCNL, level and length of service.",
+  "home.available.inverse.title": "Net-to-gross calculator",
+  "home.available.inverse.body":
+    "Know the net you want to take home: find the gross annual salary that produces it.",
   "home.soon.badge": "Coming back",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
@@ -336,6 +340,23 @@ export const en: Record<MessageKey, string> = {
   "preavviso.result.band.gt-3y": "More than 3 years",
   "preavviso.result.workingDays.note": "These are working days (Saturdays and Sundays excluded).",
   "preavviso.result.calendarDays.note": "These are calendar days.",
+
+  "inverse.eyebrow": "Tool",
+  "inverse.title": "From <em>net</em> to gross",
+  "inverse.lede":
+    "What gross annual salary produces a target net? Bisection on the forward calculator.",
+  "inverse.form.targetNetAnnual": "Target annual net",
+  "inverse.form.targetNetAnnual.hint":
+    "The annual take-home you aim for, spread over 12 months before 13th/14th-month bonuses.",
+  "inverse.form.municipal.percent": "%",
+  "inverse.result.grossAnnual": "Corresponding gross",
+  "inverse.result.grossMonthly": "Monthly gross",
+  "inverse.result.netAnnualAchieved": "Net annual achieved",
+  "inverse.result.netMonthly": "Monthly net",
+  "inverse.result.inps": "INPS contributions",
+  "inverse.result.irpef": "Net IRPEF",
+  "inverse.result.notConverged":
+    "The calculator did not find a precise value. The result is the best approximation.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

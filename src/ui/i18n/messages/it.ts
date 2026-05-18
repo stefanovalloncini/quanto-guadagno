@@ -13,6 +13,7 @@ export const it = {
   "nav.compoundInterest": "Interesse composto",
   "nav.naspi": "NASpI",
   "nav.preavviso": "Preavviso dimissioni",
+  "nav.inverse": "Calcolo lordo da netto",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
@@ -57,6 +58,9 @@ export const it = {
   "home.available.preavviso.title": "Preavviso dimissioni",
   "home.available.preavviso.body":
     "Giorni di preavviso e data di uscita in base al CCNL, al livello e all'anzianità.",
+  "home.available.inverse.title": "Calcolo inverso: netto a lordo",
+  "home.available.inverse.body":
+    "Conosci il netto a cui vuoi arrivare: trova la RAL lorda corrispondente.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
@@ -343,6 +347,23 @@ export const it = {
   "preavviso.result.workingDays.note":
     "I giorni indicati sono giorni lavorativi (esclusi sabato e domenica).",
   "preavviso.result.calendarDays.note": "I giorni indicati sono giorni di calendario.",
+
+  "inverse.eyebrow": "Strumento",
+  "inverse.title": "Dal <em>netto</em> al lordo",
+  "inverse.lede":
+    "Quanto deve essere la RAL per portare a casa un certo netto annuo? Lo trovo per bisezione partendo dal calcolo diretto.",
+  "inverse.form.targetNetAnnual": "Netto annuo desiderato",
+  "inverse.form.targetNetAnnual.hint":
+    "Lo stipendio netto su 12 mesi che vuoi raggiungere, prima di tredicesime e quattordicesime.",
+  "inverse.form.municipal.percent": "%",
+  "inverse.result.grossAnnual": "RAL lorda corrispondente",
+  "inverse.result.grossMonthly": "Lordo mensile",
+  "inverse.result.netAnnualAchieved": "Netto annuo raggiunto",
+  "inverse.result.netMonthly": "Netto mensile",
+  "inverse.result.inps": "Contributi INPS",
+  "inverse.result.irpef": "IRPEF netta",
+  "inverse.result.notConverged":
+    "Il calcolatore non ha trovato un valore preciso. Il risultato è la migliore approssimazione.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

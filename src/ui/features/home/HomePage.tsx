@@ -133,6 +133,17 @@ export function HomePage() {
               <FormattedMessage id="home.available.preavviso.body" />
             </p>
           </Tile>
+
+          <Tile
+            variant="available"
+            to="/calcolo-netto-lordo"
+            title={<FormattedMessage id="home.available.inverse.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.inverse.body" />
+            </p>
+          </Tile>
         </div>
       </section>
 
