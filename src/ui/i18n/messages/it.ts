@@ -532,6 +532,7 @@ export const it = {
   "employee.summary.annualNet.sub": "su {frequency} mensilità",
   "employee.summary.delta": "Differenza lordo-netto:",
   "employee.summary.effectiveRate": "Aliquota effettiva:",
+  "employee.summary.marginalRate": "Aliquota marginale:",
   "employee.summary.gross": "Lordo annuo",
   "employee.summary.pdr": "Premio di risultato netto",
 

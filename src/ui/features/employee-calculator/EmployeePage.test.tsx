@@ -26,6 +26,12 @@ describe("EmployeePage", () => {
     expect(live).toBeTruthy();
   });
 
+  it("shows both effective and marginal tax rates in the summary", () => {
+    renderWithIntl(<EmployeePage />);
+    expect(screen.getByText(/Aliquota effettiva/)).toBeInTheDocument();
+    expect(screen.getByText(/Aliquota marginale/)).toBeInTheDocument();
+  });
+
   it("recomputes the net amount when gross changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

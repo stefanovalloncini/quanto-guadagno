@@ -41,6 +41,7 @@ function makeBreakdown(overrides: Partial<SalaryBreakdown> = {}): SalaryBreakdow
     netAnnual: 23_519,
     netMonthly: 23_519 / 14,
     effectiveTaxRate: 0.18,
+    marginalTaxRate: 0.2462,
     netToGrossRatio: 0.78,
     employerInps: 7_143,
     employerInpsRate: 0.2381,

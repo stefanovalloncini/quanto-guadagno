@@ -1,6 +1,6 @@
 import type { YearlyTaxConfig } from "@/domain/data/types.ts";
 import { getTaxConfig } from "@/domain/data/index.ts";
-import { applyProgressiveBrackets } from "./irpef.ts";
+import { applyProgressiveBrackets, getMarginalRate } from "./irpef.ts";
 import { calculateWorkDeduction } from "./workDeduction.ts";
 import { calculateTrattamentoIntegrativo } from "./trattamentoIntegrativo.ts";
 import { calculateTaxWedgeCut } from "./taxWedgeCut.ts";
@@ -98,7 +98,7 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
     cfg.trattamentoIntegrativo,
   );
 
-  const { regionalTax, regionalTaxRate, municipalTax } = calculateLocalTaxes(
+  const { regionalTax, regionalTaxRate, regionalMarginalRate, municipalTax } = calculateLocalTaxes(
     taxableIncome,
     input.regionCode,
     municipalTaxRate,
@@ -121,6 +121,8 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
   const netMonthly = netAnnual / paymentFrequency;
   const totalCredits = trattamentoIntegrativo + wedge.total;
   const effectiveTaxRate = grossAnnual > 0 ? (totalTaxes - totalCredits) / grossAnnual : 0;
+  const irpefMarginalRate = getMarginalRate(taxableIncome, cfg.irpefBrackets);
+  const marginalTaxRate = irpefMarginalRate + regionalMarginalRate + municipalTaxRate;
   const netToGrossRatio = grossAnnual > 0 ? netAnnual / grossAnnual : 0;
 
   const totalGrossForEmployer = grossAnnual + pdr.pdrGross;
@@ -183,6 +185,7 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
     netAnnual: round(netAnnual),
     netMonthly: round(netMonthly),
     effectiveTaxRate: round(effectiveTaxRate, 4),
+    marginalTaxRate: round(marginalTaxRate, 4),
     netToGrossRatio: round(netToGrossRatio, 4),
 
     employerInps: round(employerInpsResult.contribution),

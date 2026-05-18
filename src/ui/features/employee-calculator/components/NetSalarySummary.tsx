@@ -43,6 +43,12 @@ export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySumma
             {formatPercentage(breakdown.effectiveTaxRate)}
           </span>
         </span>
+        <span className="qg-summary__rate">
+          <FormattedMessage id="employee.summary.marginalRate" />{" "}
+          <span className="qg-summary__rate-value">
+            {formatPercentage(breakdown.marginalTaxRate)}
+          </span>
+        </span>
       </div>
 
       <div className="qg-summary__gross">

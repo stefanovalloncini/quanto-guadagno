@@ -76,6 +76,7 @@ export interface SalaryBreakdown {
   readonly netAnnual: number;
   readonly netMonthly: number;
   readonly effectiveTaxRate: number;
+  readonly marginalTaxRate: number;
   readonly netToGrossRatio: number;
 
   readonly employerInps: number;

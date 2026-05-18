@@ -525,6 +525,7 @@ export const en: Record<MessageKey, string> = {
   "employee.summary.annualNet.sub": "over {frequency} instalments",
   "employee.summary.delta": "Gross-to-net difference:",
   "employee.summary.effectiveRate": "Effective tax rate:",
+  "employee.summary.marginalRate": "Marginal tax rate:",
   "employee.summary.gross": "Gross annual",
   "employee.summary.pdr": "Performance bonus (net)",
 

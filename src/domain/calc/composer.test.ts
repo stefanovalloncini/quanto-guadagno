@@ -77,3 +77,40 @@ describe("calculateSalaryBreakdown — invariants", () => {
     expect(r.netAnnual + r.totalTaxes - cashCredits).toBe(r.grossAnnual);
   });
 });
+
+describe("calculateSalaryBreakdown — aliquota marginale", () => {
+  it("BASE 30k Toscana → IRPEF 23% + Toscana 1,43% + comunale 0,2% = 24,63%", () => {
+    // taxableIncome ≈ 27.243 → IRPEF bracket 0 (23%), Toscana bracket 1 (1,43%)
+    const r = calculateSalaryBreakdown(BASE);
+    expect(r.marginalTaxRate).toBeCloseTo(0.23 + 0.0143 + 0.002, 4);
+  });
+
+  it("40k Toscana → IRPEF 33% + Toscana 3,32% + comunale 0,2% = 36,52%", () => {
+    // taxableIncome ≈ 36.324 → IRPEF bracket 1, Toscana bracket 2
+    const r = calculateSalaryBreakdown({ ...BASE, grossAnnual: 40_000 });
+    expect(r.marginalTaxRate).toBeCloseTo(0.33 + 0.0332 + 0.002, 4);
+  });
+
+  it("60k Toscana → IRPEF 43% + Toscana 3,33% + comunale 0,2% = 46,53%", () => {
+    // taxableIncome ≈ 54.486 → IRPEF top bracket, Toscana top bracket
+    const r = calculateSalaryBreakdown({ ...BASE, grossAnnual: 60_000 });
+    expect(r.marginalTaxRate).toBeCloseTo(0.43 + 0.0333 + 0.002, 4);
+  });
+
+  it("Valle d'Aosta below 15k exemption → regional marginal is zero", () => {
+    // taxableIncome ≈ 12.713 sits under the 15.000 soglia; only IRPEF bites.
+    const r = calculateSalaryBreakdown({
+      ...BASE,
+      grossAnnual: 14_000,
+      regionCode: "valle-daosta",
+      municipalTaxRate: 0,
+    });
+    expect(r.marginalTaxRate).toBeCloseTo(0.23, 4);
+  });
+
+  it("Lombardia 30k, no comunale → IRPEF 23% + Lombardia 1,58%", () => {
+    // taxableIncome ≈ 27.243 → Lombardia bracket 1 (15.000–28.000 = 1,58%)
+    const r = calculateSalaryBreakdown({ ...BASE, regionCode: "lombardia", municipalTaxRate: 0 });
+    expect(r.marginalTaxRate).toBeCloseTo(0.23 + 0.0158, 4);
+  });
+});
