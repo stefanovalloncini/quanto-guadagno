@@ -185,12 +185,37 @@ export const it = {
   "forfettario.form.employeeCosts": "Spese annue per personale dipendente",
   "forfettario.form.employeeCosts.hint": "Oltre {limit} si decade dal regime forfettario.",
 
+  "forfettario.form.gestion": "Cassa previdenziale",
+  "forfettario.form.gestion.hint": "Determina aliquote e minimali contributivi.",
+  "forfettario.form.gestion.gestione-separata":
+    "INPS Gestione Separata (liberi professionisti senza cassa)",
+  "forfettario.form.gestion.artigiani": "INPS Gestione Artigiani",
+  "forfettario.form.gestion.commercianti": "INPS Gestione Commercianti",
+  "forfettario.form.gestion.cassa-professionale": "Cassa professionale (importo manuale)",
+  "forfettario.form.cassaManualAmount": "Contributo annuo alla cassa",
+  "forfettario.form.cassaManualAmount.hint":
+    "Inserisci l'importo previsto come stimato dalla tua cassa.",
+  "forfettario.form.mesiAttivita": "Mesi di attività nell'anno",
+  "forfettario.form.mesiAttivita.hint":
+    "Il contributo minimo annuo di Artigiani e Commercianti è proporzionato ai mesi di iscrizione.",
+  "forfettario.form.isConcurrentFullTimeEmployee":
+    "Sono anche lavoratore dipendente full-time (32 ore o più a settimana)",
+  "forfettario.form.concurrentEmployeeRal": "RAL dipendente full-time",
+  "forfettario.form.concurrentEmployeeRal.hint":
+    "Il regime forfettario è precluso se la RAL da lavoro dipendente supera 35.000 €.",
+  "forfettario.form.forfettarioDiscount35":
+    "Richiedi la riduzione 35% del forfettario (L. 190/2014)",
+  "forfettario.form.newRegistrantDiscount50":
+    "Sono nuovo iscritto: riduzione 50% per i primi 36 mesi (L. 207/2024)",
+
   "forfettario.eligibility.warning":
     "Fatturato vicino al limite del regime ({percent}% di {limit}).",
   "forfettario.eligibility.revenueExceeded":
     "Fatturato oltre il limite di {limit}: il regime forfettario non è applicabile.",
   "forfettario.eligibility.employeeCostsExceeded":
     "Spese per personale oltre {limit}: il regime forfettario non è applicabile.",
+  "forfettario.eligibility.concurrentEmployeeRalTooHigh":
+    "La RAL da lavoro dipendente supera 35.000 €: il regime forfettario non è applicabile.",
 
   "forfettario.summary.monthlyNet": "Netto mensile",
   "forfettario.summary.annualNet": "Netto annuo",
@@ -206,6 +231,12 @@ export const it = {
   "forfettario.breakdown.coefficient": "Coefficiente di redditività",
   "forfettario.breakdown.imponibileLordo": "Reddito imponibile lordo",
   "forfettario.breakdown.inps": "Contributi Gestione Separata ({rate})",
+  "forfettario.breakdown.inps.gestione-separata": "Contributi Gestione Separata ({rate})",
+  "forfettario.breakdown.inps.artigiani": "Contributi INPS Artigiani ({rate})",
+  "forfettario.breakdown.inps.commercianti": "Contributi INPS Commercianti ({rate})",
+  "forfettario.breakdown.inps.cassa-professionale": "Contributi cassa professionale",
+  "forfettario.breakdown.discount35": "Applicata la riduzione 35% (L. 190/2014).",
+  "forfettario.breakdown.discount50": "Applicata la riduzione 50% nuovi iscritti (L. 207/2024).",
   "forfettario.breakdown.imponibileNetto": "Reddito imponibile netto",
   "forfettario.breakdown.imponibileNetto.sub": "(imponibile lordo meno contributi INPS dedotti)",
   "forfettario.breakdown.impostaSostitutiva": "Imposta sostitutiva ({rate})",

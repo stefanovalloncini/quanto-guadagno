@@ -105,3 +105,10 @@ export {
   type CcnlNoticeRow,
   type CcnlDefinition,
 } from "./preavviso.ts";
+
+export {
+  getAutonomiConfig,
+  type AutonomiYear,
+  type GestionAutonomiConfig,
+  type GestionSeparataAutonomiConfig,
+} from "./inpsAutonomi.ts";

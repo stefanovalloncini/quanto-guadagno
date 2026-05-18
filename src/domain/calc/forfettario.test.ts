@@ -6,6 +6,7 @@ import {
   type ForfettarioConfig,
   type GestioneSeparataConfig,
 } from "./forfettario.ts";
+import { getAutonomiConfig } from "@/domain/data";
 
 const CFG: ForfettarioConfig = {
   startupRate: 0.05,
@@ -156,5 +157,146 @@ describe("calculateForfettario: golden vectors", () => {
     expect(result.eligibility.eligible).toBe(false);
     expect(result.eligibility.reasons).toContain("revenue-exceeds-limit");
     expect(result.nettoAnnuale).toBeGreaterThan(0);
+  });
+});
+
+describe("calculateForfettario: gestion Artigiani", () => {
+  const autonomi2026 = getAutonomiConfig(2026);
+
+  it("uses fixed-minimum + excess split for Artigiani", () => {
+    const result = calculateForfettario(
+      {
+        revenue: 50_000,
+        coefficient: 0.67,
+        yearsOfActivity: 7,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        gestion: "artigiani",
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+
+    expect(result.gestion).toBe("artigiani");
+    expect(result.contributoFisso).toBeCloseTo(4_521.36, 1);
+    expect(result.contributoEccedenza).toBeGreaterThan(0);
+  });
+
+  it("applies the 35 % discount when forfettarioDiscount35 is set", () => {
+    const noDiscount = calculateForfettario(
+      {
+        revenue: 50_000,
+        coefficient: 0.67,
+        yearsOfActivity: 7,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        gestion: "artigiani",
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    const withDiscount = calculateForfettario(
+      {
+        revenue: 50_000,
+        coefficient: 0.67,
+        yearsOfActivity: 7,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        gestion: "artigiani",
+        forfettarioDiscount35: true,
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    expect(withDiscount.contributoInps).toBeCloseTo(noDiscount.contributoInps * 0.65, 0);
+    expect(withDiscount.discountApplied).toBe(0.35);
+  });
+});
+
+describe("calculateForfettario: gestion Commercianti", () => {
+  const autonomi2026 = getAutonomiConfig(2026);
+
+  it("applies the 0.2448 IVS rate", () => {
+    const result = calculateForfettario(
+      {
+        revenue: 40_000,
+        coefficient: 0.4,
+        yearsOfActivity: 6,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        gestion: "commercianti",
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    expect(result.aliquotaInps).toBe(0.2448);
+  });
+});
+
+describe("calculateForfettario: concurrent employee", () => {
+  const autonomi2026 = getAutonomiConfig(2026);
+
+  it("flags ineligibility when RAL exceeds 35.000 €", () => {
+    const result = calculateForfettario(
+      {
+        revenue: 30_000,
+        coefficient: 0.78,
+        yearsOfActivity: 2,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        isConcurrentFullTimeEmployee: true,
+        concurrentEmployeeRal: 40_000,
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    expect(result.eligibility.eligible).toBe(false);
+    expect(result.eligibility.reasons).toContain("concurrent-employee-ral-too-high");
+  });
+
+  it("uses reduced rate when concurrent FT employee is below the threshold", () => {
+    const result = calculateForfettario(
+      {
+        revenue: 20_000,
+        coefficient: 0.78,
+        yearsOfActivity: 2,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        isConcurrentFullTimeEmployee: true,
+        concurrentEmployeeRal: 25_000,
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    expect(result.eligibility.eligible).toBe(true);
+    expect(result.aliquotaInps).toBe(0.24);
+  });
+});
+
+describe("calculateForfettario: cassa professionale manual", () => {
+  const autonomi2026 = getAutonomiConfig(2026);
+
+  it("uses the manual amount as contributo INPS", () => {
+    const result = calculateForfettario(
+      {
+        revenue: 50_000,
+        coefficient: 0.78,
+        yearsOfActivity: 2,
+        hasOtherPension: false,
+        employeeCosts: 0,
+        gestion: "cassa-professionale",
+        cassaManualAmount: 7_000,
+        autonomi: autonomi2026,
+      },
+      CFG,
+      GS_2025,
+    );
+    expect(result.contributoInps).toBe(7_000);
   });
 });
