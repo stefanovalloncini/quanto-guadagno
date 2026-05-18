@@ -45,13 +45,14 @@ describe("calculateDependentsDeduction", () => {
     expect(result).toBe(0);
   });
 
-  it("adds other dependents deduction", () => {
+  it("phases other-dependents deduction by reddito (TUIR art. 12 c.4-bis)", () => {
+    // 2 altri familiari × 750 € × (80.000 - 40.000) / 80.000 = 750 €
     const result = calculateDependentsDeduction(
       40_000,
       { hasSpouse: false, childrenOver21: 0, otherDependents: 2 },
       SHARED_DEPENDENTS_DEDUCTION,
     );
-    expect(result).toBe(SHARED_DEPENDENTS_DEDUCTION.otherFamilyDeduction * 2);
+    expect(result).toBeCloseTo(750, 2);
   });
 });
 

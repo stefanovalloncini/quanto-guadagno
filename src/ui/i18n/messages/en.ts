@@ -449,7 +449,7 @@ export const en: Record<MessageKey, string> = {
     "Children under 21 are covered by the Universal Allowance",
   "employee.dependents.otherDependents": "Other dependent family members",
   "employee.dependents.otherDependents.hint":
-    "Parents, cohabiting grandparents, and other family members",
+    "Parents, in-laws, siblings and other family members under art. 433 c.c. living with you or receiving alimony. €750 per person, phased out by income (zero above €80,000).",
 
   "employee.expenses.title": "Expense deductions",
   "employee.expenses.mortgageInterest": "Mortgage interest",

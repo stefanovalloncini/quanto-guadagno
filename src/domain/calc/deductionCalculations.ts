@@ -5,6 +5,9 @@ import { clamp, linearPhaseOut } from "./_math.ts";
 const SPOUSE_PHASE_OUT_RANGE = 40_000;
 const CHILD_PHASE_OUT_START = 95_000;
 const CHILD_PHASE_OUT_END = 120_000;
+// Other family deduction phases out linearly to zero at reddito complessivo 80.000
+// per TUIR art. 12 c.4-bis: detrazione × (80.000 − reddito) / 80.000.
+const OTHER_FAMILY_PHASE_OUT_END = 80_000;
 
 export interface DependentsInput {
   readonly hasSpouse: boolean;
@@ -60,7 +63,8 @@ export function calculateDependentsDeduction(
   }
 
   if (dependents.otherDependents > 0) {
-    total += dependents.otherDependents * cfg.otherFamilyDeduction;
+    const rate = linearPhaseOut(taxableIncome, 0, OTHER_FAMILY_PHASE_OUT_END);
+    total += dependents.otherDependents * cfg.otherFamilyDeduction * rate;
   }
 
   return total;

@@ -456,7 +456,8 @@ export const it = {
   "employee.dependents.childrenOver21": "Figli a carico (oltre 21 anni)",
   "employee.dependents.childrenOver21.hint": "I figli under 21 sono coperti dall'Assegno Unico",
   "employee.dependents.otherDependents": "Altri familiari a carico",
-  "employee.dependents.otherDependents.hint": "Genitori, nonni conviventi e altri familiari",
+  "employee.dependents.otherDependents.hint":
+    "Genitori, suoceri, fratelli e altri familiari di cui all'art. 433 c.c. conviventi o con assegno alimentare. €750 per persona, ridotto in proporzione al reddito (zero oltre €80.000).",
 
   "employee.expenses.title": "Detrazioni spese",
   "employee.expenses.mortgageInterest": "Interessi sul mutuo",
