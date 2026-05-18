@@ -1,0 +1,46 @@
+.qg-schedule {
+  margin-top: var(--space-6);
+}
+
+.qg-schedule__scroll {
+  overflow-x: auto;
+}
+
+.qg-schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.qg-schedule__table thead th {
+  text-transform: uppercase;
+  font-size: var(--qg-text-xs, 0.75rem);
+  letter-spacing: 0.04em;
+  color: var(--qg-color-fg-muted);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--qg-color-border);
+  text-align: right;
+}
+
+.qg-schedule__table thead th:first-child {
+  text-align: left;
+}
+
+.qg-schedule__table tbody th,
+.qg-schedule__table tbody td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--qg-color-border-subtle, var(--qg-color-border));
+  text-align: right;
+  font-weight: 400;
+}
+
+.qg-schedule__table tbody th {
+  text-align: left;
+  color: var(--qg-color-fg-muted);
+}
+
+.qg-schedule__table tbody tr:last-child th,
+.qg-schedule__table tbody tr:last-child td {
+  border-bottom: none;
+}

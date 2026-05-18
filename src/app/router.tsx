@@ -15,6 +15,11 @@ const SalaryHistoryPage = lazy(() =>
 const ForfettarioPage = lazy(() =>
   import("@/ui/features/forfettario").then((m) => ({ default: m.ForfettarioPage })),
 );
+const CompoundInterestPage = lazy(() =>
+  import("@/ui/features/compound-interest").then((m) => ({
+    default: m.CompoundInterestPage,
+  })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -44,6 +49,7 @@ const router = createBrowserRouter([
   { path: "/progressione-apprendistato", element: lazyRoute(<ApprenticeshipPage />) },
   { path: "/storico-stipendio", element: lazyRoute(<SalaryHistoryPage />) },
   { path: "/partita-iva-forfettario", element: lazyRoute(<ForfettarioPage />) },
+  { path: "/interesse-composto", element: lazyRoute(<CompoundInterestPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

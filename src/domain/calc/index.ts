@@ -15,3 +15,4 @@ export * from "./specialConditionsCalculations.ts";
 export * from "./fringeBenefitsCalculations.ts";
 export * from "./employerCostCalculations.ts";
 export * from "./forfettario.ts";
+export * from "./compoundInterest.ts";
