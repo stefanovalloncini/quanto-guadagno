@@ -225,8 +225,7 @@ export const it = {
   "compoundInterest.form.compoundingFrequency.monthly": "Mensile",
   "compoundInterest.form.compoundingFrequency.daily": "Giornaliera",
   "compoundInterest.form.inflationRate": "Inflazione attesa",
-  "compoundInterest.form.inflationRate.hint":
-    "Per stimare il valore reale del capitale finale.",
+  "compoundInterest.form.inflationRate.hint": "Per stimare il valore reale del capitale finale.",
   "compoundInterest.result.finalNominal": "Valore finale nominale",
   "compoundInterest.result.finalReal": "Valore finale reale",
   "compoundInterest.result.finalReal.sub": "rivalutato all'inflazione attesa",

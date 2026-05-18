@@ -41,9 +41,7 @@ const CONTRIB_PER_YEAR: Record<ContributionFrequency, number> = {
   none: 0,
 };
 
-export function calculateCompoundInterest(
-  input: CompoundInterestInput,
-): CompoundInterestBreakdown {
+export function calculateCompoundInterest(input: CompoundInterestInput): CompoundInterestBreakdown {
   const principal = Math.max(0, input.principal);
   const annualRate = Math.max(0, input.annualRate);
   const years = Math.max(0, Math.floor(input.years));
