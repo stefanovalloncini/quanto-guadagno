@@ -541,6 +541,10 @@ export const it = {
   "employee.breakdown.section.taxes": "Imposte sul reddito",
   "employee.breakdown.section.credits": "Crediti e bonus",
   "employee.breakdown.section.pdr": "Premio di risultato",
+  "employee.breakdown.section.tfr": "Accantonamento TFR",
+  "employee.breakdown.tfr": "TFR maturando quest'anno",
+  "employee.breakdown.tfr.note":
+    "Pari a un tredicesimo e mezzo del lordo. Non viene versato in busta paga: si liquida a fine rapporto o in parte come anticipo (mutuo, spese mediche, formazione).",
   "employee.breakdown.taxableIncome": "Reddito imponibile",
   "employee.breakdown.inpsExemption": "Esonero contributivo 2024",
   "employee.breakdown.madreLavoratrice": "Esonero madre lavoratrice",

@@ -1099,6 +1099,13 @@
   margin-top: var(--space-5);
   margin-bottom: var(--space-2);
 }
+.qg-results-breakdown__note {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  max-width: 60ch;
+  line-height: 1.5;
+}
 
 /* EmployerCostView: open-by-default, leads with the net-vs-cost gap */
 .qg-employer {

@@ -160,6 +160,18 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
           subtract
           total
         />
+
+        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
+          <FormattedMessage id="employee.breakdown.section.tfr" />
+        </p>
+        <BreakdownRow
+          labelId="employee.breakdown.tfr"
+          amount={breakdown.tfrAnnual}
+          rate={breakdown.tfrRate}
+        />
+        <p className="qg-results-breakdown__note">
+          <FormattedMessage id="employee.breakdown.tfr.note" />
+        </p>
       </div>
     </div>
   );

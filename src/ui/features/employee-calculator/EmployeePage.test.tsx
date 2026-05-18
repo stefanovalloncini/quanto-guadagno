@@ -32,6 +32,11 @@ describe("EmployeePage", () => {
     expect(screen.getByText(/Aliquota marginale/)).toBeInTheDocument();
   });
 
+  it("shows TFR maturando in the employee's results breakdown", () => {
+    renderWithIntl(<EmployeePage />);
+    expect(screen.getByText(/TFR maturando/)).toBeInTheDocument();
+  });
+
   it("recomputes the net amount when gross changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

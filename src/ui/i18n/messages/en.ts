@@ -534,6 +534,10 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.section.taxes": "Income taxes",
   "employee.breakdown.section.credits": "Credits and bonuses",
   "employee.breakdown.section.pdr": "Performance bonus",
+  "employee.breakdown.section.tfr": "TFR accrual",
+  "employee.breakdown.tfr": "TFR accruing this year",
+  "employee.breakdown.tfr.note":
+    "Equal to one thirteenth-and-a-half of gross pay. It isn't paid in the monthly payslip: it's settled when employment ends or as a partial advance (mortgage, medical, training).",
   "employee.breakdown.taxableIncome": "Taxable income",
   "employee.breakdown.inpsExemption": "2024 contribution exemption",
   "employee.breakdown.madreLavoratrice": "Working mother exemption",
