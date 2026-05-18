@@ -1,5 +1,5 @@
 import { NetSalarySummary } from "./components/NetSalarySummary.tsx";
-import { ShareButton } from "./ShareButton.tsx";
+import { ShareButton } from "@/ui/shared/ShareButton.tsx";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
 
 interface EmployeeOverviewProps {

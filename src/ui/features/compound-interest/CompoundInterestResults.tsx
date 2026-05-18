@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { MetricBlock, Money, Stack } from "@/ui/design-system/primitives";
+import { ShareButton } from "@/ui/shared/ShareButton.tsx";
 import type { CompoundInterestBreakdown } from "@/domain/calc";
 
 interface CompoundInterestResultsProps {
@@ -15,6 +16,9 @@ export function CompoundInterestResults({ result }: CompoundInterestResultsProps
         whole
         announce
       />
+      <div className="qg-employee__overview-actions">
+        <ShareButton />
+      </div>
       <MetricBlock
         label={<FormattedMessage id="compoundInterest.result.finalReal" />}
         amount={result.finalReal}
