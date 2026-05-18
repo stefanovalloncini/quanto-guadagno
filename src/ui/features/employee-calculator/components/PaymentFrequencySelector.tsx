@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 import { Select } from "@/ui/design-system/primitives";
 import type { PaymentFrequency } from "@/domain/calc";
 
-const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14];
+const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14, 15, 16];
 
 interface PaymentFrequencySelectorProps {
   readonly value: PaymentFrequency;

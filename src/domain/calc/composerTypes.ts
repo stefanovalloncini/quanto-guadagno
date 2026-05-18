@@ -13,7 +13,7 @@ export type { SpecialConditionsInput };
 export type { FringeBenefitsInput };
 export type { CompanySize, InpsRateOverride };
 
-export type PaymentFrequency = 12 | 13 | 14;
+export type PaymentFrequency = 12 | 13 | 14 | 15 | 16;
 
 export interface SalaryInput {
   readonly grossAnnual: number;

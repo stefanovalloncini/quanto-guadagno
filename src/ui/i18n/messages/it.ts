@@ -90,6 +90,9 @@ export const it = {
   "employee.form.paymentFrequency.option12": "12 mensilità, stipendio su 12 mesi",
   "employee.form.paymentFrequency.option13": "13 mensilità, con tredicesima",
   "employee.form.paymentFrequency.option14": "14 mensilità, con tredicesima e quattordicesima",
+  "employee.form.paymentFrequency.option15":
+    "15 mensilità, con tredicesima, quattordicesima e quindicesima",
+  "employee.form.paymentFrequency.option16": "16 mensilità, con bonus contrattuali aggiuntivi",
   "employee.form.region": "Regione di residenza",
   "employee.form.regional": "Aliquota addizionale regionale",
   "employee.form.regional.hint": "Cambia in base alla regione di residenza.",
