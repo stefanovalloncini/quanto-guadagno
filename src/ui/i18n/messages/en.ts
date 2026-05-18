@@ -92,6 +92,9 @@ export const en: Record<MessageKey, string> = {
   "employee.form.paymentFrequency.option12": "12 instalments, salary spread over 12 months",
   "employee.form.paymentFrequency.option13": "13 instalments, includes 13th-month bonus",
   "employee.form.paymentFrequency.option14": "14 instalments, includes 13th and 14th-month bonuses",
+  "employee.form.paymentFrequency.option15":
+    "15 instalments, includes 13th, 14th and 15th-month bonuses",
+  "employee.form.paymentFrequency.option16": "16 instalments, additional contractual bonuses",
   "employee.form.region": "Region of residence",
   "employee.form.regional": "Regional addizionale rate",
   "employee.form.regional.hint": "Changes by region of residence.",

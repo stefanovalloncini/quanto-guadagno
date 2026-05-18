@@ -1,11 +1,11 @@
 import { FormattedMessage } from "react-intl";
 import { MetricBlock, Money, Stack } from "@/ui/design-system/primitives";
 import { formatPercentage } from "@/domain/format.ts";
-import type { SalaryBreakdown } from "@/domain/calc";
+import type { PaymentFrequency, SalaryBreakdown } from "@/domain/calc";
 
 interface NetSalarySummaryProps {
   readonly breakdown: SalaryBreakdown;
-  readonly paymentFrequency: 12 | 13 | 14;
+  readonly paymentFrequency: PaymentFrequency;
 }
 
 export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySummaryProps) {
