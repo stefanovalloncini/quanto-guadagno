@@ -52,7 +52,7 @@ Notice periods for voluntary resignation (dimissioni) by the employee, broken do
 
 - Seniority is computed as `(resignationDate − hireDate) / 365.2425 days`. The boundaries of the bands are inclusive on the upper end (5–10 means `years ∈ (5, 10]`); the `<5` bucket is strict.
 - Calendar days: `setUTCDate(getUTCDate() + days)`.
-- Working days: skip Saturdays (`getUTCDay() === 6`) and Sundays (`getUTCDay() === 0`). National holidays are intentionally **not** subtracted; CCNL Art. 113 references "giorni lavorativi" without enumerating festivities, and modelling Italian festivities adds complexity disproportionate to the user benefit. A future iteration can add a regional / calendar override.
+- Working days: skip Saturdays (`getUTCDay() === 6`), Sundays (`getUTCDay() === 0`), and Italian national holidays. The holiday set is the 12 national festivities established by D.P.R. 792/1985 (Capodanno, Epifania, Pasqua, Pasquetta, 25 aprile, 1 maggio, 2 giugno, Ferragosto, Tutti i Santi, Immacolata, Natale, Santo Stefano). Easter is computed via the anonymous Gregorian algorithm. Patron-saint days (e.g. San Giovanni a Firenze, Sant'Ambrogio a Milano) are intentionally not subtracted — they vary by comune and the calculator does not collect comune.
 - Decorrenza rules (start on 1st or 16th of the following month for impiegati Commercio and Logistica) are intentionally not modelled — they change the start date by at most 15 days but not the notice duration. Surfacing them in copy would create false precision in a calculator that doesn't know the time-of-day of communication.
 
 ## Known stipendee.it errors not replicated

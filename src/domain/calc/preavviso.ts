@@ -1,4 +1,5 @@
 import type { CcnlDefinition, SeniorityBand } from "@/domain/data/preavviso.ts";
+import { isItalianHoliday } from "./italianHolidays.ts";
 
 export interface PreavvisoInput {
   readonly ccnl: CcnlDefinition;
@@ -44,7 +45,9 @@ function addWorkingDays(date: Date, days: number): Date {
   while (added < days) {
     d.setUTCDate(d.getUTCDate() + 1);
     const wd = d.getUTCDay();
-    if (wd !== 0 && wd !== 6) added += 1;
+    if (wd === 0 || wd === 6) continue;
+    if (isItalianHoliday(d)) continue;
+    added += 1;
   }
   return d;
 }
