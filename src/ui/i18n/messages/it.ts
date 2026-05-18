@@ -539,6 +539,13 @@ export const it = {
   "employee.yearCompare.perMonth": "mese",
   "employee.yearCompare.perYear": "anno",
   "employee.yearCompare.currentBadge": "anno selezionato",
+
+  "employee.ccnlPreset.title": "Preset CCNL:",
+  "employee.ccnlPreset.commercio": "Commercio",
+  "employee.ccnlPreset.metalmeccanici": "Metalmeccanici",
+  "employee.ccnlPreset.logistica": "Logistica",
+  "employee.ccnlPreset.cooperativeSociali": "Cooperative Sociali",
+  "employee.ccnlPreset.mensilitaFmt": "{n} mensilità",
   "employee.summary.pdr": "Premio di risultato netto",
 
   "employee.breakdown.title": "Dettaglio imposte",

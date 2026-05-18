@@ -4,6 +4,7 @@ import {
   PaymentFrequencySelector,
   ContractTypeSelect,
   RegionSelector,
+  CcnlPreset,
 } from "./components/index.ts";
 import { SUPPORTED_YEARS } from "@/domain/data";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
@@ -34,6 +35,8 @@ export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
           onChange={(paymentFrequency) => update({ paymentFrequency })}
         />
       </div>
+
+      <CcnlPreset calc={calc} />
 
       <ContractTypeSelect
         value={state.contractType}

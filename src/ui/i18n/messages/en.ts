@@ -532,6 +532,13 @@ export const en: Record<MessageKey, string> = {
   "employee.yearCompare.perMonth": "month",
   "employee.yearCompare.perYear": "year",
   "employee.yearCompare.currentBadge": "selected year",
+
+  "employee.ccnlPreset.title": "CCNL preset:",
+  "employee.ccnlPreset.commercio": "Retail",
+  "employee.ccnlPreset.metalmeccanici": "Metalworkers",
+  "employee.ccnlPreset.logistica": "Logistics",
+  "employee.ccnlPreset.cooperativeSociali": "Social co-ops",
+  "employee.ccnlPreset.mensilitaFmt": "{n} instalments",
   "employee.summary.pdr": "Performance bonus (net)",
 
   "employee.breakdown.title": "Tax breakdown",

@@ -106,6 +106,8 @@ export {
   type CcnlDefinition,
 } from "./preavviso.ts";
 
+export { CCNL_PRESETS, CCNL_PRESET_IDS, type CcnlPreset } from "./ccnlPresets.ts";
+
 export {
   getAutonomiConfig,
   type AutonomiYear,

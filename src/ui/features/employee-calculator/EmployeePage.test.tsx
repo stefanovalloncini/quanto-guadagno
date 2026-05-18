@@ -48,6 +48,15 @@ describe("EmployeePage", () => {
     expect(panel.querySelectorAll(".qg-year-compare__row")).toHaveLength(3);
   });
 
+  it("CCNL preset 'Cooperative Sociali' sets payment frequency to 13", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<EmployeePage />);
+    const chip = screen.getByRole("button", { name: /Cooperative Sociali/ });
+    await user.click(chip);
+    const frequencySelect = screen.getByLabelText(/Mensilità/);
+    expect((frequencySelect as HTMLSelectElement).value).toBe("13");
+  });
+
   it("recomputes the net amount when gross changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);
