@@ -12,6 +12,7 @@ export const it = {
   "nav.forfettario": "Forfettario",
   "nav.compoundInterest": "Interesse composto",
   "nav.naspi": "NASpI",
+  "nav.preavviso": "Preavviso dimissioni",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
@@ -53,6 +54,9 @@ export const it = {
   "home.available.naspi.title": "NASpI",
   "home.available.naspi.body":
     "Stima l'indennità di disoccupazione: importo mensile, durata, riduzione progressiva.",
+  "home.available.preavviso.title": "Preavviso dimissioni",
+  "home.available.preavviso.body":
+    "Giorni di preavviso e data di uscita in base al CCNL, al livello e all'anzianità.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
@@ -274,6 +278,29 @@ export const it = {
   "naspi.schedule.month": "Mese",
   "naspi.schedule.amount": "Importo lordo",
   "naspi.decalage.note": "Riduzione del 3% al mese a partire dal {month}° mese.",
+
+  "preavviso.eyebrow": "Strumento",
+  "preavviso.title": "Preavviso di <em>dimissioni</em>",
+  "preavviso.lede":
+    "Calcola i giorni di preavviso da rispettare e la data di uscita, in base al CCNL, al livello e all'anzianità di servizio.",
+  "preavviso.form.ccnl": "CCNL applicato",
+  "preavviso.form.livello": "Livello di inquadramento",
+  "preavviso.form.hireDate": "Data di assunzione",
+  "preavviso.form.resignationDate": "Data di comunicazione dimissioni",
+  "preavviso.form.error.invalidDates":
+    "La data delle dimissioni deve essere successiva all'assunzione.",
+  "preavviso.result.noticeDays": "Giorni di preavviso",
+  "preavviso.result.noticeDays.value": "{days, plural, one {# giorno} other {# giorni}}",
+  "preavviso.result.exitDate": "Ultimo giorno di lavoro",
+  "preavviso.result.band": "Anzianità di servizio",
+  "preavviso.result.band.lt-5y": "Meno di 5 anni",
+  "preavviso.result.band.5-10y": "Da 5 a 10 anni",
+  "preavviso.result.band.gt-10y": "Più di 10 anni",
+  "preavviso.result.band.lte-3y": "Fino a 3 anni",
+  "preavviso.result.band.gt-3y": "Più di 3 anni",
+  "preavviso.result.workingDays.note":
+    "I giorni indicati sono giorni lavorativi (esclusi sabato e domenica).",
+  "preavviso.result.calendarDays.note": "I giorni indicati sono giorni di calendario.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",
