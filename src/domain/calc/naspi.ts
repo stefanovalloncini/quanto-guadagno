@@ -1,5 +1,6 @@
 import type { NaspiConfig } from "@/domain/data/naspi.ts";
 import { round } from "./_math.ts";
+import { applyProgressiveBrackets, type IrpefBracket } from "./irpef.ts";
 
 export type NaspiIneligibilityReason = "insufficient-weeks" | "voluntary-resignation-lockout";
 
@@ -10,11 +11,13 @@ export interface NaspiInput {
   readonly voluntaryResignationInLast12Months: boolean;
   readonly weeksAfterVoluntaryResignation: number;
   readonly config: NaspiConfig;
+  readonly irpefBrackets?: ReadonlyArray<IrpefBracket>;
 }
 
 export interface NaspiScheduleMonth {
   readonly month: number;
   readonly amount: number;
+  readonly amountNet: number;
 }
 
 export interface NaspiBreakdown {
@@ -22,12 +25,15 @@ export interface NaspiBreakdown {
   readonly reasons: ReadonlyArray<NaspiIneligibilityReason>;
   readonly referenceMonthlyPay: number;
   readonly monthlyAmount: number;
+  readonly monthlyAmountNet: number;
   readonly capped: boolean;
   readonly durationWeeks: number;
   readonly durationMonths: number;
   readonly decalageStartMonth: number;
   readonly schedule: ReadonlyArray<NaspiScheduleMonth>;
   readonly totalGross: number;
+  readonly totalNet: number;
+  readonly effectiveIrpefRate: number;
 }
 
 function emptyResult(reasons: ReadonlyArray<NaspiIneligibilityReason>): NaspiBreakdown {
@@ -36,12 +42,15 @@ function emptyResult(reasons: ReadonlyArray<NaspiIneligibilityReason>): NaspiBre
     reasons,
     referenceMonthlyPay: 0,
     monthlyAmount: 0,
+    monthlyAmountNet: 0,
     capped: false,
     durationWeeks: 0,
     durationMonths: 0,
     decalageStartMonth: 0,
     schedule: [],
     totalGross: 0,
+    totalNet: 0,
+    effectiveIrpefRate: 0,
   };
 }
 
@@ -82,23 +91,52 @@ export function calculateNaspi(input: NaspiInput): NaspiBreakdown {
   const decalageStart = input.age >= 55 ? config.decalageStart55plus : config.decalageStartUnder55;
 
   const schedule: NaspiScheduleMonth[] = [];
+  let totalGrossSum = 0;
   for (let m = 1; m <= durationMonths; m += 1) {
     const decalageSteps = m < decalageStart ? 0 : m - decalageStart + 1;
     const amount = monthlyAmount * Math.pow(1 - config.decalageRate, decalageSteps);
-    schedule.push({ month: m, amount: round(amount) });
+    schedule.push({ month: m, amount: round(amount), amountNet: 0 });
+    totalGrossSum += amount;
   }
-  const totalGross = round(schedule.reduce((acc, s) => acc + s.amount, 0));
+  const totalGross = round(totalGrossSum);
+
+  const brackets = input.irpefBrackets;
+  let totalIrpef = 0;
+  let monthlyAmountNet = monthlyAmount;
+  if (brackets && totalGrossSum > 0) {
+    totalIrpef = applyProgressiveBrackets(totalGrossSum, brackets);
+    const factor = (totalGrossSum - totalIrpef) / totalGrossSum;
+    for (let i = 0; i < schedule.length; i += 1) {
+      const row = schedule[i];
+      if (!row) continue;
+      const net = row.amount * factor;
+      schedule[i] = { month: row.month, amount: row.amount, amountNet: round(net) };
+    }
+    monthlyAmountNet = monthlyAmount * factor;
+  } else {
+    for (let i = 0; i < schedule.length; i += 1) {
+      const row = schedule[i];
+      if (!row) continue;
+      schedule[i] = { month: row.month, amount: row.amount, amountNet: row.amount };
+    }
+  }
+
+  const totalNet = round(totalGrossSum - totalIrpef);
+  const effectiveIrpefRate = totalGrossSum > 0 ? totalIrpef / totalGrossSum : 0;
 
   return {
     eligible: true,
     reasons: [],
     referenceMonthlyPay: round(refMonthly),
     monthlyAmount: round(monthlyAmount),
+    monthlyAmountNet: round(monthlyAmountNet),
     capped,
     durationWeeks,
     durationMonths,
     decalageStartMonth: decalageStart,
     schedule,
     totalGross,
+    totalNet,
+    effectiveIrpefRate,
   };
 }
