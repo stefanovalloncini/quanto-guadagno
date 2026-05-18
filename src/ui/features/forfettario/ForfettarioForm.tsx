@@ -1,4 +1,4 @@
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Field, Select, Stack } from "@/ui/design-system/primitives";
 import {
   ACTIVITY_COEFFICIENTS,
@@ -7,7 +7,15 @@ import {
   SUPPORTED_YEARS,
 } from "@/domain/data";
 import { formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
-import type { ForfettarioCalculator } from "./useForfettarioCalculator.ts";
+import type { Gestion } from "@/domain/calc";
+import type { ForfettarioCalculator, ForfettarioFormState } from "./useForfettarioCalculator.ts";
+
+const GESTION_OPTIONS: ReadonlyArray<Gestion> = [
+  "gestione-separata",
+  "artigiani",
+  "commercianti",
+  "cassa-professionale",
+];
 
 interface ForfettarioFormProps {
   readonly calc: ForfettarioCalculator;
@@ -15,7 +23,10 @@ interface ForfettarioFormProps {
 
 export function ForfettarioForm({ calc }: ForfettarioFormProps) {
   const { state, update } = calc;
+  const intl = useIntl();
   const employeeCostLimit = formatCurrencyWhole(SHARED_FORFETTARIO.maxEmployeeCosts);
+  const isArtCom = state.gestion === "artigiani" || state.gestion === "commercianti";
+  const isCassaManual = state.gestion === "cassa-professionale";
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -37,7 +48,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           label={<FormattedMessage id="forfettario.form.activity" />}
           hint={<FormattedMessage id="forfettario.form.activity.hint" />}
           value={state.activity}
-          onChange={(e) => update({ activity: e.target.value as typeof state.activity })}
+          onChange={(e) => update({ activity: e.target.value as ForfettarioFormState["activity"] })}
         >
           {ACTIVITY_CATEGORIES.map((cat) => {
             const def = ACTIVITY_COEFFICIENTS[cat];
@@ -53,7 +64,7 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           label={<FormattedMessage id="forfettario.form.year" />}
           hint={<FormattedMessage id="forfettario.form.year.hint" />}
           value={state.year}
-          onChange={(e) => update({ year: Number(e.target.value) as typeof state.year })}
+          onChange={(e) => update({ year: Number(e.target.value) as ForfettarioFormState["year"] })}
         >
           {SUPPORTED_YEARS.map((y) => (
             <option key={y} value={y}>
@@ -61,6 +72,48 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
             </option>
           ))}
         </Select>
+
+        <Select
+          label={<FormattedMessage id="forfettario.form.gestion" />}
+          hint={<FormattedMessage id="forfettario.form.gestion.hint" />}
+          value={state.gestion}
+          onChange={(e) => update({ gestion: e.target.value as Gestion })}
+        >
+          {GESTION_OPTIONS.map((g) => (
+            <option key={g} value={g}>
+              {intl.formatMessage({ id: `forfettario.form.gestion.${g}` })}
+            </option>
+          ))}
+        </Select>
+
+        {isCassaManual && (
+          <Field
+            label={<FormattedMessage id="forfettario.form.cassaManualAmount" />}
+            hint={<FormattedMessage id="forfettario.form.cassaManualAmount.hint" />}
+            type="number"
+            min={0}
+            step={100}
+            value={state.cassaManualAmount === 0 ? "" : state.cassaManualAmount}
+            placeholder="0"
+            onChange={(e) => update({ cassaManualAmount: Number(e.target.value) })}
+            trailing="€"
+            inputMode="numeric"
+          />
+        )}
+
+        {isArtCom && (
+          <Field
+            label={<FormattedMessage id="forfettario.form.mesiAttivita" />}
+            hint={<FormattedMessage id="forfettario.form.mesiAttivita.hint" />}
+            type="number"
+            min={1}
+            max={12}
+            step={1}
+            value={state.mesiAttivita}
+            onChange={(e) => update({ mesiAttivita: Number(e.target.value) })}
+            inputMode="numeric"
+          />
+        )}
 
         <Field
           label={<FormattedMessage id="forfettario.form.yearsOfActivity" />}
@@ -85,6 +138,63 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
             <FormattedMessage id="forfettario.form.hasOtherPension" />
           </span>
         </label>
+
+        <label className="qg-toggle">
+          <input
+            type="checkbox"
+            className="qg-toggle__input"
+            checked={state.isConcurrentFullTimeEmployee}
+            onChange={(e) => update({ isConcurrentFullTimeEmployee: e.target.checked })}
+          />
+          <span className="qg-toggle__label">
+            <FormattedMessage id="forfettario.form.isConcurrentFullTimeEmployee" />
+          </span>
+        </label>
+
+        {state.isConcurrentFullTimeEmployee && (
+          <Field
+            label={<FormattedMessage id="forfettario.form.concurrentEmployeeRal" />}
+            hint={<FormattedMessage id="forfettario.form.concurrentEmployeeRal.hint" />}
+            type="number"
+            min={0}
+            step={500}
+            value={state.concurrentEmployeeRal === 0 ? "" : state.concurrentEmployeeRal}
+            placeholder="0"
+            onChange={(e) => update({ concurrentEmployeeRal: Number(e.target.value) })}
+            trailing="€"
+            inputMode="numeric"
+          />
+        )}
+
+        {isArtCom && (
+          <>
+            <label className="qg-toggle">
+              <input
+                type="checkbox"
+                className="qg-toggle__input"
+                checked={state.forfettarioDiscount35}
+                disabled={state.newRegistrantDiscount50}
+                onChange={(e) => update({ forfettarioDiscount35: e.target.checked })}
+              />
+              <span className="qg-toggle__label">
+                <FormattedMessage id="forfettario.form.forfettarioDiscount35" />
+              </span>
+            </label>
+
+            <label className="qg-toggle">
+              <input
+                type="checkbox"
+                className="qg-toggle__input"
+                checked={state.newRegistrantDiscount50}
+                disabled={state.forfettarioDiscount35}
+                onChange={(e) => update({ newRegistrantDiscount50: e.target.checked })}
+              />
+              <span className="qg-toggle__label">
+                <FormattedMessage id="forfettario.form.newRegistrantDiscount50" />
+              </span>
+            </label>
+          </>
+        )}
 
         <Field
           label={<FormattedMessage id="forfettario.form.employeeCosts" />}

@@ -1,4 +1,10 @@
 import { round } from "./_math.ts";
+import type { AutonomiYear } from "@/domain/data/inpsAutonomi.ts";
+import {
+  calculateGestionContribution,
+  type AutonomiBreakdown,
+  type Gestion,
+} from "./inpsGestioni.ts";
 
 export interface ForfettarioConfig {
   readonly startupRate: number;
@@ -17,7 +23,8 @@ export interface GestioneSeparataConfig {
 
 export type ForfettarioIneligibilityReason =
   | "revenue-exceeds-limit"
-  | "employee-costs-exceed-limit";
+  | "employee-costs-exceed-limit"
+  | "concurrent-employee-ral-too-high";
 
 export type ForfettarioPhase = "startup" | "standard";
 
@@ -34,6 +41,14 @@ export interface ForfettarioInput {
   readonly yearsOfActivity: number;
   readonly hasOtherPension: boolean;
   readonly employeeCosts: number;
+  readonly gestion?: Gestion;
+  readonly mesiAttivita?: number;
+  readonly isConcurrentFullTimeEmployee?: boolean;
+  readonly concurrentEmployeeRal?: number;
+  readonly forfettarioDiscount35?: boolean;
+  readonly newRegistrantDiscount50?: boolean;
+  readonly cassaManualAmount?: number;
+  readonly autonomi?: AutonomiYear;
 }
 
 export interface GestioneSeparataContribution {
@@ -56,16 +71,34 @@ export interface ForfettarioBreakdown {
   readonly pressioneFiscaleEffettiva: number;
   readonly phase: ForfettarioPhase;
   readonly eligibility: ForfettarioEligibility;
+  readonly gestion: Gestion;
+  readonly discountApplied: 0 | 0.35 | 0.5;
+  readonly contributoFisso: number;
+  readonly contributoEccedenza: number;
+}
+
+interface EligibilityInput {
+  readonly revenue: number;
+  readonly employeeCosts: number;
+  readonly isConcurrentFullTimeEmployee?: boolean;
+  readonly concurrentEmployeeRal?: number;
+  readonly concurrentEmployeeRalLimit?: number;
 }
 
 export function calculateForfettarioEligibility(
   revenue: number,
   employeeCosts: number,
   cfg: ForfettarioConfig,
+  extra: Omit<EligibilityInput, "revenue" | "employeeCosts"> = {},
 ): ForfettarioEligibility {
   const reasons: ReadonlyArray<ForfettarioIneligibilityReason> = [
     revenue > cfg.maxRevenue ? ("revenue-exceeds-limit" as const) : null,
     employeeCosts > cfg.maxEmployeeCosts ? ("employee-costs-exceed-limit" as const) : null,
+    extra.isConcurrentFullTimeEmployee &&
+    extra.concurrentEmployeeRalLimit !== undefined &&
+    (extra.concurrentEmployeeRal ?? 0) > extra.concurrentEmployeeRalLimit
+      ? ("concurrent-employee-ral-too-high" as const)
+      : null,
   ].filter((r): r is ForfettarioIneligibilityReason => r !== null);
 
   const percentage = cfg.maxRevenue > 0 ? (revenue / cfg.maxRevenue) * 100 : 0;
@@ -91,6 +124,24 @@ export function calculateGestioneSeparataContribution(
   return { contribution: cappedBase * rate, rate };
 }
 
+function gestionContributionFromAutonomi(
+  imponibile: number,
+  input: ForfettarioInput,
+  autonomi: AutonomiYear,
+): AutonomiBreakdown {
+  return calculateGestionContribution({
+    imponibile,
+    gestion: input.gestion ?? "gestione-separata",
+    cfg: autonomi,
+    hasOtherPension: input.hasOtherPension,
+    isConcurrentFullTimeEmployee: input.isConcurrentFullTimeEmployee ?? false,
+    mesiAttivita: input.mesiAttivita ?? 12,
+    forfettarioDiscount35: input.forfettarioDiscount35 ?? false,
+    newRegistrantDiscount50: input.newRegistrantDiscount50 ?? false,
+    cassaManualAmount: input.cassaManualAmount ?? 0,
+  });
+}
+
 export function calculateForfettario(
   input: ForfettarioInput,
   cfg: ForfettarioConfig,
@@ -98,21 +149,56 @@ export function calculateForfettario(
 ): ForfettarioBreakdown {
   const { revenue, coefficient, yearsOfActivity, hasOtherPension, employeeCosts } = input;
 
-  const eligibility = calculateForfettarioEligibility(revenue, employeeCosts, cfg);
+  const useAutonomi = input.autonomi !== undefined;
 
-  const imponibileLordo = revenue * coefficient;
-  const inps = calculateGestioneSeparataContribution(
-    imponibileLordo,
-    hasOtherPension,
-    gestioneSeparata,
+  const eligibility = calculateForfettarioEligibility(
+    revenue,
+    employeeCosts,
+    cfg,
+    useAutonomi && input.autonomi
+      ? {
+          ...(input.isConcurrentFullTimeEmployee !== undefined && {
+            isConcurrentFullTimeEmployee: input.isConcurrentFullTimeEmployee,
+          }),
+          ...(input.concurrentEmployeeRal !== undefined && {
+            concurrentEmployeeRal: input.concurrentEmployeeRal,
+          }),
+          concurrentEmployeeRalLimit: input.autonomi.concurrentEmployeeRalLimit,
+        }
+      : {},
   );
 
-  const imponibileNetto = Math.max(0, imponibileLordo - inps.contribution);
+  const imponibileLordo = revenue * coefficient;
+
+  let contributoInps: number;
+  let aliquotaInps: number;
+  let contributoFisso = 0;
+  let contributoEccedenza = 0;
+  let discountApplied: 0 | 0.35 | 0.5 = 0;
+  let gestionApplied: Gestion = "gestione-separata";
+
+  if (useAutonomi && input.autonomi) {
+    const breakdown = gestionContributionFromAutonomi(imponibileLordo, input, input.autonomi);
+    contributoInps = breakdown.contributoTotale;
+    aliquotaInps = breakdown.aliquotaApplicata;
+    contributoFisso = breakdown.contributoFisso;
+    contributoEccedenza = breakdown.contributoEccedenza;
+    discountApplied = breakdown.discountApplied;
+    gestionApplied = input.gestion ?? "gestione-separata";
+  } else {
+    const rate = hasOtherPension ? gestioneSeparata.reducedRate : gestioneSeparata.fullRate;
+    const cappedBase = Math.min(Math.max(0, imponibileLordo), gestioneSeparata.massimale);
+    contributoInps = cappedBase * rate;
+    aliquotaInps = rate;
+    contributoEccedenza = contributoInps;
+  }
+
+  const imponibileNetto = Math.max(0, imponibileLordo - contributoInps);
   const phase: ForfettarioPhase = yearsOfActivity < cfg.startupYears ? "startup" : "standard";
   const aliquotaSostitutiva = phase === "startup" ? cfg.startupRate : cfg.standardRate;
   const impostaSostitutiva = imponibileNetto * aliquotaSostitutiva;
 
-  const totaleImposte = inps.contribution + impostaSostitutiva;
+  const totaleImposte = contributoInps + impostaSostitutiva;
   const nettoAnnuale = revenue - totaleImposte;
   const nettoMensile = nettoAnnuale / 12;
   const pressioneFiscaleEffettiva = revenue > 0 ? totaleImposte / revenue : 0;
@@ -121,8 +207,8 @@ export function calculateForfettario(
     revenue: round(revenue),
     coefficient,
     imponibileLordo: round(imponibileLordo),
-    contributoInps: round(inps.contribution),
-    aliquotaInps: inps.rate,
+    contributoInps: round(contributoInps),
+    aliquotaInps,
     imponibileNetto: round(imponibileNetto),
     aliquotaSostitutiva,
     impostaSostitutiva: round(impostaSostitutiva),
@@ -132,5 +218,9 @@ export function calculateForfettario(
     pressioneFiscaleEffettiva,
     phase,
     eligibility,
+    gestion: gestionApplied,
+    discountApplied,
+    contributoFisso: round(contributoFisso),
+    contributoEccedenza: round(contributoEccedenza),
   };
 }

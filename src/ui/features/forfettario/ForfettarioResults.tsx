@@ -1,8 +1,15 @@
 import { FormattedMessage } from "react-intl";
 import { BreakdownRow, MetricBlock, Stack } from "@/ui/design-system/primitives";
-import type { ForfettarioBreakdown, ForfettarioIneligibilityReason } from "@/domain/calc";
+import type { ForfettarioBreakdown, ForfettarioIneligibilityReason, Gestion } from "@/domain/calc";
 import { SHARED_FORFETTARIO } from "@/domain/data";
 import { formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
+
+const GESTION_LABEL_ID: Record<Gestion, string> = {
+  "gestione-separata": "forfettario.breakdown.inps.gestione-separata",
+  artigiani: "forfettario.breakdown.inps.artigiani",
+  commercianti: "forfettario.breakdown.inps.commercianti",
+  "cassa-professionale": "forfettario.breakdown.inps.cassa-professionale",
+};
 
 interface ForfettarioResultsProps {
   readonly result: ForfettarioBreakdown;
@@ -47,11 +54,21 @@ export function ForfettarioResults({ result }: ForfettarioResultsProps) {
         }
       />
       <BreakdownRow
-        labelId="forfettario.breakdown.inps"
+        labelId={GESTION_LABEL_ID[result.gestion] as "forfettario.breakdown.inps"}
         labelValues={{ rate: inpsRate }}
         amount={result.contributoInps}
         subtract
       />
+      {result.discountApplied === 0.35 && (
+        <p className="qg-notice qg-notice--warning">
+          <FormattedMessage id="forfettario.breakdown.discount35" />
+        </p>
+      )}
+      {result.discountApplied === 0.5 && (
+        <p className="qg-notice qg-notice--warning">
+          <FormattedMessage id="forfettario.breakdown.discount50" />
+        </p>
+      )}
       <BreakdownRow
         labelId="forfettario.breakdown.imponibileNetto"
         amount={result.imponibileNetto}
@@ -81,6 +98,7 @@ interface EligibilityNoticeProps {
 const REASON_MESSAGE_ID: Record<ForfettarioIneligibilityReason, string> = {
   "revenue-exceeds-limit": "forfettario.eligibility.revenueExceeded",
   "employee-costs-exceed-limit": "forfettario.eligibility.employeeCostsExceeded",
+  "concurrent-employee-ral-too-high": "forfettario.eligibility.concurrentEmployeeRalTooHigh",
 };
 
 function EligibilityNotice({

@@ -184,11 +184,34 @@ export const en: Record<MessageKey, string> = {
   "forfettario.form.employeeCosts": "Annual employee costs",
   "forfettario.form.employeeCosts.hint": "Above {limit} you fall out of the forfettario regime.",
 
+  "forfettario.form.gestion": "Pension fund",
+  "forfettario.form.gestion.hint": "Determines contribution rates and minimums.",
+  "forfettario.form.gestion.gestione-separata":
+    "INPS Gestione Separata (freelancer without dedicated cassa)",
+  "forfettario.form.gestion.artigiani": "INPS Gestione Artigiani",
+  "forfettario.form.gestion.commercianti": "INPS Gestione Commercianti",
+  "forfettario.form.gestion.cassa-professionale": "Professional cassa (manual amount)",
+  "forfettario.form.cassaManualAmount": "Annual contribution to the cassa",
+  "forfettario.form.cassaManualAmount.hint": "Enter the amount your cassa estimates for the year.",
+  "forfettario.form.mesiAttivita": "Months of activity in the year",
+  "forfettario.form.mesiAttivita.hint":
+    "The minimum annual contribution for Artigiani and Commercianti is prorated by months of registration.",
+  "forfettario.form.isConcurrentFullTimeEmployee":
+    "I am also a full-time employee (32+ hours per week)",
+  "forfettario.form.concurrentEmployeeRal": "Full-time employee gross salary",
+  "forfettario.form.concurrentEmployeeRal.hint":
+    "Forfettario is barred if the employee gross salary exceeds €35,000.",
+  "forfettario.form.forfettarioDiscount35": "Apply the 35% forfettario reduction (Law 190/2014)",
+  "forfettario.form.newRegistrantDiscount50":
+    "I am a new registrant: 50% reduction for the first 36 months (Law 207/2024)",
+
   "forfettario.eligibility.warning": "Revenue close to the regime limit ({percent}% of {limit}).",
   "forfettario.eligibility.revenueExceeded":
     "Revenue above the {limit} limit: forfettario regime does not apply.",
   "forfettario.eligibility.employeeCostsExceeded":
     "Employee costs above {limit}: forfettario regime does not apply.",
+  "forfettario.eligibility.concurrentEmployeeRalTooHigh":
+    "The employee gross salary exceeds €35,000: forfettario regime does not apply.",
 
   "forfettario.summary.monthlyNet": "Monthly net",
   "forfettario.summary.annualNet": "Annual net",
@@ -204,6 +227,12 @@ export const en: Record<MessageKey, string> = {
   "forfettario.breakdown.coefficient": "Profitability coefficient",
   "forfettario.breakdown.imponibileLordo": "Gross taxable income",
   "forfettario.breakdown.inps": "Gestione Separata contributions ({rate})",
+  "forfettario.breakdown.inps.gestione-separata": "Gestione Separata contributions ({rate})",
+  "forfettario.breakdown.inps.artigiani": "INPS Artigiani contributions ({rate})",
+  "forfettario.breakdown.inps.commercianti": "INPS Commercianti contributions ({rate})",
+  "forfettario.breakdown.inps.cassa-professionale": "Professional cassa contributions",
+  "forfettario.breakdown.discount35": "35% discount applied (Law 190/2014).",
+  "forfettario.breakdown.discount50": "50% new-registrant discount applied (Law 207/2024).",
   "forfettario.breakdown.imponibileNetto": "Net taxable income",
   "forfettario.breakdown.imponibileNetto.sub": "(gross taxable minus deducted INPS contributions)",
   "forfettario.breakdown.impostaSostitutiva": "Substitute tax ({rate})",

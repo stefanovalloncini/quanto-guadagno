@@ -18,3 +18,4 @@ export * from "./forfettario.ts";
 export * from "./compoundInterest.ts";
 export * from "./naspi.ts";
 export * from "./preavviso.ts";
+export * from "./inpsGestioni.ts";
