@@ -48,6 +48,7 @@ export interface ForfettarioInput {
   readonly forfettarioDiscount35?: boolean;
   readonly newRegistrantDiscount50?: boolean;
   readonly cassaManualAmount?: number;
+  readonly isAnte1996?: boolean;
   readonly autonomi?: AutonomiYear;
 }
 
@@ -139,6 +140,7 @@ function gestionContributionFromAutonomi(
     forfettarioDiscount35: input.forfettarioDiscount35 ?? false,
     newRegistrantDiscount50: input.newRegistrantDiscount50 ?? false,
     cassaManualAmount: input.cassaManualAmount ?? 0,
+    isAnte1996: input.isAnte1996 ?? false,
   });
 }
 

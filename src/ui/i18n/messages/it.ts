@@ -206,6 +206,7 @@ export const it = {
   "forfettario.form.concurrentEmployeeRal": "RAL dipendente full-time",
   "forfettario.form.concurrentEmployeeRal.hint":
     "Il regime forfettario è precluso se la RAL da lavoro dipendente supera 35.000 €.",
+  "forfettario.form.isAnte1996": "Iscritto INPS prima del 1996 (massimale ridotto)",
   "forfettario.form.forfettarioDiscount35":
     "Richiedi la riduzione 35% del forfettario (L. 190/2014)",
   "forfettario.form.newRegistrantDiscount50":

@@ -204,6 +204,7 @@ export const en: Record<MessageKey, string> = {
   "forfettario.form.concurrentEmployeeRal": "Full-time employee gross salary",
   "forfettario.form.concurrentEmployeeRal.hint":
     "Forfettario is barred if the employee gross salary exceeds €35,000.",
+  "forfettario.form.isAnte1996": "Enrolled in INPS before 1996 (reduced cap)",
   "forfettario.form.forfettarioDiscount35": "Apply the 35% forfettario reduction (Law 190/2014)",
   "forfettario.form.newRegistrantDiscount50":
     "I am a new registrant: 50% reduction for the first 36 months (Law 207/2024)",

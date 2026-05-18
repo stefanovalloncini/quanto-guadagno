@@ -16,7 +16,10 @@ export interface GestionAutonomiConfig {
   readonly band1Ceiling: number;
   readonly minimaleReddito: number;
   readonly maternityYearly: number;
+  /** Massimale for iscritti post-1996. */
   readonly massimale: number;
+  /** Massimale for iscritti ante-1996 (pre-riforma Dini). */
+  readonly massimaleAnte1996: number;
 }
 
 export interface AutonomiYear {
@@ -44,6 +47,7 @@ const _2026: AutonomiYear = {
     minimaleReddito: 18_808,
     maternityYearly: 7.44,
     massimale: 122_295,
+    massimaleAnte1996: 86_334,
   },
   commercianti: {
     rate: 0.2448,
@@ -52,6 +56,7 @@ const _2026: AutonomiYear = {
     minimaleReddito: 18_808,
     maternityYearly: 7.44,
     massimale: 122_295,
+    massimaleAnte1996: 86_334,
   },
   forfettarioDiscount: 0.35,
   newRegistrantDiscount: 0.5,
