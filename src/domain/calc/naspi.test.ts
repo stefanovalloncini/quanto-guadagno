@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { calculateNaspi, type NaspiInput } from "./naspi.ts";
-import { getNaspiConfig } from "@/domain/data";
+import { getNaspiConfig, getTaxConfig } from "@/domain/data";
 
 const baseInput = (overrides: Partial<NaspiInput> = {}): NaspiInput => ({
   grossPay4Years: 100_000,
@@ -82,6 +82,33 @@ describe("NASpI decalage schedule", () => {
     const r = calculateNaspi(baseInput({ age: 55 }));
     expect(r.schedule[6]?.amount).toBeCloseTo(r.monthlyAmount, 1);
     expect(r.schedule[7]?.amount).toBeCloseTo(r.monthlyAmount * 0.97, 1);
+  });
+});
+
+describe("NASpI net (post-IRPEF)", () => {
+  const brackets2026 = getTaxConfig(2026).irpefBrackets;
+
+  it("returns net equal to gross when no brackets are provided", () => {
+    const r = calculateNaspi(baseInput());
+    expect(r.totalNet).toBe(r.totalGross);
+    expect(r.monthlyAmountNet).toBe(r.monthlyAmount);
+    expect(r.effectiveIrpefRate).toBe(0);
+  });
+
+  it("applies progressive IRPEF when brackets are provided", () => {
+    const r = calculateNaspi(baseInput({ irpefBrackets: brackets2026 }));
+    expect(r.totalNet).toBeLessThan(r.totalGross);
+    expect(r.monthlyAmountNet).toBeLessThan(r.monthlyAmount);
+    expect(r.effectiveIrpefRate).toBeGreaterThan(0);
+    expect(r.effectiveIrpefRate).toBeLessThan(0.5);
+  });
+
+  it("schedule rows include net amounts proportional to gross", () => {
+    const r = calculateNaspi(baseInput({ irpefBrackets: brackets2026 }));
+    const ratio = r.totalNet / r.totalGross;
+    for (const row of r.schedule) {
+      expect(row.amountNet / row.amount).toBeCloseTo(ratio, 3);
+    }
   });
 });
 

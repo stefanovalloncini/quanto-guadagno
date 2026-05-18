@@ -35,12 +35,13 @@ export function NaspiResults({ result, year }: NaspiResultsProps) {
   return (
     <Stack gap="md">
       <MetricBlock
-        label={<FormattedMessage id="naspi.result.monthlyAmount" />}
-        amount={result.monthlyAmount}
+        label={<FormattedMessage id="naspi.result.monthlyAmountNet" />}
+        amount={result.monthlyAmountNet}
         sublabel={
-          result.capped ? (
-            <FormattedMessage id="naspi.result.monthlyAmount.capped" values={{ year }} />
-          ) : undefined
+          <FormattedMessage
+            id="naspi.result.monthlyAmountGross.sub"
+            values={{ gross: result.monthlyAmount }}
+          />
         }
         whole
         announce
@@ -58,8 +59,14 @@ export function NaspiResults({ result, year }: NaspiResultsProps) {
           </div>
         </div>
         <MetricBlock
-          label={<FormattedMessage id="naspi.result.totalGross" />}
-          amount={result.totalGross}
+          label={<FormattedMessage id="naspi.result.totalNet" />}
+          amount={result.totalNet}
+          sublabel={
+            <FormattedMessage
+              id="naspi.result.totalGross.sub"
+              values={{ gross: result.totalGross }}
+            />
+          }
           whole
         />
       </Stack>
@@ -69,8 +76,16 @@ export function NaspiResults({ result, year }: NaspiResultsProps) {
         whole
       />
 
+      {result.capped && (
+        <p className="qg-note">
+          <FormattedMessage id="naspi.result.monthlyAmount.capped" values={{ year }} />
+        </p>
+      )}
       <p className="qg-note">
         <FormattedMessage id="naspi.decalage.note" values={{ month: result.decalageStartMonth }} />
+      </p>
+      <p className="qg-note">
+        <FormattedMessage id="naspi.irpef.note" />
       </p>
 
       <section className="qg-schedule" aria-labelledby="qg-naspi-schedule-title">
@@ -87,6 +102,9 @@ export function NaspiResults({ result, year }: NaspiResultsProps) {
                 <th scope="col">
                   <FormattedMessage id="naspi.schedule.amount" />
                 </th>
+                <th scope="col">
+                  <FormattedMessage id="naspi.schedule.amountNet" />
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -95,6 +113,9 @@ export function NaspiResults({ result, year }: NaspiResultsProps) {
                   <th scope="row">{row.month}</th>
                   <td>
                     <Money amount={row.amount} whole />
+                  </td>
+                  <td>
+                    <Money amount={row.amountNet} whole />
                   </td>
                 </tr>
               ))}

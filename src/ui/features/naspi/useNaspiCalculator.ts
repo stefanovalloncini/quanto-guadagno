@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { calculateNaspi, type NaspiBreakdown } from "@/domain/calc";
-import { getNaspiConfig, type SupportedYear } from "@/domain/data";
+import { getNaspiConfig, getTaxConfig, type SupportedYear } from "@/domain/data";
 
 export interface NaspiFormState {
   readonly grossPay4Years: number;
@@ -40,6 +40,7 @@ export function useNaspiCalculator(): NaspiCalculator {
         voluntaryResignationInLast12Months: state.voluntaryResignationInLast12Months,
         weeksAfterVoluntaryResignation: state.weeksAfterVoluntaryResignation,
         config: getNaspiConfig(state.year),
+        irpefBrackets: getTaxConfig(state.year).irpefBrackets,
       }),
     [state],
   );
