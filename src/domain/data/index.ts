@@ -94,3 +94,14 @@ export function getTaxConfig(year: SupportedYear): YearlyTaxConfig {
 }
 
 export { getNaspiConfig, type NaspiConfig, NASPI_2024, NASPI_2025, NASPI_2026 } from "./naspi.ts";
+
+export {
+  CCNL_TABLE,
+  CCNL_IDS,
+  type CcnlId,
+  type SeniorityBand,
+  type CcnlLivello,
+  type CcnlNoticeEntry,
+  type CcnlNoticeRow,
+  type CcnlDefinition,
+} from "./preavviso.ts";
