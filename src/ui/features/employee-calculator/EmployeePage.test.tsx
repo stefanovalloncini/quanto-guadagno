@@ -37,6 +37,17 @@ describe("EmployeePage", () => {
     expect(screen.getByText(/TFR maturando/)).toBeInTheDocument();
   });
 
+  it("renders a year-over-year comparison panel listing all supported years", () => {
+    renderWithIntl(<EmployeePage />);
+    expect(screen.getByText(/Stesso lordo, anni diversi/)).toBeInTheDocument();
+    const panel = document.querySelector(".qg-year-compare") as HTMLElement;
+    expect(panel).toBeTruthy();
+    expect(panel.textContent).toMatch(/2024/);
+    expect(panel.textContent).toMatch(/2025/);
+    expect(panel.textContent).toMatch(/2026/);
+    expect(panel.querySelectorAll(".qg-year-compare__row")).toHaveLength(3);
+  });
+
   it("recomputes the net amount when gross changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

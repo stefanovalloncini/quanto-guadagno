@@ -527,6 +527,11 @@ export const en: Record<MessageKey, string> = {
   "employee.summary.effectiveRate": "Effective tax rate:",
   "employee.summary.marginalRate": "Marginal tax rate:",
   "employee.summary.gross": "Gross annual",
+
+  "employee.yearCompare.title": "Same gross, different years",
+  "employee.yearCompare.perMonth": "month",
+  "employee.yearCompare.perYear": "year",
+  "employee.yearCompare.currentBadge": "selected year",
   "employee.summary.pdr": "Performance bonus (net)",
 
   "employee.breakdown.title": "Tax breakdown",

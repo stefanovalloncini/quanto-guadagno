@@ -1107,6 +1107,71 @@
   line-height: 1.5;
 }
 
+.qg-year-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.qg-year-compare__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+.qg-year-compare__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.qg-year-compare__row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.qg-year-compare__row--current .qg-year-compare__net,
+.qg-year-compare__row--current .qg-year-compare__year {
+  color: var(--ink);
+  font-weight: 500;
+}
+.qg-year-compare__year {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.qg-year-compare__net {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.qg-year-compare__unit {
+  margin-left: 0.15em;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.qg-year-compare__badge {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  font-style: italic;
+}
+.qg-year-compare__delta {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-xs);
+}
+.qg-year-compare__delta.is-positive {
+  color: var(--accent);
+}
+.qg-year-compare__delta.is-negative {
+  color: var(--warm);
+}
+
 /* EmployerCostView: open-by-default, leads with the net-vs-cost gap */
 .qg-employer {
   display: flex;

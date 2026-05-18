@@ -534,6 +534,11 @@ export const it = {
   "employee.summary.effectiveRate": "Aliquota effettiva:",
   "employee.summary.marginalRate": "Aliquota marginale:",
   "employee.summary.gross": "Lordo annuo",
+
+  "employee.yearCompare.title": "Stesso lordo, anni diversi",
+  "employee.yearCompare.perMonth": "mese",
+  "employee.yearCompare.perYear": "anno",
+  "employee.yearCompare.currentBadge": "anno selezionato",
   "employee.summary.pdr": "Premio di risultato netto",
 
   "employee.breakdown.title": "Dettaglio imposte",

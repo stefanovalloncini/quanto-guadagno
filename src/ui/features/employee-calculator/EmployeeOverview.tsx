@@ -1,4 +1,5 @@
 import { NetSalarySummary } from "./components/NetSalarySummary.tsx";
+import { YearComparison } from "./components/YearComparison.tsx";
 import { ShareButton } from "@/ui/shared/ShareButton.tsx";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
 
@@ -10,6 +11,7 @@ export function EmployeeOverview({ calc }: EmployeeOverviewProps) {
   return (
     <div className="qg-employee__overview">
       <NetSalarySummary breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
+      <YearComparison calc={calc} />
       <div className="qg-employee__overview-actions">
         <ShareButton />
       </div>

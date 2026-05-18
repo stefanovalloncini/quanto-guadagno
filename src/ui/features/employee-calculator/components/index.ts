@@ -12,3 +12,4 @@ export { InpsRateInput } from "./InpsRateInput.tsx";
 export { NetSalarySummary } from "./NetSalarySummary.tsx";
 export { ResultsBreakdown } from "./ResultsBreakdown.tsx";
 export { EmployerCostView } from "./EmployerCostView.tsx";
+export { YearComparison } from "./YearComparison.tsx";
