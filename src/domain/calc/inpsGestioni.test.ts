@@ -14,6 +14,7 @@ const base = (overrides: Partial<AutonomiInput> = {}): AutonomiInput => ({
   forfettarioDiscount35: false,
   newRegistrantDiscount50: false,
   cassaManualAmount: 0,
+  isAnte1996: false,
   ...overrides,
 });
 
@@ -92,6 +93,19 @@ describe("Commercianti", () => {
   it("uses the 0.2448 / 0.2548 rates", () => {
     const r = calculateGestionContribution(base({ gestion: "commercianti" }));
     expect(r.aliquotaApplicata).toBe(0.2448);
+  });
+});
+
+describe("Ante-1996 massimale", () => {
+  it("caps the highest band at the ante-1996 massimale", () => {
+    const ante = calculateGestionContribution(
+      base({ gestion: "artigiani", imponibile: 100_000, isAnte1996: true }),
+    );
+    const post = calculateGestionContribution(
+      base({ gestion: "artigiani", imponibile: 100_000, isAnte1996: false }),
+    );
+    // ante1996 cap is 86_334; post is 122_295 — ante imponibile is capped lower, so post > ante.
+    expect(post.contributoTotale).toBeGreaterThan(ante.contributoTotale);
   });
 });
 

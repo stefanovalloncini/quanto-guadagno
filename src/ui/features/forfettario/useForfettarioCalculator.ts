@@ -22,6 +22,7 @@ export interface ForfettarioFormState {
   readonly forfettarioDiscount35: boolean;
   readonly newRegistrantDiscount50: boolean;
   readonly cassaManualAmount: number;
+  readonly isAnte1996: boolean;
 }
 
 const DEFAULTS: ForfettarioFormState = {
@@ -38,6 +39,7 @@ const DEFAULTS: ForfettarioFormState = {
   forfettarioDiscount35: false,
   newRegistrantDiscount50: false,
   cassaManualAmount: 0,
+  isAnte1996: false,
 };
 
 export interface ForfettarioCalculator {
@@ -80,6 +82,7 @@ export function useForfettarioCalculator(): ForfettarioCalculator {
         forfettarioDiscount35: state.forfettarioDiscount35,
         newRegistrantDiscount50: state.newRegistrantDiscount50,
         cassaManualAmount: state.cassaManualAmount,
+        isAnte1996: state.isAnte1996,
         autonomi,
       },
       config.forfettario,

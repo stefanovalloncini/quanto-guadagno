@@ -115,6 +115,20 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
           />
         )}
 
+        {isArtCom && (
+          <label className="qg-toggle">
+            <input
+              type="checkbox"
+              className="qg-toggle__input"
+              checked={state.isAnte1996}
+              onChange={(e) => update({ isAnte1996: e.target.checked })}
+            />
+            <span className="qg-toggle__label">
+              <FormattedMessage id="forfettario.form.isAnte1996" />
+            </span>
+          </label>
+        )}
+
         <Field
           label={<FormattedMessage id="forfettario.form.yearsOfActivity" />}
           hint={<FormattedMessage id="forfettario.form.yearsOfActivity.hint" />}

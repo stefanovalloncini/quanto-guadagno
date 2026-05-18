@@ -17,6 +17,7 @@ export interface AutonomiInput {
   readonly forfettarioDiscount35: boolean;
   readonly newRegistrantDiscount50: boolean;
   readonly cassaManualAmount: number;
+  readonly isAnte1996: boolean;
 }
 
 export interface AutonomiBreakdown {
@@ -55,12 +56,14 @@ function calcArtigianiCommercianti(
   const fissoMinimoYearly = g.minimaleReddito * g.rate + g.maternityYearly;
   const contributoFisso = (fissoMinimoYearly * mesi) / 12;
 
+  const cap = input.isAnte1996 ? g.massimaleAnte1996 : g.massimale;
+
   let eccedenza = 0;
   if (input.imponibile > g.minimaleReddito) {
     const overMinimo = Math.min(input.imponibile, g.band1Ceiling) - g.minimaleReddito;
     eccedenza += Math.max(0, overMinimo) * g.rate;
     if (input.imponibile > g.band1Ceiling) {
-      const over1st = Math.min(input.imponibile, g.massimale) - g.band1Ceiling;
+      const over1st = Math.min(input.imponibile, cap) - g.band1Ceiling;
       eccedenza += Math.max(0, over1st) * g.rateOver1stBand;
     }
   }
