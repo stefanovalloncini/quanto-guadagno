@@ -1,0 +1,122 @@
+@media print {
+  .qg-header,
+  .qg-footer,
+  .qg-skip-link,
+  .qg-share-button,
+  .qg-locale-toggle,
+  .qg-theme-toggle {
+    display: none !important;
+  }
+
+  body,
+  html {
+    background: white !important;
+    color: black !important;
+  }
+
+  .qg-main {
+    padding: 0;
+    margin: 0;
+  }
+
+  .qg-print-payslip {
+    color: black;
+    background: white;
+    page-break-inside: avoid;
+  }
+
+  .qg-breakdown-row__amount,
+  .qg-money {
+    color: black;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+}
+
+.qg-print-payslip {
+  display: block;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.qg-print-payslip__header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border, #ccc);
+}
+
+.qg-print-payslip__title {
+  margin: 0 0 4px;
+}
+
+.qg-print-payslip__subtitle {
+  margin: 0;
+  color: var(--color-text-muted, #555);
+}
+
+.qg-print-payslip__section-title {
+  font-size: 1.1rem;
+  margin: 24px 0 12px;
+}
+
+.qg-print-payslip__summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+}
+
+.qg-print-payslip__metric {
+  margin: 0;
+}
+
+.qg-print-payslip__metric dt {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #555);
+  margin-bottom: 4px;
+}
+
+.qg-print-payslip__metric dd {
+  margin: 0;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.qg-print-payslip__inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  margin: 0;
+}
+
+.qg-print-payslip__inputs-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted var(--color-border-subtle, #e5e5e5);
+  padding: 4px 0;
+}
+
+.qg-print-payslip__inputs-row dt {
+  color: var(--color-text-muted, #555);
+}
+
+.qg-print-payslip__inputs-row dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.qg-print-payslip__footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border, #ccc);
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #555);
+}
+
+.qg-print-payslip__source {
+  margin: 8px 0 0;
+}

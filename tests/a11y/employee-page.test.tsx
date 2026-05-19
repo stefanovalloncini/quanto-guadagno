@@ -21,6 +21,7 @@ import { NaspiPage } from "@/ui/features/naspi";
 import { PreavvisoPage } from "@/ui/features/preavviso";
 import { CompoundInterestPage } from "@/ui/features/compound-interest";
 import { GlossarioPage } from "@/ui/features/glossario";
+import { PrintPayslipPage } from "@/ui/features/print-payslip";
 
 expect.extend(toHaveNoViolations);
 
@@ -135,6 +136,12 @@ describe("accessibility", () => {
 
   it("GlossarioPage has no axe violations", async () => {
     const { container } = render(wrap(<GlossarioPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("PrintPayslipPage has no axe violations", async () => {
+    const { container } = render(wrap(<PrintPayslipPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

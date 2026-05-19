@@ -16,7 +16,7 @@ import { LATEST_SUPPORTED_YEAR, type SupportedYear, type RegionCode } from "@/do
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 import { parseUrlState, writeUrlState } from "./urlState.ts";
 
-interface FormState {
+export interface FormState {
   readonly grossAnnual: number;
   readonly taxYear: SupportedYear;
   readonly regionCode: RegionCode;
@@ -33,7 +33,7 @@ interface FormState {
   readonly premioRisultato: PremioRisultatoInput | null;
 }
 
-const DEFAULTS: FormState = {
+export const DEFAULTS: FormState = {
   grossAnnual: 30_000,
   taxYear: LATEST_SUPPORTED_YEAR,
   regionCode: "lombardia",

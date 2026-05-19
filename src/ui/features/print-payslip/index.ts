@@ -1,0 +1,1 @@
+export { PrintPayslipPage } from "./PrintPayslipPage";

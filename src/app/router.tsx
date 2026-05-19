@@ -43,6 +43,9 @@ const TfrPage = lazy(() => import("@/ui/features/tfr").then((m) => ({ default: m
 const GlossarioPage = lazy(() =>
   import("@/ui/features/glossario").then((m) => ({ default: m.GlossarioPage })),
 );
+const PrintPayslipPage = lazy(() =>
+  import("@/ui/features/print-payslip").then((m) => ({ default: m.PrintPayslipPage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -82,6 +85,7 @@ const router = createBrowserRouter([
   { path: "/costo-azienda", element: lazyRoute(<EmployerCostPage />) },
   { path: "/tfr", element: lazyRoute(<TfrPage />) },
   { path: "/glossario", element: lazyRoute(<GlossarioPage />) },
+  { path: "/stampa-busta-paga", element: lazyRoute(<PrintPayslipPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },
