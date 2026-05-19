@@ -32,7 +32,8 @@ describe("PreavvisoPage", () => {
     await user.selectOptions(ccnlSelect, "logistica");
     const livelloSelect = screen.getByLabelText(/Livello di inquadramento/);
     await user.selectOptions(livelloSelect, "operai");
-    expect(screen.getByText(/giorni lavorativi/)).toBeTruthy();
+    const result = document.querySelector(".qg-calc__result");
+    expect(result?.textContent ?? "").toMatch(/giorni lavorativi/);
   });
 
   it("shows the error alert when resignation precedes hire", async () => {

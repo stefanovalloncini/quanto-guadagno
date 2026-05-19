@@ -3,6 +3,7 @@ import { SHARED_FORFETTARIO } from "@/domain/data";
 import { formatCurrencyWhole } from "@/domain/format.ts";
 import { ForfettarioForm } from "./ForfettarioForm.tsx";
 import { ForfettarioResults } from "./ForfettarioResults.tsx";
+import { ForfettarioFaq } from "./ForfettarioFaq.tsx";
 import { useForfettarioCalculator } from "./useForfettarioCalculator.ts";
 
 export function ForfettarioPage() {
@@ -15,6 +16,7 @@ export function ForfettarioPage() {
       ledeValues={{ limit: formatCurrencyWhole(SHARED_FORFETTARIO.maxRevenue) }}
       form={<ForfettarioForm calc={calc} />}
       results={<ForfettarioResults result={calc.result} />}
+      footer={<ForfettarioFaq />}
     />
   );
 }

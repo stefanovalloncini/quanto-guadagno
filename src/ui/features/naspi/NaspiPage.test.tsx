@@ -23,8 +23,9 @@ describe("NaspiPage", () => {
     const weeks = screen.getByLabelText(/Settimane di contribuzione ultimi 4 anni/);
     await user.clear(weeks);
     await user.type(weeks, "0");
-    expect(screen.getByRole("alert")).toBeTruthy();
-    expect(screen.getByText(/almeno 13 settimane/)).toBeTruthy();
+    const alert = screen.getByRole("alert");
+    expect(alert).toBeTruthy();
+    expect(alert.textContent ?? "").toMatch(/almeno 13 settimane/);
   });
 
   it("reveals the after-resignation field when toggling voluntary resignation", async () => {

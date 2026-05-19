@@ -1,6 +1,7 @@
 import { CalculatorLayout } from "@/ui/shared/CalculatorLayout.tsx";
 import { PreavvisoForm } from "./PreavvisoForm.tsx";
 import { PreavvisoResults } from "./PreavvisoResults.tsx";
+import { PreavvisoFaq } from "./PreavvisoFaq.tsx";
 import { usePreavvisoCalculator } from "./usePreavvisoCalculator.ts";
 import "./preavviso.css";
 
@@ -13,6 +14,7 @@ export function PreavvisoPage() {
       ledeId="preavviso.lede"
       form={<PreavvisoForm calc={calc} />}
       results={<PreavvisoResults result={calc.result} invalidDates={calc.invalidDates} />}
+      footer={<PreavvisoFaq />}
     />
   );
 }

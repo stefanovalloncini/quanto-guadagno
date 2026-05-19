@@ -194,6 +194,66 @@ export const en: Record<MessageKey, string> = {
   "employee.faq.sources.a":
     "IRPEF rates from Agenzia delle Entrate, INPS contributions from annual circulars, regional surcharges from regional decrees. The /fonti page lists, for each component, the specific source.",
 
+  "forfettario.faq.title": "Frequently asked questions",
+  "forfettario.faq.what.q": "What is the forfettario regime?",
+  "forfettario.faq.what.a":
+    "A simplified Italian tax regime for self-employed workers with revenue up to €85,000 per year. A flat substitute tax applies to taxable income, computed as revenue × the activity-specific profitability coefficient. No VAT, no ordinary IRPEF, no IRAP. Reference: Law 190/2014 and amendments.",
+  "forfettario.faq.rates.q": "What are the substitute tax rates?",
+  "forfettario.faq.rates.a":
+    "The standard rate is 15% on taxable income. The first 5 years of activity benefit from a reduced 5% rate, if the eligibility requirements are met (new activity, not a continuation of prior employment).",
+  "forfettario.faq.contributi.q": "How are social contributions calculated?",
+  "forfettario.faq.contributi.a":
+    "It depends on the fund: INPS Gestione Separata (~26%) for professionals without a dedicated fund, Artigiani or Commercianti for trade-registered activities (IVS rate plus annual minimum), or a specific professional pension fund. The calculator shows the option for each.",
+  "forfettario.faq.combined.q": "Can I use forfettario while also being an employee?",
+  "forfettario.faq.combined.a":
+    "Yes, but with a cap: employment income must not exceed €30,000 in the previous year. Above that threshold, the forfettario requirements lapse for the following year.",
+  "forfettario.faq.startup.q": "What changes in the first 5 years?",
+  "forfettario.faq.startup.a":
+    "The substitute tax drops from 15% to 5% for the first 5 years, if eligibility requirements are met (new activity, not employed in the same sector in the prior 3 years). After 5 years the rate returns to 15%.",
+  "forfettario.faq.exit.q": "When do I exit the forfettario regime?",
+  "forfettario.faq.exit.a":
+    "When revenue exceeds €85,000 in the year (over €100,000 triggers immediate exit), or if other requirements lapse (hiring employees over the cap, employment income above €30,000, etc.). Exit means returning to the ordinary tax regime.",
+
+  "naspi.faq.title": "Frequently asked questions",
+  "naspi.faq.what.q": "What is NASpI?",
+  "naspi.faq.what.a":
+    "Monthly unemployment indemnity introduced by D.Lgs. 22/2015. It is paid to workers who lose their job involuntarily (dismissal, just-cause resignation, settlement in conciliation) and have at least 13 weeks of contributions in the previous 4 years.",
+  "naspi.faq.duration.q": "How long does NASpI last?",
+  "naspi.faq.duration.a":
+    "Half of the contribution weeks from the previous 4 years, with a maximum of 24 months (104 weeks). Example: 100 weeks of contributions → 50 weeks of NASpI.",
+  "naspi.faq.amount.q": "How is the monthly amount calculated?",
+  "naspi.faq.amount.a":
+    "Start from the average monthly wage of the last 4 years. Up to a threshold (€1,456.72 gross monthly in 2026) you receive 75%. Above the threshold you add 25% of the difference, up to a cap (€1,584.70 gross monthly in 2026). Source: INPS Circular 4/2026.",
+  "naspi.faq.decalage.q": "When does NASpI start to decrease (décalage)?",
+  "naspi.faq.decalage.a":
+    "From month 6 (month 8 if you are 55 or older when you apply) the indemnity decreases by 3% per month. If initial NASpI is €1,200, after month 6 it becomes €1,164, after month 7 it is €1,130, and so on.",
+  "naspi.faq.tax.q": "Is NASpI taxed?",
+  "naspi.faq.tax.a":
+    "Yes, IRPEF applies as if it were employment income. The calculator also shows the estimated net by applying the IRPEF brackets of the chosen year.",
+  "naspi.faq.work.q": "Can I work while receiving NASpI?",
+  "naspi.faq.work.a":
+    "Yes, but the rules depend on the type of work and the duration. For self-employment up to €5,500 per year, NASpI is only reduced. For new employment contracts, NASpI is suspended above certain thresholds. You must inform INPS of any new activity within 30 days.",
+
+  "preavviso.faq.title": "Frequently asked questions",
+  "preavviso.faq.obbligatorio.q": "Am I required to give notice?",
+  "preavviso.faq.obbligatorio.a":
+    "Yes, except for resignation for just cause (Art. 2119 c.c., for example unpaid wages or harassment) or during the trial period. The days depend on the CCNL, your level, and your length of service.",
+  "preavviso.faq.mancato.q": "What happens if I don't give notice?",
+  "preavviso.faq.mancato.a":
+    "The employer can withhold an indemnity equivalent to the wages you would have earned during those days. It is deducted from your TFR and final payslip.",
+  "preavviso.faq.calendarOrWork.q": "Are notice days calendar days or working days?",
+  "preavviso.faq.calendarOrWork.a":
+    "By default they are calendar days: Saturdays, Sundays and public holidays count. Some CCNLs prescribe working days for specific levels (the calculator flags this case when it applies).",
+  "preavviso.faq.ferie.q": "Do unused holidays count toward notice?",
+  "preavviso.faq.ferie.a":
+    "No. Holidays taken during notice do not stop the period from running. Unused holidays are paid out in the final payslip; they do not reduce the notice days.",
+  "preavviso.faq.malattia.q": "Can I resign while on sick leave?",
+  "preavviso.faq.malattia.a":
+    "Yes. Illness does not prevent resignation, but it suspends the running of the notice period (consistent case law of the Court of Cassation, labor section). Notice resumes when you recover.",
+  "preavviso.faq.prova.q": "What changes during the trial period?",
+  "preavviso.faq.prova.a":
+    "During the trial period either party can terminate without notice and without giving reasons (Art. 2096 c.c.). The calculator treats this as a separate case.",
+
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",
   "employee.breakdown.irpefNet": "IRPEF net",

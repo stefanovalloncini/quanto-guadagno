@@ -194,6 +194,66 @@ export const it = {
   "employee.faq.sources.a":
     "Aliquote IRPEF da Agenzia delle Entrate, contributi INPS dalle circolari annuali, addizionali regionali dalle delibere regionali. La pagina /fonti elenca per ciascun componente il riferimento normativo specifico.",
 
+  "forfettario.faq.title": "Domande frequenti",
+  "forfettario.faq.what.q": "Cos'è il regime forfettario?",
+  "forfettario.faq.what.a":
+    "Un regime fiscale agevolato per partite IVA con ricavi entro €85.000 annui. Si applica un'imposta sostitutiva sul reddito imponibile calcolato come ricavi × coefficiente di redditività per attività. Niente IVA, niente IRPEF ordinaria, niente IRAP. Riferimento: Legge 190/2014 e modifiche.",
+  "forfettario.faq.rates.q": "Quali sono le aliquote dell'imposta sostitutiva?",
+  "forfettario.faq.rates.a":
+    "Il 15% sul reddito imponibile è l'aliquota a regime. I primi 5 anni di attività si applica il 5%, se rispetti i requisiti previsti dalla normativa (attività nuova, non prosecuzione di lavoro dipendente).",
+  "forfettario.faq.contributi.q": "Come si calcolano i contributi previdenziali?",
+  "forfettario.faq.contributi.a":
+    "Dipende dalla cassa: Gestione Separata INPS (~26%) per professionisti senza cassa, Artigiani o Commercianti per attività iscritte alle relative gestioni (con aliquote IVS e contributo minimo annuo), oppure cassa professionale specifica. Il calcolatore mostra l'opzione per ciascuno.",
+  "forfettario.faq.combined.q": "Posso applicare il forfettario se ho anche un lavoro dipendente?",
+  "forfettario.faq.combined.a":
+    "Sì, ma con un limite: i redditi da lavoro dipendente e assimilati non devono superare €30.000 nell'anno precedente. Sopra questa soglia, decadono i requisiti del forfettario per l'anno successivo.",
+  "forfettario.faq.startup.q": "Cosa cambia nei primi 5 anni di attività?",
+  "forfettario.faq.startup.a":
+    "L'imposta sostitutiva scende dal 15% al 5% per i primi 5 anni se rispetti i requisiti (nuova attività, non sei stato lavoratore dipendente nello stesso settore nei 3 anni precedenti, almeno parzialmente). Dopo i 5 anni l'aliquota torna al 15%.",
+  "forfettario.faq.exit.q": "Quando si esce dal forfettario?",
+  "forfettario.faq.exit.a":
+    "Quando superi €85.000 di ricavi nell'anno (oltre €100.000 con uscita immediata), oppure se vengono meno gli altri requisiti (assunzione di dipendenti oltre soglia, redditi da lavoro dipendente sopra €30.000, ecc.). L'uscita comporta il rientro nel regime ordinario.",
+
+  "naspi.faq.title": "Domande frequenti",
+  "naspi.faq.what.q": "Cos'è la NASpI?",
+  "naspi.faq.what.a":
+    "Indennità mensile di disoccupazione introdotta dal D.Lgs. 22/2015. Spetta a chi perde involontariamente il lavoro (licenziamento, dimissioni per giusta causa, risoluzione consensuale in conciliazione) e ha almeno 13 settimane di contribuzione nei 4 anni precedenti.",
+  "naspi.faq.duration.q": "Quanto dura la NASpI?",
+  "naspi.faq.duration.a":
+    "La metà delle settimane di contribuzione degli ultimi 4 anni, con un massimo di 24 mesi (104 settimane). Esempio: 100 settimane di contributi → 50 settimane di NASpI.",
+  "naspi.faq.amount.q": "Come si calcola l'importo mensile?",
+  "naspi.faq.amount.a":
+    "Si parte dalla retribuzione media degli ultimi 4 anni. Fino a una soglia (€1.456,72 lordi mensili nel 2026) si prende il 75%. Sopra la soglia si aggiunge il 25% della differenza, fino a un massimale (€1.584,70 lordi mensili nel 2026). Fonte: Circolare INPS n. 4/2026.",
+  "naspi.faq.decalage.q": "Quando inizia a ridursi (décalage)?",
+  "naspi.faq.decalage.a":
+    "Dal 6° mese (8° mese se hai 55 anni o più al momento della domanda) l'indennità si riduce del 3% al mese. Se la NASpI iniziale è €1.200, dopo il 6° mese diventa €1.164, dopo il 7° €1.130 e così via.",
+  "naspi.faq.tax.q": "La NASpI è tassata?",
+  "naspi.faq.tax.a":
+    "Sì, è soggetta a IRPEF come reddito da lavoro dipendente. Il calcolatore mostra anche il netto stimato applicando gli scaglioni IRPEF dell'anno selezionato.",
+  "naspi.faq.work.q": "Posso lavorare mentre prendo la NASpI?",
+  "naspi.faq.work.a":
+    "Sì, ma con regole specifiche per tipo di lavoro e durata. Per il lavoro autonomo entro €5.500 annui, la NASpI è solo ridotta. Per nuovi contratti dipendenti, la NASpI si sospende oltre certe soglie. Comunicare l'attività a INPS entro 30 giorni è obbligatorio.",
+
+  "preavviso.faq.title": "Domande frequenti",
+  "preavviso.faq.obbligatorio.q": "Sono obbligato a dare il preavviso?",
+  "preavviso.faq.obbligatorio.a":
+    "Sì, salvo dimissioni per giusta causa (Art. 2119 c.c., per esempio mancato pagamento dello stipendio o molestie) o in periodo di prova. I giorni dipendono dal CCNL, dal livello e dall'anzianità di servizio.",
+  "preavviso.faq.mancato.q": "Cosa succede se non lo do?",
+  "preavviso.faq.mancato.a":
+    "Il datore di lavoro può trattenere un'indennità sostitutiva del preavviso pari alla retribuzione che avresti percepito durante quei giorni. Viene scalata dal TFR e dalle competenze finali.",
+  "preavviso.faq.calendarOrWork.q": "I giorni di preavviso sono calendariali o lavorativi?",
+  "preavviso.faq.calendarOrWork.a":
+    "Di default sono calendariali: si contano sabato, domenica e festivi. Alcuni CCNL prevedono giorni lavorativi per specifici livelli (il calcolatore segnala questo caso quando è applicabile).",
+  "preavviso.faq.ferie.q": "Le ferie residue contano nel preavviso?",
+  "preavviso.faq.ferie.a":
+    "No. Le ferie godute durante il preavviso non sospendono il decorso del periodo. Le ferie residue non godute vengono pagate al netto in busta paga finale, non scalate dai giorni di preavviso.",
+  "preavviso.faq.malattia.q": "Posso dimettermi durante la malattia?",
+  "preavviso.faq.malattia.a":
+    "Sì. La malattia non impedisce le dimissioni ma sospende il decorso del preavviso (Cass. civ. sez. lav., orientamento consolidato). Il preavviso riprende a decorrere alla guarigione.",
+  "preavviso.faq.prova.q": "Cosa cambia durante il periodo di prova?",
+  "preavviso.faq.prova.a":
+    "Durante il periodo di prova entrambe le parti possono recedere senza preavviso e senza dover motivare la decisione (Art. 2096 c.c.). Il calcolatore considera questo come un caso a sé.",
+
   "employee.breakdown.gross": "Lordo annuo",
   "employee.breakdown.inps": "Contributi INPS",
   "employee.breakdown.irpefNet": "IRPEF netta",

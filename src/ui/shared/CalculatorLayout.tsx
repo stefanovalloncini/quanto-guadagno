@@ -9,6 +9,7 @@ interface CalculatorLayoutProps {
   readonly ledeValues?: MessageValues;
   readonly form: ReactNode;
   readonly results: ReactNode;
+  readonly footer?: ReactNode;
 }
 
 export function CalculatorLayout({
@@ -18,6 +19,7 @@ export function CalculatorLayout({
   ledeValues,
   form,
   results,
+  footer,
 }: CalculatorLayoutProps) {
   return (
     <section className="qg-calc">
@@ -37,6 +39,8 @@ export function CalculatorLayout({
         <div className="qg-calc__form">{form}</div>
         <aside className="qg-calc__result">{results}</aside>
       </div>
+
+      {footer ? <div className="qg-calc__footer">{footer}</div> : null}
     </section>
   );
 }
