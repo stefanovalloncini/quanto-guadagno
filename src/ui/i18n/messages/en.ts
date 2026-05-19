@@ -277,6 +277,41 @@ export const en: Record<MessageKey, string> = {
   "esempio.brackets.standard": "23% up to €28,000, 35% up to €50,000, 43% above",
   "esempio.brackets.2026": "23% up to €28,000, 33% up to €50,000, 43% above",
 
+  "glossario.eyebrow": "Glossary",
+  "glossario.title": "Italian tax terms <em>in short</em>.",
+  "glossario.lede":
+    "One definition per term that recurs across the calculators. Logical order, not alphabetical.",
+  "glossario.irpef.term": "IRPEF",
+  "glossario.irpef.definition":
+    "Italian personal income tax. Applied to taxable income (gross minus contributions) via progressive brackets. 2026 rates: 23% up to €28,000, 33% from €28,001 to €50,000, 43% above. Reference: TUIR (DPR 917/1986) and D.Lgs. 216/2023.",
+  "glossario.inps.term": "INPS contributions",
+  "glossario.inps.definition":
+    "Employee social-security contributions paid to the National Social Security Institute. For employees, the ordinary part is 9.19% of gross, plus 1% above the first cap (€55,008 in 2026). They fund the future pension. Source: annual INPS circulars.",
+  "glossario.cuneo.term": "Tax wedge",
+  "glossario.cuneo.definition":
+    "The gap between employer labor cost and employee net pay. The tax-wedge cut is the reduction of contributions or IRPEF for low-to-medium incomes. For 2026 it is structural, with rules that differ from 2024–2025.",
+  "glossario.trattamento.term": "Trattamento integrativo",
+  "glossario.trattamento.definition":
+    "Monthly tax credit up to about €1,200 per year for employee income below the legal threshold. It only applies when gross IRPEF exceeds the employee work deduction. Reference: D.L. 3/2020.",
+  "glossario.regionale.term": "Regional surcharge",
+  "glossario.regionale.definition":
+    "IRPEF surcharge in favor of the region of residence, applied to taxable income. Rates range from 1.23% to over 3.33%; some regions have an exemption threshold.",
+  "glossario.comunale.term": "Municipal surcharge",
+  "glossario.comunale.definition":
+    "IRPEF surcharge in favor of the municipality of residence. The rate varies from 0% to 0.9% per city, decided annually by municipal resolution.",
+  "glossario.tfr.term": "TFR (Trattamento di Fine Rapporto)",
+  "glossario.tfr.definition":
+    "Annual provision set aside by the employer for the employee, equal to about 7.4% of compensation (Art. 2120 c.c.). It is revalued each year at 1.5% fixed plus 75% of FOI inflation. Paid out at the end of the employment relationship.",
+  "glossario.ccnl.term": "CCNL",
+  "glossario.ccnl.definition":
+    "National Collective Labor Agreement. Defines minimum wages, job grades, monthly instalments, holidays, notice, and protections for each sector. It is negotiated between employer associations and unions.",
+  "glossario.naspi.term": "NASpI",
+  "glossario.naspi.definition":
+    "New Social Insurance for Employment: monthly unemployment indemnity introduced by D.Lgs. 22/2015. Paid to workers who lose their job involuntarily with at least 13 weeks of contributions in the previous 4 years.",
+  "glossario.forfettario.term": "Forfettario regime",
+  "glossario.forfettario.definition":
+    "Simplified tax regime for self-employed workers with revenue up to €85,000 per year. Substitute tax of 15% (5% in the first 5 years of new activity), no VAT, no ordinary IRPEF. Reference: Law 190/2014.",
+
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",
   "employee.breakdown.irpefNet": "IRPEF net",

@@ -1,0 +1,1 @@
+export { GlossarioPage } from "./GlossarioPage";

@@ -1289,6 +1289,45 @@
   color: var(--ink-2);
 }
 
+.qg-glossario {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.qg-glossario__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+}
+.qg-glossario__item {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 2fr;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--rule);
+}
+.qg-glossario__item:last-child {
+  border-bottom: none;
+}
+.qg-glossario__term {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--ink);
+}
+.qg-glossario__definition {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+@media (max-width: 720px) {
+  .qg-glossario__item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
 .qg-irpef-indicator {
   display: flex;
   flex-direction: column;

@@ -20,6 +20,7 @@ import { ForfettarioPage } from "@/ui/features/forfettario";
 import { NaspiPage } from "@/ui/features/naspi";
 import { PreavvisoPage } from "@/ui/features/preavviso";
 import { CompoundInterestPage } from "@/ui/features/compound-interest";
+import { GlossarioPage } from "@/ui/features/glossario";
 
 expect.extend(toHaveNoViolations);
 
@@ -128,6 +129,12 @@ describe("accessibility", () => {
 
   it("CompoundInterestPage has no axe violations", async () => {
     const { container } = render(wrap(<CompoundInterestPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("GlossarioPage has no axe violations", async () => {
+    const { container } = render(wrap(<GlossarioPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

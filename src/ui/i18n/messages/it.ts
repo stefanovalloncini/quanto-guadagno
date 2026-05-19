@@ -277,6 +277,41 @@ export const it = {
   "esempio.brackets.standard": "23% fino a €28.000, 35% fino a €50.000, 43% oltre",
   "esempio.brackets.2026": "23% fino a €28.000, 33% fino a €50.000, 43% oltre",
 
+  "glossario.eyebrow": "Glossario",
+  "glossario.title": "I termini del <em>fisco italiano</em> in breve.",
+  "glossario.lede":
+    "Una definizione per ciascuno dei termini che ricorrono nei calcolatori. Ordine logico, non alfabetico.",
+  "glossario.irpef.term": "IRPEF",
+  "glossario.irpef.definition":
+    "Imposta sul Reddito delle Persone Fisiche. Si applica per scaglioni progressivi al reddito imponibile (lordo meno contributi). Aliquote 2026: 23% fino a €28.000, 33% da €28.001 a €50.000, 43% oltre. Riferimento: TUIR (DPR 917/1986) e D.Lgs. 216/2023.",
+  "glossario.inps.term": "Contributi INPS",
+  "glossario.inps.definition":
+    "Contributi previdenziali a carico del lavoratore versati all'Istituto Nazionale Previdenza Sociale. Per il lavoratore dipendente la parte ordinaria è il 9,19% del lordo, con un +1% sopra il primo massimale (€55.008 nel 2026). Finanziano la pensione futura. Fonte: circolari INPS annuali.",
+  "glossario.cuneo.term": "Cuneo fiscale",
+  "glossario.cuneo.definition":
+    "Differenza tra il costo del lavoro per il datore e il netto in busta paga del lavoratore. Il taglio del cuneo è la riduzione di contributi o IRPEF per i redditi medio-bassi. Per il 2026 si applica strutturalmente, con regole diverse rispetto al 2024–2025.",
+  "glossario.trattamento.term": "Trattamento integrativo",
+  "glossario.trattamento.definition":
+    "Credito mensile fino a circa €1.200 annui per i redditi da lavoro dipendente sotto soglia. Si applica solo se l'IRPEF lorda supera la detrazione da lavoro dipendente. Riferimento: D.L. 3/2020.",
+  "glossario.regionale.term": "Addizionale regionale",
+  "glossario.regionale.definition":
+    "Addizionale IRPEF a favore della regione di residenza, applicata al reddito imponibile. Le aliquote variano da 1,23% a oltre 3,33%; alcune regioni hanno una soglia di esenzione.",
+  "glossario.comunale.term": "Addizionale comunale",
+  "glossario.comunale.definition":
+    "Addizionale IRPEF a favore del comune di residenza. L'aliquota varia da 0% a 0,9% per comune, decisa annualmente con delibera comunale.",
+  "glossario.tfr.term": "TFR (Trattamento di Fine Rapporto)",
+  "glossario.tfr.definition":
+    "Quota annua accantonata dal datore di lavoro per il lavoratore dipendente, pari a circa il 7,4% della retribuzione (Art. 2120 c.c.). Si rivaluta ogni anno al tasso fisso 1,5% più il 75% dell'inflazione FOI. Viene erogata al termine del rapporto di lavoro.",
+  "glossario.ccnl.term": "CCNL",
+  "glossario.ccnl.definition":
+    "Contratto Collettivo Nazionale di Lavoro. Definisce minimi retributivi, livelli di inquadramento, mensilità, ferie, preavviso e tutele per ciascun settore. È stipulato tra associazioni datoriali e sindacati.",
+  "glossario.naspi.term": "NASpI",
+  "glossario.naspi.definition":
+    "Nuova Assicurazione Sociale per l'Impiego: indennità mensile di disoccupazione introdotta dal D.Lgs. 22/2015. Spetta a chi perde involontariamente il lavoro con almeno 13 settimane di contribuzione nei 4 anni precedenti.",
+  "glossario.forfettario.term": "Regime forfettario",
+  "glossario.forfettario.definition":
+    "Regime fiscale per partite IVA con ricavi fino a €85.000 annui. Aliquota sostitutiva del 15% (5% nei primi 5 anni di nuova attività), niente IVA, niente IRPEF ordinaria. Riferimento: Legge 190/2014.",
+
   "employee.breakdown.gross": "Lordo annuo",
   "employee.breakdown.inps": "Contributi INPS",
   "employee.breakdown.irpefNet": "IRPEF netta",
