@@ -171,6 +171,29 @@ export const en: Record<MessageKey, string> = {
 
   "employee.results.detail": "Calculation breakdown",
 
+  "employee.faq.title": "Frequently asked questions",
+  "employee.faq.gross.q": "How do we get from gross to net?",
+  "employee.faq.gross.a":
+    "Starting from annual gross, we subtract employee INPS contributions (9.19% on the ordinary portion). On the taxable income we apply the IRPEF brackets, subtract eligible deductions (employee work, dependents, expenses), and add regional and municipal surcharges. We then add trattamento integrativo and other credits. The result is annual net, divided by the number of monthly instalments.",
+  "employee.faq.brackets.q": "What IRPEF brackets are currently in force?",
+  "employee.faq.brackets.a":
+    "For 2026: 23% up to €28,000, 33% from €28,001 to €50,000, 43% above. For 2024 and 2025 the middle bracket was at 35%. Reference: D.Lgs. 216/2023 and amendments (2026 Budget Law).",
+  "employee.faq.trattamento.q": "What is the trattamento integrativo?",
+  "employee.faq.trattamento.a":
+    "A monthly tax credit up to about €1,200 per year for employee income below the legal threshold. It only applies when gross IRPEF exceeds the employee work deduction. Reference: D.L. 3/2020 and amendments.",
+  "employee.faq.region.q": "Why does net salary change with the region?",
+  "employee.faq.region.a":
+    "Each region applies its own IRPEF surcharge to taxable income, with rates ranging from 1.23% to over 3.33% in higher brackets. Some regions have an exemption threshold. Municipal rates then vary by city up to 0.9%.",
+  "employee.faq.cuneo.q": "What is the tax-wedge cut?",
+  "employee.faq.cuneo.a":
+    "A structural reduction of INPS or IRPEF for low-to-medium income, redesigned in each Budget Law. For 2026 it applies on a permanent basis with rules that differ from those of 2024–2025.",
+  "employee.faq.estimate.q": "Can my actual payslip differ?",
+  "employee.faq.estimate.a":
+    "Yes. The calculation is an estimate based on standard rates. Fringe benefits, performance bonuses, specific contractual allowances, tax-credit assignments, or additional withholdings can change the effective net. The employer's payslip remains the reference.",
+  "employee.faq.sources.q": "Where do the numbers come from?",
+  "employee.faq.sources.a":
+    "IRPEF rates from Agenzia delle Entrate, INPS contributions from annual circulars, regional surcharges from regional decrees. The /fonti page lists, for each component, the specific source.",
+
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",
   "employee.breakdown.irpefNet": "IRPEF net",

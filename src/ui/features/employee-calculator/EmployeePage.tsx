@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
+import { EmployeeFaq } from "./components/EmployeeFaq.tsx";
 import { EmployerCostView } from "@/ui/shared/EmployerCostView.tsx";
 import { IrpefBracketIndicator } from "./components/IrpefBracketIndicator.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
@@ -36,6 +37,7 @@ export function EmployeePage() {
           />
           <MoneyJourney breakdown={calc.result} />
           <EmployerCostView breakdown={calc.result} />
+          <EmployeeFaq />
         </div>
         <aside className="qg-employee__aside">
           <div className="qg-calc__result">

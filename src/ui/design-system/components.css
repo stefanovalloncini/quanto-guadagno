@@ -1276,6 +1276,67 @@
   color: var(--ink-2);
 }
 
+.qg-faq {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.qg-faq__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--ink);
+}
+.qg-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.qg-faq__item {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  background: var(--paper-3);
+}
+.qg-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--ink);
+}
+.qg-faq__question:hover {
+  color: var(--accent);
+}
+.qg-faq__question::-webkit-details-marker {
+  display: none;
+}
+.qg-faq__question::after {
+  content: "";
+  width: 12px;
+  height: 8px;
+  margin-left: var(--space-3);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%236a6862' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform var(--transition);
+}
+[data-theme="dark"] .qg-faq__question::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%23aca695' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+.qg-faq__item[open] .qg-faq__question::after {
+  transform: rotate(180deg);
+}
+.qg-faq__answer {
+  padding: 0 var(--space-4) var(--space-4);
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
 /* EmployerCostView: open-by-default, leads with the net-vs-cost gap */
 .qg-employer {
   display: flex;

@@ -171,6 +171,29 @@ export const it = {
 
   "employee.results.detail": "Dettaglio del calcolo",
 
+  "employee.faq.title": "Domande frequenti",
+  "employee.faq.gross.q": "Come si arriva dal lordo al netto?",
+  "employee.faq.gross.a":
+    "Dal lordo annuo si sottraggono i contributi INPS dipendente (9,19% nella parte ordinaria). Sul reddito imponibile si applicano gli scaglioni IRPEF, si sottraggono le detrazioni spettanti (lavoro dipendente, familiari a carico, spese) e si calcolano le addizionali regionale e comunale. Si aggiungono trattamento integrativo e altri crediti. Il risultato è il netto annuo, da dividere per le mensilità.",
+  "employee.faq.brackets.q": "Quali sono gli scaglioni IRPEF in vigore?",
+  "employee.faq.brackets.a":
+    "Per il 2026: 23% fino a €28.000, 33% da €28.001 a €50.000, 43% oltre. Per il 2024 e 2025 lo scaglione intermedio era al 35%. Riferimento: D.Lgs. 216/2023 e modifiche successive (Legge di Bilancio 2026).",
+  "employee.faq.trattamento.q": "Cos'è il trattamento integrativo?",
+  "employee.faq.trattamento.a":
+    "Un credito mensile fino a circa €1.200 annui per i redditi da lavoro dipendente entro la soglia di legge. Si applica solo se l'IRPEF lorda è superiore alle detrazioni da lavoro dipendente. Riferimento: D.L. 3/2020 e modifiche successive.",
+  "employee.faq.region.q": "Perché lo stipendio netto cambia con la regione?",
+  "employee.faq.region.a":
+    "Ogni regione applica una sua addizionale IRPEF al reddito imponibile, con aliquote che vanno dall'1,23% a oltre il 3,33% per gli scaglioni più alti. Alcune regioni hanno una soglia di esenzione. Le aliquote comunali variano poi da comune a comune fino allo 0,9%.",
+  "employee.faq.cuneo.q": "Cos'è il taglio del cuneo fiscale?",
+  "employee.faq.cuneo.a":
+    "Una riduzione strutturale dei contributi INPS o dell'IRPEF per i redditi medio-bassi, riformulata in ogni Legge di Bilancio. Per il 2026 si applica come detrazione/aggiunta a regime, con regole diverse rispetto al biennio 2024–2025.",
+  "employee.faq.estimate.q": "La mia busta paga reale può essere diversa?",
+  "employee.faq.estimate.a":
+    "Sì. Il calcolo è una stima basata sulle aliquote standard. Fringe benefits, premio di risultato detassato, indennità contrattuali specifiche, cessione di crediti d'imposta o trattenute aggiuntive possono cambiare il netto effettivo. La busta paga del datore di lavoro resta il riferimento.",
+  "employee.faq.sources.q": "Da dove vengono i numeri?",
+  "employee.faq.sources.a":
+    "Aliquote IRPEF da Agenzia delle Entrate, contributi INPS dalle circolari annuali, addizionali regionali dalle delibere regionali. La pagina /fonti elenca per ciascun componente il riferimento normativo specifico.",
+
   "employee.breakdown.gross": "Lordo annuo",
   "employee.breakdown.inps": "Contributi INPS",
   "employee.breakdown.irpefNet": "IRPEF netta",
