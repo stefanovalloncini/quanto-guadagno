@@ -253,6 +253,29 @@ export const en: Record<MessageKey, string> = {
   "preavviso.faq.prova.q": "What changes during the trial period?",
   "preavviso.faq.prova.a":
     "During the trial period either party can terminate without notice and without giving reasons (Art. 2096 c.c.). The calculator treats this as a separate case.",
+  "esempio.title": "See how we get to the net",
+  "esempio.intro":
+    "The calculation follows six steps. Each uses the exact numbers from your case and shows how gross becomes net.",
+  "esempio.step1.title": "1. Annual gross",
+  "esempio.step1.body":
+    "The starting point is your annual gross: {amount}. From this we apply social contributions and taxes.",
+  "esempio.step2.title": "2. Social contributions",
+  "esempio.step2.body":
+    "Employee INPS contributions (rate {rate}) are deducted: {amount}. Your IRPEF taxable income is {taxable}.",
+  "esempio.step3.title": "3. Gross IRPEF",
+  "esempio.step3.body":
+    "On the taxable income we apply the IRPEF brackets for tax year {year}: {brackets}. Gross IRPEF: {amount}.",
+  "esempio.step4.title": "4. IRPEF deductions",
+  "esempio.step4.body":
+    "From gross IRPEF we subtract the deductions for your case (employee work, dependents, eligible expenses). Net IRPEF: {amount}.",
+  "esempio.step5.title": "5. Regional and municipal surcharges",
+  "esempio.step5.body":
+    "On the taxable income we apply the regional surcharge ({regionalRate}, equal to {regional}) and the municipal surcharge ({municipalRate}, equal to {municipal}).",
+  "esempio.step6.title": "6. Credits and final net",
+  "esempio.step6.body":
+    "Then we add the credits you are entitled to (trattamento integrativo, additional sum, net performance bonus, contribution waivers). The annual net you take home is {net}, about {monthly} per month.",
+  "esempio.brackets.standard": "23% up to €28,000, 35% up to €50,000, 43% above",
+  "esempio.brackets.2026": "23% up to €28,000, 33% up to €50,000, 43% above",
 
   "employee.breakdown.gross": "Gross annual",
   "employee.breakdown.inps": "INPS contributions",

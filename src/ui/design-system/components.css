@@ -1107,6 +1107,80 @@
   line-height: 1.5;
 }
 
+.qg-esempio {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--paper-3);
+}
+.qg-esempio__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  list-style: none;
+  color: var(--ink);
+}
+.qg-esempio__summary:hover {
+  color: var(--accent);
+}
+.qg-esempio__summary::-webkit-details-marker {
+  display: none;
+}
+.qg-esempio__summary::after {
+  content: "";
+  width: 14px;
+  height: 9px;
+  margin-left: var(--space-3);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1.5L7 7.5L13 1.5' stroke='%236a6862' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform var(--transition);
+}
+[data-theme="dark"] .qg-esempio__summary::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1.5L7 7.5L13 1.5' stroke='%23aca695' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+.qg-esempio[open] .qg-esempio__summary::after {
+  transform: rotate(180deg);
+}
+.qg-esempio__body {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.qg-esempio__intro {
+  margin: 0;
+  color: var(--ink-2);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+.qg-esempio__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.qg-esempio__step {
+  margin: 0;
+}
+.qg-esempio__step-title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--ink);
+}
+.qg-esempio__step-body {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 70ch;
+}
+
 .qg-year-compare {
   display: flex;
   flex-direction: column;

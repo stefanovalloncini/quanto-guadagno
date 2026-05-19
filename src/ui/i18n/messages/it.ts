@@ -253,6 +253,29 @@ export const it = {
   "preavviso.faq.prova.q": "Cosa cambia durante il periodo di prova?",
   "preavviso.faq.prova.a":
     "Durante il periodo di prova entrambe le parti possono recedere senza preavviso e senza dover motivare la decisione (Art. 2096 c.c.). Il calcolatore considera questo come un caso a sé.",
+  "esempio.title": "Vedi come si arriva al netto",
+  "esempio.intro":
+    "Il calcolo segue sei passaggi. Ognuno usa i numeri esatti del tuo caso e mostra come si passa dal lordo al netto.",
+  "esempio.step1.title": "1. Lordo annuo",
+  "esempio.step1.body":
+    "Il punto di partenza è il tuo lordo annuo: {amount}. Su questa cifra si applicano contributi previdenziali e imposte.",
+  "esempio.step2.title": "2. Contributi previdenziali",
+  "esempio.step2.body":
+    "Dal lordo si trattenono i contributi INPS a tuo carico (aliquota {rate}): {amount}. Il reddito imponibile IRPEF è di {taxable}.",
+  "esempio.step3.title": "3. IRPEF lorda",
+  "esempio.step3.body":
+    "Sul reddito imponibile si applicano gli scaglioni IRPEF per l'anno {year}: {brackets}. IRPEF lorda: {amount}.",
+  "esempio.step4.title": "4. Detrazioni IRPEF",
+  "esempio.step4.body":
+    "Dalla IRPEF lorda si sottraggono le detrazioni che ti spettano per il tuo caso (lavoro dipendente, familiari a carico, spese deducibili). IRPEF netta: {amount}.",
+  "esempio.step5.title": "5. Addizionali regionale e comunale",
+  "esempio.step5.body":
+    "Sul reddito imponibile si applicano l'addizionale regionale ({regionalRate}, pari a {regional}) e l'addizionale comunale ({municipalRate}, pari a {municipal}).",
+  "esempio.step6.title": "6. Crediti e netto finale",
+  "esempio.step6.body":
+    "Si aggiungono i crediti che ti spettano (trattamento integrativo, somma aggiuntiva, premio di risultato netto, esoneri contributivi). Il netto annuo che incassi è {net}, cioè circa {monthly} al mese.",
+  "esempio.brackets.standard": "23% fino a €28.000, 35% fino a €50.000, 43% oltre",
+  "esempio.brackets.2026": "23% fino a €28.000, 33% fino a €50.000, 43% oltre",
 
   "employee.breakdown.gross": "Lordo annuo",
   "employee.breakdown.inps": "Contributi INPS",
