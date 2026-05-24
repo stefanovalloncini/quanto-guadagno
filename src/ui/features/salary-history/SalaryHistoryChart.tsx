@@ -1,20 +1,16 @@
-import { useMemo } from "react";
+import { useCallback, useMemo, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { CHART, PLOT_W, PLOT_H, BASELINE, computeGeometry } from "./chartScales.ts";
+import { smoothAreaPath, smoothBandPath, smoothPath, nearestIndex } from "./chartGeometry.ts";
+import { SalaryHistoryChartPopover } from "./SalaryHistoryChartPopover.tsx";
 import type { AdjustedEntry } from "./useSalaryHistory.ts";
+import type { ProjectionBundle } from "./useSalaryProjection.ts";
 
 interface SalaryHistoryChartProps {
   readonly rows: ReadonlyArray<AdjustedEntry>;
+  readonly projection: ProjectionBundle;
   readonly targetYear: number;
 }
-
-const W = 800;
-const H = 320;
-const PAD_LEFT = 56;
-const PAD_RIGHT = 16;
-const PAD_TOP = 16;
-const PAD_BOTTOM = 36;
-const PLOT_W = W - PAD_LEFT - PAD_RIGHT;
-const PLOT_H = H - PAD_TOP - PAD_BOTTOM;
 
 const EUR = new Intl.NumberFormat("it-IT", {
   style: "currency",
@@ -23,79 +19,34 @@ const EUR = new Intl.NumberFormat("it-IT", {
   maximumFractionDigits: 0,
 });
 
-interface Series {
-  readonly id: "nominal" | "adjusted";
-  readonly points: ReadonlyArray<{
-    readonly x: number;
-    readonly y: number;
-    readonly value: number;
-    readonly year: number;
-  }>;
-}
-
-interface Scales {
-  readonly years: ReadonlyArray<number>;
-  readonly maxValue: number;
-  readonly xForYear: (y: number) => number;
-  readonly yForValue: (v: number) => number;
-}
-
-function computeScales(rows: ReadonlyArray<AdjustedEntry>): Scales | null {
-  if (rows.length === 0) return null;
-  const years = rows.map((r) => r.entry.year);
-  const minYear = Math.min(...years);
-  const maxYear = Math.max(...years);
-  const span = Math.max(1, maxYear - minYear);
-  const values: number[] = [];
-  for (const row of rows) {
-    values.push(row.entry.grossAnnual);
-    if (row.adjusted !== null) values.push(row.adjusted.adjusted);
-  }
-  const rawMax = Math.max(...values);
-  const maxValue = Math.ceil((rawMax * 1.1) / 1000) * 1000;
-  return {
-    years: [...new Set(years)].sort((a, b) => a - b),
-    maxValue,
-    xForYear: (y) => PAD_LEFT + ((y - minYear) / span) * PLOT_W,
-    yForValue: (v) => PAD_TOP + PLOT_H - (v / maxValue) * PLOT_H,
-  };
-}
-
-function buildSeries(rows: ReadonlyArray<AdjustedEntry>, scales: Scales): ReadonlyArray<Series> {
-  const sorted = [...rows].sort((a, b) => a.entry.year - b.entry.year);
-  const nominal: Series = {
-    id: "nominal",
-    points: sorted.map((r) => ({
-      x: scales.xForYear(r.entry.year),
-      y: scales.yForValue(r.entry.grossAnnual),
-      value: r.entry.grossAnnual,
-      year: r.entry.year,
-    })),
-  };
-  const adjustedPoints = sorted
-    .filter((r) => r.adjusted !== null)
-    .map((r) => {
-      const value = r.adjusted?.adjusted ?? 0;
-      return {
-        x: scales.xForYear(r.entry.year),
-        y: scales.yForValue(value),
-        value,
-        year: r.entry.year,
-      };
-    });
-  return [nominal, { id: "adjusted", points: adjustedPoints }];
-}
-
-function polyline(points: ReadonlyArray<{ x: number; y: number }>): string {
-  return points.map((p) => `${p.x},${p.y}`).join(" ");
-}
-
-export function SalaryHistoryChart({ rows, targetYear }: SalaryHistoryChartProps) {
+export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHistoryChartProps) {
   const intl = useIntl();
-  const scales = useMemo(() => computeScales(rows), [rows]);
-  const series = useMemo(() => (scales ? buildSeries(rows, scales) : []), [rows, scales]);
+  const [hoverYear, setHoverYear] = useState<number | null>(null);
 
-  if (scales === null) {
+  const geometry = useMemo(
+    () => computeGeometry(rows, projection.expected, projection.high, projection.low),
+    [rows, projection],
+  );
+
+  const handlePointerMove = useCallback(
+    (e: ReactPointerEvent<SVGRectElement>) => {
+      if (geometry === null) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      if (rect.width === 0) return;
+      const svgX = ((e.clientX - rect.left) / rect.width) * CHART.W;
+      const i = nearestIndex(
+        geometry.timeline.map((p) => ({ x: p.x, y: p.y })),
+        svgX,
+      );
+      const p = geometry.timeline[i];
+      setHoverYear(p ? p.year : null);
+    },
+    [geometry],
+  );
+
+  const handlePointerLeave = useCallback(() => setHoverYear(null), []);
+
+  if (geometry === null) {
     return (
       <p className="qg-history-chart__empty">
         <FormattedMessage id="history.chart.empty" />
@@ -103,92 +54,203 @@ export function SalaryHistoryChart({ rows, targetYear }: SalaryHistoryChartProps
     );
   }
 
-  const ticks: number[] = [];
-  const step = Math.max(1000, Math.round(scales.maxValue / 4 / 1000) * 1000);
-  for (let v = 0; v <= scales.maxValue; v += step) ticks.push(v);
+  const { scales, timeline, nominalPoints, netPoints, projectionPoints, bandUpper, bandLower } =
+    geometry;
 
-  const nominal = series[0];
-  const adjusted = series[1];
-  if (!nominal || !adjusted) return null;
+  // Stitch the last historical net point into the projection so the dashed line
+  // visually continues from the solid line.
+  const lastNet = netPoints[netPoints.length - 1];
+  const projectionWithAnchor = lastNet ? [lastNet, ...projectionPoints] : projectionPoints;
+
+  const grossPath = smoothPath(nominalPoints.map((p) => ({ x: p.x, y: p.y })));
+  const netPath = smoothPath(netPoints.map((p) => ({ x: p.x, y: p.y })));
+  const netAreaPath = smoothAreaPath(
+    netPoints.map((p) => ({ x: p.x, y: p.y })),
+    BASELINE,
+  );
+  const projectionPath = smoothPath(projectionWithAnchor.map((p) => ({ x: p.x, y: p.y })));
+  const bandUpperAnchored = lastNet ? [{ x: lastNet.x, y: lastNet.y }, ...bandUpper] : bandUpper;
+  const bandLowerAnchored = lastNet ? [{ x: lastNet.x, y: lastNet.y }, ...bandLower] : bandLower;
+  const bandPath = smoothBandPath(bandUpperAnchored, bandLowerAnchored);
+
+  const hoverPoint =
+    hoverYear !== null ? (timeline.find((p) => p.year === hoverYear) ?? null) : null;
+  const previousPoint = hoverPoint
+    ? (timeline.filter((p) => p.year < hoverPoint.year).sort((a, b) => b.year - a.year)[0] ?? null)
+    : null;
 
   return (
     <figure className="qg-history-chart">
-      <svg
-        className="qg-history-chart__svg"
-        viewBox={`0 0 ${W} ${H}`}
-        role="img"
-        aria-label={intl.formatMessage({ id: "history.chart.aria" }, { year: targetYear })}
-      >
-        <g className="qg-history-chart__grid">
-          {ticks.map((v) => {
-            const y = scales.yForValue(v);
+      <div className="qg-history-chart__stage">
+        <svg
+          className="qg-history-chart__svg"
+          viewBox={`0 0 ${CHART.W} ${CHART.H}`}
+          role="img"
+          aria-label={intl.formatMessage({ id: "history.chart.aria" }, { year: targetYear })}
+        >
+          <defs>
+            <linearGradient id="qgChartNetGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          <g className="qg-history-chart__grid" aria-hidden="true">
+            {scales.ticks.map((v) => {
+              const y = scales.yForValue(v);
+              return (
+                <g key={v}>
+                  <line x1={CHART.PAD_LEFT} x2={CHART.W - CHART.PAD_RIGHT} y1={y} y2={y} />
+                  <text x={CHART.PAD_LEFT - 10} y={y} textAnchor="end" dominantBaseline="middle">
+                    {EUR.format(v)}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
+
+          <g className="qg-history-chart__axis" aria-hidden="true">
+            {scales.years.map((y) => (
+              <text
+                key={y}
+                x={scales.xForYear(y)}
+                y={CHART.H - CHART.PAD_BOTTOM + 22}
+                textAnchor="middle"
+              >
+                {y}
+              </text>
+            ))}
+          </g>
+
+          {bandPath ? <path className="qg-history-chart__band" d={bandPath} /> : null}
+
+          {netAreaPath ? (
+            <path
+              className="qg-history-chart__area"
+              d={netAreaPath}
+              fill="url(#qgChartNetGradient)"
+            />
+          ) : null}
+
+          {grossPath ? (
+            <path
+              className="qg-history-chart__line qg-history-chart__line--gross"
+              d={grossPath}
+              pathLength={1}
+              fill="none"
+            />
+          ) : null}
+
+          {netPath ? (
+            <path
+              className="qg-history-chart__line qg-history-chart__line--net"
+              d={netPath}
+              pathLength={1}
+              fill="none"
+            />
+          ) : null}
+
+          {projectionPath ? (
+            <path
+              className="qg-history-chart__line qg-history-chart__line--projection"
+              d={projectionPath}
+              pathLength={1}
+              fill="none"
+            />
+          ) : null}
+
+          <g className="qg-history-chart__dots" aria-hidden="true">
+            {timeline.map((p) => (
+              <circle
+                key={`${p.year}-${p.isProjected ? "p" : "h"}`}
+                className={[
+                  "qg-history-chart__dot",
+                  p.isProjected
+                    ? "qg-history-chart__dot--projected"
+                    : p.netAnnual !== null
+                      ? "qg-history-chart__dot--net"
+                      : "qg-history-chart__dot--gross",
+                  hoverYear === p.year ? "qg-history-chart__dot--active" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                cx={p.x}
+                cy={p.y}
+                r={hoverYear === p.year ? 5 : 3.25}
+              />
+            ))}
+          </g>
+
+          <rect
+            className="qg-history-chart__brush"
+            x={CHART.PAD_LEFT}
+            y={CHART.PAD_TOP}
+            width={PLOT_W}
+            height={PLOT_H}
+            fill="transparent"
+            onPointerMove={handlePointerMove}
+            onPointerLeave={handlePointerLeave}
+          />
+        </svg>
+
+        <div className="qg-history-chart__hit-layer" aria-hidden="false">
+          {timeline.map((p) => {
+            const label = intl.formatMessage(
+              { id: "history.chart.hit.aria" },
+              {
+                year: p.year,
+                gross: EUR.format(p.grossAnnual),
+                net: p.netAnnual !== null ? EUR.format(p.netAnnual) : "n/d",
+                projected: p.isProjected ? 1 : 0,
+              },
+            );
             return (
-              <g key={v}>
-                <line x1={PAD_LEFT} x2={W - PAD_RIGHT} y1={y} y2={y} />
-                <text x={PAD_LEFT - 8} y={y} textAnchor="end" dominantBaseline="middle">
-                  {EUR.format(v)}
-                </text>
-              </g>
+              <button
+                key={`hit-${p.year}-${p.isProjected ? "p" : "h"}`}
+                type="button"
+                className="qg-history-chart__hit"
+                style={{
+                  left: `${(p.x / CHART.W) * 100}%`,
+                  top: `${(p.y / CHART.H) * 100}%`,
+                }}
+                aria-label={label}
+                onPointerEnter={() => setHoverYear(p.year)}
+                onPointerLeave={() => setHoverYear((c) => (c === p.year ? null : c))}
+                onFocus={() => setHoverYear(p.year)}
+                onBlur={() => setHoverYear((c) => (c === p.year ? null : c))}
+                onClick={() => setHoverYear(p.year)}
+              />
             );
           })}
-        </g>
+        </div>
 
-        <g className="qg-history-chart__axis">
-          {scales.years.map((y) => (
-            <text key={y} x={scales.xForYear(y)} y={H - PAD_BOTTOM + 18} textAnchor="middle">
-              {y}
-            </text>
-          ))}
-        </g>
-
-        <polyline
-          className="qg-history-chart__line qg-history-chart__line--nominal"
-          fill="none"
-          points={polyline(nominal.points)}
-        />
-        <polyline
-          className="qg-history-chart__line qg-history-chart__line--adjusted"
-          fill="none"
-          points={polyline(adjusted.points)}
-        />
-
-        {nominal.points.map((p) => (
-          <circle
-            key={`n-${p.year}`}
-            className="qg-history-chart__dot qg-history-chart__dot--nominal"
-            cx={p.x}
-            cy={p.y}
-            r={3.5}
-          >
-            <title>
-              {p.year} — {EUR.format(p.value)}
-            </title>
-          </circle>
-        ))}
-        {adjusted.points.map((p) => (
-          <circle
-            key={`a-${p.year}`}
-            className="qg-history-chart__dot qg-history-chart__dot--adjusted"
-            cx={p.x}
-            cy={p.y}
-            r={3.5}
-          >
-            <title>
-              {p.year} → {targetYear}: {EUR.format(p.value)}
-            </title>
-          </circle>
-        ))}
-      </svg>
+        {hoverPoint ? (
+          <SalaryHistoryChartPopover
+            point={hoverPoint}
+            previous={previousPoint}
+            leftPct={(hoverPoint.x / CHART.W) * 100}
+            topPct={(hoverPoint.y / CHART.H) * 100}
+          />
+        ) : null}
+      </div>
 
       <figcaption className="qg-history-chart__legend">
-        <span className="qg-history-chart__swatch qg-history-chart__swatch--nominal" />
+        <span className="qg-history-chart__swatch qg-history-chart__swatch--net" />
         <span>
-          <FormattedMessage id="history.chart.legend.nominal" />
+          <FormattedMessage id="history.chart.legend.net" />
         </span>
-        <span className="qg-history-chart__swatch qg-history-chart__swatch--adjusted" />
+        <span className="qg-history-chart__swatch qg-history-chart__swatch--gross" />
         <span>
-          <FormattedMessage id="history.chart.legend.adjusted" values={{ year: targetYear }} />
+          <FormattedMessage id="history.chart.legend.gross" />
         </span>
+        {projectionPoints.length > 0 ? (
+          <>
+            <span className="qg-history-chart__swatch qg-history-chart__swatch--projection" />
+            <span>
+              <FormattedMessage id="history.chart.legend.projection" />
+            </span>
+          </>
+        ) : null}
       </figcaption>
     </figure>
   );

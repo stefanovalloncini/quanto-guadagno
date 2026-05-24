@@ -11,21 +11,73 @@ const VALID = {
   year: 2024,
   grossAnnual: 30_000,
   createdAt: "2024-06-01T00:00:00Z",
+  settings: {
+    contractType: "indeterminato",
+    regionCode: "lazio",
+    municipalTaxRate: 0.008,
+    paymentFrequency: 13,
+  },
+} as const;
+
+const OLD_VALID = {
+  id: "abc",
+  year: 2024,
+  grossAnnual: 30_000,
+  createdAt: "2024-06-01T00:00:00Z",
 };
 
 describe("parseSalaryEntry", () => {
-  it("accepts a minimal valid object", () => {
-    expect(parseSalaryEntry(VALID)).toEqual(VALID);
+  it("accepts a new-shape entry with a settings block", () => {
+    const entry = parseSalaryEntry(VALID);
+    expect(entry?.settings.regionCode).toBe("lazio");
+    expect(entry?.settings.contractType).toBe("indeterminato");
+    expect(entry?.settings.paymentFrequency).toBe(13);
+    expect(entry?.settings.municipalTaxRate).toBeCloseTo(0.008);
+    expect(entry?.isMigrated).toBeUndefined();
   });
 
-  it("picks up optional contractType when valid", () => {
-    const entry = parseSalaryEntry({ ...VALID, contractType: "apprendistato" });
-    expect(entry?.contractType).toBe("apprendistato");
+  it("migrates an old-shape entry by filling default settings", () => {
+    const entry = parseSalaryEntry(OLD_VALID);
+    expect(entry).not.toBeNull();
+    expect(entry?.settings.regionCode).toBe("lazio");
+    expect(entry?.settings.contractType).toBe("indeterminato");
+    expect(entry?.settings.paymentFrequency).toBe(13);
+    expect(entry?.isMigrated).toBe(true);
   });
 
-  it("drops an unknown contractType silently", () => {
-    const entry = parseSalaryEntry({ ...VALID, contractType: "freelance" });
-    expect(entry?.contractType).toBeUndefined();
+  it("migration preserves a legacy top-level contractType", () => {
+    const entry = parseSalaryEntry({ ...OLD_VALID, contractType: "apprendistato" });
+    expect(entry?.settings.contractType).toBe("apprendistato");
+    expect(entry?.isMigrated).toBe(true);
+  });
+
+  it("migration drops an unknown legacy contractType", () => {
+    const entry = parseSalaryEntry({ ...OLD_VALID, contractType: "freelance" });
+    expect(entry?.settings.contractType).toBe("indeterminato");
+  });
+
+  it("preserves optional settings when present", () => {
+    const dependents = {
+      hasSpouse: true,
+      spouseIncome: 0,
+      childrenOver21: 1,
+      otherDependents: 0,
+    };
+    const entry = parseSalaryEntry({
+      ...VALID,
+      settings: { ...VALID.settings, dependents, companySize: "large" },
+    });
+    expect(entry?.settings.dependents).toEqual(dependents);
+    expect(entry?.settings.companySize).toBe("large");
+  });
+
+  it("drops unknown values inside settings silently", () => {
+    const entry = parseSalaryEntry({
+      ...VALID,
+      settings: { ...VALID.settings, regionCode: "atlantis", companySize: "tiny" },
+    });
+    expect(entry?.settings.regionCode).toBe("lazio");
+    expect(entry?.settings.companySize).toBeUndefined();
   });
 
   it("drops empty notes", () => {

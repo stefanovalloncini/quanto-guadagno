@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Button, Field, Select, Stack } from "@/ui/design-system/primitives";
+import { RegionSelector } from "@/ui/features/employee-calculator/components/RegionSelector.tsx";
 import type { ContractType } from "@/domain/calc";
 import { FOI_INDEX } from "@/domain/data";
+import { type PaymentFrequency, type SalaryEntrySettings } from "./salaryHistory.ts";
+import { SalaryHistoryAdvancedFields } from "./SalaryHistoryAdvancedFields.tsx";
 import type { NewEntryInput } from "./useSalaryHistory.ts";
 
 const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
@@ -11,30 +14,40 @@ const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
   "apprendistato",
 ];
 
+const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14];
+
+const YEAR_OPTIONS = FOI_INDEX.map((p) => p.year);
+const DEFAULT_YEAR = YEAR_OPTIONS[YEAR_OPTIONS.length - 1] ?? 2026;
+
 interface SalaryHistoryFormProps {
+  readonly defaultSettings: SalaryEntrySettings;
   readonly onSubmit: (entry: NewEntryInput) => void;
 }
 
 interface FormState {
   readonly year: number;
   readonly grossAnnual: number;
-  readonly contractType: ContractType;
+  readonly settings: SalaryEntrySettings;
   readonly note: string;
 }
 
-const YEAR_OPTIONS = FOI_INDEX.map((p) => p.year);
-const DEFAULT_YEAR = YEAR_OPTIONS[YEAR_OPTIONS.length - 1] ?? 2026;
+function initState(defaults: SalaryEntrySettings): FormState {
+  return { year: DEFAULT_YEAR, grossAnnual: 30_000, settings: defaults, note: "" };
+}
 
-const DEFAULTS: FormState = {
-  year: DEFAULT_YEAR,
-  grossAnnual: 30_000,
-  contractType: "indeterminato",
-  note: "",
-};
-
-export function SalaryHistoryForm({ onSubmit }: SalaryHistoryFormProps) {
+export function SalaryHistoryForm({ defaultSettings, onSubmit }: SalaryHistoryFormProps) {
   const intl = useIntl();
-  const [state, setState] = useState<FormState>(DEFAULTS);
+  const [state, setState] = useState<FormState>(() => initState(defaultSettings));
+
+  const replaceSettings = (next: SalaryEntrySettings) =>
+    setState((s) => ({ ...s, settings: next }));
+
+  const updateRequired = <
+    K extends "contractType" | "regionCode" | "municipalTaxRate" | "paymentFrequency",
+  >(
+    key: K,
+    value: SalaryEntrySettings[K],
+  ) => setState((s) => ({ ...s, settings: { ...s.settings, [key]: value } }));
 
   return (
     <form
@@ -45,10 +58,10 @@ export function SalaryHistoryForm({ onSubmit }: SalaryHistoryFormProps) {
         onSubmit({
           year: state.year,
           grossAnnual: state.grossAnnual,
-          contractType: state.contractType,
+          settings: state.settings,
           ...(state.note.length > 0 ? { note: state.note } : {}),
         });
-        setState((s) => ({ ...DEFAULTS, year: s.year, contractType: s.contractType }));
+        setState((s) => ({ ...initState(s.settings), year: s.year }));
       }}
     >
       <Stack gap="md">
@@ -68,7 +81,7 @@ export function SalaryHistoryForm({ onSubmit }: SalaryHistoryFormProps) {
           <Field
             label={<FormattedMessage id="history.form.gross" />}
             type="number"
-            min={1}
+            min={0}
             max={1_000_000}
             step={100}
             value={state.grossAnnual}
@@ -82,10 +95,8 @@ export function SalaryHistoryForm({ onSubmit }: SalaryHistoryFormProps) {
 
         <Select
           label={<FormattedMessage id="history.form.contractType" />}
-          value={state.contractType}
-          onChange={(e) =>
-            setState((s) => ({ ...s, contractType: e.target.value as ContractType }))
-          }
+          value={state.settings.contractType}
+          onChange={(e) => updateRequired("contractType", e.target.value as ContractType)}
         >
           {CONTRACT_TYPES.map((c) => (
             <option key={c} value={c}>
@@ -93,6 +104,54 @@ export function SalaryHistoryForm({ onSubmit }: SalaryHistoryFormProps) {
             </option>
           ))}
         </Select>
+
+        <RegionSelector
+          value={state.settings.regionCode}
+          onChange={(regionCode) => updateRequired("regionCode", regionCode)}
+        />
+
+        <div className="qg-history-form__row">
+          <Select
+            label={<FormattedMessage id="history.form.paymentFrequency" />}
+            value={state.settings.paymentFrequency}
+            onChange={(e) =>
+              updateRequired("paymentFrequency", Number(e.target.value) as PaymentFrequency)
+            }
+          >
+            {PAYMENT_FREQUENCIES.map((f) => (
+              <option key={f} value={f}>
+                {intl.formatMessage({ id: `employee.form.paymentFrequency.option${f}` })}
+              </option>
+            ))}
+          </Select>
+
+          <Field
+            label={<FormattedMessage id="history.form.municipalTaxRate" />}
+            type="number"
+            min={0}
+            max={2}
+            step={0.01}
+            value={Number((state.settings.municipalTaxRate * 100).toFixed(2))}
+            onChange={(e) =>
+              updateRequired(
+                "municipalTaxRate",
+                Math.max(0, Math.min(0.02, Number(e.target.value) / 100)),
+              )
+            }
+            trailing="%"
+            inputMode="decimal"
+          />
+        </div>
+
+        <details className="qg-history-form__extras">
+          <summary>
+            <FormattedMessage id="history.form.extras" />
+          </summary>
+          <SalaryHistoryAdvancedFields
+            settings={state.settings}
+            onSettingsChange={replaceSettings}
+          />
+        </details>
 
         <Field
           label={<FormattedMessage id="history.form.note" />}

@@ -9,6 +9,7 @@ import { HomePage } from "@/ui/features/home";
 import { AboutPage } from "@/ui/features/about";
 import { SourcesPage } from "@/ui/features/sources";
 import { NotFoundPage } from "@/ui/features/not-found";
+import { SalaryHistoryPage } from "@/ui/features/salary-history";
 
 expect.extend(toHaveNoViolations);
 
@@ -51,6 +52,12 @@ describe("accessibility", () => {
 
   it("NotFoundPage has no axe violations", async () => {
     const { container } = render(wrap(<NotFoundPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("SalaryHistoryPage has no axe violations", async () => {
+    const { container } = render(wrap(<SalaryHistoryPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

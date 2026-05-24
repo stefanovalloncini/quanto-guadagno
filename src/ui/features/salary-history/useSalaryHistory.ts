@@ -1,25 +1,35 @@
 import { useCallback, useMemo, useState } from "react";
-import { adjustValueAcrossYears, type AdjustedValue, type ContractType } from "@/domain/calc";
+import { adjustValueAcrossYears, type AdjustedValue, type SalaryBreakdown } from "@/domain/calc";
 import { FOI_LATEST_YEAR } from "@/domain/data";
-import { makeId, sortEntriesByYear, type SalaryEntry } from "./salaryHistory.ts";
+import {
+  DEFAULT_ENTRY_SETTINGS,
+  makeId,
+  sortEntriesByYear,
+  type SalaryEntry,
+  type SalaryEntrySettings,
+} from "./salaryHistory.ts";
+import { computeHistoryNet } from "./historyNet.ts";
 import { loadSalaryHistory, saveSalaryHistory } from "./salaryHistoryStorage.ts";
 
 export interface NewEntryInput {
   readonly year: number;
   readonly grossAnnual: number;
-  readonly contractType?: ContractType;
+  readonly settings?: SalaryEntrySettings;
   readonly note?: string;
 }
 
 export interface AdjustedEntry {
   readonly entry: SalaryEntry;
   readonly adjusted: AdjustedValue | null;
+  readonly net: SalaryBreakdown | null;
 }
 
 export interface SalaryHistory {
   readonly entries: ReadonlyArray<SalaryEntry>;
   readonly adjusted: ReadonlyArray<AdjustedEntry>;
   readonly targetYear: number;
+  readonly lastSettings: SalaryEntrySettings;
+  readonly latestSupportedEntry: SalaryEntry | null;
   readonly addEntry: (input: NewEntryInput) => void;
   readonly removeEntry: (id: string) => void;
   readonly clear: () => void;
@@ -43,7 +53,7 @@ export function useSalaryHistory(): SalaryHistory {
         year: input.year,
         grossAnnual: input.grossAnnual,
         createdAt: new Date().toISOString(),
-        ...(input.contractType !== undefined ? { contractType: input.contractType } : {}),
+        settings: input.settings ?? DEFAULT_ENTRY_SETTINGS,
         ...(input.note !== undefined && input.note.length > 0 ? { note: input.note } : {}),
       };
       persist([...entries, entry]);
@@ -67,9 +77,32 @@ export function useSalaryHistory(): SalaryHistory {
       entries.map((entry) => ({
         entry,
         adjusted: adjustValueAcrossYears(entry.grossAnnual, entry.year, targetYear),
+        net: computeHistoryNet(entry),
       })),
     [entries, targetYear],
   );
 
-  return { entries, adjusted, targetYear, addEntry, removeEntry, clear };
+  const lastSettings = useMemo<SalaryEntrySettings>(() => {
+    if (entries.length === 0) return DEFAULT_ENTRY_SETTINGS;
+    return entries[entries.length - 1]?.settings ?? DEFAULT_ENTRY_SETTINGS;
+  }, [entries]);
+
+  const latestSupportedEntry = useMemo<SalaryEntry | null>(() => {
+    for (let i = adjusted.length - 1; i >= 0; i -= 1) {
+      const row = adjusted[i];
+      if (row && row.net !== null) return row.entry;
+    }
+    return null;
+  }, [adjusted]);
+
+  return {
+    entries,
+    adjusted,
+    targetYear,
+    lastSettings,
+    latestSupportedEntry,
+    addEntry,
+    removeEntry,
+    clear,
+  };
 }
