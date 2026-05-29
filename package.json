@@ -18,7 +18,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:a11y": "vitest run tests/a11y",
-    "check:ai-tells": "bash scripts/check-ai-tells.sh"
+    "check:ai-tells": "bash scripts/check-ai-tells.sh",
+    "check:i18n": "vitest run tests/i18n"
   },
   "dependencies": {
     "react": "^19.2.0",
