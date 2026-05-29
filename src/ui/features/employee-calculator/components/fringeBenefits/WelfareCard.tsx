@@ -1,22 +1,37 @@
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import type { WelfareInput } from "@/domain/data";
 import { Field, Stack } from "@/ui/design-system/primitives";
+import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
 
 interface WelfareCardProps {
   readonly value: WelfareInput;
   readonly onChange: (next: WelfareInput) => void;
+  readonly generalThreshold: number;
+  readonly childrenThreshold: number;
 }
 
-export function WelfareCard({ value, onChange }: WelfareCardProps) {
+export function WelfareCard({
+  value,
+  onChange,
+  generalThreshold,
+  childrenThreshold,
+}: WelfareCardProps) {
+  const intl = useIntl();
   return (
     <Stack gap="md">
       <Field
         label={<FormattedMessage id="employee.fringe.welfare.annualAmount" />}
         hint={
           value.hasChildrenUnder18 ? (
-            <FormattedMessage id="employee.fringe.welfare.annualAmount.hintWithChildren" />
+            <FormattedMessage
+              id="employee.fringe.welfare.annualAmount.hintWithChildren"
+              values={{ amount: intl.formatNumber(childrenThreshold, EUR_AMOUNT_FORMAT) }}
+            />
           ) : (
-            <FormattedMessage id="employee.fringe.welfare.annualAmount.hint" />
+            <FormattedMessage
+              id="employee.fringe.welfare.annualAmount.hint"
+              values={{ amount: intl.formatNumber(generalThreshold, EUR_AMOUNT_FORMAT) }}
+            />
           )
         }
         type="number"

@@ -512,9 +512,10 @@ export const en: Record<MessageKey, string> = {
   "employee.fringe.title": "Fringe benefits",
   "employee.fringe.companyCar.title": "Company car",
   "employee.fringe.companyCar.subtitle": "Taxable annual benefit on the payslip.",
-  "employee.fringe.mealVouchers.subtitle": "Exempt up to €8/day for electronic vouchers.",
+  "employee.fringe.mealVouchers.subtitle": "Exempt up to {amount}/day for electronic vouchers.",
   "employee.fringe.healthInsurance.subtitle": "Exempt up to €3,615/year.",
-  "employee.fringe.welfare.subtitle": "Exempt up to €258/year (€1,000 with dependent children).",
+  "employee.fringe.welfare.subtitle":
+    "Exempt up to {amount}/year ({amountChildren} with dependent children).",
   "employee.fringe.companyCar.mode.simple": "Simple",
   "employee.fringe.companyCar.mode.detailed": "Detailed",
   "employee.fringe.companyCar.modeLabel": "Calculation mode",
@@ -533,7 +534,7 @@ export const en: Record<MessageKey, string> = {
   "employee.fringe.companyCar.powertrain.other": "Other (ICE/mild hybrid): 50%",
   "employee.fringe.mealVouchers.title": "Electronic meal vouchers",
   "employee.fringe.mealVouchers.dailyValue": "Daily value (€)",
-  "employee.fringe.mealVouchers.dailyValue.hint": "Tax-free up to €8/day (electronic)",
+  "employee.fringe.mealVouchers.dailyValue.hint": "Tax-free up to {amount}/day (electronic)",
   "employee.fringe.mealVouchers.workingDays": "Working days/month",
   "employee.fringe.mealVouchers.workingDays.hint": "Typically 20–22 days",
   "employee.fringe.healthInsurance.title": "Health insurance",
@@ -541,9 +542,9 @@ export const en: Record<MessageKey, string> = {
   "employee.fringe.healthInsurance.annualPremium.hint": "Tax-free up to €3,615.20/year",
   "employee.fringe.welfare.title": "Company welfare",
   "employee.fringe.welfare.annualAmount": "Annual welfare amount",
-  "employee.fringe.welfare.annualAmount.hint": "Tax-free up to €258.23/year",
+  "employee.fringe.welfare.annualAmount.hint": "Tax-free up to {amount}/year",
   "employee.fringe.welfare.annualAmount.hintWithChildren":
-    "Tax-free up to €3,000/year (with children under 18)",
+    "Tax-free up to {amount}/year (with children under 18)",
   "employee.fringe.welfare.hasChildren": "I have dependent children under 18",
 
   "employee.specialConditions.title": "Special conditions",

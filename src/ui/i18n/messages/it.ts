@@ -522,9 +522,11 @@ export const it = {
   "employee.fringe.title": "Fringe benefit",
   "employee.fringe.companyCar.title": "Auto aziendale",
   "employee.fringe.companyCar.subtitle": "Beneficio annuo imponibile in busta paga.",
-  "employee.fringe.mealVouchers.subtitle": "Esenti fino a 8 €/giorno per i ticket elettronici.",
+  "employee.fringe.mealVouchers.subtitle":
+    "Esenti fino a {amount}/giorno per i ticket elettronici.",
   "employee.fringe.healthInsurance.subtitle": "Esente fino a 3.615 €/anno.",
-  "employee.fringe.welfare.subtitle": "Esente fino a 258 €/anno (1.000 € con figli a carico).",
+  "employee.fringe.welfare.subtitle":
+    "Esente fino a {amount}/anno ({amountChildren} con figli a carico).",
   "employee.fringe.companyCar.mode.simple": "Semplificato",
   "employee.fringe.companyCar.mode.detailed": "Dettagliato",
   "employee.fringe.companyCar.modeLabel": "Modalità di calcolo",
@@ -543,7 +545,7 @@ export const it = {
   "employee.fringe.companyCar.powertrain.other": "Altro (termico/mild hybrid): 50%",
   "employee.fringe.mealVouchers.title": "Buoni pasto elettronici",
   "employee.fringe.mealVouchers.dailyValue": "Valore giornaliero (€)",
-  "employee.fringe.mealVouchers.dailyValue.hint": "Esente fino a 8 €/giorno (elettronici)",
+  "employee.fringe.mealVouchers.dailyValue.hint": "Esente fino a {amount}/giorno (elettronici)",
   "employee.fringe.mealVouchers.workingDays": "Giorni lavorativi al mese",
   "employee.fringe.mealVouchers.workingDays.hint": "Di solito 20–22 giorni",
   "employee.fringe.healthInsurance.title": "Polizza sanitaria",
@@ -551,9 +553,9 @@ export const it = {
   "employee.fringe.healthInsurance.annualPremium.hint": "Esente fino a 3.615,20 €/anno",
   "employee.fringe.welfare.title": "Welfare aziendale",
   "employee.fringe.welfare.annualAmount": "Importo welfare annuo",
-  "employee.fringe.welfare.annualAmount.hint": "Esente fino a 258,23 €/anno",
+  "employee.fringe.welfare.annualAmount.hint": "Esente fino a {amount}/anno",
   "employee.fringe.welfare.annualAmount.hintWithChildren":
-    "Esente fino a 3.000 €/anno (con figli under 18)",
+    "Esente fino a {amount}/anno (con figli under 18)",
   "employee.fringe.welfare.hasChildren": "Ho figli a carico under 18",
 
   "employee.specialConditions.title": "Condizioni speciali",

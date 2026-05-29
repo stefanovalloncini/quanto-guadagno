@@ -1,18 +1,26 @@
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import type { MealVouchersInput } from "@/domain/data";
 import { Field, Stack } from "@/ui/design-system/primitives";
+import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
 
 interface MealVouchersCardProps {
   readonly value: MealVouchersInput;
   readonly onChange: (next: MealVouchersInput) => void;
+  readonly dailyThreshold: number;
 }
 
-export function MealVouchersCard({ value, onChange }: MealVouchersCardProps) {
+export function MealVouchersCard({ value, onChange, dailyThreshold }: MealVouchersCardProps) {
+  const intl = useIntl();
   return (
     <Stack gap="md">
       <Field
         label={<FormattedMessage id="employee.fringe.mealVouchers.dailyValue" />}
-        hint={<FormattedMessage id="employee.fringe.mealVouchers.dailyValue.hint" />}
+        hint={
+          <FormattedMessage
+            id="employee.fringe.mealVouchers.dailyValue.hint"
+            values={{ amount: intl.formatNumber(dailyThreshold, EUR_AMOUNT_FORMAT) }}
+          />
+        }
         type="number"
         min={0}
         max={20}

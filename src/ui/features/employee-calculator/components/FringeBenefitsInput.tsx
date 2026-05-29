@@ -1,4 +1,5 @@
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
+import { getTaxConfig } from "@/domain/data";
 import type {
   FringeBenefitsInput as FringeBenefitsInputType,
   CompanyCarInput,
@@ -7,6 +8,7 @@ import type {
   WelfareInput,
 } from "@/domain/data";
 import { EnableToggle, Field, OptionToggle, Stack } from "@/ui/design-system/primitives";
+import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
 import { CompanyCarSection } from "./fringeBenefits/CompanyCarSection.tsx";
 import { MealVouchersCard } from "./fringeBenefits/MealVouchersCard.tsx";
 import { WelfareCard } from "./fringeBenefits/WelfareCard.tsx";
@@ -32,6 +34,8 @@ function without<T extends object, K extends keyof T>(obj: T, key: K): Omit<T, K
 }
 
 export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefitsInputProps) {
+  const intl = useIntl();
+  const fb = getTaxConfig(taxYear).fringeBenefits;
   const current = value ?? EMPTY;
   const enabled = value !== null;
 
@@ -68,12 +72,20 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
               )
             }
             label={<FormattedMessage id="employee.fringe.mealVouchers.title" />}
-            hint={<FormattedMessage id="employee.fringe.mealVouchers.subtitle" />}
+            hint={
+              <FormattedMessage
+                id="employee.fringe.mealVouchers.subtitle"
+                values={{
+                  amount: intl.formatNumber(fb.mealVouchersDailyThreshold, EUR_AMOUNT_FORMAT),
+                }}
+              />
+            }
           >
             {current.mealVouchers && (
               <MealVouchersCard
                 value={current.mealVouchers}
                 onChange={(v) => onChange({ ...current, mealVouchers: v })}
+                dailyThreshold={fb.mealVouchersDailyThreshold}
               />
             )}
           </OptionToggle>
@@ -117,12 +129,25 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
               onChange(c ? { ...current, welfare: DEFAULT_WELFARE } : without(current, "welfare"))
             }
             label={<FormattedMessage id="employee.fringe.welfare.title" />}
-            hint={<FormattedMessage id="employee.fringe.welfare.subtitle" />}
+            hint={
+              <FormattedMessage
+                id="employee.fringe.welfare.subtitle"
+                values={{
+                  amount: intl.formatNumber(fb.welfareThresholdGeneral, EUR_AMOUNT_FORMAT),
+                  amountChildren: intl.formatNumber(
+                    fb.welfareThresholdWithChildren,
+                    EUR_AMOUNT_FORMAT,
+                  ),
+                }}
+              />
+            }
           >
             {current.welfare && (
               <WelfareCard
                 value={current.welfare}
                 onChange={(v) => onChange({ ...current, welfare: v })}
+                generalThreshold={fb.welfareThresholdGeneral}
+                childrenThreshold={fb.welfareThresholdWithChildren}
               />
             )}
           </OptionToggle>
