@@ -64,6 +64,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.inverse.title": "Net-to-gross calculator",
   "home.available.inverse.body":
     "Know the net you want to take home: find the gross annual salary that produces it.",
+  "home.available.tredicesima.title": "Net 13th salary",
+  "home.available.tredicesima.body":
+    "What's left of the 13th after INPS and IRPEF, with no deductions.",
   "home.soon.badge": "Coming soon",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
@@ -357,6 +360,24 @@ export const en: Record<MessageKey, string> = {
   "inverse.result.irpef": "Net IRPEF",
   "inverse.result.notConverged":
     "The calculator did not find a precise value. The result is the best approximation.",
+
+  "tredicesima.eyebrow": "Tool",
+  "tredicesima.title": "What the <em>13th salary</em> is worth net",
+  "tredicesima.lede":
+    "The tredicesima is an extra month's pay, but it's taxed more than a normal salary: it carries no work deduction and no local surcharges. Here's what you keep.",
+  "tredicesima.form.ral": "Annual gross salary",
+  "tredicesima.form.ral.hint": "The RAL the extra month is computed from.",
+  "tredicesima.form.mensilita": "Instalments",
+  "tredicesima.form.mensilita.hint": "13 for the 13th only, 14 to include the 14th too.",
+  "tredicesima.result.net": "Net 13th salary",
+  "tredicesima.result.net.sub": "Effective take of {rate} between INPS and IRPEF",
+  "tredicesima.result.netTotal": "Net of 13th and 14th",
+  "tredicesima.breakdown.gross": "Gross 13th",
+  "tredicesima.breakdown.inps": "INPS contributions",
+  "tredicesima.breakdown.irpef": "IRPEF",
+  "tredicesima.breakdown.net": "Take-home",
+  "tredicesima.result.note":
+    "The 13th carries no employee work deduction and no regional or municipal surcharge, so it is taxed more than an ordinary month.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

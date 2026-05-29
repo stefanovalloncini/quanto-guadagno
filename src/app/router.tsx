@@ -27,6 +27,9 @@ const PreavvisoPage = lazy(() =>
 const InversePage = lazy(() =>
   import("@/ui/features/inverse").then((m) => ({ default: m.InversePage })),
 );
+const TredicesimaPage = lazy(() =>
+  import("@/ui/features/tredicesima").then((m) => ({ default: m.TredicesimaPage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -60,6 +63,7 @@ const router = createBrowserRouter([
   { path: "/calcolo-naspi", element: lazyRoute(<NaspiPage />) },
   { path: "/preavviso-dimissioni", element: lazyRoute(<PreavvisoPage />) },
   { path: "/calcolo-netto-lordo", element: lazyRoute(<InversePage />) },
+  { path: "/calcolo-tredicesima", element: lazyRoute(<TredicesimaPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

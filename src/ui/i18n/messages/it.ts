@@ -61,6 +61,9 @@ export const it = {
   "home.available.inverse.title": "Calcolo inverso: netto a lordo",
   "home.available.inverse.body":
     "Conosci il netto a cui vuoi arrivare: trova la RAL lorda corrispondente.",
+  "home.available.tredicesima.title": "Tredicesima netta",
+  "home.available.tredicesima.body":
+    "Quanto resta della tredicesima dopo INPS e IRPEF, senza detrazioni.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
@@ -364,6 +367,24 @@ export const it = {
   "inverse.result.irpef": "IRPEF netta",
   "inverse.result.notConverged":
     "Il calcolatore non ha trovato un valore preciso. Il risultato è la migliore approssimazione.",
+
+  "tredicesima.eyebrow": "Strumento",
+  "tredicesima.title": "Quanto netto vale la <em>tredicesima</em>",
+  "tredicesima.lede":
+    "La tredicesima è una mensilità in più, ma è tassata più di uno stipendio normale: non porta con sé le detrazioni da lavoro né le addizionali. Ecco quanto resta in tasca.",
+  "tredicesima.form.ral": "Stipendio lordo annuo",
+  "tredicesima.form.ral.hint": "La RAL su cui si calcola la mensilità aggiuntiva.",
+  "tredicesima.form.mensilita": "Mensilità",
+  "tredicesima.form.mensilita.hint": "13 per la sola tredicesima, 14 anche con la quattordicesima.",
+  "tredicesima.result.net": "Netto della tredicesima",
+  "tredicesima.result.net.sub": "Prelievo effettivo {rate} tra INPS e IRPEF",
+  "tredicesima.result.netTotal": "Netto di tredicesima e quattordicesima",
+  "tredicesima.breakdown.gross": "Lordo tredicesima",
+  "tredicesima.breakdown.inps": "Contributi INPS",
+  "tredicesima.breakdown.irpef": "IRPEF",
+  "tredicesima.breakdown.net": "Netto in tasca",
+  "tredicesima.result.note":
+    "Sulla tredicesima non si applicano le detrazioni da lavoro dipendente né le addizionali regionale e comunale: per questo è tassata più di una mensilità ordinaria.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

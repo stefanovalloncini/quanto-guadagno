@@ -144,6 +144,17 @@ export function HomePage() {
               <FormattedMessage id="home.available.inverse.body" />
             </p>
           </Tile>
+
+          <Tile
+            variant="available"
+            to="/calcolo-tredicesima"
+            title={<FormattedMessage id="home.available.tredicesima.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.tredicesima.body" />
+            </p>
+          </Tile>
         </div>
       </section>
 
