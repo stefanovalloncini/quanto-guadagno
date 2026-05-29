@@ -12,6 +12,7 @@ import { NotFoundPage } from "@/ui/features/not-found";
 import { SalaryHistoryPage } from "@/ui/features/salary-history";
 import { TredicesimaPage } from "@/ui/features/tredicesima";
 import { InflationPage } from "@/ui/features/inflation";
+import { ComparisonPage } from "@/ui/features/comparison";
 
 expect.extend(toHaveNoViolations);
 
@@ -72,6 +73,12 @@ describe("accessibility", () => {
 
   it("InflationPage has no axe violations", async () => {
     const { container } = render(wrap(<InflationPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("ComparisonPage has no axe violations", async () => {
+    const { container } = render(wrap(<ComparisonPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

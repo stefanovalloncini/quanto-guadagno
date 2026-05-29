@@ -22,3 +22,4 @@ export * from "./inpsGestioni.ts";
 export * from "./italianHolidays.ts";
 export * from "./inverseSalary.ts";
 export * from "./tredicesima.ts";
+export * from "./salaryComparison.ts";

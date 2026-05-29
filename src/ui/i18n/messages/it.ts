@@ -67,9 +67,9 @@ export const it = {
   "home.available.inflation.title": "Potere d'acquisto",
   "home.available.inflation.body":
     "Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI.",
+  "home.available.comparison.title": "Confronto offerte",
+  "home.available.comparison.body": "Due stipendi lordi a confronto: quale rende di più al netto.",
   "home.soon.badge": "In arrivo",
-  "home.soon.comparison.title": "Confronto scenari",
-  "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
   "home.soon.tfr.title": "TFR",
   "home.soon.tfr.body": "Simulazione del trattamento di fine rapporto a lungo termine.",
   "home.soon.payslip.title": "Busta paga",
@@ -400,6 +400,20 @@ export const it = {
   "inflation.result.cumulative": "Inflazione cumulata",
   "inflation.result.note":
     "Calcolo basato sull'indice ISTAT FOI (prezzi al consumo per famiglie di operai e impiegati), base 2015. È lo stesso indice usato per rivalutare il TFR.",
+
+  "comparison.eyebrow": "Strumento",
+  "comparison.title": "Confronto tra due <em>offerte</em>",
+  "comparison.lede":
+    "Due stipendi lordi a confronto, a parità di condizioni. Vedi quale lascia più netto in tasca e di quanto.",
+  "comparison.form.ralA": "Offerta A: lordo annuo",
+  "comparison.form.ralB": "Offerta B: lordo annuo",
+  "comparison.result.offerA": "Netto offerta A",
+  "comparison.result.offerB": "Netto offerta B",
+  "comparison.result.winner":
+    "{winner, select, a {Offerta A più alta} b {Offerta B più alta} other {Stesso netto}}",
+  "comparison.result.perMonth": "{amount} al mese",
+  "comparison.result.note":
+    "Stesse condizioni per entrambe: anno, regione, comune e mensilità. La differenza è solo nel lordo di partenza.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

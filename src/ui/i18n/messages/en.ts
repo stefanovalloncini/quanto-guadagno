@@ -70,9 +70,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.inflation.title": "Purchasing power",
   "home.available.inflation.body":
     "What an amount from a few years ago is worth today, by the ISTAT FOI index.",
+  "home.available.comparison.title": "Compare offers",
+  "home.available.comparison.body": "Two gross salaries compared: which one nets more.",
   "home.soon.badge": "Coming soon",
-  "home.soon.comparison.title": "Scenario comparison",
-  "home.soon.comparison.body": "Compare two or three offers side by side.",
   "home.soon.tfr.title": "TFR",
   "home.soon.tfr.body": "Long-term severance simulation.",
   "home.soon.payslip.title": "Payslip",
@@ -394,6 +394,20 @@ export const en: Record<MessageKey, string> = {
   "inflation.result.cumulative": "Cumulative inflation",
   "inflation.result.note":
     "Based on the ISTAT FOI index (consumer prices for blue- and white-collar households), 2015 base. It is the same index used to revalue TFR.",
+
+  "comparison.eyebrow": "Tool",
+  "comparison.title": "Two <em>offers</em> compared",
+  "comparison.lede":
+    "Two gross salaries side by side, under the same conditions. See which leaves more net pay, and by how much.",
+  "comparison.form.ralA": "Offer A: annual gross",
+  "comparison.form.ralB": "Offer B: annual gross",
+  "comparison.result.offerA": "Net, offer A",
+  "comparison.result.offerB": "Net, offer B",
+  "comparison.result.winner":
+    "{winner, select, a {Offer A is higher} b {Offer B is higher} other {Same net pay}}",
+  "comparison.result.perMonth": "{amount} per month",
+  "comparison.result.note":
+    "Same conditions for both: year, region, municipality and instalments. Only the starting gross differs.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

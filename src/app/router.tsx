@@ -33,6 +33,9 @@ const TredicesimaPage = lazy(() =>
 const InflationPage = lazy(() =>
   import("@/ui/features/inflation").then((m) => ({ default: m.InflationPage })),
 );
+const ComparisonPage = lazy(() =>
+  import("@/ui/features/comparison").then((m) => ({ default: m.ComparisonPage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -68,6 +71,7 @@ const router = createBrowserRouter([
   { path: "/calcolo-netto-lordo", element: lazyRoute(<InversePage />) },
   { path: "/calcolo-tredicesima", element: lazyRoute(<TredicesimaPage />) },
   { path: "/inflazione", element: lazyRoute(<InflationPage />) },
+  { path: "/confronto-stipendi", element: lazyRoute(<ComparisonPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

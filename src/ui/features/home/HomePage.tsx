@@ -8,7 +8,6 @@ interface SoonItem {
 }
 
 const soonItems: ReadonlyArray<SoonItem> = [
-  { id: "comparison", labelId: "home.soon.comparison.title" },
   { id: "tfr", labelId: "home.soon.tfr.title" },
   { id: "payslip", labelId: "home.soon.payslip.title" },
   { id: "statistics", labelId: "home.soon.statistics.title" },
@@ -163,6 +162,17 @@ export function HomePage() {
           >
             <p>
               <FormattedMessage id="home.available.inflation.body" />
+            </p>
+          </Tile>
+
+          <Tile
+            variant="available"
+            to="/confronto-stipendi"
+            title={<FormattedMessage id="home.available.comparison.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.comparison.body" />
             </p>
           </Tile>
         </div>
