@@ -86,14 +86,18 @@ export function calculateMealVouchersBenefit(
 } {
   const annualWorkingDays =
     (mealVouchers?.workingDaysPerMonth ?? WORKING_DAYS_PER_MONTH) * MONTHS_PER_YEAR;
-  const taxFreeThreshold = cfg.mealVouchersDailyThreshold * annualWorkingDays;
+  const dailyThreshold =
+    mealVouchers?.type === "paper"
+      ? cfg.mealVouchersPaperThreshold
+      : cfg.mealVouchersDailyThreshold;
+  const taxFreeThreshold = dailyThreshold * annualWorkingDays;
 
   if (!mealVouchers) {
     return { annualValue: 0, taxFreeThreshold, taxableValue: 0 };
   }
 
   const annualValue = mealVouchers.dailyValue * annualWorkingDays;
-  const dailyExcess = Math.max(0, mealVouchers.dailyValue - cfg.mealVouchersDailyThreshold);
+  const dailyExcess = Math.max(0, mealVouchers.dailyValue - dailyThreshold);
   const taxableValue = dailyExcess * annualWorkingDays;
 
   return { annualValue, taxFreeThreshold, taxableValue };

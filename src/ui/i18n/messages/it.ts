@@ -559,7 +559,7 @@ export const it = {
   "employee.fringe.companyCar.title": "Auto aziendale",
   "employee.fringe.companyCar.subtitle": "Beneficio annuo imponibile in busta paga.",
   "employee.fringe.mealVouchers.subtitle":
-    "Esenti fino a {amount}/giorno per i ticket elettronici.",
+    "Esenti fino a {amount}/giorno (elettronici) o {paper}/giorno (cartacei).",
   "employee.fringe.healthInsurance.subtitle": "Esente fino a 3.615 €/anno.",
   "employee.fringe.welfare.subtitle":
     "Esente fino a {amount}/anno ({amountChildren} con figli a carico).",
@@ -579,9 +579,12 @@ export const it = {
   "employee.fringe.companyCar.powertrain.bev": "Elettrico (BEV): 10%",
   "employee.fringe.companyCar.powertrain.phev": "Ibrido plug-in (PHEV): 20%",
   "employee.fringe.companyCar.powertrain.other": "Altro (termico/mild hybrid): 50%",
-  "employee.fringe.mealVouchers.title": "Buoni pasto elettronici",
+  "employee.fringe.mealVouchers.title": "Buoni pasto",
+  "employee.fringe.mealVouchers.type": "Tipo di buono",
+  "employee.fringe.mealVouchers.type.electronic": "Elettronico",
+  "employee.fringe.mealVouchers.type.paper": "Cartaceo",
   "employee.fringe.mealVouchers.dailyValue": "Valore giornaliero (€)",
-  "employee.fringe.mealVouchers.dailyValue.hint": "Esente fino a {amount}/giorno (elettronici)",
+  "employee.fringe.mealVouchers.dailyValue.hint": "Esente fino a {amount}/giorno.",
   "employee.fringe.mealVouchers.workingDays": "Giorni lavorativi al mese",
   "employee.fringe.mealVouchers.workingDays.hint": "Di solito 20–22 giorni",
   "employee.fringe.healthInsurance.title": "Polizza sanitaria",

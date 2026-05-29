@@ -29,6 +29,7 @@ import {
   SHARED_MADRE_LAVORATRICE,
   SHARED_REGIME_IMPATRIATI,
   SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
+  SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
   SHARED_HEALTH_INSURANCE_THRESHOLD,
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
@@ -79,6 +80,7 @@ export const TAX_CONFIG_2024: YearlyTaxConfig = {
   // Fringe benefits — Art. 51 TUIR
   fringeBenefits: {
     mealVouchersDailyThreshold: SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
+    mealVouchersPaperThreshold: SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
     healthInsuranceThreshold: SHARED_HEALTH_INSURANCE_THRESHOLD,
     // €1.000/anno welfare generale (L. 213/2023, Legge di Bilancio 2024, art. 1 c. 16)
     welfareThresholdGeneral: 1000,

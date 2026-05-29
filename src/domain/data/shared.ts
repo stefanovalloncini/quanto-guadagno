@@ -113,6 +113,8 @@ export const SHARED_GESTIONE_SEPARATA_FULL_RATE = 0.2607;
 export const SHARED_GESTIONE_SEPARATA_REDUCED_RATE = 0.24;
 
 export const SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD = 8;
+// Buoni pasto cartacei: esenti fino a €4/giorno, invariato dal 2020 (L. 160/2019).
+export const SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD = 4;
 export const SHARED_HEALTH_INSURANCE_THRESHOLD = 3615.2;
 export const SHARED_DEFAULT_CONVENTIONAL_KM = 15_000;
 

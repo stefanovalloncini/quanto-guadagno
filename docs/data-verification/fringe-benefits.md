@@ -6,11 +6,11 @@ bilancio.
 
 ## Soglie di esenzione welfare (Art. 51 c. 3 TUIR)
 
-| Anno | Generale | Con figli a carico | Norma |
-|------|----------|--------------------|-------|
-| 2024 | 1.000 € | 2.000 € | L. 213/2023 (Bilancio 2024), art. 1 c. 16 |
-| 2025 | 1.000 € | 2.000 € | L. 207/2024 (Bilancio 2025), triennio 2025–2027 |
-| 2026 | 1.000 € | 2.000 € | L. 207/2024, confermato per il triennio |
+| Anno | Generale | Con figli a carico | Norma                                           |
+| ---- | -------- | ------------------ | ----------------------------------------------- |
+| 2024 | 1.000 €  | 2.000 €            | L. 213/2023 (Bilancio 2024), art. 1 c. 16       |
+| 2025 | 1.000 €  | 2.000 €            | L. 207/2024 (Bilancio 2025), triennio 2025–2027 |
+| 2026 | 1.000 €  | 2.000 €            | L. 207/2024, confermato per il triennio         |
 
 La soglia ordinaria a regime sarebbe 258,23 €; le leggi di bilancio l'hanno
 elevata. Il limite con figli si applica ai dipendenti con figli fiscalmente a
@@ -19,14 +19,14 @@ soglia, l'intero importo concorre a tassazione, non solo l'eccedenza.
 
 ## Buoni pasto (Art. 51 c. 2 lett. c TUIR)
 
-| Anno | Elettronici | Cartacei | Norma |
-|------|-------------|----------|-------|
-| 2024 | 8 €/giorno | 4 €/giorno | L. 160/2019, in vigore dal 2020 |
-| 2025 | 8 €/giorno | 4 €/giorno | invariato |
+| Anno | Elettronici | Cartacei   | Norma                              |
+| ---- | ----------- | ---------- | ---------------------------------- |
+| 2024 | 8 €/giorno  | 4 €/giorno | L. 160/2019, in vigore dal 2020    |
+| 2025 | 8 €/giorno  | 4 €/giorno | invariato                          |
 | 2026 | 10 €/giorno | 4 €/giorno | L. di Bilancio 2026, dall'1/1/2026 |
 
-Il calcolatore modella i soli buoni elettronici. L'eccedenza giornaliera oltre la
-soglia è imponibile, moltiplicata per i giorni lavorativi dell'anno.
+Il calcolatore distingue buoni elettronici e cartacei. L'eccedenza giornaliera
+oltre la soglia è imponibile, moltiplicata per i giorni lavorativi dell'anno.
 
 ## Assistenza sanitaria (Art. 51 c. 2 lett. a TUIR)
 
@@ -45,13 +45,17 @@ Per i contratti precedenti vale la tabella a emissioni CO2: ≤60 g/km 25%,
 ## Esempi di calcolo (golden vectors)
 
 ### Welfare 2025, importo 1.500 €, senza figli
+
 - Soglia 1.000 €, eccedenza imponibile = **500 €**.
 
 ### Welfare 2025, importo 1.500 €, con figli a carico
+
 - Soglia 2.000 €, nessun imponibile = **0 €**.
 
 ### Buoni pasto 2026, 10 €/giorno × 22 giorni × 12 mesi
+
 - Valore annuo 2.640 €, soglia 2.640 €, imponibile = **0 €**.
 
 ### Auto BEV 2025, costo ACI 0,40 €/km
+
 - Costo convenzionale 0,40 × 15.000 = 6.000 €, imponibile 10% = **600 €**.

@@ -121,6 +121,7 @@ export interface CompanyCarPowertrainRate {
 
 export interface FringeBenefitsConfig {
   readonly mealVouchersDailyThreshold: number;
+  readonly mealVouchersPaperThreshold: number;
   readonly healthInsuranceThreshold: number;
   readonly welfareThresholdGeneral: number;
   readonly welfareThresholdWithChildren: number;

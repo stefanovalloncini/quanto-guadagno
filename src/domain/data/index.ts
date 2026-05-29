@@ -4,6 +4,7 @@ export type {
   FringePowertrainType,
   CompanyCarInput,
   MealVouchersInput,
+  MealVoucherType,
   HealthInsuranceInput,
   WelfareInput,
   FringeBenefitsInput,

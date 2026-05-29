@@ -33,6 +33,7 @@ import {
   SHARED_MADRE_LAVORATRICE,
   SHARED_REGIME_IMPATRIATI,
   SHARED_HEALTH_INSURANCE_THRESHOLD,
+  SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
   SHARED_TAX_WEDGE_CUT_PARAMS,
@@ -82,6 +83,7 @@ export const TAX_CONFIG_2026: YearlyTaxConfig = {
   // Buoni pasto: L. 199/2025 art. 1 c.16 (soglia passa da €8 a €10)
   fringeBenefits: {
     mealVouchersDailyThreshold: 10,
+    mealVouchersPaperThreshold: SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
     healthInsuranceThreshold: SHARED_HEALTH_INSURANCE_THRESHOLD,
     // €1.000/anno welfare generale (triennio 2025-2027)
     welfareThresholdGeneral: 1000,

@@ -30,6 +30,7 @@ import {
   SHARED_MADRE_LAVORATRICE,
   SHARED_REGIME_IMPATRIATI,
   SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
+  SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
   SHARED_HEALTH_INSURANCE_THRESHOLD,
   SHARED_DEFAULT_CONVENTIONAL_KM,
   SHARED_COMPANY_CAR_CO2_THRESHOLDS,
@@ -76,6 +77,7 @@ export const TAX_CONFIG_2025: YearlyTaxConfig = {
   // Fringe benefits — Art. 1, commi 386-389, L. 207/2024
   fringeBenefits: {
     mealVouchersDailyThreshold: SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
+    mealVouchersPaperThreshold: SHARED_MEAL_VOUCHERS_PAPER_THRESHOLD,
     healthInsuranceThreshold: SHARED_HEALTH_INSURANCE_THRESHOLD,
     // €1.000/anno welfare generale (triennio 2025-2027)
     welfareThresholdGeneral: 1000,

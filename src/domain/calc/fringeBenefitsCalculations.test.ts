@@ -36,6 +36,12 @@ describe("fringe-benefit exemption thresholds by year", () => {
     expect(fb.mealVouchersDailyThreshold).toBe(10);
   });
 
+  it("buoni pasto cartacei €4/giorno in ogni anno (L. 160/2019)", () => {
+    for (const cfg of [TAX_CONFIG_2024, TAX_CONFIG_2025, TAX_CONFIG_2026]) {
+      expect(cfg.fringeBenefits.mealVouchersPaperThreshold).toBe(4);
+    }
+  });
+
   it("health-insurance exemption €3.615,20 in every year (Art. 51 c.2 lett. a)", () => {
     for (const cfg of [TAX_CONFIG_2024, TAX_CONFIG_2025, TAX_CONFIG_2026]) {
       expect(cfg.fringeBenefits.healthInsuranceThreshold).toBeCloseTo(3615.2, 2);
@@ -146,6 +152,21 @@ describe("calculateMealVouchersBenefit", () => {
     expect(r.annualValue).toBe(0);
     expect(r.taxableValue).toBe(0);
     expect(r.taxFreeThreshold).toBe(2112);
+  });
+
+  it("buoni cartacei: soglia €4/giorno, non €8", () => {
+    const paper = calculateMealVouchersBenefit(
+      { dailyValue: 6, workingDaysPerMonth: 22, type: "paper" },
+      CFG,
+    );
+    expect(paper.taxFreeThreshold).toBe(1056); // 4 × 264
+    expect(paper.taxableValue).toBe(528); // (6 − 4) × 264
+
+    const electronic = calculateMealVouchersBenefit(
+      { dailyValue: 6, workingDaysPerMonth: 22, type: "electronic" },
+      CFG,
+    );
+    expect(electronic.taxableValue).toBe(0); // 6 ≤ soglia 8
   });
 });
 

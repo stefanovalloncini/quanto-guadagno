@@ -18,9 +18,12 @@ export interface CompanyCarInput {
   readonly powertrainType?: FringePowertrainType;
 }
 
+export type MealVoucherType = "electronic" | "paper";
+
 export interface MealVouchersInput {
   readonly dailyValue: number;
   readonly workingDaysPerMonth: number;
+  readonly type?: MealVoucherType;
 }
 
 export interface HealthInsuranceInput {

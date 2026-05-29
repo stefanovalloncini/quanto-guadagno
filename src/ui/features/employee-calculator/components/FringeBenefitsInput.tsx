@@ -77,6 +77,7 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
                 id="employee.fringe.mealVouchers.subtitle"
                 values={{
                   amount: intl.formatNumber(fb.mealVouchersDailyThreshold, EUR_AMOUNT_FORMAT),
+                  paper: intl.formatNumber(fb.mealVouchersPaperThreshold, EUR_AMOUNT_FORMAT),
                 }}
               />
             }
@@ -85,7 +86,8 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
               <MealVouchersCard
                 value={current.mealVouchers}
                 onChange={(v) => onChange({ ...current, mealVouchers: v })}
-                dailyThreshold={fb.mealVouchersDailyThreshold}
+                electronicThreshold={fb.mealVouchersDailyThreshold}
+                paperThreshold={fb.mealVouchersPaperThreshold}
               />
             )}
           </OptionToggle>
