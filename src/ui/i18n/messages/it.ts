@@ -122,7 +122,7 @@ export const it = {
   "about.lede":
     "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
   "about.body1":
-    "Il progetto nasce per dare una stima onesta dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
+    "Il progetto nasce per dare una stima dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
   "about.body2":
     "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
   "about.github": "Codice su GitHub",
@@ -404,7 +404,7 @@ export const it = {
 
   "moneyJourney.title": "Dal costo azienda al netto in tasca",
   "moneyJourney.lede":
-    "Ogni euro che l'azienda spende per te si scompone così: una parte va in contributi e accantonamenti, il resto è la tua RAL. La RAL si divide a sua volta fra netto, INPS dipendente e imposte.",
+    "Ogni euro che l'azienda spende per te si scompone così: una parte va in contributi e accantonamenti, il resto è la tua RAL. La RAL a sua volta si divide tra il netto che incassi e le trattenute: INPS a tuo carico e imposte.",
   "moneyJourney.node.costo": "Costo azienda",
   "moneyJourney.node.ral": "RAL",
   "moneyJourney.node.inpsAzienda": "INPS azienda",

@@ -42,7 +42,7 @@ export const en: Record<MessageKey, string> = {
   "home.feature.specimen.gross": "Annual gross",
   "home.feature.specimen.net": "Monthly net",
   "home.also.title": "Also available",
-  "home.upcoming.title": "Coming back",
+  "home.upcoming.title": "Upcoming",
   "home.available.apprenticeship.title": "Apprenticeship progression",
   "home.available.apprenticeship.body":
     "Estimate year-by-year salary during professional apprenticeship contracts.",
@@ -64,7 +64,7 @@ export const en: Record<MessageKey, string> = {
   "home.available.inverse.title": "Net-to-gross calculator",
   "home.available.inverse.body":
     "Know the net you want to take home: find the gross annual salary that produces it.",
-  "home.soon.badge": "Coming back",
+  "home.soon.badge": "Coming soon",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
   "home.soon.tfr.title": "TFR",
@@ -100,9 +100,9 @@ export const en: Record<MessageKey, string> = {
     "15 instalments, includes 13th, 14th and 15th-month bonuses",
   "employee.form.paymentFrequency.option16": "16 instalments, additional contractual bonuses",
   "employee.form.region": "Region of residence",
-  "employee.form.regional": "Regional addizionale rate",
+  "employee.form.regional": "Regional surcharge rate",
   "employee.form.regional.hint": "Changes by region of residence.",
-  "employee.form.municipal": "Municipal addizionale rate",
+  "employee.form.municipal": "Municipal surcharge rate",
   "employee.form.municipal.hint": "Changes by municipality of residence.",
 
   "employee.results.detail": "Calculation breakdown",
@@ -124,7 +124,7 @@ export const en: Record<MessageKey, string> = {
   "about.lede":
     "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. No account, no tracker.",
   "about.body1":
-    "The project exists to give an honest estimate of net salary starting from gross. Regional rates are editable because they differ between regions.",
+    "The project exists to give an estimate of net salary starting from gross. Regional rates are editable because they differ between regions.",
   "about.body2":
     "The calculation follows the Agenzia delle Entrate brackets and current INPS circulars. No estimate replaces the real payslip: this tool is for orientation.",
   "about.github": "Code on GitHub",
@@ -168,7 +168,7 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.row.netUnit": "/ month",
   "apprenticeship.row.openLink": "Open the calculator for year {year}",
   "apprenticeship.results.footnote":
-    "Monthly net is estimated with Lombardy rates, 0.8% municipal addizionale and an apprenticeship contract. Open any row to refine region, deductions and other inputs.",
+    "Monthly net is estimated with Lombardy rates, 0.8% municipal surcharge and an apprenticeship contract. Open any row to refine region, deductions and other inputs.",
 
   "forfettario.eyebrow": "Tool",
   "forfettario.title": "Self-employed <em>forfettario</em>.",
@@ -379,7 +379,7 @@ export const en: Record<MessageKey, string> = {
   "employee.extras.section.fringe.lede": "Company car, meal vouchers, company welfare.",
   "employee.extras.status.set": "set",
   "employee.extras.toggle.enable": "Apply to the calculation",
-  "employee.extras.municipal": "Municipal addizionale rate",
+  "employee.extras.municipal": "Municipal surcharge rate",
   "employee.extras.municipal.lookup": "Look up your rate",
 
   "employee.inpsRates.largeCompany.label": "Company with more than 15 employees",
@@ -396,7 +396,7 @@ export const en: Record<MessageKey, string> = {
 
   "moneyJourney.title": "From company cost to take-home pay",
   "moneyJourney.lede":
-    "Every euro the company spends on you breaks down like this: part goes to contributions and accruals, the rest is your gross salary. The gross salary then splits between net pay, employee INPS, and taxes.",
+    "Every euro the company spends on you breaks down like this: part goes to contributions and accruals, the rest is your gross salary. The gross salary then splits between the net you receive and what's withheld: employee INPS and taxes.",
   "moneyJourney.node.costo": "Company cost",
   "moneyJourney.node.ral": "Gross salary",
   "moneyJourney.node.inpsAzienda": "Employer INPS",
@@ -419,7 +419,7 @@ export const en: Record<MessageKey, string> = {
   "history.form.gross": "Gross salary that year",
   "history.form.contractType": "Contract",
   "history.form.paymentFrequency": "Monthly payments",
-  "history.form.municipalTaxRate": "Municipal additional rate",
+  "history.form.municipalTaxRate": "Municipal surcharge rate",
   "history.form.extras": "More settings",
   "history.form.dependents.hasSpouse": "Dependent spouse",
   "history.form.dependents.spouseIncome": "Spouse annual income",
