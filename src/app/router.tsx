@@ -30,6 +30,9 @@ const InversePage = lazy(() =>
 const TredicesimaPage = lazy(() =>
   import("@/ui/features/tredicesima").then((m) => ({ default: m.TredicesimaPage })),
 );
+const InflationPage = lazy(() =>
+  import("@/ui/features/inflation").then((m) => ({ default: m.InflationPage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -64,6 +67,7 @@ const router = createBrowserRouter([
   { path: "/preavviso-dimissioni", element: lazyRoute(<PreavvisoPage />) },
   { path: "/calcolo-netto-lordo", element: lazyRoute(<InversePage />) },
   { path: "/calcolo-tredicesima", element: lazyRoute(<TredicesimaPage />) },
+  { path: "/inflazione", element: lazyRoute(<InflationPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

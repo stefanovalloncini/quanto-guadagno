@@ -67,6 +67,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.tredicesima.title": "Net 13th salary",
   "home.available.tredicesima.body":
     "What's left of the 13th after INPS and IRPEF, with no deductions.",
+  "home.available.inflation.title": "Purchasing power",
+  "home.available.inflation.body":
+    "What an amount from a few years ago is worth today, by the ISTAT FOI index.",
   "home.soon.badge": "Coming soon",
   "home.soon.comparison.title": "Scenario comparison",
   "home.soon.comparison.body": "Compare two or three offers side by side.",
@@ -76,8 +79,6 @@ export const en: Record<MessageKey, string> = {
   "home.soon.payslip.body": "Monthly view, deductions and contributions broken out.",
   "home.soon.statistics.title": "Income percentile",
   "home.soon.statistics.body": "Where you sit relative to ISTAT data.",
-  "home.soon.inflation.title": "Inflation",
-  "home.soon.inflation.body": "Purchasing power of your salary over time.",
   "home.soon.taxSystem.title": "How the tax system works",
   "home.soon.taxSystem.body": "Who pays, the tax wedge, where the money goes.",
 
@@ -378,6 +379,21 @@ export const en: Record<MessageKey, string> = {
   "tredicesima.breakdown.net": "Take-home",
   "tredicesima.result.note":
     "The 13th carries no employee work deduction and no regional or municipal surcharge, so it is taxed more than an ordinary month.",
+
+  "inflation.eyebrow": "Tool",
+  "inflation.title": "<em>Purchasing power</em> over time",
+  "inflation.lede":
+    "Inflation erodes the value of money. See what an amount from a few years ago is worth today, by the ISTAT FOI index.",
+  "inflation.form.amount": "Amount",
+  "inflation.form.amount.hint":
+    "The amount whose real value you want to compare between two years.",
+  "inflation.form.fromYear": "From year",
+  "inflation.form.toYear": "To year",
+  "inflation.result.adjusted": "Equivalent in {year}",
+  "inflation.result.adjusted.sub": "Same purchasing power as {year}",
+  "inflation.result.cumulative": "Cumulative inflation",
+  "inflation.result.note":
+    "Based on the ISTAT FOI index (consumer prices for blue- and white-collar households), 2015 base. It is the same index used to revalue TFR.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

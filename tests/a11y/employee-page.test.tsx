@@ -11,6 +11,7 @@ import { SourcesPage } from "@/ui/features/sources";
 import { NotFoundPage } from "@/ui/features/not-found";
 import { SalaryHistoryPage } from "@/ui/features/salary-history";
 import { TredicesimaPage } from "@/ui/features/tredicesima";
+import { InflationPage } from "@/ui/features/inflation";
 
 expect.extend(toHaveNoViolations);
 
@@ -65,6 +66,12 @@ describe("accessibility", () => {
 
   it("TredicesimaPage has no axe violations", async () => {
     const { container } = render(wrap(<TredicesimaPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("InflationPage has no axe violations", async () => {
+    const { container } = render(wrap(<InflationPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

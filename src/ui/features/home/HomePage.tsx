@@ -12,7 +12,6 @@ const soonItems: ReadonlyArray<SoonItem> = [
   { id: "tfr", labelId: "home.soon.tfr.title" },
   { id: "payslip", labelId: "home.soon.payslip.title" },
   { id: "statistics", labelId: "home.soon.statistics.title" },
-  { id: "inflation", labelId: "home.soon.inflation.title" },
   { id: "taxSystem", labelId: "home.soon.taxSystem.title" },
 ];
 
@@ -153,6 +152,17 @@ export function HomePage() {
           >
             <p>
               <FormattedMessage id="home.available.tredicesima.body" />
+            </p>
+          </Tile>
+
+          <Tile
+            variant="available"
+            to="/inflazione"
+            title={<FormattedMessage id="home.available.inflation.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.inflation.body" />
             </p>
           </Tile>
         </div>

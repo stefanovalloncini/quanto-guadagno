@@ -24,12 +24,12 @@ describe("HomePage", () => {
     expect(tile).toHaveAttribute("href", "/partita-iva-forfettario");
   });
 
-  it("renders the upcoming list with six items under an 'In arrivo' subhead", () => {
+  it("renders the upcoming list under an 'In arrivo' subhead", () => {
     const { container } = renderWithIntl(<HomePage />);
     const subhead = screen.getByRole("heading", { name: /In arrivo/i });
     expect(subhead).toBeInTheDocument();
     const items = container.querySelectorAll(".qg-home__upcoming-list li");
-    expect(items).toHaveLength(6);
+    expect(items).toHaveLength(5);
   });
 
   it("renders the open-source shimmer accent in the lede", () => {

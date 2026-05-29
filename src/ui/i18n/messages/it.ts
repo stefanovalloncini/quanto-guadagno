@@ -64,6 +64,9 @@ export const it = {
   "home.available.tredicesima.title": "Tredicesima netta",
   "home.available.tredicesima.body":
     "Quanto resta della tredicesima dopo INPS e IRPEF, senza detrazioni.",
+  "home.available.inflation.title": "Potere d'acquisto",
+  "home.available.inflation.body":
+    "Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI.",
   "home.soon.badge": "In arrivo",
   "home.soon.comparison.title": "Confronto scenari",
   "home.soon.comparison.body": "Affianca due o tre offerte e vedi la differenza in netto.",
@@ -73,8 +76,6 @@ export const it = {
   "home.soon.payslip.body": "Visualizzazione mensile con detrazioni e contributi separati.",
   "home.soon.statistics.title": "Percentile reddito",
   "home.soon.statistics.body": "Dove si colloca il tuo reddito rispetto ai dati ISTAT.",
-  "home.soon.inflation.title": "Inflazione",
-  "home.soon.inflation.body": "Potere d'acquisto del tuo stipendio nel tempo.",
   "home.soon.taxSystem.title": "Sistema fiscale",
   "home.soon.taxSystem.body": "Come funziona, chi paga, cuneo, dove vanno le tasse.",
 
@@ -385,6 +386,20 @@ export const it = {
   "tredicesima.breakdown.net": "Netto in tasca",
   "tredicesima.result.note":
     "Sulla tredicesima non si applicano le detrazioni da lavoro dipendente né le addizionali regionale e comunale: per questo è tassata più di una mensilità ordinaria.",
+
+  "inflation.eyebrow": "Strumento",
+  "inflation.title": "Il <em>potere d'acquisto</em> nel tempo",
+  "inflation.lede":
+    "L'inflazione erode il valore dei soldi. Scopri quanto vale oggi una cifra di qualche anno fa, secondo l'indice ISTAT FOI.",
+  "inflation.form.amount": "Importo",
+  "inflation.form.amount.hint": "La cifra di cui confrontare il valore reale tra due anni.",
+  "inflation.form.fromYear": "Anno di partenza",
+  "inflation.form.toYear": "Anno di confronto",
+  "inflation.result.adjusted": "Equivalente nel {year}",
+  "inflation.result.adjusted.sub": "Stesso potere d'acquisto del {year}",
+  "inflation.result.cumulative": "Inflazione cumulata",
+  "inflation.result.note":
+    "Calcolo basato sull'indice ISTAT FOI (prezzi al consumo per famiglie di operai e impiegati), base 2015. È lo stesso indice usato per rivalutare il TFR.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",
