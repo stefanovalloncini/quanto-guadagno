@@ -7,9 +7,41 @@ import {
   calculateFringeBenefits,
   hasFringeBenefits,
 } from "./fringeBenefitsCalculations.ts";
-import { TAX_CONFIG_2025 } from "@/domain/data";
+import { TAX_CONFIG_2024, TAX_CONFIG_2025, TAX_CONFIG_2026 } from "@/domain/data";
 
 const CFG = TAX_CONFIG_2025.fringeBenefits;
+
+// Per-year exemption thresholds pinned to law, so a stale copy (the 2024
+// values were once the 2023 regime) can't slip back in.
+// Welfare: L. 213/2023 (2024), L. 207/2024 (2025-2027). Meal: Art. 51 c.2 TUIR.
+describe("fringe-benefit exemption thresholds by year", () => {
+  it("2024: welfare €1.000/€2.000, buoni pasto €8/giorno", () => {
+    const fb = TAX_CONFIG_2024.fringeBenefits;
+    expect(fb.welfareThresholdGeneral).toBe(1000);
+    expect(fb.welfareThresholdWithChildren).toBe(2000);
+    expect(fb.mealVouchersDailyThreshold).toBe(8);
+  });
+
+  it("2025: welfare €1.000/€2.000, buoni pasto €8/giorno", () => {
+    const fb = TAX_CONFIG_2025.fringeBenefits;
+    expect(fb.welfareThresholdGeneral).toBe(1000);
+    expect(fb.welfareThresholdWithChildren).toBe(2000);
+    expect(fb.mealVouchersDailyThreshold).toBe(8);
+  });
+
+  it("2026: welfare €1.000/€2.000, buoni pasto €10/giorno", () => {
+    const fb = TAX_CONFIG_2026.fringeBenefits;
+    expect(fb.welfareThresholdGeneral).toBe(1000);
+    expect(fb.welfareThresholdWithChildren).toBe(2000);
+    expect(fb.mealVouchersDailyThreshold).toBe(10);
+  });
+
+  it("health-insurance exemption €3.615,20 in every year (Art. 51 c.2 lett. a)", () => {
+    for (const cfg of [TAX_CONFIG_2024, TAX_CONFIG_2025, TAX_CONFIG_2026]) {
+      expect(cfg.fringeBenefits.healthInsuranceThreshold).toBeCloseTo(3615.2, 2);
+    }
+  });
+});
 
 // Auto vetture in uso promiscuo — Art. 51 c.4 lett. a TUIR.
 // Dal 2025 la L. 207/2024 introduce le percentuali per alimentazione

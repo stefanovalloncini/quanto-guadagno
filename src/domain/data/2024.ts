@@ -80,10 +80,10 @@ export const TAX_CONFIG_2024: YearlyTaxConfig = {
   fringeBenefits: {
     mealVouchersDailyThreshold: SHARED_MEAL_VOUCHERS_DAILY_THRESHOLD,
     healthInsuranceThreshold: SHARED_HEALTH_INSURANCE_THRESHOLD,
-    // €258,23/anno welfare generale (base Art. 51)
-    welfareThresholdGeneral: 258.23,
-    // €3.000/anno con figli under 18 (L. Bilancio 2024)
-    welfareThresholdWithChildren: 3000,
+    // €1.000/anno welfare generale (L. 213/2023, Legge di Bilancio 2024, art. 1 c. 16)
+    welfareThresholdGeneral: 1000,
+    // €2.000/anno con figli fiscalmente a carico (stessa norma)
+    welfareThresholdWithChildren: 2000,
     companyCarCo2Thresholds: SHARED_COMPANY_CAR_CO2_THRESHOLDS,
     defaultConventionalKm: SHARED_DEFAULT_CONVENTIONAL_KM,
   },
