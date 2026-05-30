@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { calculateSalaryBreakdown, type SalaryBreakdown } from "@/domain/calc";
 import type {
@@ -13,6 +13,7 @@ import type {
   PremioRisultatoInput,
 } from "@/domain/calc";
 import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 import { parseUrlState, writeUrlState } from "./urlState.ts";
 
 interface FormState {
@@ -57,7 +58,7 @@ export interface EmployeeCalculator {
 
 export function useEmployeeCalculator(): EmployeeCalculator {
   const [params, setParams] = useSearchParams();
-  const [state, setState] = useState<FormState>(() => ({
+  const [state, update] = usePatchState<FormState>(() => ({
     ...DEFAULTS,
     ...parseUrlState(params),
   }));
@@ -94,10 +95,6 @@ export function useEmployeeCalculator(): EmployeeCalculator {
     state.inpsOverride,
     setParams,
   ]);
-
-  const update = useCallback((patch: Partial<FormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
 
   const result = useMemo(() => calculateSalaryBreakdown(state), [state]);
 

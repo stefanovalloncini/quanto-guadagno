@@ -1,7 +1,8 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { compareSalaries, type SalaryComparison } from "@/domain/calc";
 import type { PaymentFrequency } from "@/domain/calc";
 import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface ComparisonFormState {
   readonly ralA: number;
@@ -28,11 +29,7 @@ export interface ComparisonCalculator {
 }
 
 export function useComparisonCalculator(): ComparisonCalculator {
-  const [state, setState] = useState<ComparisonFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<ComparisonFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<ComparisonFormState>(DEFAULTS);
 
   const result = useMemo(() => {
     const shared = {

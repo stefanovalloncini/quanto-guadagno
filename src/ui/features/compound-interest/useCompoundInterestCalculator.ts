@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import {
   calculateCompoundInterest,
   type CompoundInterestBreakdown,
   type CompoundingFrequency,
   type ContributionFrequency,
 } from "@/domain/calc";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 import { buildCompoundInterestSearch, parseCompoundInterestUrlState } from "./urlState.ts";
 
 export interface CompoundInterestFormState {
@@ -39,11 +40,7 @@ function initialState(): CompoundInterestFormState {
 }
 
 export function useCompoundInterestCalculator(): CompoundInterestCalculator {
-  const [state, setState] = useState<CompoundInterestFormState>(initialState);
-
-  const update = useCallback((patch: Partial<CompoundInterestFormState>) => {
-    setState((prev) => ({ ...prev, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<CompoundInterestFormState>(initialState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

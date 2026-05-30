@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { projectTfr, type TfrProjection } from "@/domain/calc";
 import { SHARED_TFR_CONFIG } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface TfrFormState {
   readonly ral: number;
@@ -21,11 +22,7 @@ export interface TfrCalculator {
 }
 
 export function useTfrCalculator(): TfrCalculator {
-  const [state, setState] = useState<TfrFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<TfrFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<TfrFormState>(DEFAULTS);
 
   const result = useMemo(
     () => projectTfr(state.ral, state.years, state.inflationRate, SHARED_TFR_CONFIG),

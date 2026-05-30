@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { calculateSalaryBreakdown, type SalaryBreakdown, type ContractType } from "@/domain/calc";
 import { type SupportedYear } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface EmployerCostFormState {
   readonly grossAnnual: number;
@@ -23,11 +24,7 @@ export interface EmployerCostCalculator {
 // Employer cost does not depend on region or municipality (those are
 // employee-side surcharges), so the comparison fixes them to neutral values.
 export function useEmployerCostCalculator(): EmployerCostCalculator {
-  const [state, setState] = useState<EmployerCostFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<EmployerCostFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<EmployerCostFormState>(DEFAULTS);
 
   const result = useMemo(
     () =>

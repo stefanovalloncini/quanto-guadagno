@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { adjustValueAcrossYears, cumulativeInflation } from "@/domain/calc";
 import { FOI_INDEX, FOI_LATEST_YEAR } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 const YEARS: ReadonlyArray<number> = FOI_INDEX.map((p) => p.year);
 
@@ -33,11 +34,7 @@ export interface InflationCalculator {
 }
 
 export function useInflationCalculator(): InflationCalculator {
-  const [state, setState] = useState<InflationFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<InflationFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<InflationFormState>(DEFAULTS);
 
   const result = useMemo<InflationResult>(() => {
     const adjusted = adjustValueAcrossYears(state.amount, state.fromYear, state.toYear);

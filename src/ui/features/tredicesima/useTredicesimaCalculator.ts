@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { calculateTredicesima, type TredicesimaResult } from "@/domain/calc";
 import { getTaxConfig, type SupportedYear } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 const STANDARD_INPS_RATE = 0.0919;
 
@@ -23,11 +24,7 @@ export interface TredicesimaCalculator {
 }
 
 export function useTredicesimaCalculator(): TredicesimaCalculator {
-  const [state, setState] = useState<TredicesimaFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<TredicesimaFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<TredicesimaFormState>(DEFAULTS);
 
   const result = useMemo(
     () =>

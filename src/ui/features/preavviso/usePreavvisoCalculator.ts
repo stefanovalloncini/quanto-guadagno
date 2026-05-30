@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { calculatePreavviso, type PreavvisoBreakdown } from "@/domain/calc";
 import { CCNL_TABLE, type CcnlId } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface PreavvisoFormState {
   readonly ccnlId: CcnlId;
@@ -31,19 +32,12 @@ export interface PreavvisoCalculator {
 }
 
 export function usePreavvisoCalculator(): PreavvisoCalculator {
-  const [state, setState] = useState<PreavvisoFormState>(DEFAULTS);
+  const [state, update] = usePatchState<PreavvisoFormState>(DEFAULTS);
 
-  const update = useCallback((patch: Partial<PreavvisoFormState>) => {
-    setState((prev) => ({ ...prev, ...patch }));
-  }, []);
-
-  const setCcnl = useCallback((ccnlId: CcnlId) => {
-    setState((prev) => ({
-      ...prev,
-      ccnlId,
-      livelloId: defaultLivelloFor(ccnlId),
-    }));
-  }, []);
+  const setCcnl = useCallback(
+    (ccnlId: CcnlId) => update({ ccnlId, livelloId: defaultLivelloFor(ccnlId) }),
+    [update],
+  );
 
   const { result, invalidDates } = useMemo(() => {
     const hire = new Date(state.hireDate);

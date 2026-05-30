@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
   calculateApprenticeship,
   DEFAULT_APPRENTICESHIP_PROGRESSION,
   type ApprenticeshipBreakdown,
 } from "@/domain/calc";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 interface FormState {
   readonly targetGrossAnnual: number;
@@ -27,7 +28,7 @@ export interface ApprenticeshipCalculator {
 
 export function useApprenticeshipCalculator(): ApprenticeshipCalculator {
   const [params] = useSearchParams();
-  const [state, setState] = useState<FormState>(() => {
+  const [state, update] = usePatchState<FormState>(() => {
     const lordoRaw = params.get("lordo");
     const lordo = lordoRaw !== null ? Number(lordoRaw) : NaN;
     if (Number.isFinite(lordo) && lordo > 0) {
@@ -47,8 +48,8 @@ export function useApprenticeshipCalculator(): ApprenticeshipCalculator {
 
   return {
     state,
-    setTarget: (targetGrossAnnual) => setState((s) => ({ ...s, targetGrossAnnual })),
-    setYears: (years) => setState((s) => ({ ...s, years })),
+    setTarget: (targetGrossAnnual) => update({ targetGrossAnnual }),
+    setYears: (years) => update({ years }),
     result,
   };
 }

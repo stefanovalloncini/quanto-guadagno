@@ -1,7 +1,8 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { calculateInverseSalary, type InverseSalaryResult } from "@/domain/calc";
 import type { ContractType, PaymentFrequency, CompanySize } from "@/domain/calc";
 import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface InverseFormState {
   readonly targetNetAnnual: number;
@@ -32,11 +33,7 @@ export interface InverseCalculator {
 }
 
 export function useInverseCalculator(): InverseCalculator {
-  const [state, setState] = useState<InverseFormState>(DEFAULTS);
-
-  const update = useCallback((patch: Partial<InverseFormState>) => {
-    setState((s) => ({ ...s, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<InverseFormState>(DEFAULTS);
 
   const result = useMemo(
     () =>

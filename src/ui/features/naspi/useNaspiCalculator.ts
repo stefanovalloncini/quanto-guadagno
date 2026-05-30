@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { calculateNaspi, type NaspiBreakdown } from "@/domain/calc";
 import { getNaspiConfig, getTaxConfig, type SupportedYear } from "@/domain/data";
+import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface NaspiFormState {
   readonly grossPay4Years: number;
@@ -27,10 +28,7 @@ export interface NaspiCalculator {
 }
 
 export function useNaspiCalculator(): NaspiCalculator {
-  const [state, setState] = useState<NaspiFormState>(DEFAULTS);
-  const update = useCallback((patch: Partial<NaspiFormState>) => {
-    setState((prev) => ({ ...prev, ...patch }));
-  }, []);
+  const [state, update] = usePatchState<NaspiFormState>(DEFAULTS);
   const result = useMemo(
     () =>
       calculateNaspi({
