@@ -72,6 +72,8 @@ export const en: Record<MessageKey, string> = {
     "What an amount from a few years ago is worth today, by the ISTAT FOI index.",
   "home.available.comparison.title": "Compare offers",
   "home.available.comparison.body": "Two gross salaries compared: which one nets more.",
+  "home.available.employerCost.title": "Cost of an employee",
+  "home.available.employerCost.body": "What an employee costs the company, from gross to on-costs.",
   "home.soon.badge": "Coming soon",
   "home.soon.tfr.title": "TFR",
   "home.soon.tfr.body": "Long-term severance simulation.",
@@ -408,6 +410,11 @@ export const en: Record<MessageKey, string> = {
   "comparison.result.perMonth": "{amount} per month",
   "comparison.result.note":
     "Same conditions for both: year, region, municipality and instalments. Only the starting gross differs.",
+
+  "employerCost.eyebrow": "Tool",
+  "employerCost.title": "What an <em>employee</em> costs",
+  "employerCost.lede":
+    "What a company really spends on an employee: from the gross on the payslip to the total cost, with contributions and accruals.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

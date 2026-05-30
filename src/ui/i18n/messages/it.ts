@@ -69,6 +69,9 @@ export const it = {
     "Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI.",
   "home.available.comparison.title": "Confronto offerte",
   "home.available.comparison.body": "Due stipendi lordi a confronto: quale rende di più al netto.",
+  "home.available.employerCost.title": "Costo del lavoro",
+  "home.available.employerCost.body":
+    "Quanto costa un dipendente all'azienda, dal lordo agli oneri.",
   "home.soon.badge": "In arrivo",
   "home.soon.tfr.title": "TFR",
   "home.soon.tfr.body": "Simulazione del trattamento di fine rapporto a lungo termine.",
@@ -414,6 +417,11 @@ export const it = {
   "comparison.result.perMonth": "{amount} al mese",
   "comparison.result.note":
     "Stesse condizioni per entrambe: anno, regione, comune e mensilità. La differenza è solo nel lordo di partenza.",
+
+  "employerCost.eyebrow": "Strumento",
+  "employerCost.title": "Quanto costa un <em>dipendente</em>",
+  "employerCost.lede":
+    "Quanto spende davvero l'azienda per un dipendente: dal lordo in busta al costo totale, con contributi e accantonamenti.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

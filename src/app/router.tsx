@@ -36,6 +36,9 @@ const InflationPage = lazy(() =>
 const ComparisonPage = lazy(() =>
   import("@/ui/features/comparison").then((m) => ({ default: m.ComparisonPage })),
 );
+const EmployerCostPage = lazy(() =>
+  import("@/ui/features/employer-cost").then((m) => ({ default: m.EmployerCostPage })),
+);
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -72,6 +75,7 @@ const router = createBrowserRouter([
   { path: "/calcolo-tredicesima", element: lazyRoute(<TredicesimaPage />) },
   { path: "/inflazione", element: lazyRoute(<InflationPage />) },
   { path: "/confronto-stipendi", element: lazyRoute(<ComparisonPage />) },
+  { path: "/costo-azienda", element: lazyRoute(<EmployerCostPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

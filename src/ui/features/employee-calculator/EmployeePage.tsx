@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
-import { EmployerCostView } from "./components/EmployerCostView.tsx";
+import { EmployerCostView } from "@/ui/shared/EmployerCostView.tsx";
 import { IrpefBracketIndicator } from "./components/IrpefBracketIndicator.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
 import { EmployeeFormPrimary } from "./EmployeeFormPrimary.tsx";
