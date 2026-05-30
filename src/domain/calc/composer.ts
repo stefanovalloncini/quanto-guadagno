@@ -8,6 +8,7 @@ import { calculateLocalTaxes } from "./regionalTaxCalculations.ts";
 import {
   calculateDependentsDeduction,
   calculateExpenseDeduction,
+  calculatePensionFundDeduction,
 } from "./deductionCalculations.ts";
 import { calculatePremioRisultato } from "./bonusCalculations.ts";
 import { calculateFringeBenefits, hasFringeBenefits } from "./fringeBenefitsCalculations.ts";
@@ -57,7 +58,11 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
     standardRate: pdrInpsRate,
   } = calculateEmployeeInps(inpsBase, input, cfg);
 
-  const taxableIncome = inpsBase - inpsContribution;
+  const pensionFundDeduction = calculatePensionFundDeduction(
+    expenseDeductions,
+    cfg.expenseDeductions,
+  );
+  const taxableIncome = Math.max(0, inpsBase - inpsContribution - pensionFundDeduction);
 
   const regimeImpatriati = calculateRegimeImpatriatiAdjustment(
     taxableIncome,
@@ -171,6 +176,7 @@ export function calculateSalaryBreakdown(input: SalaryInput): SalaryBreakdown {
 
     dependentsDeduction: round(dependentsDeduction),
     expenseDeduction: round(expenseDeduction),
+    pensionFundDeduction: round(pensionFundDeduction),
 
     pdrGross: round(pdr.pdrGross),
     pdrInps: round(pdr.pdrInps),

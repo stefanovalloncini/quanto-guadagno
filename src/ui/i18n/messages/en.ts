@@ -577,6 +577,9 @@ export const en: Record<MessageKey, string> = {
   "employee.expenses.medicalExpenses.hint": "Deductible at 19% above the threshold of €129.11",
   "employee.expenses.otherDeductions": "Other deductions at 19%",
   "employee.expenses.otherDeductions.hint": "Education, insurance, etc.",
+  "employee.expenses.pensionFund": "Supplementary pension fund",
+  "employee.expenses.pensionFund.hint":
+    "Pension-fund contributions, deductible from income up to €5,164.57/year.",
 
   "employee.premio.title": "Performance bonus (PdR)",
   "employee.premio.amount": "Gross amount (max {max})",
@@ -680,6 +683,7 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.tfr": "TFR accruing this year",
   "employee.breakdown.tfr.note":
     "Equal to one thirteenth-and-a-half of gross pay. It isn't paid in the monthly payslip: it's settled when employment ends or as a partial advance (mortgage, medical, training).",
+  "employee.breakdown.pensionFund": "Supplementary pension fund",
   "employee.breakdown.taxableIncome": "Taxable income",
   "employee.breakdown.inpsExemption": "2024 contribution exemption",
   "employee.breakdown.madreLavoratrice": "Working mother exemption",

@@ -33,6 +33,25 @@ describe("salary breakdown 2026", () => {
     expect(r.netAnnual).toBeLessThan(25_000);
   });
 
+  it("previdenza complementare lowers taxable income and raises net", () => {
+    const base = run(40_000);
+    const withFund = calculateSalaryBreakdown({
+      grossAnnual: 40_000,
+      taxYear: 2026,
+      regionCode: "lombardia",
+      municipalTaxRate: 0.008,
+      expenseDeductions: {
+        mortgageInterest: 0,
+        medicalExpenses: 0,
+        otherDeductions: 0,
+        pensionFund: 3_000,
+      },
+    });
+    expect(withFund.pensionFundDeduction).toBe(3_000);
+    expect(withFund.taxableIncome).toBeCloseTo(base.taxableIncome - 3_000, 0);
+    expect(withFund.netAnnual).toBeGreaterThan(base.netAnnual);
+  });
+
   it("high income (80k) hits the 43% top bracket", () => {
     const r = run(80_000);
     expect(r.netAnnual).toBeLessThan(50_000);

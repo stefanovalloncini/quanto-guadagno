@@ -62,6 +62,7 @@ export interface SalaryBreakdown {
 
   readonly dependentsDeduction: number;
   readonly expenseDeduction: number;
+  readonly pensionFundDeduction: number;
 
   readonly pdrGross: number;
   readonly pdrInps: number;

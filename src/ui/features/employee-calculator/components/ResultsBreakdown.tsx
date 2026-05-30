@@ -50,6 +50,14 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
           />
         )}
 
+        {breakdown.pensionFundDeduction > 0 && (
+          <BreakdownRow
+            labelId="employee.breakdown.pensionFund"
+            amount={breakdown.pensionFundDeduction}
+            subtract
+          />
+        )}
+
         <BreakdownRow
           labelId="employee.breakdown.taxableIncome"
           amount={breakdown.taxableIncome}

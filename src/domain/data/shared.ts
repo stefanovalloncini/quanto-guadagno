@@ -49,6 +49,9 @@ export const SHARED_EXPENSE_DEDUCTIONS: ExpenseDeductionsConfig = {
   medicalExpenseFloor: 129.11,
   medicalDeductionRate: 0.19,
   standardDeductionRate: 0.19,
+  // Previdenza complementare: onere deducibile fino a €5.164,57/anno
+  // (Art. 8 c.4 D.Lgs. 252/2005).
+  maxPensionFund: 5164.57,
 };
 
 export const SHARED_EMPLOYER_INPS: EmployerInpsConfig = {

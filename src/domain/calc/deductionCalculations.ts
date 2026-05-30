@@ -20,6 +20,18 @@ export interface ExpenseDeductionsInput {
   readonly mortgageInterest: number;
   readonly medicalExpenses: number;
   readonly otherDeductions: number;
+  readonly pensionFund?: number;
+}
+
+// Previdenza complementare: onere deducibile dal reddito imponibile (non una
+// detrazione al 19%), fino al massimale annuo. Art. 10 c.1 lett. e-bis TUIR.
+export function calculatePensionFundDeduction(
+  expenses: ExpenseDeductionsInput | undefined,
+  cfg: ExpenseDeductionsConfig,
+): number {
+  const amount = expenses?.pensionFund ?? 0;
+  if (amount <= 0) return 0;
+  return Math.min(amount, cfg.maxPensionFund);
 }
 
 function calculateSpouseDeduction(

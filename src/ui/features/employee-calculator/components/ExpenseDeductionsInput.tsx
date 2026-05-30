@@ -11,6 +11,7 @@ const DEFAULT_VALUE: ExpenseDeductionsInputType = {
   mortgageInterest: 0,
   medicalExpenses: 0,
   otherDeductions: 0,
+  pensionFund: 0,
 };
 
 export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInputProps) {
@@ -65,6 +66,21 @@ export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInp
             value={current.otherDeductions}
             onChange={(e) =>
               onChange({ ...current, otherDeductions: Math.max(0, Number(e.target.value)) })
+            }
+            trailing="€"
+            inputMode="numeric"
+          />
+
+          <Field
+            label={<FormattedMessage id="employee.expenses.pensionFund" />}
+            hint={<FormattedMessage id="employee.expenses.pensionFund.hint" />}
+            type="number"
+            min={0}
+            max={100_000}
+            step={100}
+            value={current.pensionFund ?? 0}
+            onChange={(e) =>
+              onChange({ ...current, pensionFund: Math.max(0, Number(e.target.value)) })
             }
             trailing="€"
             inputMode="numeric"

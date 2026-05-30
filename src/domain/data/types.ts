@@ -83,6 +83,7 @@ export interface ExpenseDeductionsConfig {
   readonly medicalExpenseFloor: number;
   readonly medicalDeductionRate: number;
   readonly standardDeductionRate: number;
+  readonly maxPensionFund: number;
 }
 
 export interface EmployerInpsConfig {

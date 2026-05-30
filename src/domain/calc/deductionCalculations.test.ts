@@ -1,8 +1,33 @@
 import { describe, it, expect } from "vitest";
-import { calculateDependentsDeduction } from "./deductionCalculations.ts";
-import { SHARED_DEPENDENTS_DEDUCTION } from "@/domain/data";
+import {
+  calculateDependentsDeduction,
+  calculatePensionFundDeduction,
+} from "./deductionCalculations.ts";
+import { SHARED_DEPENDENTS_DEDUCTION, SHARED_EXPENSE_DEDUCTIONS } from "@/domain/data";
 
 const CFG = SHARED_DEPENDENTS_DEDUCTION;
+
+const EXP = SHARED_EXPENSE_DEDUCTIONS;
+
+function expenses(pensionFund: number) {
+  return { mortgageInterest: 0, medicalExpenses: 0, otherDeductions: 0, pensionFund };
+}
+
+// Previdenza complementare — onere deducibile, massimale €5.164,57 (D.Lgs. 252/2005).
+describe("calculatePensionFundDeduction", () => {
+  it("deduce l'intero versamento entro il massimale", () => {
+    expect(calculatePensionFundDeduction(expenses(2000), EXP)).toBe(2000);
+  });
+
+  it("cap al massimale €5.164,57", () => {
+    expect(calculatePensionFundDeduction(expenses(8000), EXP)).toBeCloseTo(5164.57, 2);
+  });
+
+  it("nessun versamento → 0", () => {
+    expect(calculatePensionFundDeduction(expenses(0), EXP)).toBe(0);
+    expect(calculatePensionFundDeduction(undefined, EXP)).toBe(0);
+  });
+});
 
 function dependents(otherDependents: number) {
   return { hasSpouse: false, childrenOver21: 0, otherDependents };

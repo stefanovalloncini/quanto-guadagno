@@ -589,6 +589,9 @@ export const it = {
   "employee.expenses.medicalExpenses.hint": "Detrazione al 19% sulla parte eccedente 129,11 €",
   "employee.expenses.otherDeductions": "Altre detrazioni al 19%",
   "employee.expenses.otherDeductions.hint": "Istruzione, assicurazioni, ecc.",
+  "employee.expenses.pensionFund": "Previdenza complementare",
+  "employee.expenses.pensionFund.hint":
+    "Versamenti a fondi pensione, deducibili dal reddito fino a 5.164,57 € l'anno.",
 
   "employee.premio.title": "Premio di risultato",
   "employee.premio.amount": "Importo lordo (max {max})",
@@ -693,6 +696,7 @@ export const it = {
   "employee.breakdown.tfr": "TFR maturando quest'anno",
   "employee.breakdown.tfr.note":
     "Pari a un tredicesimo e mezzo del lordo. Non viene versato in busta paga: si liquida a fine rapporto o in parte come anticipo (mutuo, spese mediche, formazione).",
+  "employee.breakdown.pensionFund": "Previdenza complementare",
   "employee.breakdown.taxableIncome": "Reddito imponibile",
   "employee.breakdown.inpsExemption": "Esonero contributivo 2024",
   "employee.breakdown.madreLavoratrice": "Esonero madre lavoratrice",

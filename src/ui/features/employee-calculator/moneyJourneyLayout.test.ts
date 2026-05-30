@@ -32,6 +32,7 @@ function makeBreakdown(overrides: Partial<SalaryBreakdown> = {}): SalaryBreakdow
     taxWedgeCutTotal: 1_000,
     dependentsDeduction: 0,
     expenseDeduction: 0,
+    pensionFundDeduction: 0,
     pdrGross: 0,
     pdrInps: 0,
     pdrTax: 0,
