@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import type { CompanySize, InpsRateOverride } from "@/domain/calc";
+import { SHARED_EMPLOYER_INPS, SHARED_INPS_STANDARD_RATE } from "@/domain/data";
 import { Field, OptionToggle, Stack } from "@/ui/design-system/primitives";
 
 export interface InpsRateInputValue {
@@ -13,7 +14,10 @@ interface InpsRateInputProps {
   readonly onChange: (next: InpsRateInputValue) => void;
 }
 
-const DEFAULT_OVERRIDE: InpsRateOverride = { employeeRate: 0.0919, employerRate: 0.2381 };
+const DEFAULT_OVERRIDE: InpsRateOverride = {
+  employeeRate: SHARED_INPS_STANDARD_RATE,
+  employerRate: SHARED_EMPLOYER_INPS.rate,
+};
 
 export function InpsRateInput({ value, onChange }: InpsRateInputProps) {
   const override = value.inpsOverride;
