@@ -15,6 +15,11 @@ import { InflationPage } from "@/ui/features/inflation";
 import { ComparisonPage } from "@/ui/features/comparison";
 import { EmployerCostPage } from "@/ui/features/employer-cost";
 import { TfrPage } from "@/ui/features/tfr";
+import { InversePage } from "@/ui/features/inverse";
+import { ForfettarioPage } from "@/ui/features/forfettario";
+import { NaspiPage } from "@/ui/features/naspi";
+import { PreavvisoPage } from "@/ui/features/preavviso";
+import { CompoundInterestPage } from "@/ui/features/compound-interest";
 
 expect.extend(toHaveNoViolations);
 
@@ -93,6 +98,36 @@ describe("accessibility", () => {
 
   it("TfrPage has no axe violations", async () => {
     const { container } = render(wrap(<TfrPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("InversePage has no axe violations", async () => {
+    const { container } = render(wrap(<InversePage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("ForfettarioPage has no axe violations", async () => {
+    const { container } = render(wrap(<ForfettarioPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("NaspiPage has no axe violations", async () => {
+    const { container } = render(wrap(<NaspiPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("PreavvisoPage has no axe violations", async () => {
+    const { container } = render(wrap(<PreavvisoPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("CompoundInterestPage has no axe violations", async () => {
+    const { container } = render(wrap(<CompoundInterestPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
