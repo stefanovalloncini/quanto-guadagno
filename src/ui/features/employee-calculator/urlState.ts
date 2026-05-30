@@ -1,4 +1,4 @@
-import type { RegionCode, SupportedYear } from "@/domain/data";
+import { SUPPORTED_YEARS, type RegionCode, type SupportedYear } from "@/domain/data";
 import type { CompanySize, ContractType, InpsRateOverride, PaymentFrequency } from "@/domain/calc";
 
 export interface UrlState {
@@ -39,7 +39,6 @@ function readParam(params: URLSearchParams, short: string): string | null {
   return null;
 }
 
-const SUPPORTED_YEARS: ReadonlyArray<SupportedYear> = [2024, 2025, 2026];
 const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14, 15, 16];
 const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
   "indeterminato",
