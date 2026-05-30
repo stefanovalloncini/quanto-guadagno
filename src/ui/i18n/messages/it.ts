@@ -157,6 +157,27 @@ export const it = {
   "sources.exemption.title": "Esonero contributivo 2024",
   "sources.exemption.body":
     "Esonero parziale dei contributi INPS per il solo 2024, condizionato a reddito.",
+  "sources.forfettario.title": "Regime forfettario",
+  "sources.forfettario.body":
+    "Coefficiente di redditività per attività, soglia ricavi e imposta sostitutiva al 5% o 15%. Contributi alla Gestione Separata o alle gestioni Artigiani e Commercianti.",
+  "sources.naspi.title": "NASpI",
+  "sources.naspi.body":
+    "Indennità mensile sul 75% della retribuzione media fino al massimale, ridotta del 3% al mese. La durata dipende dalle settimane di contribuzione.",
+  "sources.preavviso.title": "Preavviso di dimissioni",
+  "sources.preavviso.body":
+    "I giorni di preavviso sono fissati dal CCNL in base a livello e anzianità. La data di uscita esclude i fine settimana e le festività nazionali.",
+  "sources.tredicesima.title": "Tredicesima",
+  "sources.tredicesima.body":
+    "La gratifica natalizia sconta INPS e IRPEF all'aliquota marginale, senza le detrazioni da lavoro né le addizionali.",
+  "sources.tfr.title": "TFR",
+  "sources.tfr.body":
+    "Quota annua pari alla retribuzione divisa per 13,5, rivalutata dell'1,5% più il 75% dell'indice ISTAT FOI, con imposta del 17% sulla rivalutazione.",
+  "sources.fringe.title": "Fringe benefit e welfare",
+  "sources.fringe.body":
+    "Soglie di esenzione per welfare aziendale, buoni pasto, polizze sanitarie e auto in uso promiscuo. La previdenza complementare è deducibile fino al massimale annuo.",
+  "sources.inflation.title": "Indice ISTAT FOI",
+  "sources.inflation.body":
+    "Indice dei prezzi al consumo per famiglie di operai e impiegati, base 2015. È lo stesso indice che rivaluta il TFR e misura il potere d'acquisto nel tempo.",
 
   "apprenticeship.eyebrow": "Strumento",
   "apprenticeship.title": "Progressione <em>apprendistato</em>.",

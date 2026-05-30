@@ -156,6 +156,27 @@ export const en: Record<MessageKey, string> = {
     "Reduction of employee social contributions in force for 2024–2026, redesigned each budget law.",
   "sources.exemption.title": "2024 contribution exemption",
   "sources.exemption.body": "Partial INPS exemption for 2024 only, conditional on income.",
+  "sources.forfettario.title": "Flat-rate (forfettario) regime",
+  "sources.forfettario.body":
+    "Profitability coefficient by activity, revenue threshold and the 5% or 15% substitute tax. Contributions to the Gestione Separata or the Artisans and Traders schemes.",
+  "sources.naspi.title": "NASpI",
+  "sources.naspi.body":
+    "Monthly benefit on 75% of average pay up to a cap, reduced by 3% a month. Duration depends on weeks of contribution.",
+  "sources.preavviso.title": "Resignation notice",
+  "sources.preavviso.body":
+    "Notice days are set by the CCNL based on level and length of service. The exit date excludes weekends and national holidays.",
+  "sources.tredicesima.title": "13th-month salary",
+  "sources.tredicesima.body":
+    "The Christmas bonus pays INPS and IRPEF at the marginal rate, with no work deductions and no local surcharges.",
+  "sources.tfr.title": "Severance (TFR)",
+  "sources.tfr.body":
+    "Annual quota of pay divided by 13.5, revalued by 1.5% plus 75% of the ISTAT FOI index, with a 17% tax on the revaluation.",
+  "sources.fringe.title": "Fringe benefits and welfare",
+  "sources.fringe.body":
+    "Exemption thresholds for company welfare, meal vouchers, health policies and company cars. Supplementary pension contributions are deductible up to the annual cap.",
+  "sources.inflation.title": "ISTAT FOI index",
+  "sources.inflation.body":
+    "Consumer price index for blue- and white-collar households, 2015 base. It is the same index that revalues TFR and measures purchasing power over time.",
 
   "apprenticeship.eyebrow": "Tool",
   "apprenticeship.title": "Apprenticeship <em>progression</em>.",

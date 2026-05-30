@@ -91,6 +91,63 @@ const sources: ReadonlyArray<SourceEntry> = [
       { text: "Circolare INPS n. 11 del 16/01/2024" },
     ],
   },
+  {
+    key: "forfettario",
+    titleId: "sources.forfettario.title",
+    bodyId: "sources.forfettario.body",
+    citations: [
+      { text: "L. 190/2014, commi 54–89 — regime forfettario" },
+      { text: "L. 197/2022 — soglia ricavi €85.000" },
+      { text: "Circolari INPS Gestione Separata e gestioni autonomi" },
+    ],
+  },
+  {
+    key: "naspi",
+    titleId: "sources.naspi.title",
+    bodyId: "sources.naspi.body",
+    citations: [
+      { text: "D.Lgs. 22/2015, Artt. 3–8" },
+      { text: "Circolari INPS annuali — massimali e décalage", href: "https://www.inps.it" },
+    ],
+  },
+  {
+    key: "preavviso",
+    titleId: "sources.preavviso.title",
+    bodyId: "sources.preavviso.body",
+    citations: [{ text: "Art. 2118 c.c." }, { text: "CCNL di categoria — termini di preavviso" }],
+  },
+  {
+    key: "tredicesima",
+    titleId: "sources.tredicesima.title",
+    bodyId: "sources.tredicesima.body",
+    citations: [
+      { text: "Art. 2099 c.c. e contrattazione collettiva" },
+      { text: "Art. 51 TUIR — imponibilità" },
+    ],
+  },
+  {
+    key: "tfr",
+    titleId: "sources.tfr.title",
+    bodyId: "sources.tfr.body",
+    citations: [{ text: "Art. 2120 c.c." }, { text: "DL 47/2014 — imposta sostitutiva 17%" }],
+  },
+  {
+    key: "fringe",
+    titleId: "sources.fringe.title",
+    bodyId: "sources.fringe.body",
+    citations: [
+      { text: "Art. 51 TUIR" },
+      { text: "L. 207/2024 — welfare €1.000/€2.000 e auto per alimentazione" },
+      { text: "L. 160/2019 — buoni pasto €8 elettronici, €4 cartacei" },
+      { text: "D.Lgs. 252/2005 — previdenza complementare €5.164,57" },
+    ],
+  },
+  {
+    key: "inflation",
+    titleId: "sources.inflation.title",
+    bodyId: "sources.inflation.body",
+    citations: [{ text: "ISTAT — Prezzi al consumo, indice FOI", href: "https://www.istat.it" }],
+  },
 ];
 
 function CitationLink({ citation }: { readonly citation: Citation }) {
