@@ -45,7 +45,9 @@ export function TfrForm({ calc }: TfrFormProps) {
           max={20}
           step={0.1}
           value={inflationPercent}
-          onChange={(e) => update({ inflationRate: Math.max(0, Number(e.target.value)) / 100 })}
+          onChange={(e) =>
+            update({ inflationRate: Math.max(0, Math.min(20, Number(e.target.value))) / 100 })
+          }
           trailing="%"
           inputMode="decimal"
         />

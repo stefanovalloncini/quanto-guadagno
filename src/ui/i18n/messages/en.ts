@@ -66,7 +66,7 @@ export const en: Record<MessageKey, string> = {
     "Know the net you want to take home: find the gross annual salary that produces it.",
   "home.available.tredicesima.title": "Net 13th salary",
   "home.available.tredicesima.body":
-    "What's left of the 13th after INPS and IRPEF, with no deductions.",
+    "What's left of the 13th after INPS and IRPEF, with no work deductions applied.",
   "home.available.inflation.title": "Purchasing power",
   "home.available.inflation.body":
     "What an amount from a few years ago is worth today, by the ISTAT FOI index.",

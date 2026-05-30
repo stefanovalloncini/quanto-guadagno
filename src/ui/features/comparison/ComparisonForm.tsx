@@ -87,7 +87,7 @@ export function ComparisonForm({ calc }: ComparisonFormProps) {
           max={1}
           step={0.1}
           value={municipalPercent}
-          onChange={(e) => update({ municipalTaxRate: Number(e.target.value) / 100 })}
+          onChange={(e) => update({ municipalTaxRate: Math.max(0, Number(e.target.value)) / 100 })}
           trailing={intl.formatMessage({ id: "inverse.form.municipal.percent" })}
           inputMode="decimal"
         />

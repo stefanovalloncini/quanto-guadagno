@@ -63,7 +63,7 @@ export const it = {
     "Conosci il netto a cui vuoi arrivare: trova la RAL lorda corrispondente.",
   "home.available.tredicesima.title": "Tredicesima netta",
   "home.available.tredicesima.body":
-    "Quanto resta della tredicesima dopo INPS e IRPEF, senza detrazioni.",
+    "Quanto resta della tredicesima dopo INPS e IRPEF, escludendo le detrazioni da lavoro.",
   "home.available.inflation.title": "Potere d'acquisto",
   "home.available.inflation.body":
     "Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI.",
