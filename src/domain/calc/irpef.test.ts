@@ -39,4 +39,16 @@ describe("getMarginalRate", () => {
   it("reflects the 2026 second-bracket cut to 33%", () => {
     expect(getMarginalRate(40_000, BRACKETS_2026)).toBe(0.33);
   });
+
+  it("falls back to the last bracket's rate when income clears every bounded bracket", () => {
+    const bounded = [
+      { min: 0, max: 1000, rate: 0.1 },
+      { min: 1000, max: 2000, rate: 0.2 },
+    ];
+    expect(getMarginalRate(5000, bounded)).toBe(0.2);
+  });
+
+  it("returns 0 for an empty bracket set", () => {
+    expect(getMarginalRate(5000, [])).toBe(0);
+  });
 });
