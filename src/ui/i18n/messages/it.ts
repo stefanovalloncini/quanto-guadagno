@@ -72,9 +72,10 @@ export const it = {
   "home.available.employerCost.title": "Costo del lavoro",
   "home.available.employerCost.body":
     "Quanto costa un dipendente all'azienda, dal lordo agli oneri.",
+  "home.available.tfr.title": "TFR",
+  "home.available.tfr.body":
+    "Quanto trattamento di fine rapporto accumuli, con quote e rivalutazione.",
   "home.soon.badge": "In arrivo",
-  "home.soon.tfr.title": "TFR",
-  "home.soon.tfr.body": "Simulazione del trattamento di fine rapporto a lungo termine.",
   "home.soon.payslip.title": "Busta paga",
   "home.soon.payslip.body": "Visualizzazione mensile con detrazioni e contributi separati.",
   "home.soon.statistics.title": "Percentile reddito",
@@ -422,6 +423,22 @@ export const it = {
   "employerCost.title": "Quanto costa un <em>dipendente</em>",
   "employerCost.lede":
     "Quanto spende davvero l'azienda per un dipendente: dal lordo in busta al costo totale, con contributi e accantonamenti.",
+
+  "tfr.eyebrow": "Strumento",
+  "tfr.title": "Quanto <em>TFR</em> accumuli",
+  "tfr.lede":
+    "Il trattamento di fine rapporto cresce ogni anno con una quota dello stipendio e una rivalutazione. Stima quanto accumuli nel tempo.",
+  "tfr.form.years": "Anni di lavoro",
+  "tfr.form.years.hint": "Per quanti anni resti con lo stesso datore di lavoro.",
+  "tfr.form.inflation": "Inflazione attesa",
+  "tfr.form.inflation.hint":
+    "Determina la rivalutazione annua: 1,5% fisso più il 75% dell'inflazione.",
+  "tfr.result.stock": "TFR accumulato",
+  "tfr.result.stock.sub": "Quota annua {amount}, al lordo della tassazione separata",
+  "tfr.breakdown.quote": "Quote versate",
+  "tfr.breakdown.revaluation": "Rivalutazione netta",
+  "tfr.result.note":
+    "Ogni anno accantoni circa un tredicesimo e mezzo dello stipendio, rivalutato all'1,5% più il 75% dell'inflazione ISTAT, con imposta sostitutiva del 17% sulla rivalutazione. Alla liquidazione si applica la tassazione separata, qui non calcolata.",
 
   "employee.extras.title": "Personalizza il calcolo",
   "employee.extras.group.contract": "Contratto e contributi INPS",

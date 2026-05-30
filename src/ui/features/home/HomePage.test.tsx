@@ -29,7 +29,7 @@ describe("HomePage", () => {
     const subhead = screen.getByRole("heading", { name: /In arrivo/i });
     expect(subhead).toBeInTheDocument();
     const items = container.querySelectorAll(".qg-home__upcoming-list li");
-    expect(items).toHaveLength(4);
+    expect(items).toHaveLength(3);
   });
 
   it("renders the open-source shimmer accent in the lede", () => {

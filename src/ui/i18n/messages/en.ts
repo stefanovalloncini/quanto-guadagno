@@ -74,9 +74,9 @@ export const en: Record<MessageKey, string> = {
   "home.available.comparison.body": "Two gross salaries compared: which one nets more.",
   "home.available.employerCost.title": "Cost of an employee",
   "home.available.employerCost.body": "What an employee costs the company, from gross to on-costs.",
+  "home.available.tfr.title": "Severance (TFR)",
+  "home.available.tfr.body": "How much severance you build up, with quotas and revaluation.",
   "home.soon.badge": "Coming soon",
-  "home.soon.tfr.title": "TFR",
-  "home.soon.tfr.body": "Long-term severance simulation.",
   "home.soon.payslip.title": "Payslip",
   "home.soon.payslip.body": "Monthly view, deductions and contributions broken out.",
   "home.soon.statistics.title": "Income percentile",
@@ -415,6 +415,21 @@ export const en: Record<MessageKey, string> = {
   "employerCost.title": "What an <em>employee</em> costs",
   "employerCost.lede":
     "What a company really spends on an employee: from the gross on the payslip to the total cost, with contributions and accruals.",
+
+  "tfr.eyebrow": "Tool",
+  "tfr.title": "How much <em>TFR</em> you build up",
+  "tfr.lede":
+    "Severance pay (TFR) grows each year with a share of your salary and a revaluation. Estimate how much you accumulate over time.",
+  "tfr.form.years": "Years of service",
+  "tfr.form.years.hint": "How many years you stay with the same employer.",
+  "tfr.form.inflation": "Expected inflation",
+  "tfr.form.inflation.hint": "Drives the yearly revaluation: 1.5% fixed plus 75% of inflation.",
+  "tfr.result.stock": "Accumulated TFR",
+  "tfr.result.stock.sub": "Annual quota {amount}, before separate taxation",
+  "tfr.breakdown.quote": "Quotas set aside",
+  "tfr.breakdown.revaluation": "Net revaluation",
+  "tfr.result.note":
+    "Each year you set aside about 7.4% of your salary, revalued at 1.5% plus 75% of ISTAT inflation, with a 17% substitute tax on the revaluation. At payout, separate taxation applies and is not computed here.",
 
   "employee.extras.title": "Personalize the calculation",
   "employee.extras.group.contract": "Contract and INPS contributions",

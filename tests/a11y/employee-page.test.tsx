@@ -14,6 +14,7 @@ import { TredicesimaPage } from "@/ui/features/tredicesima";
 import { InflationPage } from "@/ui/features/inflation";
 import { ComparisonPage } from "@/ui/features/comparison";
 import { EmployerCostPage } from "@/ui/features/employer-cost";
+import { TfrPage } from "@/ui/features/tfr";
 
 expect.extend(toHaveNoViolations);
 
@@ -86,6 +87,12 @@ describe("accessibility", () => {
 
   it("EmployerCostPage has no axe violations", async () => {
     const { container } = render(wrap(<EmployerCostPage />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("TfrPage has no axe violations", async () => {
+    const { container } = render(wrap(<TfrPage />));
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

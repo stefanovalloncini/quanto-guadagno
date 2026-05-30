@@ -39,6 +39,7 @@ const ComparisonPage = lazy(() =>
 const EmployerCostPage = lazy(() =>
   import("@/ui/features/employer-cost").then((m) => ({ default: m.EmployerCostPage })),
 );
+const TfrPage = lazy(() => import("@/ui/features/tfr").then((m) => ({ default: m.TfrPage })));
 const SourcesPage = lazy(() =>
   import("@/ui/features/sources").then((m) => ({ default: m.SourcesPage })),
 );
@@ -76,6 +77,7 @@ const router = createBrowserRouter([
   { path: "/inflazione", element: lazyRoute(<InflationPage />) },
   { path: "/confronto-stipendi", element: lazyRoute(<ComparisonPage />) },
   { path: "/costo-azienda", element: lazyRoute(<EmployerCostPage />) },
+  { path: "/tfr", element: lazyRoute(<TfrPage />) },
   { path: "/fonti", element: lazyRoute(<SourcesPage />) },
   { path: "/informazioni", element: lazyRoute(<AboutPage />) },
   { path: "*", element: lazyRoute(<NotFoundPage />) },

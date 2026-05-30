@@ -8,7 +8,6 @@ interface SoonItem {
 }
 
 const soonItems: ReadonlyArray<SoonItem> = [
-  { id: "tfr", labelId: "home.soon.tfr.title" },
   { id: "payslip", labelId: "home.soon.payslip.title" },
   { id: "statistics", labelId: "home.soon.statistics.title" },
   { id: "taxSystem", labelId: "home.soon.taxSystem.title" },
@@ -184,6 +183,17 @@ export function HomePage() {
           >
             <p>
               <FormattedMessage id="home.available.employerCost.body" />
+            </p>
+          </Tile>
+
+          <Tile
+            variant="available"
+            to="/tfr"
+            title={<FormattedMessage id="home.available.tfr.title" />}
+            cta={<FormattedMessage id="home.feature.cta" />}
+          >
+            <p>
+              <FormattedMessage id="home.available.tfr.body" />
             </p>
           </Tile>
         </div>
