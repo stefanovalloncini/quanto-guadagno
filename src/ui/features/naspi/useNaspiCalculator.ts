@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import { calculateNaspi, type NaspiBreakdown } from "@/domain/calc";
-import { getNaspiConfig, getTaxConfig, type SupportedYear } from "@/domain/data";
+import {
+  getNaspiConfig,
+  getTaxConfig,
+  LATEST_SUPPORTED_YEAR,
+  type SupportedYear,
+} from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface NaspiFormState {
@@ -18,7 +23,7 @@ const DEFAULTS: NaspiFormState = {
   age: 40,
   voluntaryResignationInLast12Months: false,
   weeksAfterVoluntaryResignation: 0,
-  year: 2026,
+  year: LATEST_SUPPORTED_YEAR,
 };
 
 export interface NaspiCalculator {

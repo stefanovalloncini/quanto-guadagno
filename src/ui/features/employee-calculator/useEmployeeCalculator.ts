@@ -12,7 +12,7 @@ import type {
   SpecialConditionsInput,
   PremioRisultatoInput,
 } from "@/domain/calc";
-import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { LATEST_SUPPORTED_YEAR, type SupportedYear, type RegionCode } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 import { parseUrlState, writeUrlState } from "./urlState.ts";
 
@@ -35,7 +35,7 @@ interface FormState {
 
 const DEFAULTS: FormState = {
   grossAnnual: 30_000,
-  taxYear: 2026,
+  taxYear: LATEST_SUPPORTED_YEAR,
   regionCode: "lombardia",
   municipalTaxRate: 0.008,
   contractType: "indeterminato",

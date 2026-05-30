@@ -84,6 +84,8 @@ export type SupportedYear = 2024 | 2025 | 2026;
 
 export const SUPPORTED_YEARS: ReadonlyArray<SupportedYear> = [2024, 2025, 2026];
 
+export const LATEST_SUPPORTED_YEAR: SupportedYear = 2026;
+
 const REGISTRY: Record<SupportedYear, YearlyTaxConfig> = {
   2024: TAX_CONFIG_2024,
   2025: TAX_CONFIG_2025,

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { compareSalaries, type SalaryComparison } from "@/domain/calc";
 import type { PaymentFrequency } from "@/domain/calc";
-import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { LATEST_SUPPORTED_YEAR, type SupportedYear, type RegionCode } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface ComparisonFormState {
@@ -16,7 +16,7 @@ export interface ComparisonFormState {
 const DEFAULTS: ComparisonFormState = {
   ralA: 30_000,
   ralB: 35_000,
-  taxYear: 2026,
+  taxYear: LATEST_SUPPORTED_YEAR,
   regionCode: "lombardia",
   municipalTaxRate: 0.008,
   paymentFrequency: 13,

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { calculateInverseSalary, type InverseSalaryResult } from "@/domain/calc";
 import type { ContractType, PaymentFrequency, CompanySize } from "@/domain/calc";
-import { type SupportedYear, type RegionCode } from "@/domain/data";
+import { LATEST_SUPPORTED_YEAR, type SupportedYear, type RegionCode } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface InverseFormState {
@@ -17,7 +17,7 @@ export interface InverseFormState {
 
 const DEFAULTS: InverseFormState = {
   targetNetAnnual: 24_000,
-  taxYear: 2026,
+  taxYear: LATEST_SUPPORTED_YEAR,
   regionCode: "lombardia",
   municipalTaxRate: 0.008,
   contractType: "indeterminato",

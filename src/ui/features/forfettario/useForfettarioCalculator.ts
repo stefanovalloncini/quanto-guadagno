@@ -6,6 +6,7 @@ import {
   type SupportedYear,
   getAutonomiConfig,
   getTaxConfig,
+  LATEST_SUPPORTED_YEAR,
 } from "@/domain/data";
 
 export interface ForfettarioFormState {
@@ -28,7 +29,7 @@ export interface ForfettarioFormState {
 const DEFAULTS: ForfettarioFormState = {
   revenue: 30_000,
   activity: "professionisti",
-  year: 2026,
+  year: LATEST_SUPPORTED_YEAR,
   yearsOfActivity: 1,
   hasOtherPension: false,
   employeeCosts: 0,

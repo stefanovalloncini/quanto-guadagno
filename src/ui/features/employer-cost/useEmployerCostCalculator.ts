@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { calculateSalaryBreakdown, type SalaryBreakdown, type ContractType } from "@/domain/calc";
-import { type SupportedYear } from "@/domain/data";
+import { LATEST_SUPPORTED_YEAR, type SupportedYear } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface EmployerCostFormState {
@@ -11,7 +11,7 @@ export interface EmployerCostFormState {
 
 const DEFAULTS: EmployerCostFormState = {
   grossAnnual: 30_000,
-  taxYear: 2026,
+  taxYear: LATEST_SUPPORTED_YEAR,
   contractType: "indeterminato",
 };
 

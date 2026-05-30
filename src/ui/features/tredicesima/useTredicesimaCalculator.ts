@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import { calculateTredicesima, type TredicesimaResult } from "@/domain/calc";
-import { getTaxConfig, SHARED_INPS_STANDARD_RATE, type SupportedYear } from "@/domain/data";
+import {
+  getTaxConfig,
+  LATEST_SUPPORTED_YEAR,
+  SHARED_INPS_STANDARD_RATE,
+  type SupportedYear,
+} from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
 export interface TredicesimaFormState {
@@ -12,7 +17,7 @@ export interface TredicesimaFormState {
 const DEFAULTS: TredicesimaFormState = {
   ral: 30_000,
   mensilita: 13,
-  taxYear: 2026,
+  taxYear: LATEST_SUPPORTED_YEAR,
 };
 
 export interface TredicesimaCalculator {
