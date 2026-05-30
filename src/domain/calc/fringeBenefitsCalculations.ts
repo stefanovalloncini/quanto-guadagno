@@ -42,7 +42,7 @@ export function calculateCompanyCarBenefit(
       return {
         grossValue,
         taxableValue: grossValue * match.taxablePercentage,
-        powertrainCategory: match.powertrainType as FringePowertrainType,
+        powertrainCategory: match.powertrainType,
         taxablePercentage: match.taxablePercentage,
       };
     }
