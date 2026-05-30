@@ -131,7 +131,7 @@ export function calculateWelfareBenefit(
   readonly taxFreeThreshold: number;
   readonly taxableValue: number;
 } {
-  const threshold = welfare?.hasChildrenUnder18
+  const threshold = welfare?.hasDependentChildren
     ? cfg.welfareThresholdWithChildren
     : cfg.welfareThresholdGeneral;
 

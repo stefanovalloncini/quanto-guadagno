@@ -621,8 +621,8 @@ export const en: Record<MessageKey, string> = {
   "employee.fringe.welfare.annualAmount": "Annual welfare amount",
   "employee.fringe.welfare.annualAmount.hint": "Tax-free up to {amount}/year",
   "employee.fringe.welfare.annualAmount.hintWithChildren":
-    "Tax-free up to {amount}/year (with children under 18)",
-  "employee.fringe.welfare.hasChildren": "I have dependent children under 18",
+    "Tax-free up to {amount}/year (with dependent children)",
+  "employee.fringe.welfare.hasChildren": "I have dependent children",
 
   "employee.specialConditions.title": "Special conditions",
   "employee.specialConditions.regimeImpatriati.label": "Impatriate Regime (Return of Talent)",

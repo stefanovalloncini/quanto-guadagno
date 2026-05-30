@@ -633,8 +633,8 @@ export const it = {
   "employee.fringe.welfare.annualAmount": "Importo welfare annuo",
   "employee.fringe.welfare.annualAmount.hint": "Esente fino a {amount}/anno",
   "employee.fringe.welfare.annualAmount.hintWithChildren":
-    "Esente fino a {amount}/anno (con figli under 18)",
-  "employee.fringe.welfare.hasChildren": "Ho figli a carico under 18",
+    "Esente fino a {amount}/anno (con figli a carico)",
+  "employee.fringe.welfare.hasChildren": "Ho figli fiscalmente a carico",
 
   "employee.specialConditions.title": "Condizioni speciali",
   "employee.specialConditions.regimeImpatriati.label": "Regime impatriati (rientro dei cervelli)",

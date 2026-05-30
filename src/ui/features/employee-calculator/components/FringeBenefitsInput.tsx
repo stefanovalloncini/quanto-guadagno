@@ -23,7 +23,7 @@ interface FringeBenefitsInputProps {
 const DEFAULT_CAR: CompanyCarInput = { mode: "simple", annualBenefitValue: 0 };
 const DEFAULT_VOUCHERS: MealVouchersInput = { dailyValue: 8, workingDaysPerMonth: 22 };
 const DEFAULT_HEALTH: HealthInsuranceInput = { annualPremium: 0 };
-const DEFAULT_WELFARE: WelfareInput = { annualAmount: 0, hasChildrenUnder18: false };
+const DEFAULT_WELFARE: WelfareInput = { annualAmount: 0, hasDependentChildren: false };
 const EMPTY: FringeBenefitsInputType = {};
 
 function without<T extends object, K extends keyof T>(obj: T, key: K): Omit<T, K> {

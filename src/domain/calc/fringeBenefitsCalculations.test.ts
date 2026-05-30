@@ -193,24 +193,24 @@ describe("calculateHealthInsuranceBenefit", () => {
 // Welfare — Art. 51 c.3 TUIR. Soglia 2025: €1.000, €2.000 con figli a carico (L. 207/2024).
 describe("calculateWelfareBenefit", () => {
   it("entro soglia generale → nessun imponibile", () => {
-    const r = calculateWelfareBenefit({ annualAmount: 800, hasChildrenUnder18: false }, CFG);
+    const r = calculateWelfareBenefit({ annualAmount: 800, hasDependentChildren: false }, CFG);
     expect(r.taxFreeThreshold).toBe(1000);
     expect(r.taxableValue).toBe(0);
   });
 
   it("oltre soglia generale → imponibile l'eccedenza", () => {
-    const r = calculateWelfareBenefit({ annualAmount: 1500, hasChildrenUnder18: false }, CFG);
+    const r = calculateWelfareBenefit({ annualAmount: 1500, hasDependentChildren: false }, CFG);
     expect(r.taxableValue).toBe(500);
   });
 
   it("con figli la soglia raddoppia a €2.000", () => {
-    const r = calculateWelfareBenefit({ annualAmount: 1500, hasChildrenUnder18: true }, CFG);
+    const r = calculateWelfareBenefit({ annualAmount: 1500, hasDependentChildren: true }, CFG);
     expect(r.taxFreeThreshold).toBe(2000);
     expect(r.taxableValue).toBe(0);
   });
 
   it("con figli, oltre €2.000 → imponibile l'eccedenza", () => {
-    const r = calculateWelfareBenefit({ annualAmount: 2500, hasChildrenUnder18: true }, CFG);
+    const r = calculateWelfareBenefit({ annualAmount: 2500, hasDependentChildren: true }, CFG);
     expect(r.taxableValue).toBe(500);
   });
 
@@ -226,7 +226,7 @@ describe("calculateFringeBenefits — aggregazione", () => {
     const r = calculateFringeBenefits(
       {
         mealVouchers: { dailyValue: 10, workingDaysPerMonth: 22 },
-        welfare: { annualAmount: 1500, hasChildrenUnder18: false },
+        welfare: { annualAmount: 1500, hasDependentChildren: false },
       },
       CFG,
     );
@@ -253,7 +253,7 @@ describe("hasFringeBenefits", () => {
   });
 
   it("almeno una componente → true", () => {
-    expect(hasFringeBenefits({ welfare: { annualAmount: 500, hasChildrenUnder18: false } })).toBe(
+    expect(hasFringeBenefits({ welfare: { annualAmount: 500, hasDependentChildren: false } })).toBe(
       true,
     );
   });

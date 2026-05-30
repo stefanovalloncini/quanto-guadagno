@@ -32,7 +32,7 @@ export interface HealthInsuranceInput {
 
 export interface WelfareInput {
   readonly annualAmount: number;
-  readonly hasChildrenUnder18: boolean;
+  readonly hasDependentChildren: boolean;
 }
 
 export interface FringeBenefitsInput {

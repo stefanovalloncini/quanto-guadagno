@@ -22,7 +22,7 @@ export function WelfareCard({
       <Field
         label={<FormattedMessage id="employee.fringe.welfare.annualAmount" />}
         hint={
-          value.hasChildrenUnder18 ? (
+          value.hasDependentChildren ? (
             <FormattedMessage
               id="employee.fringe.welfare.annualAmount.hintWithChildren"
               values={{ amount: intl.formatNumber(childrenThreshold, EUR_AMOUNT_FORMAT) }}
@@ -47,8 +47,8 @@ export function WelfareCard({
         <input
           type="checkbox"
           className="qg-toggle__input"
-          checked={value.hasChildrenUnder18}
-          onChange={(e) => onChange({ ...value, hasChildrenUnder18: e.target.checked })}
+          checked={value.hasDependentChildren}
+          onChange={(e) => onChange({ ...value, hasDependentChildren: e.target.checked })}
         />
         <span className="qg-toggle__label">
           <FormattedMessage id="employee.fringe.welfare.hasChildren" />

@@ -7,7 +7,7 @@ describe("WelfareCard", () => {
   it("shows the general exemption threshold without children", () => {
     renderWithIntl(
       <WelfareCard
-        value={{ annualAmount: 0, hasChildrenUnder18: false }}
+        value={{ annualAmount: 0, hasDependentChildren: false }}
         onChange={() => {}}
         generalThreshold={1000}
         childrenThreshold={2000}
@@ -19,7 +19,7 @@ describe("WelfareCard", () => {
   it("shows the higher threshold with dependent children", () => {
     renderWithIntl(
       <WelfareCard
-        value={{ annualAmount: 0, hasChildrenUnder18: true }}
+        value={{ annualAmount: 0, hasDependentChildren: true }}
         onChange={() => {}}
         generalThreshold={1000}
         childrenThreshold={2000}

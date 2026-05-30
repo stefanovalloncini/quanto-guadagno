@@ -81,8 +81,8 @@ describe("calculateHealthInsuranceBenefit", () => {
 
 describe("calculateWelfareBenefit", () => {
   it("uses higher threshold when children under 18 present", () => {
-    const withChildren = calculateWelfareBenefit({ annualAmount: 500, hasChildrenUnder18: true }, cfg);
-    const withoutChildren = calculateWelfareBenefit({ annualAmount: 500, hasChildrenUnder18: false }, cfg);
+    const withChildren = calculateWelfareBenefit({ annualAmount: 500, hasDependentChildren: true }, cfg);
+    const withoutChildren = calculateWelfareBenefit({ annualAmount: 500, hasDependentChildren: false }, cfg);
     // withChildren threshold is higher so the taxable portion should be ≤ without
     expect(withChildren.taxFreeThreshold).toBeGreaterThan(withoutChildren.taxFreeThreshold);
   });
