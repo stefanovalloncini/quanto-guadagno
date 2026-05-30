@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import type { SalaryBreakdown } from "@/domain/calc";
+import { formatWholeEuro } from "@/ui/shared/numeric.ts";
 import { computeMoneyJourney, type JourneyNode, type NodeRole } from "./moneyJourneyLayout.ts";
 
 interface MoneyJourneyProps {
@@ -22,13 +23,6 @@ const NODE_CLASS_BY_ROLE: Record<NodeRole, string> = {
   "employee-cost": "qg-journey__node qg-journey__node--cost",
   "employer-cost": "qg-journey__node qg-journey__node--employer",
 };
-
-const CURRENCY = new Intl.NumberFormat("it-IT", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-});
 
 interface LabelPos {
   readonly nodeId: string;
@@ -153,7 +147,7 @@ export function MoneyJourney({ breakdown }: MoneyJourneyProps) {
                     {labelFor(node)}
                   </text>
                   <text className="qg-journey__label-amount" textAnchor={pos.anchor} y={14}>
-                    {CURRENCY.format(node.amount)}
+                    {formatWholeEuro(node.amount)}
                   </text>
                 </g>
               );
@@ -166,7 +160,7 @@ export function MoneyJourney({ breakdown }: MoneyJourneyProps) {
           <ul>
             {layout.nodes.map((node) => (
               <li key={node.id}>
-                {labelFor(node)}: {CURRENCY.format(node.amount)}
+                {labelFor(node)}: {formatWholeEuro(node.amount)}
               </li>
             ))}
           </ul>

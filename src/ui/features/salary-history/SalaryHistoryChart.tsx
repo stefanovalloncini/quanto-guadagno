@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { formatWholeEuro } from "@/ui/shared/numeric.ts";
 import { CHART, PLOT_W, PLOT_H, BASELINE, computeGeometry } from "./chartScales.ts";
 import { smoothAreaPath, smoothBandPath, smoothPath, nearestIndex } from "./chartGeometry.ts";
 import { SalaryHistoryChartPopover } from "./SalaryHistoryChartPopover.tsx";
@@ -11,13 +12,6 @@ interface SalaryHistoryChartProps {
   readonly projection: ProjectionBundle;
   readonly targetYear: number;
 }
-
-const EUR = new Intl.NumberFormat("it-IT", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-});
 
 export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHistoryChartProps) {
   const intl = useIntl();
@@ -102,7 +96,7 @@ export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHisto
                 <g key={v}>
                   <line x1={CHART.PAD_LEFT} x2={CHART.W - CHART.PAD_RIGHT} y1={y} y2={y} />
                   <text x={CHART.PAD_LEFT - 10} y={y} textAnchor="end" dominantBaseline="middle">
-                    {EUR.format(v)}
+                    {formatWholeEuro(v)}
                   </text>
                 </g>
               );
@@ -199,8 +193,8 @@ export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHisto
               { id: "history.chart.hit.aria" },
               {
                 year: p.year,
-                gross: EUR.format(p.grossAnnual),
-                net: p.netAnnual !== null ? EUR.format(p.netAnnual) : "n/d",
+                gross: formatWholeEuro(p.grossAnnual),
+                net: p.netAnnual !== null ? formatWholeEuro(p.netAnnual) : "n/d",
                 projected: p.isProjected ? 1 : 0,
               },
             );

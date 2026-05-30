@@ -26,6 +26,17 @@ export function formatThousands(value: number): string {
   return thousandsFormatter.format(value);
 }
 
+const wholeEuroFormatter = new Intl.NumberFormat("it-IT", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
+export function formatWholeEuro(value: number): string {
+  return wholeEuroFormatter.format(value);
+}
+
 export function parseDigits(raw: string): number {
   const digits = raw.replace(/[^0-9]/g, "");
   if (digits === "") return 0;
