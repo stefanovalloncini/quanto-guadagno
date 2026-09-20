@@ -678,18 +678,6 @@ export const it = {
   "employee.inpsRates.override.employee": "Aliquota a carico dipendente",
   "employee.inpsRates.override.employer": "Aliquota a carico azienda",
 
-  "moneyJourney.title": "Dal costo azienda al netto in tasca",
-  "moneyJourney.lede":
-    "Ogni euro che l'azienda spende per te si scompone così: una parte va in contributi e accantonamenti, il resto è la tua RAL. La RAL a sua volta si divide tra il netto che incassi e le trattenute: INPS a tuo carico e imposte.",
-  "moneyJourney.node.costo": "Costo azienda",
-  "moneyJourney.node.ral": "RAL",
-  "moneyJourney.node.inpsAzienda": "INPS azienda",
-  "moneyJourney.node.tfr": "TFR accantonato",
-  "moneyJourney.node.oneri": "Oneri assicurativi",
-  "moneyJourney.node.netto": "Netto in tasca",
-  "moneyJourney.node.inpsDip": "INPS dipendente",
-  "moneyJourney.node.tasse": "IRPEF e addizionali",
-
   "share.button.idle": "Copia il link",
   "share.button.copied": "Link copiato",
   "share.button.failed": "Copia non riuscita",

@@ -230,21 +230,3 @@
     text-align: left;
   }
 }
-
-/* Carried over until the employee page is rebuilt in the next commit. */
-.qg-journey__svg {
-  width: 100%;
-  height: auto;
-}
-.qg-journey__flow,
-.qg-journey__node {
-  fill: var(--filetto);
-}
-.qg-journey__label-name {
-  font-size: 12px;
-  fill: var(--grigio);
-}
-.qg-journey__label-amount {
-  font-size: 13px;
-  fill: var(--inchiostro);
-}
