@@ -3,9 +3,11 @@ import { FormattedMessage } from "react-intl";
 import { useSearchParams } from "react-router-dom";
 import { calculateSalaryBreakdown } from "@/domain/calc";
 import { REGIONS } from "@/domain/data";
-import { BreakdownRow, Money } from "@/ui/design-system/primitives";
+import { Ledger, LedgerRow, LedgerTotal, Money } from "@/ui/design-system/primitives";
 import { formStateFromUrl } from "./formStateFromUrl";
 import { PrintInputsTable } from "./PrintInputsTable";
+
+const label = (id: string) => <FormattedMessage id={id} />;
 
 export function PrintPayslipPage() {
   const [params] = useSearchParams();
@@ -59,70 +61,63 @@ export function PrintPayslipPage() {
         <h2 id="qg-print-breakdown-heading" className="qg-print-payslip__section-title">
           <FormattedMessage id="print.section.breakdown" />
         </h2>
-        <div className="qg-print-payslip__breakdown-flow">
-          <BreakdownRow labelId="print.breakdown.gross" amount={breakdown.grossAnnual} />
-          <BreakdownRow
-            labelId="print.breakdown.inps"
+        <Ledger>
+          <LedgerRow label={label("print.breakdown.gross")} amount={breakdown.grossAnnual} />
+          <LedgerRow
+            label={label("print.breakdown.inps")}
             amount={breakdown.inpsContribution}
             rate={breakdown.inpsRate}
             subtract
           />
-          <BreakdownRow
-            labelId="print.breakdown.taxableIncome"
+          <LedgerTotal
+            label={label("print.breakdown.taxableIncome")}
             amount={breakdown.taxableIncome}
-            total
           />
-          <BreakdownRow
-            labelId="print.breakdown.irpefGross"
+          <LedgerRow
+            label={label("print.breakdown.irpefGross")}
             amount={breakdown.irpefGross}
             subtract
           />
           {breakdown.totalDeductions > 0 && (
-            <BreakdownRow
-              labelId="print.breakdown.totalDeductions"
+            <LedgerRow
+              label={label("print.breakdown.totalDeductions")}
               amount={breakdown.totalDeductions}
             />
           )}
-          <BreakdownRow
-            labelId="print.breakdown.irpefNet"
+          <LedgerTotal
+            label={label("print.breakdown.irpefNet")}
             amount={breakdown.irpefNet}
-            total
             subtract
           />
-          <BreakdownRow
-            labelId="print.breakdown.regional"
+          <LedgerRow
+            label={label("print.breakdown.regional")}
             amount={breakdown.regionalTax}
             rate={breakdown.regionalTaxRate}
             subtract
           />
-          <BreakdownRow
-            labelId="print.breakdown.municipal"
+          <LedgerRow
+            label={label("print.breakdown.municipal")}
             amount={breakdown.municipalTax}
             rate={breakdown.municipalTaxRate}
             subtract
           />
           {breakdown.trattamentoIntegrativo > 0 && (
-            <BreakdownRow
-              labelId="print.breakdown.trattamento"
+            <LedgerRow
+              label={label("print.breakdown.trattamento")}
               amount={breakdown.trattamentoIntegrativo}
             />
           )}
           {breakdown.sommaAggiuntiva > 0 && (
-            <BreakdownRow
-              labelId="print.breakdown.sommaAggiuntiva"
+            <LedgerRow
+              label={label("print.breakdown.sommaAggiuntiva")}
               amount={breakdown.sommaAggiuntiva}
             />
           )}
           {breakdown.pdrNet > 0 && (
-            <BreakdownRow labelId="print.breakdown.pdrNet" amount={breakdown.pdrNet} />
+            <LedgerRow label={label("print.breakdown.pdrNet")} amount={breakdown.pdrNet} />
           )}
-          <BreakdownRow
-            labelId="print.breakdown.netAnnual"
-            amount={breakdown.netAnnual}
-            highlight
-            total
-          />
-        </div>
+          <LedgerTotal label={label("print.breakdown.netAnnual")} amount={breakdown.netAnnual} />
+        </Ledger>
       </section>
 
       <footer className="qg-print-payslip__footer">

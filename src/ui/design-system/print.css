@@ -10,7 +10,6 @@
   html {
     background: white !important;
     color: black !important;
-    font-size: 11pt;
   }
 
   .qg-main {
@@ -22,6 +21,7 @@
   .qg-print-payslip {
     color: black;
     background: white;
+    max-width: none;
     page-break-inside: avoid;
   }
 
@@ -31,6 +31,13 @@
   .qg-print-payslip a {
     color: black !important;
     background: transparent !important;
+  }
+
+  /* Without the stripe, its padding would read as a stray indent. */
+  .qg-print-payslip .qg-ledger__row--zebra .qg-ledger__label,
+  .qg-print-payslip .qg-ledger__row--zebra .qg-ledger__amount {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .qg-print-payslip .qg-ledger__total th,
