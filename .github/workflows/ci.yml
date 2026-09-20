@@ -31,3 +31,5 @@ jobs:
       - run: pnpm format:check
       - run: pnpm test
       - run: pnpm build
+      - run: pnpm check:ai-tells
+      - run: pnpm check:i18n
