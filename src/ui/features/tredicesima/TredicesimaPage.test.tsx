@@ -5,10 +5,10 @@ import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 import { TredicesimaPage } from "./TredicesimaPage.tsx";
 
 describe("TredicesimaPage", () => {
-  it("renders the hero with the italicised accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<TredicesimaPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("shows the net metric and the breakdown for the default inputs", () => {

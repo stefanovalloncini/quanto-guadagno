@@ -5,10 +5,10 @@ import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 import { ComparisonPage } from "./ComparisonPage.tsx";
 
 describe("ComparisonPage", () => {
-  it("renders the hero with the italicised accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<ComparisonPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("shows both offers and flags the higher one (B by default)", () => {

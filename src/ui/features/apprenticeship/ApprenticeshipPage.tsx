@@ -7,7 +7,6 @@ export function ApprenticeshipPage() {
   const calc = useApprenticeshipCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="apprenticeship.eyebrow"
       titleId="apprenticeship.title"
       ledeId="apprenticeship.lede"
       form={<ApprenticeshipForm calc={calc} />}

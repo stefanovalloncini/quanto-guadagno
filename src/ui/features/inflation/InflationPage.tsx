@@ -7,7 +7,6 @@ export function InflationPage() {
   const calc = useInflationCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="inflation.eyebrow"
       titleId="inflation.title"
       ledeId="inflation.lede"
       form={<InflationForm calc={calc} />}

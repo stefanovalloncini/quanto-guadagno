@@ -23,11 +23,8 @@ export function GlossarioPage() {
   return (
     <section className="qg-glossario">
       <header className="qg-calc__hero">
-        <p className="qg-eyebrow">
-          <FormattedMessage id="glossario.eyebrow" />
-        </p>
         <h1>
-          <FormattedMessage id="glossario.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
+          <FormattedMessage id="glossario.title" />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id="glossario.lede" />

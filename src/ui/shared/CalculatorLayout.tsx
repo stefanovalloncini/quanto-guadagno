@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 import type { MessageValues } from "./intl-types.ts";
 
 interface CalculatorLayoutProps {
-  readonly eyebrowId: string;
   readonly titleId: string;
   readonly ledeId: string;
   readonly ledeValues?: MessageValues;
@@ -13,7 +12,6 @@ interface CalculatorLayoutProps {
 }
 
 export function CalculatorLayout({
-  eyebrowId,
   titleId,
   ledeId,
   ledeValues,
@@ -24,11 +22,8 @@ export function CalculatorLayout({
   return (
     <section className="qg-calc">
       <header className="qg-calc__hero">
-        <p className="qg-eyebrow">
-          <FormattedMessage id={eyebrowId} />
-        </p>
         <h1>
-          <FormattedMessage id={titleId} values={{ em: (chunks) => <em>{chunks}</em> }} />
+          <FormattedMessage id={titleId} />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id={ledeId} {...(ledeValues && { values: ledeValues })} />

@@ -7,7 +7,6 @@ export function CompoundInterestPage() {
   const calc = useCompoundInterestCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="compoundInterest.eyebrow"
       titleId="compoundInterest.title"
       ledeId="compoundInterest.lede"
       form={<CompoundInterestForm calc={calc} />}

@@ -7,7 +7,6 @@ export function TfrPage() {
   const calc = useTfrCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="tfr.eyebrow"
       titleId="tfr.title"
       ledeId="tfr.lede"
       form={<TfrForm calc={calc} />}

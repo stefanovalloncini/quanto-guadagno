@@ -1,8 +1,7 @@
 export const it = {
   "a11y.skipToMain": "Vai al contenuto principale",
 
-  "brand.first": "quanto",
-  "brand.second": "guadagno",
+  "brand.name": "Quanto guadagno",
 
   "field.error.prefix": "Errore:",
 
@@ -20,16 +19,17 @@ export const it = {
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
-  "theme.prefix": "Tema:",
-  "theme.label.light": "chiaro",
-  "theme.label.dark": "scuro",
-  "theme.label.system": "sistema",
+  "theme.label.light": "Chiaro",
+  "theme.label.dark": "Scuro",
+  "theme.label.system": "Sistema",
   "theme.aria.cycle": "Cambia tema",
 
   "locale.aria.switch": "Passa a {next, select, it {italiano} en {inglese} other {altra lingua}}",
+  "locale.it": "Italiano",
+  "locale.en": "English",
 
-  "footer.attribution": "Calcolatore di stipendio netto · uso personale e informativo",
-  "footer.repo": "Codice su GitHub",
+  "footer.use": "Uso personale e informativo",
+  "footer.repo": "Codice sorgente",
 
   "meta.home.title": "Calcolo stipendio netto",
   "meta.home.description":
@@ -89,7 +89,7 @@ export const it = {
   "meta.notFound.description":
     "La pagina richiesta non esiste. Torna alla home per aprire uno dei calcolatori.",
 
-  "home.hero.title": "Quanto guadagno <em>davvero</em>.",
+  "home.hero.title": "Quanto guadagno davvero",
   "home.hero.lede":
     "Calcolatore di stipendio netto basato sulle aliquote IRPEF e i contributi INPS in vigore. <shimmer>Open source</shimmer>, senza account, senza tracker.",
   "home.feature.badge": "Disponibile",
@@ -144,8 +144,7 @@ export const it = {
   "home.soon.taxSystem.title": "Sistema fiscale",
   "home.soon.taxSystem.body": "Come funziona, chi paga, cuneo, dove vanno le tasse.",
 
-  "employee.eyebrow": "Strumento",
-  "employee.title": "Stipendio netto da <em>lordo</em>.",
+  "employee.title": "Stipendio netto da lordo",
   "employee.lede":
     "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
 
@@ -285,8 +284,7 @@ export const it = {
   "esempio.brackets.standard": "23% fino a €28.000, 35% fino a €50.000, 43% oltre",
   "esempio.brackets.2026": "23% fino a €28.000, 33% fino a €50.000, 43% oltre",
 
-  "glossario.eyebrow": "Glossario",
-  "glossario.title": "I termini del <em>fisco italiano</em> in breve.",
+  "glossario.title": "I termini del fisco italiano in breve",
   "glossario.lede":
     "Una definizione per ciascuno dei termini che ricorrono nei calcolatori. Ordine logico, non alfabetico.",
   "glossario.irpef.term": "IRPEF",
@@ -332,7 +330,6 @@ export const it = {
   "notFound.body": "L'indirizzo cercato non esiste.",
   "notFound.home": "Torna alla home",
 
-  "about.eyebrow": "Informazioni",
   "about.title": "Cos'è quanto guadagno",
   "about.lede":
     "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
@@ -342,7 +339,6 @@ export const it = {
     "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
   "about.github": "Codice su GitHub",
 
-  "sources.eyebrow": "Fonti",
   "sources.title": "Da dove vengono i numeri",
   "sources.lede":
     "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
@@ -386,8 +382,7 @@ export const it = {
   "sources.inflation.body":
     "Indice dei prezzi al consumo per famiglie di operai e impiegati, base 2015. È lo stesso indice che rivaluta il TFR e misura il potere d'acquisto nel tempo.",
 
-  "apprenticeship.eyebrow": "Strumento",
-  "apprenticeship.title": "Progressione <em>apprendistato</em>.",
+  "apprenticeship.title": "Progressione apprendistato",
   "apprenticeship.lede":
     "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante, a partire dalla retribuzione di destinazione. Le percentuali tipiche partono dall'85% del livello finale e crescono ogni anno.",
 
@@ -406,8 +401,7 @@ export const it = {
   "apprenticeship.results.footnote":
     "Il netto mensile è stimato con aliquota Lombardia, addizionale comunale 0,8% e contratto di apprendistato. Apri una riga per personalizzare regione, detrazioni e altre voci.",
 
-  "forfettario.eyebrow": "Strumento",
-  "forfettario.title": "Partita IVA <em>forfettario</em>.",
+  "forfettario.title": "Partita IVA forfettario",
   "forfettario.lede":
     "Dal fatturato annuo ricavo il reddito imponibile, i contributi di Gestione Separata e l'imposta sostitutiva. Calcolo valido per i contribuenti in regime forfettario fino a {limit} di ricavi.",
 
@@ -487,8 +481,7 @@ export const it = {
   "forfettario.breakdown.totalTaxes": "Totale imposte e contributi",
   "forfettario.breakdown.net": "Netto annuo",
 
-  "compoundInterest.eyebrow": "Pianificazione",
-  "compoundInterest.title": "Quanto valgono nel tempo i miei <em>risparmi</em>",
+  "compoundInterest.title": "Quanto valgono nel tempo i miei risparmi",
   "compoundInterest.lede":
     "Stima il valore futuro di un capitale, con versamenti periodici, frequenza di capitalizzazione e inflazione attesa.",
   "compoundInterest.form.principal": "Capitale iniziale",
@@ -521,8 +514,7 @@ export const it = {
   "compoundInterest.schedule.contributions": "Versato",
   "compoundInterest.schedule.interest": "Interessi",
 
-  "naspi.eyebrow": "Strumento",
-  "naspi.title": "Indennità di <em>disoccupazione</em>",
+  "naspi.title": "Indennità di disoccupazione",
   "naspi.lede":
     "Stima la NASpI: importo mensile, durata e riduzione progressiva. Aliquote 2024–2026 da circolare INPS.",
   "naspi.form.year": "Anno della cessazione",
@@ -561,8 +553,7 @@ export const it = {
   "naspi.irpef.note":
     "Il netto stima l'IRPEF applicata al totale annuo. Non si applicano contributi INPS né addizionali.",
 
-  "preavviso.eyebrow": "Strumento",
-  "preavviso.title": "Preavviso di <em>dimissioni</em>",
+  "preavviso.title": "Preavviso di dimissioni",
   "preavviso.lede":
     "Calcola i giorni di preavviso da rispettare e la data di uscita, in base al CCNL, al livello e all'anzianità di servizio.",
   "preavviso.form.ccnl": "CCNL applicato",
@@ -584,8 +575,7 @@ export const it = {
     "I giorni indicati sono giorni lavorativi (esclusi sabato e domenica).",
   "preavviso.result.calendarDays.note": "I giorni indicati sono giorni di calendario.",
 
-  "inverse.eyebrow": "Strumento",
-  "inverse.title": "Dal <em>netto</em> al lordo",
+  "inverse.title": "Dal netto al lordo",
   "inverse.lede":
     "Quanto deve essere la RAL per portare a casa un certo netto annuo? Lo trovo per bisezione partendo dal calcolo diretto.",
   "inverse.form.targetNetAnnual": "Netto annuo desiderato",
@@ -601,8 +591,7 @@ export const it = {
   "inverse.result.notConverged":
     "Il calcolatore non ha trovato un valore preciso. Il risultato è la migliore approssimazione.",
 
-  "tredicesima.eyebrow": "Strumento",
-  "tredicesima.title": "Quanto netto vale la <em>tredicesima</em>",
+  "tredicesima.title": "Quanto netto vale la tredicesima",
   "tredicesima.lede":
     "La tredicesima è una mensilità in più, ma è tassata più di uno stipendio normale: non porta con sé le detrazioni da lavoro né le addizionali. Ecco quanto resta in tasca.",
   "tredicesima.form.ral": "Stipendio lordo annuo",
@@ -619,8 +608,7 @@ export const it = {
   "tredicesima.result.note":
     "Sulla tredicesima non si applicano le detrazioni da lavoro dipendente né le addizionali regionale e comunale: per questo è tassata più di una mensilità ordinaria.",
 
-  "inflation.eyebrow": "Strumento",
-  "inflation.title": "Il <em>potere d'acquisto</em> nel tempo",
+  "inflation.title": "Il potere d'acquisto nel tempo",
   "inflation.lede":
     "L'inflazione erode il valore dei soldi. Scopri quanto vale oggi una cifra di qualche anno fa, secondo l'indice ISTAT FOI.",
   "inflation.form.amount": "Importo",
@@ -633,8 +621,7 @@ export const it = {
   "inflation.result.note":
     "Calcolo basato sull'indice ISTAT FOI (prezzi al consumo per famiglie di operai e impiegati), base 2015. È lo stesso indice usato per rivalutare il TFR.",
 
-  "comparison.eyebrow": "Strumento",
-  "comparison.title": "Confronto tra due <em>offerte</em>",
+  "comparison.title": "Confronto tra due offerte",
   "comparison.lede":
     "Due stipendi lordi a confronto, a parità di condizioni. Vedi quale lascia più netto in tasca e di quanto.",
   "comparison.form.ralA": "Offerta A: lordo annuo",
@@ -647,13 +634,11 @@ export const it = {
   "comparison.result.note":
     "Stesse condizioni per entrambe: anno, regione, comune e mensilità. La differenza è solo nel lordo di partenza.",
 
-  "employerCost.eyebrow": "Strumento",
-  "employerCost.title": "Quanto costa un <em>dipendente</em>",
+  "employerCost.title": "Quanto costa un dipendente",
   "employerCost.lede":
     "Quanto spende davvero l'azienda per un dipendente: dal lordo in busta al costo totale, con contributi e accantonamenti.",
 
-  "tfr.eyebrow": "Strumento",
-  "tfr.title": "Quanto <em>TFR</em> accumuli",
+  "tfr.title": "Quanto TFR accumuli",
   "tfr.lede":
     "Il trattamento di fine rapporto cresce ogni anno con una quota dello stipendio e una rivalutazione. Stima quanto accumuli nel tempo.",
   "tfr.form.years": "Anni di lavoro",
@@ -763,8 +748,7 @@ export const it = {
     "Stima a uso indicativo. La busta paga ufficiale del datore di lavoro resta il riferimento.",
   "print.footer.sourceLink": "Verifica il calcolo su quantoguadagno.com",
 
-  "history.eyebrow": "Storico stipendi",
-  "history.title": "I tuoi stipendi <em>nel tempo</em>",
+  "history.title": "I tuoi stipendi nel tempo",
   "history.lede":
     "Aggiungi i tuoi RAL anno per anno. Te li mostriamo a valori correnti, rivalutati con l'indice ISTAT FOI fino al {year}.",
   "history.form.title": "Aggiungi un anno",

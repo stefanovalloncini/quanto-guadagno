@@ -9,7 +9,7 @@ describe("HomePage", () => {
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(/Quanto guadagno/);
     expect(h1).toHaveTextContent(/davvero/);
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("renders the featured tile linking to the employee calc", () => {

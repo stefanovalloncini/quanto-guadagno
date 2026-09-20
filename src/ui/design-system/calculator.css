@@ -18,7 +18,8 @@
   align-items: start;
 }
 .qg-calc__form,
-.qg-employee__form {
+.qg-employee__form,
+.qg-employee__main {
   grid-column: 1 / 6;
   min-width: 0;
 }
@@ -47,7 +48,8 @@
     gap: var(--s-6);
   }
   .qg-calc__form,
-  .qg-employee__form {
+  .qg-employee__form,
+  .qg-employee__main {
     grid-column: 1;
     order: 2;
   }

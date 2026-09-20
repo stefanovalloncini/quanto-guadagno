@@ -7,7 +7,6 @@ export function ComparisonPage() {
   const calc = useComparisonCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="comparison.eyebrow"
       titleId="comparison.title"
       ledeId="comparison.lede"
       form={<ComparisonForm calc={calc} />}

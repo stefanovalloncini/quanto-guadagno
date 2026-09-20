@@ -7,7 +7,6 @@ export function InversePage() {
   const calc = useInverseCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="inverse.eyebrow"
       titleId="inverse.title"
       ledeId="inverse.lede"
       form={<InverseForm calc={calc} />}

@@ -8,7 +8,6 @@ export function NaspiPage() {
   const calc = useNaspiCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="naspi.eyebrow"
       titleId="naspi.title"
       ledeId="naspi.lede"
       form={<NaspiForm calc={calc} />}

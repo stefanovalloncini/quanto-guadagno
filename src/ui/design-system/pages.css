@@ -230,11 +230,6 @@
 
 /* Carried over until the home, the chrome and the employee page are rebuilt
    on the new system in the commits that follow. */
-.qg-eyebrow {
-  font-size: var(--t-13);
-  color: var(--grigio);
-  margin-bottom: var(--s-2);
-}
 .qg-home__hero {
   margin-bottom: var(--s-7);
 }

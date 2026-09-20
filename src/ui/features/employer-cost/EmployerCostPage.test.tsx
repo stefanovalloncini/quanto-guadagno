@@ -5,10 +5,10 @@ import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 import { EmployerCostPage } from "./EmployerCostPage.tsx";
 
 describe("EmployerCostPage", () => {
-  it("renders the hero with the italicised accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<EmployerCostPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("shows the employer cost breakdown and total", () => {

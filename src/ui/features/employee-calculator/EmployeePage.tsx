@@ -16,11 +16,8 @@ export function EmployeePage() {
   return (
     <section className="qg-employee">
       <header className="qg-calc__hero">
-        <p className="qg-eyebrow">
-          <FormattedMessage id="employee.eyebrow" />
-        </p>
         <h1>
-          <FormattedMessage id="employee.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
+          <FormattedMessage id="employee.title" />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id="employee.lede" />

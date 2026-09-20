@@ -5,10 +5,10 @@ import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 import { NaspiPage } from "./NaspiPage.tsx";
 
 describe("NaspiPage", () => {
-  it("renders the hero with the italicised accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<NaspiPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("renders the monthly amount metric with the default inputs", () => {

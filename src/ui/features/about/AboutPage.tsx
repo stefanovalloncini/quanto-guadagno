@@ -3,9 +3,6 @@ import { FormattedMessage } from "react-intl";
 export function AboutPage() {
   return (
     <section className="qg-about">
-      <p className="qg-eyebrow">
-        <FormattedMessage id="about.eyebrow" />
-      </p>
       <h1>
         <FormattedMessage id="about.title" />
       </h1>

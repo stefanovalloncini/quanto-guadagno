@@ -4,11 +4,11 @@ import { ForfettarioPage } from "./ForfettarioPage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 
 describe("ForfettarioPage", () => {
-  it("renders the hero with italic accent on 'forfettario'", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<ForfettarioPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(/Partita IVA/);
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("renders all primary form fields", () => {

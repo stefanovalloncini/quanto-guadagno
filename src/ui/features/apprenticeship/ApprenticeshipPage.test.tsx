@@ -8,11 +8,11 @@ import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 import { it as itMessages } from "@/ui/i18n/messages/it.ts";
 
 describe("ApprenticeshipPage", () => {
-  it("renders the hero with italic accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<ApprenticeshipPage />);
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(/Progressione/);
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("renders three years of progression by default", () => {

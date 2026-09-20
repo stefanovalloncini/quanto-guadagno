@@ -8,7 +8,6 @@ export function PreavvisoPage() {
   const calc = usePreavvisoCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="preavviso.eyebrow"
       titleId="preavviso.title"
       ledeId="preavviso.lede"
       form={<PreavvisoForm calc={calc} />}

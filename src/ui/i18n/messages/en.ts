@@ -3,8 +3,7 @@ import type { MessageKey } from "./it.ts";
 export const en: Record<MessageKey, string> = {
   "a11y.skipToMain": "Skip to main content",
 
-  "brand.first": "quanto",
-  "brand.second": "guadagno",
+  "brand.name": "Quanto guadagno",
 
   "field.error.prefix": "Error:",
 
@@ -24,15 +23,16 @@ export const en: Record<MessageKey, string> = {
 
   "locale.aria.switch":
     "Switch to {next, select, it {Italian} en {English} other {other language}}",
+  "locale.it": "Italiano",
+  "locale.en": "English",
 
-  "theme.prefix": "Theme:",
-  "theme.label.light": "light",
-  "theme.label.dark": "dark",
-  "theme.label.system": "system",
+  "theme.label.light": "Light",
+  "theme.label.dark": "Dark",
+  "theme.label.system": "System",
   "theme.aria.cycle": "Change theme",
 
-  "footer.attribution": "Net salary calculator · for personal and informational use",
-  "footer.repo": "Code on GitHub",
+  "footer.use": "For personal and informational use",
+  "footer.repo": "Source code",
 
   "meta.home.title": "Net salary calculator",
   "meta.home.description":
@@ -92,7 +92,7 @@ export const en: Record<MessageKey, string> = {
   "meta.notFound.description":
     "This page does not exist. Go back to the home page to open one of the calculators.",
 
-  "home.hero.title": "What I really <em>take home</em>.",
+  "home.hero.title": "What I really take home",
   "home.hero.lede":
     "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. <shimmer>Open source</shimmer>, no account, no tracker.",
   "home.feature.badge": "Available",
@@ -145,8 +145,7 @@ export const en: Record<MessageKey, string> = {
   "home.soon.taxSystem.title": "How the tax system works",
   "home.soon.taxSystem.body": "Who pays, the tax wedge, where the money goes.",
 
-  "employee.eyebrow": "Tool",
-  "employee.title": "Net salary from <em>gross</em>.",
+  "employee.title": "Net salary from gross",
   "employee.lede":
     "Tax years 2024–2026. Regional and municipal rates are editable. The numbers are an estimate, not a substitute for the actual payslip.",
 
@@ -285,8 +284,7 @@ export const en: Record<MessageKey, string> = {
   "esempio.brackets.standard": "23% up to €28,000, 35% up to €50,000, 43% above",
   "esempio.brackets.2026": "23% up to €28,000, 33% up to €50,000, 43% above",
 
-  "glossario.eyebrow": "Glossary",
-  "glossario.title": "Italian tax terms <em>in short</em>.",
+  "glossario.title": "Italian tax terms in short",
   "glossario.lede":
     "One definition per term that recurs across the calculators. Logical order, not alphabetical.",
   "glossario.irpef.term": "IRPEF",
@@ -332,7 +330,6 @@ export const en: Record<MessageKey, string> = {
   "notFound.body": "The page you requested does not exist.",
   "notFound.home": "Back to home",
 
-  "about.eyebrow": "About",
   "about.title": "About quanto guadagno",
   "about.lede":
     "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. No account, no tracker.",
@@ -342,7 +339,6 @@ export const en: Record<MessageKey, string> = {
     "The calculation follows the Agenzia delle Entrate brackets and current INPS circulars. No estimate replaces the real payslip: this tool is for orientation.",
   "about.github": "Code on GitHub",
 
-  "sources.eyebrow": "Sources",
   "sources.title": "Where the numbers come from",
   "sources.lede":
     "Every calculation is grounded in public documents. Below, in compact form, the origin of each component.",
@@ -385,8 +381,7 @@ export const en: Record<MessageKey, string> = {
   "sources.inflation.body":
     "Consumer price index for blue- and white-collar households, 2015 base. It is the same index that revalues TFR and measures purchasing power over time.",
 
-  "apprenticeship.eyebrow": "Tool",
-  "apprenticeship.title": "Apprenticeship <em>progression</em>.",
+  "apprenticeship.title": "Apprenticeship progression",
   "apprenticeship.lede":
     "Estimate year-by-year salary during the apprenticeship period, starting from the target salary. Typical progressions start at 85% of the final level and grow each year.",
 
@@ -404,8 +399,7 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.results.footnote":
     "Monthly net is estimated with Lombardy rates, 0.8% municipal surcharge and an apprenticeship contract. Open any row to refine region, deductions and other inputs.",
 
-  "forfettario.eyebrow": "Tool",
-  "forfettario.title": "Self-employed <em>forfettario</em>.",
+  "forfettario.title": "Self-employed forfettario",
   "forfettario.lede":
     "From annual invoiced revenue I derive taxable income, Gestione Separata contributions and the substitute tax. Valid for forfettario taxpayers up to {limit} of revenue.",
 
@@ -481,8 +475,7 @@ export const en: Record<MessageKey, string> = {
   "forfettario.breakdown.totalTaxes": "Total taxes and contributions",
   "forfettario.breakdown.net": "Annual net",
 
-  "compoundInterest.eyebrow": "Planning",
-  "compoundInterest.title": "How my <em>savings</em> grow over time",
+  "compoundInterest.title": "How my savings grow over time",
   "compoundInterest.lede":
     "Estimate the future value of a sum, accounting for periodic contributions, compounding frequency and expected inflation.",
   "compoundInterest.form.principal": "Initial principal",
@@ -515,8 +508,7 @@ export const en: Record<MessageKey, string> = {
   "compoundInterest.schedule.contributions": "Contributed",
   "compoundInterest.schedule.interest": "Interest",
 
-  "naspi.eyebrow": "Tool",
-  "naspi.title": "Unemployment <em>indemnity</em>",
+  "naspi.title": "Unemployment indemnity",
   "naspi.lede":
     "Estimate NASpI: monthly amount, duration and progressive reduction. 2024–2026 INPS parameters.",
   "naspi.form.year": "Year of cessation",
@@ -555,8 +547,7 @@ export const en: Record<MessageKey, string> = {
   "naspi.irpef.note":
     "The net estimate applies IRPEF brackets to the annual total. INPS contributions and surcharges do not apply.",
 
-  "preavviso.eyebrow": "Tool",
-  "preavviso.title": "Resignation <em>notice</em>",
+  "preavviso.title": "Resignation notice",
   "preavviso.lede": "Compute the notice period and exit date based on CCNL, level and seniority.",
   "preavviso.form.ccnl": "Applicable CCNL",
   "preavviso.form.livello": "Level / category",
@@ -575,8 +566,7 @@ export const en: Record<MessageKey, string> = {
   "preavviso.result.workingDays.note": "These are working days (Saturdays and Sundays excluded).",
   "preavviso.result.calendarDays.note": "These are calendar days.",
 
-  "inverse.eyebrow": "Tool",
-  "inverse.title": "From <em>net</em> to gross",
+  "inverse.title": "From net to gross",
   "inverse.lede":
     "What gross annual salary produces a target net? Bisection on the forward calculator.",
   "inverse.form.targetNetAnnual": "Target annual net",
@@ -592,8 +582,7 @@ export const en: Record<MessageKey, string> = {
   "inverse.result.notConverged":
     "The calculator did not find a precise value. The result is the best approximation.",
 
-  "tredicesima.eyebrow": "Tool",
-  "tredicesima.title": "What the <em>13th salary</em> is worth net",
+  "tredicesima.title": "What the 13th salary is worth net",
   "tredicesima.lede":
     "The tredicesima is an extra month's pay, but it's taxed more than a normal salary: it carries no work deduction and no local surcharges. Here's what you keep.",
   "tredicesima.form.ral": "Annual gross salary",
@@ -610,8 +599,7 @@ export const en: Record<MessageKey, string> = {
   "tredicesima.result.note":
     "The 13th carries no employee work deduction and no regional or municipal surcharge, so it is taxed more than an ordinary month.",
 
-  "inflation.eyebrow": "Tool",
-  "inflation.title": "<em>Purchasing power</em> over time",
+  "inflation.title": "Purchasing power over time",
   "inflation.lede":
     "Inflation erodes the value of money. See what an amount from a few years ago is worth today, by the ISTAT FOI index.",
   "inflation.form.amount": "Amount",
@@ -625,8 +613,7 @@ export const en: Record<MessageKey, string> = {
   "inflation.result.note":
     "Based on the ISTAT FOI index (consumer prices for blue- and white-collar households), 2015 base. It is the same index used to revalue TFR.",
 
-  "comparison.eyebrow": "Tool",
-  "comparison.title": "Two <em>offers</em> compared",
+  "comparison.title": "Two offers compared",
   "comparison.lede":
     "Two gross salaries side by side, under the same conditions. See which leaves more net pay, and by how much.",
   "comparison.form.ralA": "Offer A: annual gross",
@@ -639,13 +626,11 @@ export const en: Record<MessageKey, string> = {
   "comparison.result.note":
     "Same conditions for both: year, region, municipality and instalments. Only the starting gross differs.",
 
-  "employerCost.eyebrow": "Tool",
-  "employerCost.title": "What an <em>employee</em> costs",
+  "employerCost.title": "What an employee costs",
   "employerCost.lede":
     "What a company really spends on an employee: from the gross on the payslip to the total cost, with contributions and accruals.",
 
-  "tfr.eyebrow": "Tool",
-  "tfr.title": "How much <em>TFR</em> you build up",
+  "tfr.title": "How much TFR you build up",
   "tfr.lede":
     "Severance pay (TFR) grows each year with a share of your salary and a revaluation. Estimate how much you accumulate over time.",
   "tfr.form.years": "Years of service",
@@ -753,8 +738,7 @@ export const en: Record<MessageKey, string> = {
     "Estimate for guidance only. Your employer's official payslip remains the reference.",
   "print.footer.sourceLink": "Verify the calculation at quantoguadagno.com",
 
-  "history.eyebrow": "Salary history",
-  "history.title": "Your salaries <em>over time</em>",
+  "history.title": "Your salaries over time",
   "history.lede":
     "Add your gross salary year by year. We show them in today's terms using the ISTAT FOI index up to {year}.",
   "history.form.title": "Add a year",

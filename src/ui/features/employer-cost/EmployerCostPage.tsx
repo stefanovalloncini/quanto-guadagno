@@ -7,7 +7,6 @@ export function EmployerCostPage() {
   const calc = useEmployerCostCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="employerCost.eyebrow"
       titleId="employerCost.title"
       ledeId="employerCost.lede"
       form={<EmployerCostForm calc={calc} />}

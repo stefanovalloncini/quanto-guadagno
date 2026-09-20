@@ -7,7 +7,6 @@ export function TredicesimaPage() {
   const calc = useTredicesimaCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="tredicesima.eyebrow"
       titleId="tredicesima.title"
       ledeId="tredicesima.lede"
       form={<TredicesimaForm calc={calc} />}

@@ -21,11 +21,8 @@ export function SalaryHistoryPage() {
   return (
     <section className="qg-history">
       <header className="qg-calc__hero">
-        <p className="qg-eyebrow">
-          <FormattedMessage id="history.eyebrow" />
-        </p>
         <h1>
-          <FormattedMessage id="history.title" values={{ em: (chunks) => <em>{chunks}</em> }} />
+          <FormattedMessage id="history.title" />
         </h1>
         <p className="qg-lede">
           <FormattedMessage id="history.lede" values={{ year: history.targetYear }} />

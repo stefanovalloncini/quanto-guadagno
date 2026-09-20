@@ -10,7 +10,6 @@ export function ForfettarioPage() {
   const calc = useForfettarioCalculator();
   return (
     <CalculatorLayout
-      eyebrowId="forfettario.eyebrow"
       titleId="forfettario.title"
       ledeId="forfettario.lede"
       ledeValues={{ limit: formatCurrencyWhole(SHARED_FORFETTARIO.maxRevenue) }}

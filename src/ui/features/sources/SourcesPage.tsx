@@ -162,9 +162,6 @@ function CitationLink({ citation }: { readonly citation: Citation }) {
 export function SourcesPage() {
   return (
     <section className="qg-sources">
-      <p className="qg-eyebrow">
-        <FormattedMessage id="sources.eyebrow" />
-      </p>
       <h1>
         <FormattedMessage id="sources.title" />
       </h1>

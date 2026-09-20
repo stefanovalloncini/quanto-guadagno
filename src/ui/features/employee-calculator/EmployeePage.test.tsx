@@ -5,11 +5,11 @@ import { EmployeePage } from "./EmployeePage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 
 describe("EmployeePage", () => {
-  it("renders the title with italic accent", () => {
+  it("renders the page heading", () => {
     renderWithIntl(<EmployeePage />);
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1).toHaveTextContent(/Stipendio netto/);
-    expect(h1.querySelector("em")).toBeTruthy();
+    expect(h1.querySelector("em")).toBeNull();
   });
 
   it("renders the gross salary input labelled correctly", () => {
