@@ -177,42 +177,42 @@ export const en: Record<MessageKey, string> = {
     "Starting from annual gross, we subtract employee INPS contributions (9.19% on the ordinary portion). On the taxable income we apply the IRPEF brackets, subtract eligible deductions (employee work, dependents, expenses), and add regional and municipal surcharges. We then add trattamento integrativo and other credits. The result is annual net, divided by the number of monthly instalments.",
   "employee.faq.brackets.q": "What IRPEF brackets are currently in force?",
   "employee.faq.brackets.a":
-    "For 2026: 23% up to €28,000, 33% from €28,001 to €50,000, 43% above. For 2024 and 2025 the middle bracket was at 35%. Reference: D.Lgs. 216/2023 and amendments (2026 Budget Law).",
+    "For 2026: 23% up to €28,000, 33% from €28,001 to €50,000, 43% above. In 2024 and 2025 the middle bracket was 35%. Reference: D.Lgs. 216/2023 for 2024 and 2025, L. 199/2025 for 2026.",
   "employee.faq.trattamento.q": "What is the trattamento integrativo?",
   "employee.faq.trattamento.a":
-    "A monthly tax credit up to about €1,200 per year for employee income below the legal threshold. It only applies when gross IRPEF exceeds the employee work deduction. Reference: D.L. 3/2020 and amendments.",
+    "A credit of up to €1,200 a year for taxable income up to €28,000. Up to €15,000 you get the full amount. Between €15,000 and €28,000 you only get the share of deductions that exceeds gross IRPEF, and never more than €1,200. Reference: D.L. 3/2020.",
   "employee.faq.region.q": "Why does net salary change with the region?",
   "employee.faq.region.a":
-    "Each region applies its own IRPEF surcharge to taxable income, with rates ranging from 1.23% to over 3.33% in higher brackets. Some regions have an exemption threshold. Municipal rates then vary by city up to 0.9%.",
+    "Each region applies its own IRPEF surcharge to taxable income. In the calculator's data the rates run from 0.70% to 3.63% depending on region and bracket, and some regions have a threshold below which nothing is due. The municipal surcharge is a value you enter, because it changes from town to town.",
   "employee.faq.cuneo.q": "What is the tax-wedge cut?",
   "employee.faq.cuneo.a":
-    "A structural reduction of INPS or IRPEF for low-to-medium income, redesigned in each Budget Law. For 2026 it applies on a permanent basis with rules that differ from those of 2024–2025.",
+    "The tax wedge is the gap between what an employee costs the company and what reaches the payslip. The cut works in two ways: an extra sum in the payslip up to €20,000 of taxable income, and an IRPEF deduction of up to €1,000 that phases out between €32,000 and €40,000. The 2026 rules are the same as 2025; in 2024 an INPS contribution waiver took their place. Reference: L. 207/2024, made permanent by L. 199/2025.",
   "employee.faq.estimate.q": "Can my actual payslip differ?",
   "employee.faq.estimate.a":
-    "Yes. The calculation is an estimate based on standard rates. Fringe benefits, performance bonuses, specific contractual allowances, tax-credit assignments, or additional withholdings can change the effective net. The employer's payslip remains the reference.",
+    "Yes. The calculation is an estimate based on standard rates. Fringe benefits, a tax-relieved performance bonus, allowances set by your CCNL or extra withholdings all change the effective net. The employer's payslip remains the reference.",
   "employee.faq.sources.q": "Where do the numbers come from?",
   "employee.faq.sources.a":
-    "IRPEF rates from Agenzia delle Entrate, INPS contributions from annual circulars, regional surcharges from regional decrees. The /fonti page lists, for each component, the specific source.",
+    "IRPEF rates come from Agenzia delle Entrate, INPS contributions from the annual circulars, regional surcharges from regional law. The Sources page lists the legal reference for every component.",
 
   "forfettario.faq.title": "Frequently asked questions",
   "forfettario.faq.what.q": "What is the forfettario regime?",
   "forfettario.faq.what.a":
-    "A simplified Italian tax regime for self-employed workers with revenue up to €85,000 per year. A flat substitute tax applies to taxable income, computed as revenue × the activity-specific profitability coefficient. No VAT, no ordinary IRPEF, no IRAP. Reference: Law 190/2014 and amendments.",
+    "An Italian tax regime for self-employed workers with revenue up to €85,000 a year. The flat substitute tax applies to taxable income, that is revenue multiplied by the profitability coefficient for your activity. No VAT, no ordinary IRPEF, no IRAP. Reference: Law 190/2014.",
   "forfettario.faq.rates.q": "What are the substitute tax rates?",
   "forfettario.faq.rates.a":
     "The standard rate is 15% on taxable income. The first 5 years of activity benefit from a reduced 5% rate, if the eligibility requirements are met (new activity, not a continuation of prior employment).",
   "forfettario.faq.contributi.q": "How are social contributions calculated?",
   "forfettario.faq.contributi.a":
-    "It depends on the fund: INPS Gestione Separata (~26%) for professionals without a dedicated fund, Artigiani or Commercianti for trade-registered activities (IVS rate plus annual minimum), or a specific professional pension fund. The calculator shows the option for each.",
+    "It depends on the fund. INPS Gestione Separata at 26.07% for professionals without a dedicated fund, the Artigiani or Commercianti scheme for activities registered there (IVS rate plus an annual minimum), or your profession's own fund. You pick the one that applies in the calculator.",
   "forfettario.faq.combined.q": "Can I use forfettario while also being an employee?",
   "forfettario.faq.combined.a":
-    "Yes, but with a cap: employment income must not exceed €30,000 in the previous year. Above that threshold, the forfettario requirements lapse for the following year.",
+    "Yes, forfettario can sit alongside a job, but the law caps the employment income of the previous year and this calculator does not check it. Here you only compute substitute tax and contributions on the self-employed revenue.",
   "forfettario.faq.startup.q": "What changes in the first 5 years?",
   "forfettario.faq.startup.a":
-    "The substitute tax drops from 15% to 5% for the first 5 years, if eligibility requirements are met (new activity, not employed in the same sector in the prior 3 years). After 5 years the rate returns to 15%.",
+    "The substitute tax drops from 15% to 5% for the first five tax periods, if you meet the legal requirements: you have not carried out the same activity in the previous three years, and the activity is not a continuation of previous employment. The calculator applies the rate from the years of activity you enter; the other requirements are yours to check.",
   "forfettario.faq.exit.q": "When do I exit the forfettario regime?",
   "forfettario.faq.exit.a":
-    "When revenue exceeds €85,000 in the year (over €100,000 triggers immediate exit), or if other requirements lapse (hiring employees over the cap, employment income above €30,000, etc.). Exit means returning to the ordinary tax regime.",
+    "Past €85,000 of revenue you leave the regime from the following year. Past €100,000 the exit is immediate, within the same year. You also leave when the other requirements lapse, for instance the €20,000 cap on staff costs. Reference: Art. 1 c. 71 L. 190/2014.",
 
   "naspi.faq.title": "Frequently asked questions",
   "naspi.faq.what.q": "What is NASpI?",
@@ -226,13 +226,13 @@ export const en: Record<MessageKey, string> = {
     "Start from the average monthly wage of the last 4 years. Up to a threshold (€1,456.72 gross monthly in 2026) you receive 75%. Above the threshold you add 25% of the difference, up to a cap (€1,584.70 gross monthly in 2026). Source: INPS Circular 4/2026.",
   "naspi.faq.decalage.q": "When does NASpI start to decrease (décalage)?",
   "naspi.faq.decalage.a":
-    "From month 6 (month 8 if you are 55 or older when you apply) the indemnity decreases by 3% per month. If initial NASpI is €1,200, after month 6 it becomes €1,164, after month 7 it is €1,130, and so on.",
+    "From month 6 (month 8 if you are 55 or older when you apply) the indemnity drops by 3% a month, and each cut applies to the already reduced amount. From €1,200 you go to €1,164 in month 6 and €1,129 in month 7.",
   "naspi.faq.tax.q": "Is NASpI taxed?",
   "naspi.faq.tax.a":
-    "Yes, IRPEF applies as if it were employment income. The calculator also shows the estimated net by applying the IRPEF brackets of the chosen year.",
+    "Yes, IRPEF applies as if it were employment income. The calculator estimates the net using the IRPEF brackets of the chosen year, with no INPS contributions and no local surcharges.",
   "naspi.faq.work.q": "Can I work while receiving NASpI?",
   "naspi.faq.work.a":
-    "Yes, but the rules depend on the type of work and the duration. For self-employment up to €5,500 per year, NASpI is only reduced. For new employment contracts, NASpI is suspended above certain thresholds. You must inform INPS of any new activity within 30 days.",
+    "Yes, but the rules change with the type of contract and the income, and you have to report the activity to INPS, which then reduces or suspends the payment. This calculator does not model that recalculation: check your case with INPS.",
 
   "preavviso.faq.title": "Frequently asked questions",
   "preavviso.faq.obbligatorio.q": "Am I required to give notice?",
@@ -246,10 +246,10 @@ export const en: Record<MessageKey, string> = {
     "By default they are calendar days: Saturdays, Sundays and public holidays count. Some CCNLs prescribe working days for specific levels (the calculator flags this case when it applies).",
   "preavviso.faq.ferie.q": "Do unused holidays count toward notice?",
   "preavviso.faq.ferie.a":
-    "No. Holidays taken during notice do not stop the period from running. Unused holidays are paid out in the final payslip; they do not reduce the notice days.",
+    "No. Holidays taken during notice do not stop the period from running. Unused holidays are paid out in the final payslip and do not shorten the notice days.",
   "preavviso.faq.malattia.q": "Can I resign while on sick leave?",
   "preavviso.faq.malattia.a":
-    "Yes. Illness does not prevent resignation, but it suspends the running of the notice period (consistent case law of the Court of Cassation, labor section). Notice resumes when you recover.",
+    "Yes, illness does not prevent you from resigning. Most CCNLs suspend the notice period while the illness lasts and resume it on recovery, so check your contract: the calculator does not account for absences.",
   "preavviso.faq.prova.q": "What changes during the trial period?",
   "preavviso.faq.prova.a":
     "During the trial period either party can terminate without notice and without giving reasons (Art. 2096 c.c.). The calculator treats this as a separate case.",
@@ -261,13 +261,13 @@ export const en: Record<MessageKey, string> = {
     "The starting point is your annual gross: {amount}. From this we apply social contributions and taxes.",
   "esempio.step2.title": "2. Social contributions",
   "esempio.step2.body":
-    "Employee INPS contributions (rate {rate}) are deducted: {amount}. Your IRPEF taxable income is {taxable}.",
+    "Employee INPS contributions (rate {rate}) come off the gross: {amount}. Your IRPEF taxable income is {taxable}.",
   "esempio.step3.title": "3. Gross IRPEF",
   "esempio.step3.body":
     "On the taxable income we apply the IRPEF brackets for tax year {year}: {brackets}. Gross IRPEF: {amount}.",
   "esempio.step4.title": "4. IRPEF deductions",
   "esempio.step4.body":
-    "From gross IRPEF we subtract the deductions for your case (employee work, dependents, eligible expenses). Net IRPEF: {amount}.",
+    "From gross IRPEF we subtract the deductions you are entitled to (employee work, dependents, deductible expenses). Net IRPEF: {amount}.",
   "esempio.step5.title": "5. Regional and municipal surcharges",
   "esempio.step5.body":
     "On the taxable income we apply the regional surcharge ({regionalRate}, equal to {regional}) and the municipal surcharge ({municipalRate}, equal to {municipal}).",
@@ -286,19 +286,19 @@ export const en: Record<MessageKey, string> = {
     "Italian personal income tax. Applied to taxable income (gross minus contributions) via progressive brackets. 2026 rates: 23% up to €28,000, 33% from €28,001 to €50,000, 43% above. Reference: TUIR (DPR 917/1986) and D.Lgs. 216/2023.",
   "glossario.inps.term": "INPS contributions",
   "glossario.inps.definition":
-    "Employee social-security contributions paid to the National Social Security Institute. For employees, the ordinary part is 9.19% of gross, plus 1% above the first cap (€55,008 in 2026). They fund the future pension. Source: annual INPS circulars.",
+    "Employee social-security contributions paid to the National Social Security Institute. The ordinary part is 9.19% of gross, plus one percentage point on the share above the first pay band (€56,224 in 2026). They fund the future pension. Source: annual INPS circulars.",
   "glossario.cuneo.term": "Tax wedge",
   "glossario.cuneo.definition":
-    "The gap between employer labor cost and employee net pay. The tax-wedge cut is the reduction of contributions or IRPEF for low-to-medium incomes. For 2026 it is structural, with rules that differ from 2024–2025.",
+    "The gap between employer labor cost and employee net pay. The cut is the reduction of contributions or IRPEF for low-to-medium incomes: since 2025 an extra sum in the payslip up to €20,000 of income and a deduction of up to €1,000 that phases out at €40,000. Reference: L. 207/2024, made permanent by L. 199/2025.",
   "glossario.trattamento.term": "Trattamento integrativo",
   "glossario.trattamento.definition":
-    "Monthly tax credit up to about €1,200 per year for employee income below the legal threshold. It only applies when gross IRPEF exceeds the employee work deduction. Reference: D.L. 3/2020.",
+    "Credit of up to €1,200 a year for employment income up to €28,000. Up to €15,000 you get it in full, then only for the share of deductions that exceeds gross IRPEF. Reference: D.L. 3/2020.",
   "glossario.regionale.term": "Regional surcharge",
   "glossario.regionale.definition":
-    "IRPEF surcharge in favor of the region of residence, applied to taxable income. Rates range from 1.23% to over 3.33%; some regions have an exemption threshold.",
+    "IRPEF surcharge for the region of residence, applied to taxable income. In the calculator's data rates run from 0.70% to 3.63%, and some regions have an exemption threshold.",
   "glossario.comunale.term": "Municipal surcharge",
   "glossario.comunale.definition":
-    "IRPEF surcharge in favor of the municipality of residence. The rate varies from 0% to 0.9% per city, decided annually by municipal resolution.",
+    "IRPEF surcharge for the municipality of residence, set each year by municipal resolution. The calculator keeps no table of the eight thousand Italian municipalities: you enter the rate yourself.",
   "glossario.tfr.term": "TFR (Trattamento di Fine Rapporto)",
   "glossario.tfr.definition":
     "Annual provision set aside by the employer for the employee, equal to about 7.4% of compensation (Art. 2120 c.c.). It is revalued each year at 1.5% fixed plus 75% of FOI inflation. Paid out at the end of the employment relationship.",

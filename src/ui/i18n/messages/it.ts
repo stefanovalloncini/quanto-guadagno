@@ -177,42 +177,42 @@ export const it = {
     "Dal lordo annuo si sottraggono i contributi INPS dipendente (9,19% nella parte ordinaria). Sul reddito imponibile si applicano gli scaglioni IRPEF, si sottraggono le detrazioni spettanti (lavoro dipendente, familiari a carico, spese) e si calcolano le addizionali regionale e comunale. Si aggiungono trattamento integrativo e altri crediti. Il risultato è il netto annuo, da dividere per le mensilità.",
   "employee.faq.brackets.q": "Quali sono gli scaglioni IRPEF in vigore?",
   "employee.faq.brackets.a":
-    "Per il 2026: 23% fino a €28.000, 33% da €28.001 a €50.000, 43% oltre. Per il 2024 e 2025 lo scaglione intermedio era al 35%. Riferimento: D.Lgs. 216/2023 e modifiche successive (Legge di Bilancio 2026).",
+    "Per il 2026: 23% fino a €28.000, 33% da €28.001 a €50.000, 43% oltre. Nel 2024 e nel 2025 lo scaglione intermedio era al 35%. Riferimento: D.Lgs. 216/2023 per il 2024 e il 2025, L. 199/2025 per il 2026.",
   "employee.faq.trattamento.q": "Cos'è il trattamento integrativo?",
   "employee.faq.trattamento.a":
-    "Un credito mensile fino a circa €1.200 annui per i redditi da lavoro dipendente entro la soglia di legge. Si applica solo se l'IRPEF lorda è superiore alle detrazioni da lavoro dipendente. Riferimento: D.L. 3/2020 e modifiche successive.",
+    "Un credito fino a €1.200 all'anno per chi ha un reddito imponibile entro €28.000. Fino a €15.000 spetta per intero. Tra €15.000 e €28.000 spetta solo per la parte di detrazioni che supera l'IRPEF lorda, e comunque non oltre €1.200. Riferimento: D.L. 3/2020.",
   "employee.faq.region.q": "Perché lo stipendio netto cambia con la regione?",
   "employee.faq.region.a":
-    "Ogni regione applica una sua addizionale IRPEF al reddito imponibile, con aliquote che vanno dall'1,23% a oltre il 3,33% per gli scaglioni più alti. Alcune regioni hanno una soglia di esenzione. Le aliquote comunali variano poi da comune a comune fino allo 0,9%.",
+    "Ogni regione applica la sua addizionale IRPEF al reddito imponibile. Nei dati del calcolatore le aliquote vanno dallo 0,70% al 3,63% a seconda della regione e dello scaglione, e alcune regioni hanno una soglia sotto la quale non si paga. L'addizionale comunale la inserisci tu, perché cambia da comune a comune.",
   "employee.faq.cuneo.q": "Cos'è il taglio del cuneo fiscale?",
   "employee.faq.cuneo.a":
-    "Una riduzione strutturale dei contributi INPS o dell'IRPEF per i redditi medio-bassi, riformulata in ogni Legge di Bilancio. Per il 2026 si applica come detrazione/aggiunta a regime, con regole diverse rispetto al biennio 2024–2025.",
+    "Il cuneo fiscale è la distanza tra quanto costa un dipendente all'azienda e quanto gli arriva in busta paga. Il taglio funziona in due modi: una somma aggiuntiva in busta fino a €20.000 di reddito imponibile, e una detrazione IRPEF fino a €1.000 che si azzera tra €32.000 e €40.000. Nel 2026 le regole sono le stesse del 2025; nel 2024 al loro posto c'era un esonero sui contributi INPS. Riferimento: L. 207/2024, resa strutturale dalla L. 199/2025.",
   "employee.faq.estimate.q": "La mia busta paga reale può essere diversa?",
   "employee.faq.estimate.a":
-    "Sì. Il calcolo è una stima basata sulle aliquote standard. Fringe benefits, premio di risultato detassato, indennità contrattuali specifiche, cessione di crediti d'imposta o trattenute aggiuntive possono cambiare il netto effettivo. La busta paga del datore di lavoro resta il riferimento.",
+    "Sì. Il calcolo è una stima basata sulle aliquote standard. Fringe benefit, premio di risultato detassato, indennità previste dal tuo CCNL o trattenute aggiuntive cambiano il netto effettivo. La busta paga del datore di lavoro resta il riferimento.",
   "employee.faq.sources.q": "Da dove vengono i numeri?",
   "employee.faq.sources.a":
-    "Aliquote IRPEF da Agenzia delle Entrate, contributi INPS dalle circolari annuali, addizionali regionali dalle delibere regionali. La pagina /fonti elenca per ciascun componente il riferimento normativo specifico.",
+    "Le aliquote IRPEF vengono dall'Agenzia delle Entrate, i contributi INPS dalle circolari annuali, le addizionali regionali dalle leggi delle regioni. La pagina Fonti elenca il riferimento normativo di ogni componente.",
 
   "forfettario.faq.title": "Domande frequenti",
   "forfettario.faq.what.q": "Cos'è il regime forfettario?",
   "forfettario.faq.what.a":
-    "Un regime fiscale agevolato per partite IVA con ricavi entro €85.000 annui. Si applica un'imposta sostitutiva sul reddito imponibile calcolato come ricavi × coefficiente di redditività per attività. Niente IVA, niente IRPEF ordinaria, niente IRAP. Riferimento: Legge 190/2014 e modifiche.",
+    "Un regime fiscale per partite IVA con ricavi entro €85.000 all'anno. L'imposta sostitutiva si calcola sul reddito imponibile, cioè i ricavi moltiplicati per il coefficiente di redditività della tua attività. Niente IVA, niente IRPEF ordinaria, niente IRAP. Riferimento: Legge 190/2014.",
   "forfettario.faq.rates.q": "Quali sono le aliquote dell'imposta sostitutiva?",
   "forfettario.faq.rates.a":
     "Il 15% sul reddito imponibile è l'aliquota a regime. I primi 5 anni di attività si applica il 5%, se rispetti i requisiti previsti dalla normativa (attività nuova, non prosecuzione di lavoro dipendente).",
   "forfettario.faq.contributi.q": "Come si calcolano i contributi previdenziali?",
   "forfettario.faq.contributi.a":
-    "Dipende dalla cassa: Gestione Separata INPS (~26%) per professionisti senza cassa, Artigiani o Commercianti per attività iscritte alle relative gestioni (con aliquote IVS e contributo minimo annuo), oppure cassa professionale specifica. Il calcolatore mostra l'opzione per ciascuno.",
+    "Dipende dalla cassa. Gestione Separata INPS al 26,07% per i professionisti senza cassa, gestione Artigiani o Commercianti per le attività iscritte a quelle gestioni (aliquota IVS più un contributo minimo annuo), oppure la cassa professionale di categoria. Nel calcolatore scegli quale si applica al tuo caso.",
   "forfettario.faq.combined.q": "Posso applicare il forfettario se ho anche un lavoro dipendente?",
   "forfettario.faq.combined.a":
-    "Sì, ma con un limite: i redditi da lavoro dipendente e assimilati non devono superare €30.000 nell'anno precedente. Sopra questa soglia, decadono i requisiti del forfettario per l'anno successivo.",
+    "Sì, il forfettario si può tenere insieme a un lavoro dipendente, ma la legge pone un tetto al reddito da lavoro dipendente dell'anno precedente e questo calcolatore non lo verifica. Qui calcoli solo imposta sostitutiva e contributi sui ricavi della partita IVA.",
   "forfettario.faq.startup.q": "Cosa cambia nei primi 5 anni di attività?",
   "forfettario.faq.startup.a":
-    "L'imposta sostitutiva scende dal 15% al 5% per i primi 5 anni se rispetti i requisiti (nuova attività, non sei stato lavoratore dipendente nello stesso settore nei 3 anni precedenti, almeno parzialmente). Dopo i 5 anni l'aliquota torna al 15%.",
+    "L'imposta sostitutiva scende dal 15% al 5% per i primi cinque periodi d'imposta, se rispetti i requisiti di legge: non avere esercitato la stessa attività nei tre anni precedenti e non proseguire un'attività già svolta come dipendente. Il calcolatore applica l'aliquota in base ai soli anni di attività che indichi, gli altri requisiti li verifichi tu.",
   "forfettario.faq.exit.q": "Quando si esce dal forfettario?",
   "forfettario.faq.exit.a":
-    "Quando superi €85.000 di ricavi nell'anno (oltre €100.000 con uscita immediata), oppure se vengono meno gli altri requisiti (assunzione di dipendenti oltre soglia, redditi da lavoro dipendente sopra €30.000, ecc.). L'uscita comporta il rientro nel regime ordinario.",
+    "Superati €85.000 di ricavi si esce dall'anno successivo. Oltre €100.000 l'uscita è immediata, nello stesso anno. Si esce anche quando vengono meno gli altri requisiti, per esempio il tetto di €20.000 di spese per dipendenti e collaboratori. Riferimento: Art. 1 c. 71 L. 190/2014.",
 
   "naspi.faq.title": "Domande frequenti",
   "naspi.faq.what.q": "Cos'è la NASpI?",
@@ -226,13 +226,13 @@ export const it = {
     "Si parte dalla retribuzione media degli ultimi 4 anni. Fino a una soglia (€1.456,72 lordi mensili nel 2026) si prende il 75%. Sopra la soglia si aggiunge il 25% della differenza, fino a un massimale (€1.584,70 lordi mensili nel 2026). Fonte: Circolare INPS n. 4/2026.",
   "naspi.faq.decalage.q": "Quando inizia a ridursi (décalage)?",
   "naspi.faq.decalage.a":
-    "Dal 6° mese (8° mese se hai 55 anni o più al momento della domanda) l'indennità si riduce del 3% al mese. Se la NASpI iniziale è €1.200, dopo il 6° mese diventa €1.164, dopo il 7° €1.130 e così via.",
+    "Dal 6° mese (dall'8° se al momento della domanda hai 55 anni o più) l'indennità cala del 3% al mese, e ogni taglio si applica sull'importo già ridotto. Da €1.200 si passa a €1.164 al 6° mese e a €1.129 al 7°.",
   "naspi.faq.tax.q": "La NASpI è tassata?",
   "naspi.faq.tax.a":
-    "Sì, è soggetta a IRPEF come reddito da lavoro dipendente. Il calcolatore mostra anche il netto stimato applicando gli scaglioni IRPEF dell'anno selezionato.",
+    "Sì, è soggetta a IRPEF come un reddito da lavoro dipendente. Il calcolatore stima il netto applicando gli scaglioni IRPEF dell'anno scelto, senza contributi INPS e senza addizionali.",
   "naspi.faq.work.q": "Posso lavorare mentre prendo la NASpI?",
   "naspi.faq.work.a":
-    "Sì, ma con regole specifiche per tipo di lavoro e durata. Per il lavoro autonomo entro €5.500 annui, la NASpI è solo ridotta. Per nuovi contratti dipendenti, la NASpI si sospende oltre certe soglie. Comunicare l'attività a INPS entro 30 giorni è obbligatorio.",
+    "Sì, ma le regole cambiano in base al tipo di contratto e al reddito, e l'attività va comunicata a INPS, che riduce o sospende l'indennità. Questo calcolatore non modella il ricalcolo: verifica il tuo caso con INPS.",
 
   "preavviso.faq.title": "Domande frequenti",
   "preavviso.faq.obbligatorio.q": "Sono obbligato a dare il preavviso?",
@@ -246,10 +246,10 @@ export const it = {
     "Di default sono calendariali: si contano sabato, domenica e festivi. Alcuni CCNL prevedono giorni lavorativi per specifici livelli (il calcolatore segnala questo caso quando è applicabile).",
   "preavviso.faq.ferie.q": "Le ferie residue contano nel preavviso?",
   "preavviso.faq.ferie.a":
-    "No. Le ferie godute durante il preavviso non sospendono il decorso del periodo. Le ferie residue non godute vengono pagate al netto in busta paga finale, non scalate dai giorni di preavviso.",
+    "No. Le ferie godute durante il preavviso non ne sospendono il decorso. Le ferie residue non godute vengono liquidate nella busta paga finale e non accorciano i giorni di preavviso.",
   "preavviso.faq.malattia.q": "Posso dimettermi durante la malattia?",
   "preavviso.faq.malattia.a":
-    "Sì. La malattia non impedisce le dimissioni ma sospende il decorso del preavviso (Cass. civ. sez. lav., orientamento consolidato). Il preavviso riprende a decorrere alla guarigione.",
+    "Sì, la malattia non impedisce di dimettersi. Quasi tutti i CCNL sospendono il decorso del preavviso finché dura la malattia e lo fanno riprendere alla guarigione: controlla il tuo contratto, perché il calcolatore non tiene conto delle assenze.",
   "preavviso.faq.prova.q": "Cosa cambia durante il periodo di prova?",
   "preavviso.faq.prova.a":
     "Durante il periodo di prova entrambe le parti possono recedere senza preavviso e senza dover motivare la decisione (Art. 2096 c.c.). Il calcolatore considera questo come un caso a sé.",
@@ -261,13 +261,13 @@ export const it = {
     "Il punto di partenza è il tuo lordo annuo: {amount}. Su questa cifra si applicano contributi previdenziali e imposte.",
   "esempio.step2.title": "2. Contributi previdenziali",
   "esempio.step2.body":
-    "Dal lordo si trattenono i contributi INPS a tuo carico (aliquota {rate}): {amount}. Il reddito imponibile IRPEF è di {taxable}.",
+    "Dal lordo si trattengono i contributi INPS a tuo carico (aliquota {rate}): {amount}. Il reddito imponibile IRPEF è di {taxable}.",
   "esempio.step3.title": "3. IRPEF lorda",
   "esempio.step3.body":
     "Sul reddito imponibile si applicano gli scaglioni IRPEF per l'anno {year}: {brackets}. IRPEF lorda: {amount}.",
   "esempio.step4.title": "4. Detrazioni IRPEF",
   "esempio.step4.body":
-    "Dalla IRPEF lorda si sottraggono le detrazioni che ti spettano per il tuo caso (lavoro dipendente, familiari a carico, spese deducibili). IRPEF netta: {amount}.",
+    "Dall'IRPEF lorda si sottraggono le detrazioni che ti spettano (lavoro dipendente, familiari a carico, spese detraibili). IRPEF netta: {amount}.",
   "esempio.step5.title": "5. Addizionali regionale e comunale",
   "esempio.step5.body":
     "Sul reddito imponibile si applicano l'addizionale regionale ({regionalRate}, pari a {regional}) e l'addizionale comunale ({municipalRate}, pari a {municipal}).",
@@ -286,19 +286,19 @@ export const it = {
     "Imposta sul Reddito delle Persone Fisiche. Si applica per scaglioni progressivi al reddito imponibile (lordo meno contributi). Aliquote 2026: 23% fino a €28.000, 33% da €28.001 a €50.000, 43% oltre. Riferimento: TUIR (DPR 917/1986) e D.Lgs. 216/2023.",
   "glossario.inps.term": "Contributi INPS",
   "glossario.inps.definition":
-    "Contributi previdenziali a carico del lavoratore versati all'Istituto Nazionale Previdenza Sociale. Per il lavoratore dipendente la parte ordinaria è il 9,19% del lordo, con un +1% sopra il primo massimale (€55.008 nel 2026). Finanziano la pensione futura. Fonte: circolari INPS annuali.",
+    "Contributi previdenziali a carico del lavoratore, versati all'Istituto Nazionale Previdenza Sociale. Per il dipendente la parte ordinaria è il 9,19% del lordo, con un punto percentuale in più sulla quota che supera la prima fascia di retribuzione (€56.224 nel 2026). Finanziano la pensione futura. Fonte: circolari INPS annuali.",
   "glossario.cuneo.term": "Cuneo fiscale",
   "glossario.cuneo.definition":
-    "Differenza tra il costo del lavoro per il datore e il netto in busta paga del lavoratore. Il taglio del cuneo è la riduzione di contributi o IRPEF per i redditi medio-bassi. Per il 2026 si applica strutturalmente, con regole diverse rispetto al 2024–2025.",
+    "Differenza tra il costo del lavoro per il datore e il netto in busta paga del lavoratore. Il taglio del cuneo è la riduzione di contributi o IRPEF per i redditi medio-bassi: dal 2025 una somma aggiuntiva in busta fino a €20.000 di reddito e una detrazione fino a €1.000 che si azzera a €40.000. Riferimento: L. 207/2024, resa strutturale dalla L. 199/2025.",
   "glossario.trattamento.term": "Trattamento integrativo",
   "glossario.trattamento.definition":
-    "Credito mensile fino a circa €1.200 annui per i redditi da lavoro dipendente sotto soglia. Si applica solo se l'IRPEF lorda supera la detrazione da lavoro dipendente. Riferimento: D.L. 3/2020.",
+    "Credito fino a €1.200 all'anno per i redditi da lavoro dipendente entro €28.000. Fino a €15.000 spetta per intero, poi solo per la parte di detrazioni che supera l'IRPEF lorda. Riferimento: D.L. 3/2020.",
   "glossario.regionale.term": "Addizionale regionale",
   "glossario.regionale.definition":
-    "Addizionale IRPEF a favore della regione di residenza, applicata al reddito imponibile. Le aliquote variano da 1,23% a oltre 3,33%; alcune regioni hanno una soglia di esenzione.",
+    "Addizionale IRPEF a favore della regione di residenza, applicata al reddito imponibile. Nei dati del calcolatore le aliquote vanno dallo 0,70% al 3,63%, e alcune regioni hanno una soglia di esenzione.",
   "glossario.comunale.term": "Addizionale comunale",
   "glossario.comunale.definition":
-    "Addizionale IRPEF a favore del comune di residenza. L'aliquota varia da 0% a 0,9% per comune, decisa annualmente con delibera comunale.",
+    "Addizionale IRPEF a favore del comune di residenza, decisa ogni anno con delibera comunale. Il calcolatore non tiene una tabella degli ottomila comuni: l'aliquota la inserisci tu.",
   "glossario.tfr.term": "TFR (Trattamento di Fine Rapporto)",
   "glossario.tfr.definition":
     "Quota annua accantonata dal datore di lavoro per il lavoratore dipendente, pari a circa il 7,4% della retribuzione (Art. 2120 c.c.). Si rivaluta ogni anno al tasso fisso 1,5% più il 75% dell'inflazione FOI. Viene erogata al termine del rapporto di lavoro.",
