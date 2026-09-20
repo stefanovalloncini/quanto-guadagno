@@ -1,6 +1,8 @@
 import { SUPPORTED_YEARS, type RegionCode, type SupportedYear } from "@/domain/data";
 import type { CompanySize, ContractType, InpsRateOverride, PaymentFrequency } from "@/domain/calc";
 
+export type SalaryMode = "gross" | "net";
+
 export interface UrlState {
   readonly grossAnnual: number;
   readonly taxYear: SupportedYear;
@@ -11,7 +13,11 @@ export interface UrlState {
   readonly companySize: CompanySize;
   readonly isPublicEmployee: boolean;
   readonly inpsOverride: InpsRateOverride | null;
+  readonly salaryMode: SalaryMode;
+  readonly targetNetMonthly: number;
 }
+
+export const MAX_TARGET_NET_MONTHLY = 100_000;
 
 // Short param keys. Aliases let old links (?lordo= from apprenticeship, etc.)
 // keep working forever, while new shares write only the short form.
@@ -26,6 +32,8 @@ const KEY_ALIASES: Record<string, ReadonlyArray<string>> = {
   p: ["pubblico"],
   e: ["inpsEmp"],
   d: ["inpsDat"],
+  s: ["partenza"],
+  n: ["netto"],
 };
 
 // Read a single value by preferred short key, falling back to known long aliases.
@@ -139,6 +147,13 @@ export function parseUrlState(params: URLSearchParams): Partial<UrlState> {
     out.inpsOverride = { employeeRate: e, employerRate: d };
   }
 
+  const s = readParam(params, "s");
+  if (s === "n") out.salaryMode = "net";
+  else if (s === "l") out.salaryMode = "gross";
+
+  const n = parseInt0(readParam(params, "n"));
+  if (n !== null && n > 0 && n <= MAX_TARGET_NET_MONTHLY) out.targetNetMonthly = n;
+
   return out;
 }
 
@@ -186,6 +201,12 @@ export function writeUrlState(
   if (state.inpsOverride !== null) {
     next.set("e", String(roundTo(state.inpsOverride.employeeRate * 100, 2)));
     next.set("d", String(roundTo(state.inpsOverride.employerRate * 100, 2)));
+  }
+  if (state.salaryMode !== defaults.salaryMode) {
+    next.set("s", state.salaryMode === "net" ? "n" : "l");
+  }
+  if (state.targetNetMonthly !== defaults.targetNetMonthly) {
+    next.set("n", String(Math.round(state.targetNetMonthly)));
   }
 
   return next;

@@ -14,9 +14,9 @@ export function YearComparison({ calc }: YearComparisonProps) {
     () =>
       SUPPORTED_YEARS.map((year) => ({
         year,
-        breakdown: calculateSalaryBreakdown({ ...calc.state, taxYear: year }),
+        breakdown: calculateSalaryBreakdown({ ...calc.input, taxYear: year }),
       })),
-    [calc.state],
+    [calc.input],
   );
 
   const current = breakdowns.find((b) => b.year === calc.state.taxYear);

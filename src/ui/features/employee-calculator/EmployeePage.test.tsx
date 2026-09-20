@@ -164,6 +164,46 @@ describe("EmployeePage", () => {
     expect(dependentsDetails).toHaveAttribute("open");
   });
 
+  it("offers the two starting points as a pressed pair", () => {
+    renderWithIntl(<EmployeePage />);
+    const gross = screen.getByRole("button", { name: "Parto dal lordo" });
+    const net = screen.getByRole("button", { name: "Parto dal netto" });
+    expect(gross).toHaveAttribute("aria-pressed", "true");
+    expect(net).toHaveAttribute("aria-pressed", "false");
+  });
+
+  it("asks for the wanted net and reports the gross it needs", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<EmployeePage />);
+
+    await user.click(screen.getByRole("button", { name: "Parto dal netto" }));
+
+    expect(screen.getByRole("button", { name: "Parto dal netto" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByLabelText(/Netto al mese che vuoi/)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/Stipendio lordo annuo/)).toBeNull();
+    expect(screen.getByText(/Lordo annuo necessario/)).toBeInTheDocument();
+  });
+
+  it("solves a new gross when the wanted net changes", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<EmployeePage />);
+
+    await user.click(screen.getByRole("button", { name: "Parto dal netto" }));
+    const field = screen.getByLabelText(/Netto al mese che vuoi/);
+    const firstRow = document.querySelector(".qg-ledger__amount") as HTMLElement;
+    const before = firstRow.textContent;
+
+    await user.clear(field);
+    await user.type(field, "2500");
+
+    expect((document.querySelector(".qg-ledger__amount") as HTMLElement).textContent).not.toBe(
+      before,
+    );
+  });
+
   it("clicking an open section summary collapses it again", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployeePage />);

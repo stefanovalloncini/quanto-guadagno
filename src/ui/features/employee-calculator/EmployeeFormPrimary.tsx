@@ -18,11 +18,7 @@ export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
 
   return (
     <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
-      <SalaryInput
-        value={state.grossAnnual}
-        onChange={(grossAnnual) => update({ grossAnnual })}
-        grossMonthly={calc.result.grossMonthly}
-      />
+      <SalaryInput calc={calc} />
 
       <div className="qg-calc__form-row">
         <YearSelector
@@ -41,7 +37,7 @@ export function EmployeeFormPrimary({ calc }: EmployeeFormPrimaryProps) {
       <ContractTypeSelect
         value={state.contractType}
         onChange={(contractType) => update({ contractType })}
-        grossAnnual={state.grossAnnual}
+        grossAnnual={calc.input.grossAnnual}
       />
 
       <RegionSelector value={state.regionCode} onChange={(regionCode) => update({ regionCode })} />

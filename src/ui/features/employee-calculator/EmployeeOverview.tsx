@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { NetSalarySummary } from "./components/NetSalarySummary.tsx";
 import { YearComparison } from "./components/YearComparison.tsx";
 import { ResultsBreakdown } from "./components/ResultsBreakdown.tsx";
+import { Money } from "@/ui/design-system/primitives";
 import { ShareButton } from "@/ui/shared/ShareButton.tsx";
 import type { EmployeeCalculator } from "./useEmployeeCalculator.ts";
 
@@ -19,6 +20,14 @@ export function EmployeeOverview({ calc }: EmployeeOverviewProps) {
     <div className="qg-cedolino">
       <NetSalarySummary breakdown={calc.result} paymentFrequency={calc.state.paymentFrequency} />
       <ResultsBreakdown breakdown={calc.result} />
+      {calc.state.salaryMode === "net" && (
+        <p className="qg-note">
+          <FormattedMessage
+            id="employee.summary.requiredGross"
+            values={{ amount: <Money amount={calc.result.grossAnnual} whole /> }}
+          />
+        </p>
+      )}
       <p className="qg-cedolino__disclaimer">
         <FormattedMessage id="employee.disclaimer" />
       </p>

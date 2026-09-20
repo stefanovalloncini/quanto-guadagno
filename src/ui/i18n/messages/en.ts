@@ -924,4 +924,11 @@ export const en: Record<MessageKey, string> = {
   "employee.employer.total": "Total company cost",
   "employee.employer.disclaimer":
     "Does not include non-contractual costs (training, equipment, benefits, etc.)",
+
+  "employee.mode.label": "Starting point",
+  "employee.mode.gross": "Start from the gross",
+  "employee.mode.net": "Start from the net",
+  "employee.form.targetNet": "Monthly net you want",
+  "employee.form.targetNet.hint": "Annual net {amount} over {frequency} pay periods",
+  "employee.summary.requiredGross": "Gross annual needed: {amount}",
 };

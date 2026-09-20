@@ -937,6 +937,13 @@ export const it = {
   "employee.employer.total": "Costo totale azienda",
   "employee.employer.disclaimer":
     "Non include costi non contrattuali (formazione, attrezzatura, benefit, ecc.)",
+
+  "employee.mode.label": "Punto di partenza",
+  "employee.mode.gross": "Parto dal lordo",
+  "employee.mode.net": "Parto dal netto",
+  "employee.form.targetNet": "Netto al mese che vuoi",
+  "employee.form.targetNet.hint": "Netto annuo {amount} su {frequency} mensilità",
+  "employee.summary.requiredGross": "Lordo annuo necessario: {amount}",
 } as const;
 
 export type MessageKey = keyof typeof it;

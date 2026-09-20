@@ -1,6 +1,11 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { calculateSalaryBreakdown, type SalaryBreakdown } from "@/domain/calc";
+import {
+  calculateInverseSalary,
+  calculateSalaryBreakdown,
+  type SalaryBreakdown,
+  type SalaryInput,
+} from "@/domain/calc";
 import type {
   ContractType,
   PaymentFrequency,
@@ -14,7 +19,9 @@ import type {
 } from "@/domain/calc";
 import { LATEST_SUPPORTED_YEAR, type SupportedYear, type RegionCode } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
-import { parseUrlState, writeUrlState } from "./urlState.ts";
+import { parseUrlState, writeUrlState, type SalaryMode } from "./urlState.ts";
+
+export type { SalaryMode };
 
 export interface FormState {
   readonly grossAnnual: number;
@@ -31,6 +38,8 @@ export interface FormState {
   readonly fringeBenefits: FringeBenefitsInput | null;
   readonly specialConditions: SpecialConditionsInput | null;
   readonly premioRisultato: PremioRisultatoInput | null;
+  readonly salaryMode: SalaryMode;
+  readonly targetNetMonthly: number;
 }
 
 export const DEFAULTS: FormState = {
@@ -48,12 +57,30 @@ export const DEFAULTS: FormState = {
   fringeBenefits: null,
   specialConditions: null,
   premioRisultato: null,
+  salaryMode: "gross",
+  targetNetMonthly: 1_800,
 };
 
 export interface EmployeeCalculator {
   readonly state: FormState;
   readonly update: (patch: Partial<FormState>) => void;
+  readonly setSalaryMode: (mode: SalaryMode) => void;
+  /** What the engine was actually fed: in "net" mode the gross is solved, not typed. */
+  readonly input: SalaryInput;
   readonly result: SalaryBreakdown;
+}
+
+function resolveInput(state: FormState): SalaryInput {
+  const { salaryMode, targetNetMonthly, grossAnnual, ...rest } = state;
+  if (salaryMode === "gross") return { ...rest, grossAnnual };
+
+  const solved = calculateInverseSalary({
+    targetNetAnnual: targetNetMonthly * state.paymentFrequency,
+    other: rest,
+  });
+  // Round before the breakdown runs, so the ledger, the note and the share
+  // link all quote the same gross.
+  return { ...rest, grossAnnual: Math.round(solved.grossAnnual) };
 }
 
 export function useEmployeeCalculator(): EmployeeCalculator {
@@ -63,13 +90,16 @@ export function useEmployeeCalculator(): EmployeeCalculator {
     ...parseUrlState(params),
   }));
 
+  const input = useMemo(() => resolveInput(state), [state]);
+  const result = useMemo(() => calculateSalaryBreakdown(input), [input]);
+
   useEffect(() => {
     setParams(
       (current) =>
         writeUrlState(
           current,
           {
-            grossAnnual: state.grossAnnual,
+            grossAnnual: input.grossAnnual,
             taxYear: state.taxYear,
             regionCode: state.regionCode,
             municipalTaxRate: state.municipalTaxRate,
@@ -78,13 +108,15 @@ export function useEmployeeCalculator(): EmployeeCalculator {
             companySize: state.companySize,
             isPublicEmployee: state.isPublicEmployee,
             inpsOverride: state.inpsOverride,
+            salaryMode: state.salaryMode,
+            targetNetMonthly: state.targetNetMonthly,
           },
           DEFAULTS,
         ),
       { replace: true },
     );
   }, [
-    state.grossAnnual,
+    input.grossAnnual,
     state.taxYear,
     state.regionCode,
     state.municipalTaxRate,
@@ -93,10 +125,22 @@ export function useEmployeeCalculator(): EmployeeCalculator {
     state.companySize,
     state.isPublicEmployee,
     state.inpsOverride,
+    state.salaryMode,
+    state.targetNetMonthly,
     setParams,
   ]);
 
-  const result = useMemo(() => calculateSalaryBreakdown(state), [state]);
+  const setSalaryMode = useCallback(
+    (mode: SalaryMode) => {
+      if (mode === state.salaryMode) return;
+      if (mode === "net") {
+        update({ salaryMode: "net", targetNetMonthly: Math.round(result.netMonthly) });
+        return;
+      }
+      update({ salaryMode: "gross", grossAnnual: input.grossAnnual });
+    },
+    [state.salaryMode, result.netMonthly, input.grossAnnual, update],
+  );
 
-  return { state, update, result };
+  return { state, update, setSalaryMode, input, result };
 }

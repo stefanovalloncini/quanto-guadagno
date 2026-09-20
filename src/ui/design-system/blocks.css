@@ -1,0 +1,7 @@
+/* Blocks added after the identity pass. Same vocabulary, no new colours. */
+
+.qg-salary-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}

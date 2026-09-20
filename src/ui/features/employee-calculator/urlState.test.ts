@@ -11,6 +11,8 @@ const DEFAULTS: UrlState = {
   companySize: "small",
   isPublicEmployee: false,
   inpsOverride: null,
+  salaryMode: "gross",
+  targetNetMonthly: 1_800,
 };
 
 describe("writeUrlState — compact output", () => {
@@ -136,5 +138,51 @@ describe("parseUrlState", () => {
 
   it("returns an empty object when no params match", () => {
     expect(parseUrlState(new URLSearchParams("foo=bar"))).toEqual({});
+  });
+});
+
+describe("salary mode", () => {
+  it("writes nothing extra while the gross is the starting point", () => {
+    const p = writeUrlState(new URLSearchParams(), DEFAULTS, DEFAULTS);
+    expect(p.has("s")).toBe(false);
+    expect(p.has("n")).toBe(false);
+  });
+
+  it("writes the mode and the target when starting from the net", () => {
+    const p = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, salaryMode: "net", targetNetMonthly: 2_000 },
+      DEFAULTS,
+    );
+    expect(p.get("s")).toBe("n");
+    expect(p.get("n")).toBe("2000");
+  });
+
+  it("round-trips the mode and the target", () => {
+    const p = writeUrlState(
+      new URLSearchParams(),
+      { ...DEFAULTS, salaryMode: "net", targetNetMonthly: 2_150 },
+      DEFAULTS,
+    );
+    const parsed = parseUrlState(p);
+    expect(parsed.salaryMode).toBe("net");
+    expect(parsed.targetNetMonthly).toBe(2_150);
+  });
+
+  it("keeps the target out of the URL when it matches the default", () => {
+    const p = writeUrlState(new URLSearchParams(), { ...DEFAULTS, salaryMode: "net" }, DEFAULTS);
+    expect(p.get("s")).toBe("n");
+    expect(p.has("n")).toBe(false);
+    expect(parseUrlState(p).targetNetMonthly).toBeUndefined();
+  });
+
+  it("ignores an unknown mode", () => {
+    expect(parseUrlState(new URLSearchParams("s=x")).salaryMode).toBeUndefined();
+  });
+
+  it("rejects a target net outside the plausible range", () => {
+    expect(parseUrlState(new URLSearchParams("n=0")).targetNetMonthly).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("n=-500")).targetNetMonthly).toBeUndefined();
+    expect(parseUrlState(new URLSearchParams("n=999999")).targetNetMonthly).toBeUndefined();
   });
 });
