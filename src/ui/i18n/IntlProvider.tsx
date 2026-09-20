@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { IntlProvider as ReactIntlProvider } from "react-intl";
-import { it } from "./messages/it.ts";
-import { en } from "./messages/en.ts";
+import { it, type MessageKey } from "./messages/it.ts";
 import { LocaleContext, type Locale } from "./locale.ts";
 
-const catalogs = { it, en } as const;
+type Catalog = Record<MessageKey, string>;
 
 const STORAGE_KEY = "qg.locale";
 
@@ -25,6 +24,7 @@ function detectInitial(): Locale {
 
 export function IntlProvider({ children }: { readonly children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(detectInitial);
+  const [english, setEnglish] = useState<Catalog | null>(null);
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
@@ -47,13 +47,29 @@ export function IntlProvider({ children }: { readonly children: ReactNode }) {
     });
   }, []);
 
+  // The English catalog is its own chunk: Italian is the default and must not
+  // wait on it. Until the import resolves, Italian stays on screen.
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+    if (locale !== "en" || english !== null) return;
+    let active = true;
+    void import("./messages/en.ts").then(({ en }) => {
+      if (active) setEnglish(en);
+    });
+    return () => {
+      active = false;
+    };
+  }, [locale, english]);
+
+  const messages = locale === "en" ? english : null;
+  const active: Locale = messages === null ? "it" : "en";
+
+  useEffect(() => {
+    document.documentElement.lang = active;
+  }, [active]);
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale, toggle }}>
-      <ReactIntlProvider locale={locale} defaultLocale="it" messages={catalogs[locale]}>
+      <ReactIntlProvider locale={active} defaultLocale="it" messages={messages ?? it}>
         {children}
       </ReactIntlProvider>
     </LocaleContext.Provider>
