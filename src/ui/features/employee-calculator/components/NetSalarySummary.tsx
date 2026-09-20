@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { MetricBlock, Money, Stack } from "@/ui/design-system/primitives";
+import { Money } from "@/ui/design-system/primitives";
 import { formatPercentage } from "@/domain/format.ts";
 import type { PaymentFrequency, SalaryBreakdown } from "@/domain/calc";
 
@@ -9,63 +9,42 @@ interface NetSalarySummaryProps {
 }
 
 export function NetSalarySummary({ breakdown, paymentFrequency }: NetSalarySummaryProps) {
-  const delta = breakdown.netAnnual - breakdown.grossAnnual;
-
   return (
-    <div className="qg-summary">
-      <Stack gap="md">
-        <MetricBlock
-          label={<FormattedMessage id="employee.summary.monthlyNet" />}
-          amount={breakdown.netMonthly}
-          announce
-        />
-        <MetricBlock
-          label={<FormattedMessage id="employee.summary.annualNet" />}
-          amount={breakdown.netAnnual}
-          sublabel={
-            <FormattedMessage
-              id="employee.summary.annualNet.sub"
-              values={{ frequency: paymentFrequency }}
-            />
-          }
-          whole
-        />
-      </Stack>
-
-      <div className="qg-summary__meta">
-        <span className="qg-summary__delta">
-          <FormattedMessage id="employee.summary.delta" />{" "}
-          <Money amount={delta} whole className="qg-summary__delta-amount" />
+    <>
+      <div className="qg-cedolino__head">
+        <span className="qg-cedolino__label">
+          <FormattedMessage id="employee.summary.monthlyNet" />
         </span>
-        <span className="qg-summary__rate">
-          <FormattedMessage id="employee.summary.effectiveRate" />{" "}
-          <span className="qg-summary__rate-value">
-            {formatPercentage(breakdown.effectiveTaxRate)}
-          </span>
-        </span>
-        <span className="qg-summary__rate">
-          <FormattedMessage id="employee.summary.marginalRate" />{" "}
-          <span className="qg-summary__rate-value">
-            {formatPercentage(breakdown.marginalTaxRate)}
-          </span>
-        </span>
-      </div>
-
-      <div className="qg-summary__gross">
-        <span className="qg-summary__gross-label">
-          <FormattedMessage id="employee.summary.gross" />
-        </span>
-        <Money amount={breakdown.grossAnnual} whole />
-      </div>
-
-      {breakdown.pdrNet > 0 && (
-        <div className="qg-summary__pdr">
-          <span className="qg-summary__pdr-label">
-            <FormattedMessage id="employee.summary.pdr" />
-          </span>
-          <Money amount={breakdown.pdrNet} whole />
+        {/* The live region stays mounted; the key inside it re-runs the settle. */}
+        <div className="qg-cedolino__amount" aria-live="polite">
+          <strong className="qg-cifra" key={breakdown.netMonthly}>
+            <Money amount={breakdown.netMonthly} />
+          </strong>
         </div>
+      </div>
+      <p className="qg-cedolino__annual">
+        <FormattedMessage
+          id="employee.summary.annualLine"
+          values={{
+            amount: <Money amount={breakdown.netAnnual} whole />,
+            frequency: paymentFrequency,
+          }}
+        />
+      </p>
+      <p className="qg-cedolino__rates">
+        <FormattedMessage
+          id="employee.summary.rates"
+          values={{
+            effective: formatPercentage(breakdown.effectiveTaxRate),
+            marginal: formatPercentage(breakdown.marginalTaxRate),
+          }}
+        />
+      </p>
+      {breakdown.pdrNet > 0 && (
+        <p className="qg-cedolino__rates">
+          <FormattedMessage id="employee.summary.pdr" /> <Money amount={breakdown.pdrNet} whole />
+        </p>
       )}
-    </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { CCNL_PRESETS, CCNL_PRESET_IDS, type CcnlId } from "@/domain/data";
 import type { EmployeeCalculator } from "../useEmployeeCalculator.ts";
@@ -14,9 +15,11 @@ const labelKey: Record<CcnlId, string> = {
 };
 
 export function CcnlPreset({ calc }: CcnlPresetProps) {
+  const [applied, setApplied] = useState<CcnlId | null>(null);
+
   const apply = (ccnl: CcnlId) => {
-    const preset = CCNL_PRESETS[ccnl];
-    calc.update({ paymentFrequency: preset.paymentFrequency });
+    setApplied(ccnl);
+    calc.update({ paymentFrequency: CCNL_PRESETS[ccnl].paymentFrequency });
   };
 
   return (
@@ -27,22 +30,17 @@ export function CcnlPreset({ calc }: CcnlPresetProps) {
       <div className="qg-ccnl-preset__buttons" role="group" aria-label="CCNL">
         {CCNL_PRESET_IDS.map((id) => {
           const preset = CCNL_PRESETS[id];
+          const isApplied =
+            applied === id && preset.paymentFrequency === calc.state.paymentFrequency;
           return (
             <button
               key={id}
               type="button"
               className="qg-ccnl-preset__chip"
+              aria-pressed={isApplied}
               onClick={() => apply(id)}
             >
-              <span className="qg-ccnl-preset__chip-label">
-                <FormattedMessage id={labelKey[id]} />
-              </span>
-              <span className="qg-ccnl-preset__chip-mensilita">
-                <FormattedMessage
-                  id="employee.ccnlPreset.mensilitaFmt"
-                  values={{ n: preset.paymentFrequency }}
-                />
-              </span>
+              <FormattedMessage id={labelKey[id]} />
             </button>
           );
         })}

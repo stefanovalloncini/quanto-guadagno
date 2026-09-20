@@ -133,9 +133,8 @@ export const en: Record<MessageKey, string> = {
   "home.available.about.title": "About",
   "home.available.about.body": "What this site does and where its limits are.",
 
-  "employee.title": "Net salary from gross",
-  "employee.lede":
-    "Tax years 2024–2026. Regional and municipal rates are editable. The numbers are an estimate, not a substitute for the actual payslip.",
+  "employee.title": "Net salary",
+  "employee.disclaimer": "These are estimates; your payslip is the real reference.",
 
   "employee.form.salary": "Annual gross salary",
   "employee.form.salary.monthly": "Monthly gross: {amount}",
@@ -243,7 +242,7 @@ export const en: Record<MessageKey, string> = {
   "preavviso.faq.prova.q": "What changes during the trial period?",
   "preavviso.faq.prova.a":
     "During the trial period either party can terminate without notice and without giving reasons (Art. 2096 c.c.). The calculator treats this as a separate case.",
-  "esempio.title": "See how we get to the net",
+  "esempio.title": "How the net is reached",
   "esempio.intro":
     "The calculation follows six steps. Each uses the exact numbers from your case and shows how gross becomes net.",
   "esempio.step1.title": "1. Annual gross",
@@ -680,10 +679,10 @@ export const en: Record<MessageKey, string> = {
   "moneyJourney.node.inpsDip": "Employee INPS",
   "moneyJourney.node.tasse": "IRPEF and surcharges",
 
-  "share.button.idle": "Copy link to this calculation",
+  "share.button.idle": "Copy the link",
   "share.button.copied": "Link copied",
   "share.button.failed": "Copy failed",
-  "share.button.print": "Print payslip",
+  "share.button.print": "Print",
 
   "print.title": "Payslip",
   "print.subtitle": "Net salary calculation for tax year {year}",
@@ -889,26 +888,20 @@ export const en: Record<MessageKey, string> = {
   "employee.specialConditions.madreLavoratrice.eligible":
     "You are entitled to the 100% contribution exemption (max €3,000/year)",
 
-  "employee.summary.monthlyNet": "Net monthly",
+  "employee.summary.monthlyNet": "Net per month",
   "employee.breakdown.netAnnual": "Net annual",
-  "employee.summary.annualNet": "Net annual",
-  "employee.summary.annualNet.sub": "over {frequency} instalments",
-  "employee.summary.delta": "Gross-to-net difference:",
-  "employee.summary.effectiveRate": "Effective tax rate:",
-  "employee.summary.marginalRate": "Marginal tax rate:",
-  "employee.summary.gross": "Gross annual",
+  "employee.summary.annualLine": "Net annual {amount} over {frequency} instalments",
+  "employee.summary.rates": "Effective rate {effective}, marginal {marginal}",
 
-  "employee.yearCompare.title": "Same gross, different years",
-  "employee.yearCompare.perMonth": "month",
-  "employee.yearCompare.perYear": "year",
-  "employee.yearCompare.currentBadge": "selected year",
+  "employee.yearCompare.title": "Same gross, other years",
+  "employee.yearCompare.delta": "{delta} per year",
+  "employee.yearCompare.currentBadge": "chosen year",
 
-  "employee.ccnlPreset.title": "CCNL preset:",
+  "employee.ccnlPreset.title": "CCNL:",
   "employee.ccnlPreset.commercio": "Retail",
   "employee.ccnlPreset.metalmeccanici": "Metalworkers",
   "employee.ccnlPreset.logistica": "Logistics",
   "employee.ccnlPreset.cooperativeSociali": "Social co-ops",
-  "employee.ccnlPreset.mensilitaFmt": "{n} instalments",
 
   "employee.irpefBracket.title": "IRPEF bracket",
   "employee.irpefBracket.range": "{min} – {max}",
@@ -944,7 +937,7 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.pdrNet": "Bonus net",
   "employee.breakdown.netMonthly": "Net monthly:",
 
-  "employee.employer.section": "Employer side",
+  "employee.employer.section": "What the employer pays",
   "employee.employer.insight": "Every net euro you receive costs the company {ratio}.",
   "employee.employer.inps": "Employer INPS contributions",
   "employee.employer.tfr": "TFR accrual",

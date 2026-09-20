@@ -42,7 +42,6 @@ export function ContractTypeSelect({ value, onChange, grossAnnual }: ContractTyp
         <p className="qg-field__hint">
           <Link to={buildProgressionHref(grossAnnual)} className="qg-btn--link">
             <FormattedMessage id="employee.form.contractType.apprenticeshipLink" />
-            {" →"}
           </Link>
         </p>
       )}

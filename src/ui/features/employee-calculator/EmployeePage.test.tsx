@@ -26,10 +26,23 @@ describe("EmployeePage", () => {
     expect(live).toBeTruthy();
   });
 
-  it("shows both effective and marginal tax rates in the summary", () => {
+  it("shows the effective and marginal rates on one quiet line", () => {
     renderWithIntl(<EmployeePage />);
-    expect(screen.getByText(/Aliquota effettiva/)).toBeInTheDocument();
-    expect(screen.getByText(/Aliquota marginale/)).toBeInTheDocument();
+    const rates = document.querySelector(".qg-cedolino__rates") as HTMLElement;
+    expect(rates.textContent).toMatch(/Aliquota effettiva/);
+    expect(rates.textContent).toMatch(/marginale/);
+  });
+
+  it("sets the monthly net as the one large figure", () => {
+    renderWithIntl(<EmployeePage />);
+    const figure = document.querySelector(".qg-cifra") as HTMLElement;
+    expect(figure).toBeTruthy();
+    expect(figure.textContent).toMatch(/€/);
+  });
+
+  it("puts the estimate disclaimer under the ledger", () => {
+    renderWithIntl(<EmployeePage />);
+    expect(screen.getByText(/la busta paga resta il riferimento/)).toBeInTheDocument();
   });
 
   it("shows TFR maturando in the employee's results breakdown", () => {
@@ -37,15 +50,16 @@ describe("EmployeePage", () => {
     expect(screen.getByText(/TFR maturando/)).toBeInTheDocument();
   });
 
-  it("renders a year-over-year comparison panel listing all supported years", () => {
+  it("compares the same gross across the supported years", () => {
     renderWithIntl(<EmployeePage />);
-    expect(screen.getByText(/Stesso lordo, anni diversi/)).toBeInTheDocument();
+    expect(screen.getByText(/Stesso lordo, altri anni/)).toBeInTheDocument();
     const panel = document.querySelector(".qg-year-compare") as HTMLElement;
     expect(panel).toBeTruthy();
     expect(panel.textContent).toMatch(/2024/);
     expect(panel.textContent).toMatch(/2025/);
     expect(panel.textContent).toMatch(/2026/);
-    expect(panel.querySelectorAll(".qg-year-compare__row")).toHaveLength(3);
+    expect(panel.querySelectorAll("tbody tr")).toHaveLength(3);
+    expect(panel.querySelector(".qg-ledger__row--strong")).toBeTruthy();
   });
 
   it("CCNL preset 'Cooperative Sociali' sets payment frequency to 13", async () => {

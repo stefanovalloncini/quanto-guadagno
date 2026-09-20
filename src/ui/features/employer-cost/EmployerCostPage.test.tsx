@@ -13,7 +13,7 @@ describe("EmployerCostPage", () => {
 
   it("shows the employer cost breakdown and total", () => {
     renderWithIntl(<EmployerCostPage />);
-    expect(screen.getByText("Lato datore di lavoro")).toBeTruthy();
+    expect(screen.getByText("Costo per l'azienda")).toBeTruthy();
     expect(screen.getByRole("rowheader", { name: /Contributi INPS/ })).toBeTruthy();
     expect(screen.getByRole("rowheader", { name: "Costo totale azienda" })).toBeTruthy();
   });

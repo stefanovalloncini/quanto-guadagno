@@ -133,9 +133,8 @@ export const it = {
   "home.available.about.title": "Informazioni",
   "home.available.about.body": "Che cosa fa questo sito e quali sono i suoi limiti.",
 
-  "employee.title": "Stipendio netto da lordo",
-  "employee.lede":
-    "Anno fiscale 2024–2026. Le aliquote regionale e comunale sono modificabili. I numeri sono una stima, non sostituiscono la busta paga reale.",
+  "employee.title": "Stipendio netto",
+  "employee.disclaimer": "I numeri sono una stima, la busta paga resta il riferimento.",
 
   "employee.form.salary": "Stipendio lordo annuo",
   "employee.form.salary.monthly": "Lordo mensile: {amount}",
@@ -244,7 +243,7 @@ export const it = {
   "preavviso.faq.prova.q": "Cosa cambia durante il periodo di prova?",
   "preavviso.faq.prova.a":
     "Durante il periodo di prova entrambe le parti possono recedere senza preavviso e senza dover motivare la decisione (Art. 2096 c.c.). Il calcolatore considera questo come un caso a sé.",
-  "esempio.title": "Vedi come si arriva al netto",
+  "esempio.title": "Come si arriva al netto",
   "esempio.intro":
     "Il calcolo segue sei passaggi. Ognuno usa i numeri esatti del tuo caso e mostra come si passa dal lordo al netto.",
   "esempio.step1.title": "1. Lordo annuo",
@@ -691,10 +690,10 @@ export const it = {
   "moneyJourney.node.inpsDip": "INPS dipendente",
   "moneyJourney.node.tasse": "IRPEF e addizionali",
 
-  "share.button.idle": "Copia link al calcolo",
+  "share.button.idle": "Copia il link",
   "share.button.copied": "Link copiato",
   "share.button.failed": "Copia non riuscita",
-  "share.button.print": "Stampa busta paga",
+  "share.button.print": "Stampa",
 
   "print.title": "Busta paga",
   "print.subtitle": "Calcolo netto per l'anno fiscale {year}",
@@ -902,26 +901,20 @@ export const it = {
   "employee.specialConditions.madreLavoratrice.eligible":
     "Hai diritto all'esonero contributivo al 100% (max 3.000 €/anno)",
 
-  "employee.summary.monthlyNet": "Netto mensile",
+  "employee.summary.monthlyNet": "Netto al mese",
   "employee.breakdown.netAnnual": "Netto annuo",
-  "employee.summary.annualNet": "Netto annuo",
-  "employee.summary.annualNet.sub": "su {frequency} mensilità",
-  "employee.summary.delta": "Differenza lordo-netto:",
-  "employee.summary.effectiveRate": "Aliquota effettiva:",
-  "employee.summary.marginalRate": "Aliquota marginale:",
-  "employee.summary.gross": "Lordo annuo",
+  "employee.summary.annualLine": "Netto annuo {amount} su {frequency} mensilità",
+  "employee.summary.rates": "Aliquota effettiva {effective}, marginale {marginal}",
 
-  "employee.yearCompare.title": "Stesso lordo, anni diversi",
-  "employee.yearCompare.perMonth": "mese",
-  "employee.yearCompare.perYear": "anno",
-  "employee.yearCompare.currentBadge": "anno selezionato",
+  "employee.yearCompare.title": "Stesso lordo, altri anni",
+  "employee.yearCompare.delta": "{delta} all'anno",
+  "employee.yearCompare.currentBadge": "anno scelto",
 
-  "employee.ccnlPreset.title": "Preset CCNL:",
+  "employee.ccnlPreset.title": "CCNL:",
   "employee.ccnlPreset.commercio": "Commercio",
   "employee.ccnlPreset.metalmeccanici": "Metalmeccanici",
   "employee.ccnlPreset.logistica": "Logistica",
   "employee.ccnlPreset.cooperativeSociali": "Cooperative Sociali",
-  "employee.ccnlPreset.mensilitaFmt": "{n} mensilità",
 
   "employee.irpefBracket.title": "Scaglione IRPEF",
   "employee.irpefBracket.range": "{min} – {max}",
@@ -958,7 +951,7 @@ export const it = {
   "employee.breakdown.pdrNet": "Premio netto",
   "employee.breakdown.netMonthly": "Netto mensile:",
 
-  "employee.employer.section": "Lato datore di lavoro",
+  "employee.employer.section": "Costo per l'azienda",
   "employee.employer.insight": "Ogni euro netto che ricevi costa {ratio} all'azienda.",
   "employee.employer.inps": "Contributi INPS datoriali",
   "employee.employer.tfr": "TFR (accantonamento)",

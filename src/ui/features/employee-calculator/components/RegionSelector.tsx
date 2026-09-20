@@ -27,7 +27,7 @@ function describeBrackets(code: RegionCode, locale: string): string {
     if (only) parts.push(`aliquota unica ${formatPercentage(only.rate)}`);
   } else {
     const rates = region.taxBrackets.map((b) => formatPercentage(b.rate));
-    parts.push(`progressivo ${rates.join(" → ")}`);
+    parts.push(`progressivo ${rates.join(", ")}`);
   }
 
   return parts.join(", ");

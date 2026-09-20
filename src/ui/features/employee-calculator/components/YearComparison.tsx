@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { calculateSalaryBreakdown } from "@/domain/calc";
 import { SUPPORTED_YEARS } from "@/domain/data";
-import { Money } from "@/ui/design-system/primitives";
+import { Ledger, LedgerRow, Money } from "@/ui/design-system/primitives";
 import type { EmployeeCalculator } from "../useEmployeeCalculator.ts";
 
 interface YearComparisonProps {
@@ -27,40 +27,41 @@ export function YearComparison({ calc }: YearComparisonProps) {
       <h2 id="qg-year-compare-title" className="qg-year-compare__title">
         <FormattedMessage id="employee.yearCompare.title" />
       </h2>
-      <ul className="qg-year-compare__list">
+      <Ledger>
         {breakdowns.map(({ year, breakdown }) => {
           const isCurrent = year === calc.state.taxYear;
           const delta = breakdown.netAnnual - current.breakdown.netAnnual;
-          const deltaClass = delta >= 0 ? "is-positive" : "is-negative";
           return (
-            <li
+            <LedgerRow
               key={year}
-              className={`qg-year-compare__row${isCurrent ? " qg-year-compare__row--current" : ""}`}
-            >
-              <span className="qg-year-compare__year">{year}</span>
-              <span className="qg-year-compare__net">
-                <Money amount={breakdown.netMonthly} whole />
-                <span className="qg-year-compare__unit">
-                  /<FormattedMessage id="employee.yearCompare.perMonth" />
-                </span>
-              </span>
-              {isCurrent ? (
-                <span className="qg-year-compare__badge">
-                  <FormattedMessage id="employee.yearCompare.currentBadge" />
-                </span>
-              ) : (
-                <span className={`qg-year-compare__delta ${deltaClass}`}>
-                  {delta >= 0 ? "+" : ""}
-                  <Money amount={delta} whole />
-                  <span className="qg-year-compare__unit">
-                    /<FormattedMessage id="employee.yearCompare.perYear" />
+              label={
+                <>
+                  <span className="qg-num">{year}</span>
+                  <span className="qg-ledger__rate">
+                    {isCurrent ? (
+                      <FormattedMessage id="employee.yearCompare.currentBadge" />
+                    ) : (
+                      <FormattedMessage
+                        id="employee.yearCompare.delta"
+                        values={{
+                          delta: (
+                            <>
+                              {delta > 0 ? "+" : ""}
+                              <Money amount={delta} whole />
+                            </>
+                          ),
+                        }}
+                      />
+                    )}
                   </span>
-                </span>
-              )}
-            </li>
+                </>
+              }
+              amount={breakdown.netMonthly}
+              strong={isCurrent}
+            />
           );
         })}
-      </ul>
+      </Ledger>
     </section>
   );
 }

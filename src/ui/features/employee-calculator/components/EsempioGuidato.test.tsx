@@ -22,7 +22,7 @@ function renderEsempio(year: 2024 | 2025 | 2026 = 2026, grossAnnual = 30000) {
 describe("EsempioGuidato", () => {
   it("renders a closed <details> with the expected summary", () => {
     renderEsempio();
-    const summary = screen.getByText(/Vedi come si arriva al netto/);
+    const summary = screen.getByText(/Come si arriva al netto/);
     const details = summary.closest("details");
     expect(details).toBeTruthy();
     expect(details).not.toHaveAttribute("open");

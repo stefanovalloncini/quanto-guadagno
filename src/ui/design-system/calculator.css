@@ -277,9 +277,10 @@
 .qg-faq {
   display: flex;
   flex-direction: column;
+  margin-top: var(--s-7);
 }
 .qg-faq__title {
-  margin: 0 0 var(--s-2);
+  margin: 0 0 var(--s-3);
   font-size: var(--t-21);
   color: var(--inchiostro);
 }

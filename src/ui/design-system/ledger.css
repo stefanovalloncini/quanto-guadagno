@@ -46,6 +46,10 @@
 .qg-ledger__row--zebra .qg-ledger__amount {
   padding-right: var(--s-2);
 }
+.qg-ledger__row--strong th,
+.qg-ledger__row--strong td {
+  font-weight: 600;
+}
 .qg-ledger__group th {
   padding: var(--s-5) 0 var(--s-1);
   text-align: left;

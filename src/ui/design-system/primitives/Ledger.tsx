@@ -45,7 +45,7 @@ export function LedgerRow({
   const cls = [
     "qg-ledger__row",
     zebra && "qg-ledger__row--zebra",
-    strong && "qg-ledger__row--total",
+    strong && "qg-ledger__row--strong",
   ]
     .filter(Boolean)
     .join(" ");

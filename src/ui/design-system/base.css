@@ -64,6 +64,7 @@
   padding: 0;
 }
 .qg-disclosure:last-of-type,
+.qg-employer:last-of-type,
 .qg-faq__item:last-of-type {
   border-bottom: 1px solid var(--filetto);
 }
