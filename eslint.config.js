@@ -8,7 +8,7 @@ import i18next from "eslint-plugin-i18next";
 import prettier from "eslint-config-prettier";
 
 export default tseslint.config(
-  { ignores: ["dist", "coverage", "node_modules"] },
+  { ignores: ["dist", "coverage", "node_modules", ".claude"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.strict, prettier],
     files: ["**/*.{ts,tsx}"],
