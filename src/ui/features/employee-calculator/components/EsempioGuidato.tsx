@@ -8,6 +8,13 @@ interface EsempioGuidatoProps {
   readonly taxYear: SupportedYear;
 }
 
+// Step 6 may only name credits the breakdown actually pays out; most cases have one or none.
+const CREDIT_LABELS = [
+  { id: "esempio.credit.trattamento", pick: (b: SalaryBreakdown) => b.trattamentoIntegrativo },
+  { id: "esempio.credit.sommaAggiuntiva", pick: (b: SalaryBreakdown) => b.sommaAggiuntiva },
+  { id: "esempio.credit.pdr", pick: (b: SalaryBreakdown) => b.pdrNet },
+] as const;
+
 export function EsempioGuidato({ breakdown, taxYear }: EsempioGuidatoProps) {
   const intl = useIntl();
   const bracketsKey = taxYear === 2026 ? "esempio.brackets.2026" : "esempio.brackets.standard";
@@ -26,6 +33,15 @@ export function EsempioGuidato({ breakdown, taxYear }: EsempioGuidatoProps) {
   const inpsRate = formatPercentage(breakdown.inpsRate);
   const regionalRate = formatPercentage(breakdown.regionalTaxRate);
   const municipalRate = formatPercentage(breakdown.municipalTaxRate);
+
+  const credits = CREDIT_LABELS.filter(({ pick }) => pick(breakdown) > 0).map(({ id }) =>
+    intl.formatMessage({ id }),
+  );
+  const creditsBodyId = credits.length > 0 ? "esempio.step6.body" : "esempio.step6.bodyNone";
+  const creditsValues =
+    credits.length > 0
+      ? { credits: intl.formatList(credits), net: netAmount, monthly: monthlyAmount }
+      : { net: netAmount, monthly: monthlyAmount };
 
   return (
     <details className="qg-esempio">
@@ -67,11 +83,7 @@ export function EsempioGuidato({ breakdown, taxYear }: EsempioGuidatoProps) {
               municipal: municipalAmount,
             }}
           />
-          <Step
-            titleId="esempio.step6.title"
-            bodyId="esempio.step6.body"
-            values={{ net: netAmount, monthly: monthlyAmount }}
-          />
+          <Step titleId="esempio.step6.title" bodyId={creditsBodyId} values={creditsValues} />
         </ol>
       </div>
     </details>
@@ -92,7 +104,8 @@ interface StepProps {
     | "esempio.step3.body"
     | "esempio.step4.body"
     | "esempio.step5.body"
-    | "esempio.step6.body";
+    | "esempio.step6.body"
+    | "esempio.step6.bodyNone";
   readonly values: Record<string, string | number>;
 }
 

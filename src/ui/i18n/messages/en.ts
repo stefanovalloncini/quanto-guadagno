@@ -273,7 +273,12 @@ export const en: Record<MessageKey, string> = {
     "On the taxable income we apply the regional surcharge ({regionalRate}, equal to {regional}) and the municipal surcharge ({municipalRate}, equal to {municipal}).",
   "esempio.step6.title": "6. Credits and final net",
   "esempio.step6.body":
-    "Then we add the credits you are entitled to (trattamento integrativo, additional sum, net performance bonus, contribution waivers). The annual net you take home is {net}, about {monthly} per month.",
+    "On top of the figures above come the credits you are entitled to: {credits}. Annual net is {net}, about {monthly} a month.",
+  "esempio.step6.bodyNone":
+    "In your case there are no credits to add. Annual net is {net}, about {monthly} a month.",
+  "esempio.credit.trattamento": "trattamento integrativo",
+  "esempio.credit.sommaAggiuntiva": "tax-wedge extra sum",
+  "esempio.credit.pdr": "net performance bonus",
   "esempio.brackets.standard": "23% up to €28,000, 35% up to €50,000, 43% above",
   "esempio.brackets.2026": "23% up to €28,000, 33% up to €50,000, 43% above",
 

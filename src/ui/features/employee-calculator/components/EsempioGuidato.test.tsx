@@ -57,4 +57,18 @@ describe("EsempioGuidato", () => {
     const text = container.textContent ?? "";
     expect(text).toMatch(/35/);
   });
+
+  it("names the credits in step 6 when the breakdown pays them", () => {
+    const { container } = renderEsempio(2026, 12000);
+    const text = container.textContent ?? "";
+    expect(text).toMatch(/trattamento integrativo/);
+    expect(text).toMatch(/somma aggiuntiva/);
+  });
+
+  it("says there are no credits when the breakdown pays none", () => {
+    const { container } = renderEsempio(2026, 60000);
+    const text = container.textContent ?? "";
+    expect(text).toMatch(/non ci sono crediti/);
+    expect(text).not.toMatch(/trattamento integrativo/);
+  });
 });

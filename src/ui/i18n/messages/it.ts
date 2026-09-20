@@ -273,7 +273,12 @@ export const it = {
     "Sul reddito imponibile si applicano l'addizionale regionale ({regionalRate}, pari a {regional}) e l'addizionale comunale ({municipalRate}, pari a {municipal}).",
   "esempio.step6.title": "6. Crediti e netto finale",
   "esempio.step6.body":
-    "Si aggiungono i crediti che ti spettano (trattamento integrativo, somma aggiuntiva, premio di risultato netto, esoneri contributivi). Il netto annuo che incassi è {net}, cioè circa {monthly} al mese.",
+    "Ai risultati precedenti si sommano i crediti che ti spettano: {credits}. Il netto annuo è {net}, cioè circa {monthly} al mese.",
+  "esempio.step6.bodyNone":
+    "Nel tuo caso non ci sono crediti da aggiungere. Il netto annuo è {net}, cioè circa {monthly} al mese.",
+  "esempio.credit.trattamento": "trattamento integrativo",
+  "esempio.credit.sommaAggiuntiva": "somma aggiuntiva del taglio del cuneo",
+  "esempio.credit.pdr": "premio di risultato netto",
   "esempio.brackets.standard": "23% fino a €28.000, 35% fino a €50.000, 43% oltre",
   "esempio.brackets.2026": "23% fino a €28.000, 33% fino a €50.000, 43% oltre",
 
