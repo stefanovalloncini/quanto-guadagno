@@ -1,0 +1,39 @@
+name: Errore nei dati fiscali
+description: Segnala un'aliquota, uno scaglione o una soglia sbagliata
+labels: ["dati"]
+body:
+  - type: input
+    id: anno
+    attributes:
+      label: Anno fiscale
+      placeholder: "2026"
+    validations:
+      required: true
+  - type: textarea
+    id: valore-errato
+    attributes:
+      label: Valore sbagliato
+      description: Quale voce mostra il calcolatore e con quale valore.
+      placeholder: "Addizionale regionale Lombardia, primo scaglione: 1,23%"
+    validations:
+      required: true
+  - type: textarea
+    id: valore-corretto
+    attributes:
+      label: Valore corretto
+      description: Il valore che dovrebbe comparire.
+    validations:
+      required: true
+  - type: input
+    id: fonte
+    attributes:
+      label: Fonte ufficiale
+      description: Link alla Gazzetta Ufficiale, alla circolare INPS, al provvedimento dell'Agenzia delle Entrate o alla delibera che fissa il valore corretto.
+      placeholder: "https://www.gazzettaufficiale.it/..."
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+      description: Articolo, comma o pagina del documento, se aiuta a trovare il passaggio.

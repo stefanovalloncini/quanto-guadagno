@@ -1,0 +1,42 @@
+name: Bug
+description: Segnala un malfunzionamento del sito
+labels: ["bug"]
+body:
+  - type: input
+    id: pagina
+    attributes:
+      label: Pagina
+      description: Il percorso o l'indirizzo completo della pagina.
+      placeholder: "/calcola-stipendio"
+    validations:
+      required: true
+  - type: textarea
+    id: passi
+    attributes:
+      label: Passi per riprodurre
+      description: Cosa hai fatto, in ordine. Se il problema dipende da certi valori, scrivi quelli che hai inserito.
+      placeholder: |
+        1. apro /calcola-stipendio
+        2. inserisco 35.000 come lordo annuo
+        3. scelgo l'anno 2026
+    validations:
+      required: true
+  - type: textarea
+    id: atteso
+    attributes:
+      label: Cosa ti aspettavi
+    validations:
+      required: true
+  - type: textarea
+    id: ottenuto
+    attributes:
+      label: Cosa è successo invece
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser e sistema operativo
+      placeholder: "Firefox 145 su Windows 11"
+    validations:
+      required: true
