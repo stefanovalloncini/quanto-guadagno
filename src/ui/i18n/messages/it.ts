@@ -4,6 +4,8 @@ export const it = {
   "brand.first": "quanto",
   "brand.second": "guadagno",
 
+  "field.error.prefix": "Errore:",
+
   "error.boundary.title": "Qualcosa è andato storto",
   "error.boundary.body": "Ricarica la pagina per riprovare.",
 

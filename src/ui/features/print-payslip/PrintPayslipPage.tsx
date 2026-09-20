@@ -81,7 +81,6 @@ export function PrintPayslipPage() {
             <BreakdownRow
               labelId="print.breakdown.totalDeductions"
               amount={breakdown.totalDeductions}
-              add
             />
           )}
           <BreakdownRow
@@ -106,18 +105,16 @@ export function PrintPayslipPage() {
             <BreakdownRow
               labelId="print.breakdown.trattamento"
               amount={breakdown.trattamentoIntegrativo}
-              add
             />
           )}
           {breakdown.sommaAggiuntiva > 0 && (
             <BreakdownRow
               labelId="print.breakdown.sommaAggiuntiva"
               amount={breakdown.sommaAggiuntiva}
-              add
             />
           )}
           {breakdown.pdrNet > 0 && (
-            <BreakdownRow labelId="print.breakdown.pdrNet" amount={breakdown.pdrNet} add />
+            <BreakdownRow labelId="print.breakdown.pdrNet" amount={breakdown.pdrNet} />
           )}
           <BreakdownRow
             labelId="print.breakdown.netAnnual"

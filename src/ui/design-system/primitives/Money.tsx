@@ -6,6 +6,9 @@ interface MoneyProps {
 
 const FORMATTERS = new Map<string, Intl.NumberFormat>();
 
+// Intl emits a hyphen-minus; a payslip sets a real minus sign.
+const MINUS = "−";
+
 function getFormatter(whole: boolean): Intl.NumberFormat {
   const key = whole ? "whole" : "cents";
   let f = FORMATTERS.get(key);
@@ -23,6 +26,8 @@ function getFormatter(whole: boolean): Intl.NumberFormat {
 }
 
 export function Money({ amount, whole = false, className }: MoneyProps) {
-  const cls = ["qg-money", className].filter(Boolean).join(" ");
-  return <span className={cls}>{getFormatter(whole).format(amount)}</span>;
+  const cls = ["qg-money", "qg-num", className].filter(Boolean).join(" ");
+  const value = amount === 0 ? 0 : amount;
+  const text = getFormatter(whole).format(value).replace("-", MINUS);
+  return <span className={cls}>{text}</span>;
 }

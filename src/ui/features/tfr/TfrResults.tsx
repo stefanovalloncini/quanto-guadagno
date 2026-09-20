@@ -27,7 +27,7 @@ export function TfrResults({ result }: TfrResultsProps) {
 
       <div className="qg-results-breakdown__flow">
         <BreakdownRow labelId="tfr.breakdown.quote" amount={result.totalQuote} />
-        <BreakdownRow labelId="tfr.breakdown.revaluation" amount={result.totalRevaluation} add />
+        <BreakdownRow labelId="tfr.breakdown.revaluation" amount={result.totalRevaluation} />
         <BreakdownRow labelId="tfr.result.stock" amount={result.finalStock} total highlight />
       </div>
 

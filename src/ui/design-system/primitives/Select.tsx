@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type SelectHTMLAttributes, useId } from "react";
+import { FormattedMessage } from "react-intl";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   readonly label: ReactNode;
@@ -38,7 +39,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
       ) : null}
       {error ? (
         <p id={errorId} className="qg-field__error" role="alert">
-          {error}
+          <FormattedMessage id="field.error.prefix" /> {error}
         </p>
       ) : null}
     </div>

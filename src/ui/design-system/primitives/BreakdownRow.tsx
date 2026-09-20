@@ -12,7 +12,6 @@ interface BreakdownRowProps {
   readonly rate?: number;
   readonly extra?: ReactNode;
   readonly subtract?: boolean;
-  readonly add?: boolean;
   readonly total?: boolean;
   readonly highlight?: boolean;
 }
@@ -24,7 +23,6 @@ export function BreakdownRow({
   rate,
   extra,
   subtract,
-  add,
   total,
   highlight,
 }: BreakdownRowProps) {
@@ -32,8 +30,6 @@ export function BreakdownRow({
     "qg-breakdown-row",
     total && "qg-breakdown-row--total",
     highlight && "qg-breakdown-row--highlight",
-    subtract && "qg-breakdown-row--subtract",
-    add && "qg-breakdown-row--add",
   ]
     .filter(Boolean)
     .join(" ");

@@ -6,6 +6,8 @@ export const en: Record<MessageKey, string> = {
   "brand.first": "quanto",
   "brand.second": "guadagno",
 
+  "field.error.prefix": "Error:",
+
   "error.boundary.title": "Something went wrong",
   "error.boundary.body": "Reload the page to try again.",
 

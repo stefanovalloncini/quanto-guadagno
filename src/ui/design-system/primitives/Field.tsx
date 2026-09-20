@@ -1,4 +1,5 @@
 import { forwardRef, type InputHTMLAttributes, type ReactNode, useId } from "react";
+import { FormattedMessage } from "react-intl";
 
 interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label: ReactNode;
@@ -42,7 +43,7 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
       ) : null}
       {error ? (
         <p id={errorId} className="qg-field__error" role="alert">
-          {error}
+          <FormattedMessage id="field.error.prefix" /> {error}
         </p>
       ) : null}
     </div>

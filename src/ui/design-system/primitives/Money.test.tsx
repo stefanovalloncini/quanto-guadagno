@@ -8,6 +8,7 @@ describe("Money", () => {
     const el = screen.getByText(/€/);
     expect(el).toHaveTextContent("1.847,32");
     expect(el.className).toContain("qg-money");
+    expect(el.className).toContain("qg-num");
   });
 
   it("rounds to whole euros when whole=true", () => {
@@ -29,8 +30,15 @@ describe("Money", () => {
     expect(el.className).toContain("custom");
   });
 
-  it("handles negative amounts", () => {
+  it("sets negative amounts with a real minus sign, not a hyphen", () => {
     render(<Money amount={-500.5} />);
-    expect(screen.getByText(/-?500/)).toHaveTextContent(/-/);
+    const el = screen.getByText(/500/);
+    expect(el.textContent).toMatch(/^\u2212/);
+    expect(el.textContent).not.toMatch(/-/);
+  });
+
+  it("never renders a signed zero", () => {
+    render(<Money amount={-0} whole />);
+    expect(screen.getByText(/0/).textContent).not.toMatch(/\u2212/);
   });
 });

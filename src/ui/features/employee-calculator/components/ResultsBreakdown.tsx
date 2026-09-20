@@ -39,14 +39,12 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
           <BreakdownRow
             labelId="employee.breakdown.inpsExemption"
             amount={breakdown.inpsExemption}
-            add
           />
         )}
         {hasMadreLavoratrice && (
           <BreakdownRow
             labelId="employee.breakdown.madreLavoratrice"
             amount={breakdown.madreLavoratriceExemption}
-            add
           />
         )}
 
@@ -75,34 +73,26 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
         <BreakdownRow
           labelId="employee.breakdown.workDeduction"
           amount={breakdown.irpefDeduction}
-          add
         />
         {hasDependents && (
           <BreakdownRow
             labelId="employee.breakdown.dependents"
             amount={breakdown.dependentsDeduction}
-            add
           />
         )}
         {hasExpenses && (
-          <BreakdownRow
-            labelId="employee.breakdown.expenses"
-            amount={breakdown.expenseDeduction}
-            add
-          />
+          <BreakdownRow labelId="employee.breakdown.expenses" amount={breakdown.expenseDeduction} />
         )}
         {hasDetrazioneAggiuntiva && (
           <BreakdownRow
             labelId="employee.breakdown.detrazioneAggiuntiva"
             amount={breakdown.detrazioneAggiuntiva}
-            add
           />
         )}
         {hasImpatriati && (
           <BreakdownRow
             labelId="employee.breakdown.impatriati"
             amount={breakdown.regimeImpatriatiSavings}
-            add
           />
         )}
         <BreakdownRow
@@ -133,14 +123,12 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
               <BreakdownRow
                 labelId="employee.breakdown.trattamento"
                 amount={breakdown.trattamentoIntegrativo}
-                add
               />
             )}
             {hasSommaAggiuntiva && (
               <BreakdownRow
                 labelId="employee.breakdown.sommaAggiuntiva"
                 amount={breakdown.sommaAggiuntiva}
-                add
               />
             )}
           </>
@@ -151,14 +139,14 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
             <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
               <FormattedMessage id="employee.breakdown.section.pdr" />
             </p>
-            <BreakdownRow labelId="employee.breakdown.pdrGross" amount={breakdown.pdrGross} add />
+            <BreakdownRow labelId="employee.breakdown.pdrGross" amount={breakdown.pdrGross} />
             <BreakdownRow
               labelId="employee.breakdown.pdrInps"
               amount={breakdown.pdrInps}
               subtract
             />
             <BreakdownRow labelId="employee.breakdown.pdrTax" amount={breakdown.pdrTax} subtract />
-            <BreakdownRow labelId="employee.breakdown.pdrNet" amount={breakdown.pdrNet} add total />
+            <BreakdownRow labelId="employee.breakdown.pdrNet" amount={breakdown.pdrNet} total />
           </>
         )}
 
