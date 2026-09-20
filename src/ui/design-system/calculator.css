@@ -64,6 +64,9 @@
   .qg-calc__form-row {
     grid-template-columns: 1fr;
   }
+  .qg-employee__hero h1 {
+    font-size: var(--t-27);
+  }
 }
 
 /* The cedolino. One loud number, everything under it quiet. */
@@ -151,33 +154,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-5);
-}
-
-.qg-summary {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-}
-.qg-summary__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-5);
-  font-size: var(--t-13);
-  color: var(--grigio);
-}
-.qg-summary__rate-value,
-.qg-summary__delta-amount {
-  color: var(--inchiostro);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
-}
-.qg-summary__gross,
-.qg-summary__pdr {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: var(--t-13);
-  color: var(--grigio);
 }
 
 .qg-year-compare {

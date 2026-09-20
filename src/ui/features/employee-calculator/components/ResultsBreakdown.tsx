@@ -150,9 +150,6 @@ export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
           rate={breakdown.tfrRate}
         />
       </Ledger>
-      <p className="qg-results-breakdown__note">
-        <FormattedMessage id="employee.breakdown.tfr.note" />
-      </p>
     </div>
   );
 }

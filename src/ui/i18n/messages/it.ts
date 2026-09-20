@@ -919,8 +919,6 @@ export const it = {
   "employee.breakdown.section.pdr": "Premio di risultato",
   "employee.breakdown.section.tfr": "Accantonamento TFR",
   "employee.breakdown.tfr": "TFR maturando quest'anno",
-  "employee.breakdown.tfr.note":
-    "Pari a un tredicesimo e mezzo del lordo. Non viene versato in busta paga: si liquida a fine rapporto o in parte come anticipo (mutuo, spese mediche, formazione).",
   "employee.breakdown.pensionFund": "Previdenza complementare",
   "employee.breakdown.taxableIncome": "Reddito imponibile",
   "employee.breakdown.inpsExemption": "Esonero contributivo 2024",
