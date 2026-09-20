@@ -1,7 +1,14 @@
 {
-  "name": "guadagno",
+  "name": "quanto-guadagno",
   "private": true,
   "version": "0.1.0",
+  "description": "Calcolatore di stipendio netto per l'Italia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanovalloncini/quanto-guadagno"
+  },
+  "homepage": "https://quantoguadagno.com",
   "type": "module",
   "engines": {
     "node": ">=22"
