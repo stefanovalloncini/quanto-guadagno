@@ -1,8 +1,11 @@
+// it-IT groups only from five digits by default; the Money primitive groups from four,
+// and prose amounts sit next to it.
 const currencyFormatterWhole = new Intl.NumberFormat("it-IT", {
   style: "currency",
   currency: "EUR",
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
+  useGrouping: true,
 });
 
 const percentFormatter = new Intl.NumberFormat("it-IT", {
