@@ -1,0 +1,205 @@
+/* Type helpers, prose, disclosures: the vocabulary every page draws on. */
+
+.qg-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.qg-money {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+}
+
+.qg-lede {
+  font-size: var(--t-17);
+  line-height: var(--lh-body);
+  color: var(--grigio);
+  max-width: 70ch;
+}
+
+.qg-prose p {
+  font-size: var(--t-17);
+  line-height: var(--lh-body);
+  color: var(--inchiostro);
+  margin-bottom: var(--s-4);
+  max-width: 70ch;
+}
+
+.qg-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Section title used above a block of results. */
+.qg-subhead {
+  margin: 0;
+  font-weight: 600;
+  color: var(--inchiostro);
+}
+.qg-subhead--lg {
+  font-size: var(--t-27);
+}
+.qg-subhead--md {
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--grigio);
+}
+
+/* Plain disclosure: a rule above, a rule below, a sign on the right. */
+.qg-disclosure,
+.qg-esempio,
+.qg-faq__item,
+.qg-extras-panel,
+.qg-employer,
+.qg-irpef-indicator {
+  border-top: 1px solid var(--filetto);
+  padding: 0;
+}
+.qg-disclosure:last-of-type,
+.qg-faq__item:last-of-type {
+  border-bottom: 1px solid var(--filetto);
+}
+
+.qg-disclosure > summary,
+.qg-esempio__summary,
+.qg-faq__question,
+.qg-extras-panel > summary,
+.qg-employer > summary,
+.qg-irpef-indicator > summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
+  font-size: var(--t-17);
+  font-weight: 500;
+  color: var(--inchiostro);
+  cursor: pointer;
+  list-style: none;
+}
+.qg-disclosure > summary::-webkit-details-marker,
+.qg-esempio__summary::-webkit-details-marker,
+.qg-faq__question::-webkit-details-marker,
+.qg-extras-panel > summary::-webkit-details-marker,
+.qg-employer > summary::-webkit-details-marker,
+.qg-irpef-indicator > summary::-webkit-details-marker {
+  display: none;
+}
+.qg-disclosure > summary::after,
+.qg-esempio__summary::after,
+.qg-faq__question::after,
+.qg-extras-panel > summary::after,
+.qg-employer > summary::after,
+.qg-irpef-indicator > summary::after {
+  content: "+";
+  color: var(--grigio);
+  font-weight: 400;
+}
+.qg-disclosure[open] > summary::after,
+.qg-esempio[open] .qg-esempio__summary::after,
+.qg-faq__item[open] .qg-faq__question::after,
+.qg-extras-panel[open] > summary::after,
+.qg-employer[open] > summary::after,
+.qg-irpef-indicator[open] > summary::after {
+  content: "\2212";
+}
+.qg-disclosure > summary:hover,
+.qg-esempio__summary:hover,
+.qg-faq__question:hover,
+.qg-extras-panel > summary:hover,
+.qg-employer > summary:hover,
+.qg-irpef-indicator > summary:hover {
+  color: var(--blu);
+}
+
+.qg-disclosure__body {
+  padding: 0 0 var(--s-5);
+  max-width: 70ch;
+}
+
+/* Small grey line under a result: caveats, sources, footnotes. */
+.qg-note,
+.qg-note__text {
+  margin: 0;
+  font-size: var(--t-13);
+  line-height: var(--lh-body);
+  color: var(--grigio);
+  max-width: 70ch;
+}
+
+/* Advisory block inside a form or a result. */
+.qg-alert,
+.qg-notice {
+  margin: 0;
+  padding: var(--s-3) 0;
+  border-top: 1px solid var(--filetto);
+  border-bottom: 1px solid var(--filetto);
+  font-size: var(--t-13);
+  line-height: var(--lh-body);
+  color: var(--inchiostro);
+}
+.qg-alert__list {
+  margin: var(--s-2) 0 0;
+  padding-left: var(--s-5);
+  color: var(--grigio);
+}
+.qg-alert__list li + li {
+  margin-top: var(--s-2);
+}
+.qg-notice--blocked {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.qg-notice--blocked li {
+  margin: 0;
+}
+
+/* Dense data table used by the NASpI and compound-interest schedules. */
+.qg-schedule {
+  margin-top: var(--s-6);
+}
+.qg-schedule__scroll {
+  overflow-x: auto;
+}
+.qg-schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-size: var(--t-13);
+}
+.qg-schedule__table thead th {
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--grigio);
+  padding: var(--s-2) var(--s-3);
+  border-bottom: 1px solid var(--filetto);
+  text-align: right;
+}
+.qg-schedule__table thead th:first-child {
+  text-align: left;
+}
+.qg-schedule__table tbody th,
+.qg-schedule__table tbody td {
+  padding: var(--s-2) var(--s-3);
+  text-align: right;
+  font-weight: 400;
+}
+.qg-schedule__table tbody th {
+  text-align: left;
+  color: var(--grigio);
+}
+.qg-schedule__table tbody tr:nth-child(even) {
+  background: var(--velo);
+}

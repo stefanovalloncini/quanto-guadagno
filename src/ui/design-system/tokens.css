@@ -1,58 +1,40 @@
 :root {
-  --paper: #f7f4ee;
-  --paper-2: #efe9df;
-  --paper-3: #fdfbf6;
-  --ink: #1d1d1c;
-  --ink-2: #6a6862;
-  --rule: #d9d2c4;
-  --accent: #2b574e;
-  --accent-on: #fbf6ea;
-  --accent-soft: #c5d8d3;
-  --warm: #c46b3a;
-  --danger: #a13a2a;
+  --carta: #ffffff;
+  --inchiostro: #000000;
+  --grigio: #5c5c5c;
+  --filetto: #d4d4d4;
+  --velo: #f3f3f1;
+  --blu: #1d3bcb;
+  --errore: #b3261e;
 
-  --font-display: "Fraunces", "Iowan Old Style", "Palatino", Georgia, serif;
-  --font-sans: "Familjen Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
 
-  --text-xs: 11px;
-  --text-sm: 14px;
-  --text-base: 16px;
-  --text-md: 17px;
-  --text-lg: 20px;
-  --text-xl: 26px;
-  --text-2xl: 36px;
-  --text-3xl: 48px;
-  --text-display: clamp(3rem, 7vw, 5.25rem);
+  --t-13: 13px;
+  --t-17: 17px;
+  --t-21: 21px;
+  --t-27: 27px;
+  --t-33: 33px;
+  --t-42: 42px;
+  --t-52: 52px;
+  --t-65: 65px;
+  --t-cifra: clamp(3rem, 8vw, 5.5rem);
 
-  --leading-display: 0.98;
-  --leading-tight: 1.08;
-  --leading-snug: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.6;
+  --lh-body: 1.55;
+  --lh-tight: 1.15;
+  --lh-cifra: 1;
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 96px;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
 
-  --radius-1: 4px;
-  --radius-2: 8px;
-  --radius-3: 12px;
-  --radius-4: 16px;
-  --radius-pill: 999px;
-
-  --shadow-paper: 0 1px 0 rgba(29, 29, 28, 0.04);
-
-  --duration: 200ms;
-  --easing: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --transition: var(--duration) var(--easing);
-
-  --content-max: 1120px;
+  --r: 2px;
+  --content-max: 1040px;
   --page-pad: clamp(1rem, 4vw, 2.5rem);
+  --dur: 150ms;
 }

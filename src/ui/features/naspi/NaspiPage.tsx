@@ -3,7 +3,6 @@ import { NaspiForm } from "./NaspiForm.tsx";
 import { NaspiResults } from "./NaspiResults.tsx";
 import { NaspiFaq } from "./NaspiFaq.tsx";
 import { useNaspiCalculator } from "./useNaspiCalculator.ts";
-import "./naspi.css";
 
 export function NaspiPage() {
   const calc = useNaspiCalculator();

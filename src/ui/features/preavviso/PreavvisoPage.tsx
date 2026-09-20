@@ -3,7 +3,6 @@ import { PreavvisoForm } from "./PreavvisoForm.tsx";
 import { PreavvisoResults } from "./PreavvisoResults.tsx";
 import { PreavvisoFaq } from "./PreavvisoFaq.tsx";
 import { usePreavvisoCalculator } from "./usePreavvisoCalculator.ts";
-import "./preavviso.css";
 
 export function PreavvisoPage() {
   const calc = usePreavvisoCalculator();

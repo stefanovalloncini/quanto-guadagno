@@ -33,15 +33,6 @@ export function smoothPath(points: ReadonlyArray<Point>): string {
   return parts.join(" ");
 }
 
-export function smoothAreaPath(points: ReadonlyArray<Point>, baseline: number): string {
-  if (points.length < 2) return "";
-  const first = points[0];
-  const last = points[points.length - 1];
-  if (!first || !last) return "";
-  const linePath = smoothPath(points);
-  return `${linePath} L ${last.x} ${baseline} L ${first.x} ${baseline} Z`;
-}
-
 // Builds a closed band path between the upper outline and the lower outline.
 // Upper goes left → right, lower comes back right → left.
 export function smoothBandPath(upper: ReadonlyArray<Point>, lower: ReadonlyArray<Point>): string {

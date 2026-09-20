@@ -11,20 +11,19 @@ body {
 }
 
 html {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  font-feature-settings: "ss01", "ss03";
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: var(--font);
+  font-size: var(--t-17);
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 body {
   min-height: 100dvh;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--carta);
+  color: var(--inchiostro);
 }
 
 h1,
@@ -33,23 +32,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0;
+  font-family: var(--font);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
   margin: 0;
-  color: var(--ink);
-}
-
-h1,
-h2 {
-  line-height: var(--leading-display);
-}
-
-h3,
-h4,
-h5,
-h6 {
-  line-height: var(--leading-tight);
+  color: var(--inchiostro);
 }
 
 p {
@@ -57,7 +45,7 @@ p {
 }
 
 a {
-  color: var(--accent);
+  color: var(--blu);
   text-decoration: none;
 }
 
@@ -78,14 +66,13 @@ svg {
 }
 
 :focus-visible {
-  outline: 2px solid var(--warm);
+  outline: 2px solid var(--blu);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--ink);
+  background: var(--velo);
+  color: var(--inchiostro);
 }
 
 input[type="number"] {

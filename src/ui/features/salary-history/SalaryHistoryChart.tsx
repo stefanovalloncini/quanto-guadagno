@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { formatWholeEuro } from "@/ui/shared/numeric.ts";
-import { CHART, PLOT_W, PLOT_H, BASELINE, computeGeometry } from "./chartScales.ts";
-import { smoothAreaPath, smoothBandPath, smoothPath, nearestIndex } from "./chartGeometry.ts";
+import { CHART, PLOT_W, PLOT_H, computeGeometry } from "./chartScales.ts";
+import { smoothBandPath, smoothPath, nearestIndex } from "./chartGeometry.ts";
 import { SalaryHistoryChartPopover } from "./SalaryHistoryChartPopover.tsx";
 import type { AdjustedEntry } from "./useSalaryHistory.ts";
 import type { ProjectionBundle } from "./useSalaryProjection.ts";
@@ -58,10 +58,6 @@ export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHisto
 
   const grossPath = smoothPath(nominalPoints.map((p) => ({ x: p.x, y: p.y })));
   const netPath = smoothPath(netPoints.map((p) => ({ x: p.x, y: p.y })));
-  const netAreaPath = smoothAreaPath(
-    netPoints.map((p) => ({ x: p.x, y: p.y })),
-    BASELINE,
-  );
   const projectionPath = smoothPath(projectionWithAnchor.map((p) => ({ x: p.x, y: p.y })));
   const bandUpperAnchored = lastNet ? [{ x: lastNet.x, y: lastNet.y }, ...bandUpper] : bandUpper;
   const bandLowerAnchored = lastNet ? [{ x: lastNet.x, y: lastNet.y }, ...bandLower] : bandLower;
@@ -82,13 +78,6 @@ export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHisto
           role="img"
           aria-label={intl.formatMessage({ id: "history.chart.aria" }, { year: targetYear })}
         >
-          <defs>
-            <linearGradient id="qgChartNetGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.32" />
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
           <g className="qg-history-chart__grid" aria-hidden="true">
             {scales.ticks.map((v) => {
               const y = scales.yForValue(v);
@@ -117,14 +106,6 @@ export function SalaryHistoryChart({ rows, projection, targetYear }: SalaryHisto
           </g>
 
           {bandPath ? <path className="qg-history-chart__band" d={bandPath} /> : null}
-
-          {netAreaPath ? (
-            <path
-              className="qg-history-chart__area"
-              d={netAreaPath}
-              fill="url(#qgChartNetGradient)"
-            />
-          ) : null}
 
           {grossPath ? (
             <path

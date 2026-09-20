@@ -1,11 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  nearestIndex,
-  smoothAreaPath,
-  smoothBandPath,
-  smoothPath,
-  type Point,
-} from "./chartGeometry.ts";
+import { nearestIndex, smoothBandPath, smoothPath, type Point } from "./chartGeometry.ts";
 
 describe("smoothPath", () => {
   it("returns an empty string for no points", () => {
@@ -45,28 +39,6 @@ describe("smoothPath", () => {
       { x: 11, y: 5 },
     ];
     expect(smoothPath(pts).startsWith("M 7 3")).toBe(true);
-  });
-});
-
-describe("smoothAreaPath", () => {
-  it("returns an empty string for empty input", () => {
-    expect(smoothAreaPath([], 100)).toBe("");
-  });
-
-  it("returns an empty string for one point", () => {
-    expect(smoothAreaPath([{ x: 0, y: 0 }], 100)).toBe("");
-  });
-
-  it("closes the path to the baseline at both ends", () => {
-    const pts: Point[] = [
-      { x: 0, y: 40 },
-      { x: 50, y: 20 },
-      { x: 100, y: 30 },
-    ];
-    const area = smoothAreaPath(pts, 100);
-    expect(area.endsWith("Z")).toBe(true);
-    expect(area).toContain("L 100 100");
-    expect(area).toContain("L 0 100");
   });
 });
 

@@ -2,9 +2,7 @@
   .qg-header,
   .qg-footer,
   .qg-skip-link,
-  .qg-share-button,
-  .qg-locale-toggle,
-  .qg-theme-toggle {
+  .qg-share-button {
     display: none !important;
   }
 
@@ -12,11 +10,13 @@
   html {
     background: white !important;
     color: black !important;
+    font-size: 11pt;
   }
 
   .qg-main {
     padding: 0;
     margin: 0;
+    max-width: none;
   }
 
   .qg-print-payslip {
@@ -25,15 +25,24 @@
     page-break-inside: avoid;
   }
 
-  /* The screen breakdown tints amounts by sign; on paper the minus carries it. */
-  .qg-print-payslip .qg-breakdown-row__amount,
-  .qg-print-payslip .qg-money {
+  /* On paper there is one ink: the minus sign carries the sign, and the
+     zebra stripes would eat toner for nothing. */
+  .qg-print-payslip *,
+  .qg-print-payslip a {
     color: black !important;
+    background: transparent !important;
+  }
+
+  .qg-print-payslip .qg-ledger__total th,
+  .qg-print-payslip .qg-ledger__total td,
+  .qg-print-payslip__header,
+  .qg-print-payslip__footer {
+    border-color: black !important;
   }
 
   @page {
-    size: A4;
-    margin: 18mm 16mm;
+    size: A4 portrait;
+    margin: 16mm 14mm;
   }
 }
 
@@ -41,34 +50,36 @@
   display: block;
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 var(--space-4);
 }
 
 .qg-print-payslip__header {
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--s-5);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--filetto);
 }
 
 .qg-print-payslip__title {
-  font-size: var(--text-xl);
-  margin: 0 0 var(--space-1);
+  font-size: var(--t-27);
+  margin: 0 0 var(--s-1);
 }
 
 .qg-print-payslip__subtitle {
   margin: 0;
-  color: var(--ink-2);
+  font-size: var(--t-13);
+  color: var(--grigio);
 }
 
 .qg-print-payslip__section-title {
-  font-size: var(--text-lg);
-  margin: var(--space-5) 0 var(--space-3);
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--grigio);
+  margin: var(--s-5) 0 var(--s-2);
 }
 
 .qg-print-payslip__summary-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--s-4);
   margin: 0;
 }
 
@@ -77,48 +88,53 @@
 }
 
 .qg-print-payslip__metric dt {
-  font-size: var(--text-sm);
-  color: var(--ink-2);
-  margin-bottom: var(--space-1);
+  font-size: var(--t-13);
+  color: var(--grigio);
+  margin-bottom: var(--s-1);
 }
 
 .qg-print-payslip__metric dd {
   margin: 0;
-  font-size: var(--text-xl);
+  font-size: var(--t-27);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
 .qg-print-payslip__inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-2) var(--space-5);
+  gap: 0 var(--s-5);
   margin: 0;
 }
 
 .qg-print-payslip__inputs-row {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dotted var(--rule);
-  padding: var(--space-1) 0;
+  gap: var(--s-4);
+  border-bottom: 1px solid var(--filetto);
+  padding: var(--s-1) 0;
+  font-size: var(--t-13);
 }
 
 .qg-print-payslip__inputs-row dt {
-  color: var(--ink-2);
+  color: var(--grigio);
 }
 
 .qg-print-payslip__inputs-row dd {
   margin: 0;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
 .qg-print-payslip__footer {
-  margin-top: var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--rule);
-  font-size: var(--text-sm);
-  color: var(--ink-2);
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--filetto);
+  font-size: var(--t-13);
+  color: var(--grigio);
 }
 
 .qg-print-payslip__source {
-  margin: var(--space-2) 0 0;
+  margin: var(--s-1) 0 0;
 }
