@@ -46,7 +46,7 @@ export function YearComparison({ calc }: YearComparisonProps) {
                         values={{
                           delta: (
                             <>
-                              {delta > 0 ? "+" : ""}
+                              {delta >= 0 ? "+" : ""}
                               <Money amount={delta} whole />
                             </>
                           ),

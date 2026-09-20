@@ -40,12 +40,6 @@
 .qg-ledger__row--zebra td {
   background: var(--velo);
 }
-.qg-ledger__row--zebra .qg-ledger__label {
-  padding-left: var(--s-2);
-}
-.qg-ledger__row--zebra .qg-ledger__amount {
-  padding-right: var(--s-2);
-}
 .qg-ledger__row--strong th,
 .qg-ledger__row--strong td {
   font-weight: 600;

@@ -106,7 +106,7 @@ export function SalaryHistoryChartPopover({
 
       {regionName !== null || contractName !== null ? (
         <p className="qg-chart-popover__meta">
-          {[regionName, contractName].filter(Boolean).join(" · ")}
+          {[regionName, contractName].filter(Boolean).join(", ")}
         </p>
       ) : null}
 

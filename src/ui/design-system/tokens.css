@@ -17,7 +17,7 @@
   --t-42: 42px;
   --t-52: 52px;
   --t-65: 65px;
-  --t-cifra: clamp(3rem, 8vw, 5.5rem);
+  --t-cifra: clamp(2.75rem, 13cqw, 5.5rem);
 
   --lh-body: 1.55;
   --lh-tight: 1.15;

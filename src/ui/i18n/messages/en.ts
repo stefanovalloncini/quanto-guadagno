@@ -209,7 +209,7 @@ export const en: Record<MessageKey, string> = {
     "Monthly unemployment indemnity introduced by D.Lgs. 22/2015. It is paid to workers who lose their job involuntarily (dismissal, just-cause resignation, settlement in conciliation) and have at least 13 weeks of contributions in the previous 4 years.",
   "naspi.faq.duration.q": "How long does NASpI last?",
   "naspi.faq.duration.a":
-    "Half of the contribution weeks from the previous 4 years, with a maximum of 24 months (104 weeks). Example: 100 weeks of contributions → 50 weeks of NASpI.",
+    "Half of the contribution weeks from the previous 4 years, with a maximum of 24 months (104 weeks). Example: 100 weeks of contributions give 50 weeks of NASpI.",
   "naspi.faq.amount.q": "How is the monthly amount calculated?",
   "naspi.faq.amount.a":
     "Start from the average monthly wage of the last 4 years. Up to a threshold (€1,456.72 gross monthly in 2026) you receive 75%. Above the threshold you add 25% of the difference, up to a cap (€1,584.70 gross monthly in 2026). Source: INPS Circular 4/2026.",
@@ -782,7 +782,7 @@ export const en: Record<MessageKey, string> = {
   "history.projection.horizonYears": "{years, plural, =1 {1 year} other {# years}}",
   "history.projection.growthRateLabel": "Expected annual growth",
   "history.projection.summary":
-    "In {year}: {gross} gross → {net} net per year, about {netMonthly} per month (at {growth} growth).",
+    "In {year}: {gross} gross becomes {net} net per year, about {netMonthly} per month, at {growth} growth.",
   "history.projection.emptyHint": "Add an entry for 2024 or later to see a projection.",
 
   "employee.dependents.title": "Dependent family members",

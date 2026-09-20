@@ -27,6 +27,9 @@
 .qg-employee__aside {
   grid-column: 6 / -1;
   min-width: 0;
+  /* The net figure is sized against this column, never against the viewport,
+     so it can never outrun the blue rule under it. */
+  container-type: inline-size;
 }
 .qg-calc__form-stack {
   display: flex;

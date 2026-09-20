@@ -210,7 +210,7 @@ export const it = {
     "Indennità mensile di disoccupazione introdotta dal D.Lgs. 22/2015. Spetta a chi perde involontariamente il lavoro (licenziamento, dimissioni per giusta causa, risoluzione consensuale in conciliazione) e ha almeno 13 settimane di contribuzione nei 4 anni precedenti.",
   "naspi.faq.duration.q": "Quanto dura la NASpI?",
   "naspi.faq.duration.a":
-    "La metà delle settimane di contribuzione degli ultimi 4 anni, con un massimo di 24 mesi (104 settimane). Esempio: 100 settimane di contributi → 50 settimane di NASpI.",
+    "La metà delle settimane di contribuzione degli ultimi 4 anni, con un massimo di 24 mesi (104 settimane). Esempio: con 100 settimane di contributi spettano 50 settimane di NASpI.",
   "naspi.faq.amount.q": "Come si calcola l'importo mensile?",
   "naspi.faq.amount.a":
     "Si parte dalla retribuzione media degli ultimi 4 anni. Fino a una soglia (€1.456,72 lordi mensili nel 2026) si prende il 75%. Sopra la soglia si aggiunge il 25% della differenza, fino a un massimale (€1.584,70 lordi mensili nel 2026). Fonte: Circolare INPS n. 4/2026.",
@@ -794,7 +794,7 @@ export const it = {
   "history.projection.horizonYears": "{years, plural, =1 {1 anno} other {# anni}}",
   "history.projection.growthRateLabel": "Crescita annua attesa",
   "history.projection.summary":
-    "Nel {year}: {gross} lordi → {net} netti l'anno, circa {netMonthly} al mese (con una crescita del {growth}).",
+    "Nel {year}: {gross} lordi diventano {net} netti l'anno, circa {netMonthly} al mese, con una crescita del {growth}.",
   "history.projection.emptyHint":
     "Aggiungi una voce per il 2024 o successivi per vedere una proiezione.",
 
