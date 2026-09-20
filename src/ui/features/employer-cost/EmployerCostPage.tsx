@@ -10,7 +10,7 @@ export function EmployerCostPage() {
       titleId="employerCost.title"
       ledeId="employerCost.lede"
       form={<EmployerCostForm calc={calc} />}
-      results={<EmployerCostView breakdown={calc.result} />}
+      results={<EmployerCostView breakdown={calc.result} defaultOpen />}
     />
   );
 }

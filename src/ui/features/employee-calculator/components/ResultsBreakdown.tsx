@@ -1,174 +1,158 @@
 import { FormattedMessage } from "react-intl";
 import type { SalaryBreakdown } from "@/domain/calc";
-import { BreakdownRow } from "@/ui/design-system/primitives";
+import { Ledger, LedgerGroup, LedgerRow, LedgerTotal } from "@/ui/design-system/primitives";
 
 interface ResultsBreakdownProps {
   readonly breakdown: SalaryBreakdown;
 }
 
+const label = (id: string) => <FormattedMessage id={id} />;
+
 export function ResultsBreakdown({ breakdown }: ResultsBreakdownProps) {
-  const hasInpsExemption = breakdown.inpsExemption > 0;
-  const hasMadreLavoratrice = breakdown.madreLavoratriceExemption > 0;
-  const hasDependents = breakdown.dependentsDeduction > 0;
-  const hasExpenses = breakdown.expenseDeduction > 0;
-  const hasImpatriati = breakdown.regimeImpatriatiSavings > 0;
-  const hasDetrazioneAggiuntiva = breakdown.detrazioneAggiuntiva > 0;
-  const hasTrattamento = breakdown.trattamentoIntegrativo > 0;
-  const hasSommaAggiuntiva = breakdown.sommaAggiuntiva > 0;
+  const hasCredits = breakdown.trattamentoIntegrativo > 0 || breakdown.sommaAggiuntiva > 0;
   const hasPdr = breakdown.pdrNet > 0;
 
   return (
     <div className="qg-results-breakdown">
-      <h2 className="qg-results-breakdown__title">
-        <FormattedMessage id="employee.results.detail" />
-      </h2>
+      <Ledger caption={label("employee.results.detail")}>
+        <LedgerRow label={label("employee.breakdown.gross")} amount={breakdown.grossAnnual} />
 
-      <div className="qg-results-breakdown__flow">
-        <BreakdownRow labelId="employee.breakdown.gross" amount={breakdown.grossAnnual} />
-
-        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
-          <FormattedMessage id="employee.breakdown.section.contributions" />
-        </p>
-        <BreakdownRow
-          labelId="employee.breakdown.inps"
+        <LedgerGroup label={label("employee.breakdown.section.contributions")} />
+        <LedgerRow
+          label={label("employee.breakdown.inps")}
           amount={breakdown.inpsContribution}
           rate={breakdown.inpsRate}
           subtract
         />
-        {hasInpsExemption && (
-          <BreakdownRow
-            labelId="employee.breakdown.inpsExemption"
+        {breakdown.inpsExemption > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.inpsExemption")}
             amount={breakdown.inpsExemption}
           />
         )}
-        {hasMadreLavoratrice && (
-          <BreakdownRow
-            labelId="employee.breakdown.madreLavoratrice"
+        {breakdown.madreLavoratriceExemption > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.madreLavoratrice")}
             amount={breakdown.madreLavoratriceExemption}
           />
         )}
-
         {breakdown.pensionFundDeduction > 0 && (
-          <BreakdownRow
-            labelId="employee.breakdown.pensionFund"
+          <LedgerRow
+            label={label("employee.breakdown.pensionFund")}
             amount={breakdown.pensionFundDeduction}
             subtract
           />
         )}
-
-        <BreakdownRow
-          labelId="employee.breakdown.taxableIncome"
+        <LedgerTotal
+          label={label("employee.breakdown.taxableIncome")}
           amount={breakdown.taxableIncome}
-          total
         />
 
-        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
-          <FormattedMessage id="employee.breakdown.section.taxes" />
-        </p>
-        <BreakdownRow
-          labelId="employee.breakdown.irpefGross"
+        <LedgerGroup label={label("employee.breakdown.section.taxes")} />
+        <LedgerRow
+          label={label("employee.breakdown.irpefGross")}
           amount={breakdown.irpefGross}
           subtract
         />
-        <BreakdownRow
-          labelId="employee.breakdown.workDeduction"
+        <LedgerRow
+          label={label("employee.breakdown.workDeduction")}
           amount={breakdown.irpefDeduction}
         />
-        {hasDependents && (
-          <BreakdownRow
-            labelId="employee.breakdown.dependents"
+        {breakdown.dependentsDeduction > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.dependents")}
             amount={breakdown.dependentsDeduction}
           />
         )}
-        {hasExpenses && (
-          <BreakdownRow labelId="employee.breakdown.expenses" amount={breakdown.expenseDeduction} />
+        {breakdown.expenseDeduction > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.expenses")}
+            amount={breakdown.expenseDeduction}
+          />
         )}
-        {hasDetrazioneAggiuntiva && (
-          <BreakdownRow
-            labelId="employee.breakdown.detrazioneAggiuntiva"
+        {breakdown.detrazioneAggiuntiva > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.detrazioneAggiuntiva")}
             amount={breakdown.detrazioneAggiuntiva}
           />
         )}
-        {hasImpatriati && (
-          <BreakdownRow
-            labelId="employee.breakdown.impatriati"
+        {breakdown.regimeImpatriatiSavings > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.impatriati")}
             amount={breakdown.regimeImpatriatiSavings}
           />
         )}
-        <BreakdownRow
-          labelId="employee.breakdown.irpefNet"
+        <LedgerTotal
+          label={label("employee.breakdown.irpefNet")}
           amount={breakdown.irpefNet}
           subtract
-          total
         />
-        <BreakdownRow
-          labelId="employee.breakdown.regional"
+        <LedgerRow
+          label={label("employee.breakdown.regional")}
           amount={breakdown.regionalTax}
           rate={breakdown.regionalTaxRate}
           subtract
         />
-        <BreakdownRow
-          labelId="employee.breakdown.municipal"
+        <LedgerRow
+          label={label("employee.breakdown.municipal")}
           amount={breakdown.municipalTax}
           rate={breakdown.municipalTaxRate}
           subtract
         />
 
-        {(hasTrattamento || hasSommaAggiuntiva) && (
-          <>
-            <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
-              <FormattedMessage id="employee.breakdown.section.credits" />
-            </p>
-            {hasTrattamento && (
-              <BreakdownRow
-                labelId="employee.breakdown.trattamento"
-                amount={breakdown.trattamentoIntegrativo}
-              />
-            )}
-            {hasSommaAggiuntiva && (
-              <BreakdownRow
-                labelId="employee.breakdown.sommaAggiuntiva"
-                amount={breakdown.sommaAggiuntiva}
-              />
-            )}
-          </>
+        {hasCredits && <LedgerGroup label={label("employee.breakdown.section.credits")} />}
+        {breakdown.trattamentoIntegrativo > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.trattamento")}
+            amount={breakdown.trattamentoIntegrativo}
+          />
+        )}
+        {breakdown.sommaAggiuntiva > 0 && (
+          <LedgerRow
+            label={label("employee.breakdown.sommaAggiuntiva")}
+            amount={breakdown.sommaAggiuntiva}
+          />
         )}
 
+        {hasPdr && <LedgerGroup label={label("employee.breakdown.section.pdr")} />}
         {hasPdr && (
-          <>
-            <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
-              <FormattedMessage id="employee.breakdown.section.pdr" />
-            </p>
-            <BreakdownRow labelId="employee.breakdown.pdrGross" amount={breakdown.pdrGross} />
-            <BreakdownRow
-              labelId="employee.breakdown.pdrInps"
-              amount={breakdown.pdrInps}
-              subtract
-            />
-            <BreakdownRow labelId="employee.breakdown.pdrTax" amount={breakdown.pdrTax} subtract />
-            <BreakdownRow labelId="employee.breakdown.pdrNet" amount={breakdown.pdrNet} total />
-          </>
+          <LedgerRow label={label("employee.breakdown.pdrGross")} amount={breakdown.pdrGross} />
+        )}
+        {hasPdr && (
+          <LedgerRow
+            label={label("employee.breakdown.pdrInps")}
+            amount={breakdown.pdrInps}
+            subtract
+          />
+        )}
+        {hasPdr && (
+          <LedgerRow
+            label={label("employee.breakdown.pdrTax")}
+            amount={breakdown.pdrTax}
+            subtract
+          />
+        )}
+        {hasPdr && (
+          <LedgerTotal label={label("employee.breakdown.pdrNet")} amount={breakdown.pdrNet} />
         )}
 
-        <BreakdownRow
-          labelId="employee.breakdown.totalTaxes"
+        <LedgerTotal
+          label={label("employee.breakdown.totalTaxes")}
           amount={breakdown.totalTaxes}
           subtract
-          total
         />
+        <LedgerTotal label={label("employee.breakdown.netAnnual")} amount={breakdown.netAnnual} />
 
-        <p className="qg-subhead qg-subhead--md qg-results-breakdown__group-label">
-          <FormattedMessage id="employee.breakdown.section.tfr" />
-        </p>
-        <BreakdownRow
-          labelId="employee.breakdown.tfr"
+        <LedgerGroup label={label("employee.breakdown.section.tfr")} />
+        <LedgerRow
+          label={label("employee.breakdown.tfr")}
           amount={breakdown.tfrAnnual}
           rate={breakdown.tfrRate}
         />
-        <p className="qg-results-breakdown__note">
-          <FormattedMessage id="employee.breakdown.tfr.note" />
-        </p>
-      </div>
+      </Ledger>
+      <p className="qg-results-breakdown__note">
+        <FormattedMessage id="employee.breakdown.tfr.note" />
+      </p>
     </div>
   );
 }

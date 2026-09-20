@@ -14,14 +14,14 @@ describe("EmployerCostPage", () => {
   it("shows the employer cost breakdown and total", () => {
     renderWithIntl(<EmployerCostPage />);
     expect(screen.getByText("Lato datore di lavoro")).toBeTruthy();
-    expect(screen.getByText("Il datore paga")).toBeTruthy();
-    expect(screen.getByText("Costo totale azienda")).toBeTruthy();
+    expect(screen.getByRole("rowheader", { name: /Contributi INPS/ })).toBeTruthy();
+    expect(screen.getByRole("rowheader", { name: "Costo totale azienda" })).toBeTruthy();
   });
 
   it("recomputes when the contract type changes", async () => {
     const user = userEvent.setup();
     renderWithIntl(<EmployerCostPage />);
     await user.selectOptions(screen.getByLabelText("Tipo di contratto"), "apprendistato");
-    expect(screen.getByText("Costo totale azienda")).toBeTruthy();
+    expect(screen.getByRole("rowheader", { name: "Costo totale azienda" })).toBeTruthy();
   });
 });

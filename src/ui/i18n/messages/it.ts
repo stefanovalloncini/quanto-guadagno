@@ -903,6 +903,7 @@ export const it = {
     "Hai diritto all'esonero contributivo al 100% (max 3.000 €/anno)",
 
   "employee.summary.monthlyNet": "Netto mensile",
+  "employee.breakdown.netAnnual": "Netto annuo",
   "employee.summary.annualNet": "Netto annuo",
   "employee.summary.annualNet.sub": "su {frequency} mensilità",
   "employee.summary.delta": "Differenza lordo-netto:",
@@ -958,8 +959,6 @@ export const it = {
   "employee.breakdown.netMonthly": "Netto mensile:",
 
   "employee.employer.section": "Lato datore di lavoro",
-  "employee.employer.youTake": "Tu ricevi netto",
-  "employee.employer.companyPays": "Il datore paga",
   "employee.employer.insight": "Ogni euro netto che ricevi costa {ratio} all'azienda.",
   "employee.employer.inps": "Contributi INPS datoriali",
   "employee.employer.tfr": "TFR (accantonamento)",

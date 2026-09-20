@@ -24,66 +24,68 @@ export function IrpefBracketIndicator({ taxableIncome, taxYear }: IrpefBracketIn
   const distanceToNext = nextBracket && current.max !== null ? current.max - taxableIncome : null;
 
   return (
-    <section className="qg-irpef-indicator" aria-labelledby="qg-irpef-indicator-title">
-      <h3 id="qg-irpef-indicator-title" className="qg-irpef-indicator__title">
+    <details className="qg-irpef-indicator">
+      <summary>
         <FormattedMessage id="employee.irpefBracket.title" />
-      </h3>
+      </summary>
 
-      <div className="qg-irpef-indicator__row">
-        {brackets.map((b, i) => {
-          const isCurrent = i === currentIdx;
-          return (
-            <div
-              key={i}
-              className={`qg-irpef-indicator__chip${isCurrent ? " qg-irpef-indicator__chip--current" : ""}`}
-            >
-              <span className="qg-irpef-indicator__rate">{formatPercentage(b.rate)}</span>
-              <span className="qg-irpef-indicator__range">
-                {b.max === null ? (
-                  <FormattedMessage
-                    id="employee.irpefBracket.rangeOpen"
-                    values={{ min: <Money amount={b.min} whole /> }}
-                  />
-                ) : (
-                  <FormattedMessage
-                    id="employee.irpefBracket.range"
-                    values={{
-                      min: <Money amount={b.min} whole />,
-                      max: <Money amount={b.max} whole />,
-                    }}
-                  />
-                )}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-
-      {current.max !== null && (
-        <div className="qg-irpef-indicator__progress" aria-hidden="true">
-          <div
-            className="qg-irpef-indicator__progress-fill"
-            style={{ width: `${progressPercent}%` }}
-          />
+      <div className="qg-irpef-indicator__body">
+        <div className="qg-irpef-indicator__row">
+          {brackets.map((b, i) => {
+            const isCurrent = i === currentIdx;
+            return (
+              <div
+                key={i}
+                className={`qg-irpef-indicator__chip${isCurrent ? " qg-irpef-indicator__chip--current" : ""}`}
+              >
+                <span className="qg-irpef-indicator__rate">{formatPercentage(b.rate)}</span>
+                <span className="qg-irpef-indicator__range">
+                  {b.max === null ? (
+                    <FormattedMessage
+                      id="employee.irpefBracket.rangeOpen"
+                      values={{ min: <Money amount={b.min} whole /> }}
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="employee.irpefBracket.range"
+                      values={{
+                        min: <Money amount={b.min} whole />,
+                        max: <Money amount={b.max} whole />,
+                      }}
+                    />
+                  )}
+                </span>
+              </div>
+            );
+          })}
         </div>
-      )}
 
-      {distanceToNext !== null && nextBracket && (
-        <p className="qg-irpef-indicator__hint">
-          <FormattedMessage
-            id="employee.irpefBracket.distanceToNext"
-            values={{
-              distance: <Money amount={distanceToNext} whole />,
-              nextRate: formatPercentage(nextBracket.rate),
-            }}
-          />
-        </p>
-      )}
-      {distanceToNext === null && (
-        <p className="qg-irpef-indicator__hint">
-          <FormattedMessage id="employee.irpefBracket.topBracket" />
-        </p>
-      )}
-    </section>
+        {current.max !== null && (
+          <div className="qg-irpef-indicator__progress" aria-hidden="true">
+            <div
+              className="qg-irpef-indicator__progress-fill"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+        )}
+
+        {distanceToNext !== null && nextBracket && (
+          <p className="qg-irpef-indicator__hint">
+            <FormattedMessage
+              id="employee.irpefBracket.distanceToNext"
+              values={{
+                distance: <Money amount={distanceToNext} whole />,
+                nextRate: formatPercentage(nextBracket.rate),
+              }}
+            />
+          </p>
+        )}
+        {distanceToNext === null && (
+          <p className="qg-irpef-indicator__hint">
+            <FormattedMessage id="employee.irpefBracket.topBracket" />
+          </p>
+        )}
+      </div>
+    </details>
   );
 }

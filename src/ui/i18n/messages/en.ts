@@ -890,6 +890,7 @@ export const en: Record<MessageKey, string> = {
     "You are entitled to the 100% contribution exemption (max €3,000/year)",
 
   "employee.summary.monthlyNet": "Net monthly",
+  "employee.breakdown.netAnnual": "Net annual",
   "employee.summary.annualNet": "Net annual",
   "employee.summary.annualNet.sub": "over {frequency} instalments",
   "employee.summary.delta": "Gross-to-net difference:",
@@ -944,8 +945,6 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.netMonthly": "Net monthly:",
 
   "employee.employer.section": "Employer side",
-  "employee.employer.youTake": "You take home",
-  "employee.employer.companyPays": "The company pays",
   "employee.employer.insight": "Every net euro you receive costs the company {ratio}.",
   "employee.employer.inps": "Employer INPS contributions",
   "employee.employer.tfr": "TFR accrual",

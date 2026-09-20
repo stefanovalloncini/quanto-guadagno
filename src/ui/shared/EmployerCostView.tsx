@@ -1,10 +1,11 @@
 import { FormattedMessage, FormattedNumber } from "react-intl";
-import { BreakdownRow, MetricBlock } from "@/ui/design-system/primitives";
+import { Ledger, LedgerGroup, LedgerRow, LedgerTotal } from "@/ui/design-system/primitives";
 import type { SalaryBreakdown } from "@/domain/calc";
 import type { MessageKey } from "@/ui/i18n/messages/it.ts";
 
 interface EmployerCostViewProps {
   readonly breakdown: SalaryBreakdown;
+  readonly defaultOpen?: boolean;
 }
 
 interface OtherCostRow {
@@ -24,93 +25,74 @@ function buildOtherCosts(breakdown: SalaryBreakdown): ReadonlyArray<OtherCostRow
   return rows.filter((row) => row.amount > 0);
 }
 
-export function EmployerCostView({ breakdown }: EmployerCostViewProps) {
+const label = (id: string) => <FormattedMessage id={id} />;
+
+export function EmployerCostView({ breakdown, defaultOpen }: EmployerCostViewProps) {
   const otherCosts = buildOtherCosts(breakdown);
   const showInsight = breakdown.netAnnual > 0 && breakdown.totalEmployerCost > 0;
   const ratio = showInsight ? breakdown.totalEmployerCost / breakdown.netAnnual : 0;
 
   return (
-    <section className="qg-employer" aria-labelledby="employer-cost-title">
-      <h2 id="employer-cost-title" className="qg-employer__title">
+    <details className="qg-employer" {...(defaultOpen === true && { open: true })}>
+      <summary>
         <FormattedMessage id="employee.employer.section" />
-      </h2>
+      </summary>
 
-      <div className="qg-employer__gap">
-        <MetricBlock
-          label={<FormattedMessage id="employee.employer.youTake" />}
-          amount={breakdown.netAnnual}
-          whole
-        />
-        <span className="qg-employer__gap-arrow" aria-hidden="true">
-          →
-        </span>
-        <MetricBlock
-          label={<FormattedMessage id="employee.employer.companyPays" />}
-          amount={breakdown.totalEmployerCost}
-          whole
-        />
-      </div>
-
-      {showInsight && (
-        <p className="qg-employer__insight">
-          <FormattedMessage
-            id="employee.employer.insight"
-            values={{
-              ratio: (
-                <strong className="qg-employer__insight-ratio">
-                  <FormattedNumber
-                    value={ratio}
-                    minimumFractionDigits={2}
-                    maximumFractionDigits={2}
-                  />{" "}
-                  €
-                </strong>
-              ),
-            }}
+      <div className="qg-employer__body">
+        <Ledger>
+          <LedgerRow label={label("employee.breakdown.gross")} amount={breakdown.grossAnnual} />
+          <LedgerRow
+            label={label("employee.employer.inps")}
+            amount={breakdown.employerInps}
+            rate={breakdown.employerInpsRate}
           />
-        </p>
-      )}
+          <LedgerRow
+            label={label("employee.employer.tfr")}
+            amount={breakdown.tfrAnnual}
+            rate={breakdown.tfrRate}
+          />
 
-      <div className="qg-employer__flow">
-        <BreakdownRow labelId="employee.breakdown.gross" amount={breakdown.grossAnnual} />
-        <BreakdownRow
-          labelId="employee.employer.inps"
-          amount={breakdown.employerInps}
-          rate={breakdown.employerInpsRate}
-        />
-        <BreakdownRow
-          labelId="employee.employer.tfr"
-          amount={breakdown.tfrAnnual}
-          rate={breakdown.tfrRate}
-        />
-
-        {otherCosts.length > 0 && (
-          <>
-            <p className="qg-subhead qg-subhead--md qg-employer__group-label">
-              <FormattedMessage id="employee.employer.otherCosts" />
-            </p>
-            {otherCosts.map((row) => (
-              <BreakdownRow key={row.labelId} labelId={row.labelId} amount={row.amount} />
-            ))}
-            <BreakdownRow
-              labelId="employee.employer.totalOtherCosts"
+          {otherCosts.length > 0 && <LedgerGroup label={label("employee.employer.otherCosts")} />}
+          {otherCosts.map((row) => (
+            <LedgerRow key={row.labelId} label={label(row.labelId)} amount={row.amount} />
+          ))}
+          {otherCosts.length > 0 && (
+            <LedgerTotal
+              label={label("employee.employer.totalOtherCosts")}
               amount={breakdown.totalOtherEmployerCosts}
-              total
             />
-          </>
+          )}
+
+          <LedgerTotal
+            label={label("employee.employer.total")}
+            amount={breakdown.totalEmployerCost}
+          />
+        </Ledger>
+
+        {showInsight && (
+          <p className="qg-employer__insight">
+            <FormattedMessage
+              id="employee.employer.insight"
+              values={{
+                ratio: (
+                  <span className="qg-employer__insight-ratio">
+                    <FormattedNumber
+                      value={ratio}
+                      minimumFractionDigits={2}
+                      maximumFractionDigits={2}
+                    />{" "}
+                    €
+                  </span>
+                ),
+              }}
+            />
+          </p>
         )}
 
-        <BreakdownRow
-          labelId="employee.employer.total"
-          amount={breakdown.totalEmployerCost}
-          highlight
-          total
-        />
+        <p className="qg-employer__disclaimer">
+          <FormattedMessage id="employee.employer.disclaimer" />
+        </p>
       </div>
-
-      <p className="qg-employer__disclaimer">
-        <FormattedMessage id="employee.employer.disclaimer" />
-      </p>
-    </section>
+    </details>
   );
 }
