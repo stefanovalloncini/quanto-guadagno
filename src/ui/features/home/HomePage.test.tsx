@@ -1,39 +1,40 @@
 import { describe, it, expect } from "vitest";
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import { HomePage } from "./HomePage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 
 describe("HomePage", () => {
-  it("renders the hero with an italic accent word inside the heading", () => {
+  it("opens on the salary calculator, not on a headline about the product", () => {
     renderWithIntl(<HomePage />);
-    const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent(/Quanto guadagno/);
-    expect(h1).toHaveTextContent(/davvero/);
-    expect(h1.querySelector("em")).toBeNull();
+    expect(screen.getByLabelText(/Stipendio lordo annuo/)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Stipendio netto/);
   });
 
-  it("renders the featured tile linking to the employee calc", () => {
+  it("lists the other tools under a single index heading", () => {
     renderWithIntl(<HomePage />);
-    const tile = screen.getByRole("link", { name: /Stipendio netto da lordo/i });
-    expect(tile).toHaveAttribute("href", "/calcola-stipendio");
+    const index = screen.getByRole("region", { name: /Altri strumenti/ });
+    expect(within(index).getByRole("link", { name: "Forfettario" })).toHaveAttribute(
+      "href",
+      "/partita-iva-forfettario",
+    );
+    expect(within(index).getByRole("link", { name: "NASpI" })).toHaveAttribute(
+      "href",
+      "/calcolo-naspi",
+    );
+    expect(within(index).getByRole("link", { name: "Fonti" })).toHaveAttribute("href", "/fonti");
   });
 
-  it("renders the available forfettario tile with the correct route", () => {
-    renderWithIntl(<HomePage />);
-    const tile = screen.getByRole("link", { name: /Partita IVA forfettario/i });
-    expect(tile).toHaveAttribute("href", "/partita-iva-forfettario");
-  });
-
-  it("renders the upcoming list under an 'In arrivo' subhead", () => {
+  it("groups the tools and gives each one a single sentence", () => {
     const { container } = renderWithIntl(<HomePage />);
-    const subhead = screen.getByRole("heading", { name: /In arrivo/i });
-    expect(subhead).toBeInTheDocument();
-    const items = container.querySelectorAll(".qg-home__upcoming-list li");
-    expect(items).toHaveLength(3);
+    const groups = container.querySelectorAll(".qg-tools__group");
+    expect(groups).toHaveLength(5);
+    expect(container.querySelectorAll(".qg-tools__entry")).toHaveLength(15);
+    expect(screen.getByText("Le norme e i documenti da cui arrivano le aliquote.")).toBeVisible();
   });
 
-  it("renders the open-source shimmer accent in the lede", () => {
-    const { container } = renderWithIntl(<HomePage />);
-    expect(container.querySelector(".qg-shimmer")).toBeInTheDocument();
+  it("advertises nothing that is not built", () => {
+    renderWithIntl(<HomePage />);
+    expect(screen.queryByText(/In arrivo/)).toBeNull();
+    expect(screen.queryByText(/Disponibile/)).toBeNull();
   });
 });

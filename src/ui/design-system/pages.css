@@ -29,6 +29,9 @@
   gap: var(--s-2) var(--s-5);
   align-items: baseline;
 }
+.qg-tools__entry {
+  display: contents;
+}
 .qg-tools__name {
   margin: 0;
 }
@@ -228,52 +231,7 @@
   }
 }
 
-/* Carried over until the home, the chrome and the employee page are rebuilt
-   on the new system in the commits that follow. */
-.qg-home__hero {
-  margin-bottom: var(--s-7);
-}
-.qg-home__hero h1 {
-  font-size: var(--t-42);
-  margin-bottom: var(--s-4);
-}
-.qg-home__pair {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s-4);
-}
-.qg-tile,
-.qg-home__feature {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-2);
-  padding: var(--s-4) 0;
-  border-top: 1px solid var(--filetto);
-  color: var(--inchiostro);
-  text-decoration: none;
-}
-.qg-tile__title,
-.qg-home__feature-title {
-  font-size: var(--t-21);
-  margin: 0;
-}
-.qg-tile__body,
-.qg-home__feature-lede,
-.qg-home__upcoming-list {
-  color: var(--grigio);
-  font-size: var(--t-17);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.qg-tile__badge,
-.qg-tile__cta,
-.qg-home__feature-badge,
-.qg-home__feature-cta,
-.qg-home__feature-specimen {
-  font-size: var(--t-13);
-  color: var(--grigio);
-}
+/* Carried over until the employee page is rebuilt in the next commit. */
 .qg-journey__svg {
   width: 100%;
   height: auto;

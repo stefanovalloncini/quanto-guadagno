@@ -3,9 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "@/ui/features/home";
 import { AppLayout } from "@/ui/shared/AppLayout.tsx";
 
-const EmployeePage = lazy(() =>
-  import("@/ui/features/employee-calculator").then((m) => ({ default: m.EmployeePage })),
-);
 const ApprenticeshipPage = lazy(() =>
   import("@/ui/features/apprenticeship").then((m) => ({ default: m.ApprenticeshipPage })),
 );
@@ -71,7 +68,14 @@ const router = createBrowserRouter([
       </AppLayout>
     ),
   },
-  { path: "/calcola-stipendio", element: lazyRoute(<EmployeePage />) },
+  {
+    path: "/calcola-stipendio",
+    element: (
+      <AppLayout>
+        <HomePage />
+      </AppLayout>
+    ),
+  },
   { path: "/progressione-apprendistato", element: lazyRoute(<ApprenticeshipPage />) },
   { path: "/storico-stipendio", element: lazyRoute(<SalaryHistoryPage />) },
   { path: "/partita-iva-forfettario", element: lazyRoute(<ForfettarioPage />) },
