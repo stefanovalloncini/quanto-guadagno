@@ -749,7 +749,7 @@ export const en: Record<MessageKey, string> = {
   "print.breakdown.netMonthly": "Monthly net",
   "print.footer.note":
     "Estimate for guidance only. Your employer's official payslip remains the reference.",
-  "print.footer.sourceLink": "Verify the calculation at quantoguadagno.it",
+  "print.footer.sourceLink": "Verify the calculation at quantoguadagno.com",
 
   "history.eyebrow": "Salary history",
   "history.title": "Your salaries <em>over time</em>",

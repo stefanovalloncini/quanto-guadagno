@@ -759,7 +759,7 @@ export const it = {
   "print.breakdown.netMonthly": "Netto mensile",
   "print.footer.note":
     "Stima a uso indicativo. La busta paga ufficiale del datore di lavoro resta il riferimento.",
-  "print.footer.sourceLink": "Verifica il calcolo su quantoguadagno.it",
+  "print.footer.sourceLink": "Verifica il calcolo su quantoguadagno.com",
 
   "history.eyebrow": "Storico stipendi",
   "history.title": "I tuoi stipendi <em>nel tempo</em>",
