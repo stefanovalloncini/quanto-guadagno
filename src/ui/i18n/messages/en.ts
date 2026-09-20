@@ -16,6 +16,7 @@ export const en: Record<MessageKey, string> = {
   "nav.naspi": "NASpI",
   "nav.preavviso": "Resignation notice",
   "nav.inverse": "Net-to-gross",
+  "nav.glossario": "Glossary",
   "nav.sources": "Sources",
   "nav.about": "About",
 

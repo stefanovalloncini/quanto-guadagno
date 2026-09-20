@@ -12,6 +12,7 @@ const navEntries: ReadonlyArray<NavEntry> = [
   { to: "/calcola-stipendio", id: "nav.employee" },
   { to: "/progressione-apprendistato", id: "nav.apprenticeship" },
   { to: "/partita-iva-forfettario", id: "nav.forfettario" },
+  { to: "/glossario", id: "nav.glossario" },
   { to: "/fonti", id: "nav.sources" },
   { to: "/informazioni", id: "nav.about" },
 ];

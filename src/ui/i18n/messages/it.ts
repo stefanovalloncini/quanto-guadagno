@@ -14,6 +14,7 @@ export const it = {
   "nav.naspi": "NASpI",
   "nav.preavviso": "Preavviso dimissioni",
   "nav.inverse": "Calcolo lordo da netto",
+  "nav.glossario": "Glossario",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
 
