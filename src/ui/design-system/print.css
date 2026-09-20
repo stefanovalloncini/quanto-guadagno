@@ -25,9 +25,10 @@
     page-break-inside: avoid;
   }
 
-  .qg-breakdown-row__amount,
-  .qg-money {
-    color: black;
+  /* The screen breakdown tints amounts by sign; on paper the minus carries it. */
+  .qg-print-payslip .qg-breakdown-row__amount,
+  .qg-print-payslip .qg-money {
+    color: black !important;
   }
 
   @page {
