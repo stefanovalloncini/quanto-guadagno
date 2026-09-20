@@ -40,33 +40,33 @@
   display: block;
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 var(--space-4);
 }
 
 .qg-print-payslip__header {
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--color-border, #ccc);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--rule);
 }
 
 .qg-print-payslip__title {
-  margin: 0 0 4px;
+  margin: 0 0 var(--space-1);
 }
 
 .qg-print-payslip__subtitle {
   margin: 0;
-  color: var(--color-text-muted, #555);
+  color: var(--ink-2);
 }
 
 .qg-print-payslip__section-title {
-  font-size: 1.1rem;
-  margin: 24px 0 12px;
+  font-size: var(--text-lg);
+  margin: var(--space-5) 0 var(--space-3);
 }
 
 .qg-print-payslip__summary-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: var(--space-4);
   margin: 0;
 }
 
@@ -75,33 +75,33 @@
 }
 
 .qg-print-payslip__metric dt {
-  font-size: 0.9rem;
-  color: var(--color-text-muted, #555);
-  margin-bottom: 4px;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin-bottom: var(--space-1);
 }
 
 .qg-print-payslip__metric dd {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: var(--text-xl);
   font-variant-numeric: tabular-nums;
 }
 
 .qg-print-payslip__inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 24px;
+  gap: var(--space-2) var(--space-5);
   margin: 0;
 }
 
 .qg-print-payslip__inputs-row {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dotted var(--color-border-subtle, #e5e5e5);
-  padding: 4px 0;
+  border-bottom: 1px dotted var(--rule);
+  padding: var(--space-1) 0;
 }
 
 .qg-print-payslip__inputs-row dt {
-  color: var(--color-text-muted, #555);
+  color: var(--ink-2);
 }
 
 .qg-print-payslip__inputs-row dd {
@@ -110,13 +110,13 @@
 }
 
 .qg-print-payslip__footer {
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid var(--color-border, #ccc);
-  font-size: 0.9rem;
-  color: var(--color-text-muted, #555);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
 }
 
 .qg-print-payslip__source {
-  margin: 8px 0 0;
+  margin: var(--space-2) 0 0;
 }
