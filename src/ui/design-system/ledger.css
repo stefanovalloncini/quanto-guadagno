@@ -101,26 +101,3 @@
   flex-direction: column;
   gap: var(--s-3);
 }
-
-/* Label over an amount, used where a table would be too much. */
-.qg-metric {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-1);
-}
-.qg-metric__label {
-  font-size: var(--t-13);
-  color: var(--grigio);
-}
-.qg-metric__amount {
-  font-size: var(--t-27);
-  font-weight: 600;
-  line-height: var(--lh-tight);
-  color: var(--inchiostro);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
-}
-.qg-metric__sub {
-  font-size: var(--t-13);
-  color: var(--grigio);
-}
