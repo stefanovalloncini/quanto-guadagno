@@ -11,10 +11,12 @@ describe("CompoundInterestPage", () => {
     expect(h1.querySelector("em")).toBeNull();
   });
 
-  it("renders 21 schedule rows for the default 20-year run", () => {
+  it("caps the schedule at ten years until the reader asks for the rest", async () => {
+    const user = userEvent.setup();
     renderWithIntl(<CompoundInterestPage />);
-    const rows = document.querySelectorAll(".qg-schedule__table tbody tr");
-    expect(rows).toHaveLength(21);
+    expect(document.querySelectorAll(".qg-ledger tbody tr")).toHaveLength(10);
+    await user.click(screen.getByRole("button", { name: /Mostra tutti gli anni/ }));
+    expect(document.querySelectorAll(".qg-ledger tbody tr")).toHaveLength(21);
   });
 
   it("recalculates when the principal is changed", async () => {
@@ -23,8 +25,8 @@ describe("CompoundInterestPage", () => {
     const principalInput = screen.getByLabelText(/Capitale iniziale/);
     await user.clear(principalInput);
     await user.type(principalInput, "0");
-    const interestMetric = screen.getByText(/Interessi maturati/).parentElement;
-    expect(interestMetric?.textContent ?? "").toMatch(/€/);
+    const note = document.querySelector(".qg-figure__note");
+    expect(note?.textContent ?? "").toMatch(/interessi maturati .*€/);
   });
 
   it("falls back to a sensible nominal when contributions are set to 'none'", async () => {
@@ -32,7 +34,7 @@ describe("CompoundInterestPage", () => {
     renderWithIntl(<CompoundInterestPage />);
     const freqSelect = screen.getByLabelText(/Frequenza versamento/);
     await user.selectOptions(freqSelect, "none");
-    const totalContrib = screen.getByText(/Totale versato/).parentElement;
-    expect(totalContrib?.textContent ?? "").toMatch(/0\s*€/);
+    const note = document.querySelector(".qg-figure__note");
+    expect(note?.textContent ?? "").toMatch(/Versato 0\s*€/);
   });
 });

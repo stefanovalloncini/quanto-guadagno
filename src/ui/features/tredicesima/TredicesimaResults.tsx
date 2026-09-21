@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
-import { BreakdownRow, MetricBlock, Stack } from "@/ui/design-system/primitives";
+import { Ledger, LedgerRow, LedgerTotal, Money } from "@/ui/design-system/primitives";
+import { ResultFigure } from "@/ui/shared/ResultFigure.tsx";
 import { formatPercentage } from "@/domain/format.ts";
 import type { TredicesimaResult } from "@/domain/calc";
 
@@ -7,45 +8,46 @@ interface TredicesimaResultsProps {
   readonly result: TredicesimaResult;
 }
 
+const label = (id: string) => <FormattedMessage id={id} />;
+
 export function TredicesimaResults({ result }: TredicesimaResultsProps) {
   return (
-    <Stack gap="md">
-      <MetricBlock
-        label={<FormattedMessage id="tredicesima.result.net" />}
-        amount={result.net}
-        sublabel={
+    <div className="qg-result">
+      <ResultFigure
+        label={label("tredicesima.result.net")}
+        value={<Money amount={result.net} whole />}
+        settleKey={result.net}
+        {...(result.extraMonths > 1 && {
+          secondary: (
+            <FormattedMessage
+              id="tredicesima.result.netTotal"
+              values={{ amount: <Money amount={result.netTotal} whole /> }}
+            />
+          ),
+        })}
+        note={
           <FormattedMessage
             id="tredicesima.result.net.sub"
             values={{ rate: formatPercentage(result.effectiveRate) }}
           />
         }
-        whole
-        announce
       />
 
-      {result.extraMonths > 1 && (
-        <MetricBlock
-          label={<FormattedMessage id="tredicesima.result.netTotal" />}
-          amount={result.netTotal}
-          whole
-        />
-      )}
-
-      <div className="qg-results-breakdown__flow">
-        <BreakdownRow labelId="tredicesima.breakdown.gross" amount={result.gross} />
-        <BreakdownRow labelId="tredicesima.breakdown.inps" amount={result.inps} subtract />
-        <BreakdownRow
-          labelId="tredicesima.breakdown.irpef"
+      <Ledger>
+        <LedgerRow label={label("tredicesima.breakdown.gross")} amount={result.gross} />
+        <LedgerRow label={label("tredicesima.breakdown.inps")} amount={result.inps} subtract />
+        <LedgerRow
+          label={label("tredicesima.breakdown.irpef")}
           amount={result.irpef}
           rate={result.marginalRate}
           subtract
         />
-        <BreakdownRow labelId="tredicesima.breakdown.net" amount={result.net} total highlight />
-      </div>
+        <LedgerTotal label={label("tredicesima.breakdown.net")} amount={result.net} />
+      </Ledger>
 
-      <p className="qg-note">
+      <p className="qg-figure__note">
         <FormattedMessage id="tredicesima.result.note" />
       </p>
-    </Stack>
+    </div>
   );
 }

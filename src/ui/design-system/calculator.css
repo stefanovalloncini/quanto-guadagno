@@ -296,3 +296,71 @@
   color: var(--grigio);
   max-width: 70ch;
 }
+
+/* Result column of a secondary tool: one figure, then quiet lines, then a ledger. */
+.qg-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.qg-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.qg-figure__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding-bottom: var(--s-3);
+  border-bottom: 2px solid var(--blu);
+}
+.qg-figure__label {
+  font-size: var(--t-13);
+  color: var(--grigio);
+}
+.qg-cifra--sm {
+  font-size: var(--t-cifra-sm);
+}
+.qg-figure__secondary {
+  margin: 0;
+  font-size: var(--t-17);
+  line-height: var(--lh-body);
+  color: var(--inchiostro);
+  max-width: 70ch;
+}
+.qg-figure__note {
+  margin: 0;
+  font-size: var(--t-13);
+  line-height: var(--lh-body);
+  color: var(--grigio);
+  max-width: 70ch;
+}
+
+/* A condition the reader has to act on: plain text, no box, no stripe. */
+.qg-result__alert {
+  margin: 0;
+  font-size: var(--t-17);
+  line-height: var(--lh-body);
+  color: var(--inchiostro);
+  max-width: 70ch;
+}
+.qg-result__alert + .qg-result__alert {
+  margin-top: var(--s-3);
+}
+.qg-result__alert-term {
+  font-weight: 600;
+}
+
+/* "Mostra tutti gli anni" under a capped schedule. */
+.qg-result__more,
+.qg-result__actions {
+  margin: 0;
+  font-size: var(--t-13);
+}
+.qg-result__more .qg-btn {
+  font-size: inherit;
+}
+.qg-result__actions {
+  font-size: var(--t-17);
+}

@@ -8,7 +8,6 @@ export function TredicesimaPage() {
   return (
     <CalculatorLayout
       titleId="tredicesima.title"
-      ledeId="tredicesima.lede"
       form={<TredicesimaForm calc={calc} />}
       results={<TredicesimaResults result={calc.result} />}
     />

@@ -17,7 +17,7 @@ describe("ApprenticeshipPage", () => {
 
   it("renders three years of progression by default", () => {
     renderWithIntl(<ApprenticeshipPage />);
-    const rows = document.querySelectorAll(".qg-progression__row");
+    const rows = document.querySelectorAll(".qg-ledger tbody tr");
     expect(rows).toHaveLength(3);
   });
 
@@ -26,12 +26,12 @@ describe("ApprenticeshipPage", () => {
     renderWithIntl(<ApprenticeshipPage />);
     const yearSelect = screen.getByLabelText(/Durata in anni/);
     await user.selectOptions(yearSelect, "5");
-    expect(document.querySelectorAll(".qg-progression__row")).toHaveLength(5);
+    expect(document.querySelectorAll(".qg-ledger tbody tr")).toHaveLength(5);
   });
 
   it("each row links to the calculator with the year's gross", () => {
     renderWithIntl(<ApprenticeshipPage />);
-    const links = document.querySelectorAll<HTMLAnchorElement>("a.qg-progression__row");
+    const links = document.querySelectorAll<HTMLAnchorElement>(".qg-ledger a");
     expect(links.length).toBe(3);
     links.forEach((a) => {
       expect(a.getAttribute("href")).toMatch(

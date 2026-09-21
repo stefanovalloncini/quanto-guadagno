@@ -1,51 +1,52 @@
-import { FormattedMessage, useIntl } from "react-intl";
-import { MetricBlock, Stack } from "@/ui/design-system/primitives";
-import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
+import { FormattedMessage } from "react-intl";
+import { Ledger, LedgerCells, Money } from "@/ui/design-system/primitives";
+import { ResultFigure } from "@/ui/shared/ResultFigure.tsx";
 import type { SalaryComparison } from "@/domain/calc";
 
 interface ComparisonResultsProps {
   readonly result: SalaryComparison;
 }
 
+const label = (id: string) => <FormattedMessage id={id} />;
+
 export function ComparisonResults({ result }: ComparisonResultsProps) {
-  const intl = useIntl();
   const { a, b, winner, netAnnualDelta, netMonthlyDelta } = result;
 
-  const perMonth = (monthly: number) => (
-    <FormattedMessage
-      id="comparison.result.perMonth"
-      values={{ amount: intl.formatNumber(monthly, EUR_AMOUNT_FORMAT) }}
+  const row = (labelId: string, valueA: number, valueB: number) => (
+    <LedgerCells
+      header={label(labelId)}
+      cells={[<Money key="a" amount={valueA} whole />, <Money key="b" amount={valueB} whole />]}
     />
   );
 
   return (
-    <Stack gap="md">
-      <Stack direction="row" gap="md" wrap>
-        <MetricBlock
-          label={<FormattedMessage id="comparison.result.offerA" />}
-          amount={a.netAnnual}
-          sublabel={perMonth(a.netMonthly)}
-          whole
-        />
-        <MetricBlock
-          label={<FormattedMessage id="comparison.result.offerB" />}
-          amount={b.netAnnual}
-          sublabel={perMonth(b.netMonthly)}
-          whole
-        />
-      </Stack>
-
-      <MetricBlock
+    <div className="qg-result">
+      <ResultFigure
         label={<FormattedMessage id="comparison.result.winner" values={{ winner }} />}
-        amount={Math.abs(netAnnualDelta)}
-        sublabel={perMonth(Math.abs(netMonthlyDelta))}
-        whole
-        announce
+        value={<Money amount={Math.abs(netAnnualDelta)} whole />}
+        settleKey={netAnnualDelta}
+        secondary={
+          <FormattedMessage
+            id="comparison.result.perMonth"
+            values={{ amount: <Money amount={Math.abs(netMonthlyDelta)} whole /> }}
+          />
+        }
+        note={label("comparison.result.note")}
       />
 
-      <p className="qg-note">
-        <FormattedMessage id="comparison.result.note" />
-      </p>
-    </Stack>
+      <Ledger
+        columns={[
+          <span key="item" className="qg-visually-hidden">
+            {label("comparison.result.column.item")}
+          </span>,
+          label("comparison.result.offerA"),
+          label("comparison.result.offerB"),
+        ]}
+      >
+        {row("comparison.result.row.grossAnnual", a.grossAnnual, b.grossAnnual)}
+        {row("comparison.result.row.netAnnual", a.netAnnual, b.netAnnual)}
+        {row("comparison.result.row.netMonthly", a.netMonthly, b.netMonthly)}
+      </Ledger>
+    </div>
   );
 }

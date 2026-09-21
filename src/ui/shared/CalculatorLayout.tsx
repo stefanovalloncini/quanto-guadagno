@@ -4,7 +4,8 @@ import type { MessageValues } from "./intl-types.ts";
 
 interface CalculatorLayoutProps {
   readonly titleId: string;
-  readonly ledeId: string;
+  /** Only when one sentence explains an input the tools index does not cover. */
+  readonly ledeId?: string;
   readonly ledeValues?: MessageValues;
   readonly form: ReactNode;
   readonly results: ReactNode;
@@ -25,9 +26,11 @@ export function CalculatorLayout({
         <h1>
           <FormattedMessage id={titleId} />
         </h1>
-        <p className="qg-lede">
-          <FormattedMessage id={ledeId} {...(ledeValues && { values: ledeValues })} />
-        </p>
+        {ledeId !== undefined && (
+          <p className="qg-lede">
+            <FormattedMessage id={ledeId} {...(ledeValues && { values: ledeValues })} />
+          </p>
+        )}
       </header>
 
       <div className="qg-calc__grid">

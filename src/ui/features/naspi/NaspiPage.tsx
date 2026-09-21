@@ -9,7 +9,6 @@ export function NaspiPage() {
   return (
     <CalculatorLayout
       titleId="naspi.title"
-      ledeId="naspi.lede"
       form={<NaspiForm calc={calc} />}
       results={<NaspiResults result={calc.result} year={calc.state.year} />}
       footer={<NaspiFaq />}

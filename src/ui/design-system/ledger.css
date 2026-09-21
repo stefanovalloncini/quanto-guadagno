@@ -44,6 +44,30 @@
 .qg-ledger__row--strong td {
   font-weight: 600;
 }
+.qg-ledger__head th {
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--filetto);
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--grigio);
+}
+.qg-ledger__amount + .qg-ledger__amount {
+  padding-left: var(--s-4);
+}
+.qg-ledger__link {
+  color: var(--inchiostro);
+  text-decoration: none;
+}
+.qg-ledger__link:hover {
+  color: var(--blu);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Four columns of amounts do not fit a phone; the table scrolls, the page does not. */
+.qg-ledger-scroll {
+  overflow-x: auto;
+}
+
 .qg-ledger__group th {
   padding: var(--s-5) 0 var(--s-1);
   text-align: left;
@@ -59,69 +83,10 @@
   color: var(--inchiostro);
 }
 
-/* Legacy row layout, still used by the calculators the sweep pass has not
-   reached. Same ink, same alignment as the ledger. */
-.qg-breakdown-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--s-4);
-  padding: var(--s-2) 0;
-  font-size: var(--t-17);
-  color: var(--inchiostro);
-}
-.qg-breakdown-row__label {
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-2);
-  flex: 1;
-}
-.qg-breakdown-row__rate {
-  font-size: var(--t-13);
-  color: var(--grigio);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
-}
-.qg-breakdown-row__amount {
-  text-align: right;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum";
-}
-.qg-breakdown-row--total {
-  border-top: 1px solid var(--filetto);
-  font-weight: 600;
-  margin-top: var(--s-1);
-  padding-top: var(--s-3);
-}
-.qg-breakdown-row--highlight {
-  font-weight: 600;
-}
-
 .qg-results-breakdown {
   display: flex;
   flex-direction: column;
   gap: var(--s-3);
-}
-.qg-results-breakdown__title {
-  margin: 0;
-  font-size: var(--t-13);
-  font-weight: 500;
-  color: var(--grigio);
-}
-.qg-results-breakdown__flow {
-  display: flex;
-  flex-direction: column;
-}
-.qg-results-breakdown__group-label {
-  margin-top: var(--s-5);
-  margin-bottom: var(--s-1);
-}
-.qg-results-breakdown__note {
-  margin: var(--s-2) 0 0;
-  font-size: var(--t-13);
-  color: var(--grigio);
-  max-width: 70ch;
 }
 
 /* Label over an amount, used where a table would be too much. */
@@ -141,10 +106,6 @@
   color: var(--inchiostro);
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
-}
-.qg-metric__amount--text {
-  font-size: var(--t-21);
-  font-variant-numeric: normal;
 }
 .qg-metric__sub {
   font-size: var(--t-13);

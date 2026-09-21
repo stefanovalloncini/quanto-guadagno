@@ -8,7 +8,6 @@ export function TfrPage() {
   return (
     <CalculatorLayout
       titleId="tfr.title"
-      ledeId="tfr.lede"
       form={<TfrForm calc={calc} />}
       results={<TfrResults result={calc.result} />}
     />

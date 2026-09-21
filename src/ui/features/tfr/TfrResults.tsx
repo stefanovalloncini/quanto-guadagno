@@ -1,5 +1,14 @@
+import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { BreakdownRow, MetricBlock, Stack } from "@/ui/design-system/primitives";
+import {
+  Button,
+  Ledger,
+  LedgerCells,
+  LedgerRow,
+  LedgerTotal,
+  Money,
+} from "@/ui/design-system/primitives";
+import { ResultFigure } from "@/ui/shared/ResultFigure.tsx";
 import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
 import type { TfrProjection } from "@/domain/calc";
 
@@ -7,33 +16,71 @@ interface TfrResultsProps {
   readonly result: TfrProjection;
 }
 
+const VISIBLE_YEARS = 10;
+
+const label = (id: string) => <FormattedMessage id={id} />;
+
 export function TfrResults({ result }: TfrResultsProps) {
   const intl = useIntl();
+  const [showAll, setShowAll] = useState(false);
+  const years = showAll ? result.schedule : result.schedule.slice(0, VISIBLE_YEARS);
+  const hasMore = result.schedule.length > years.length;
 
   return (
-    <Stack gap="md">
-      <MetricBlock
-        label={<FormattedMessage id="tfr.result.stock" />}
-        amount={result.finalStock}
-        sublabel={
+    <div className="qg-result">
+      <ResultFigure
+        label={label("tfr.result.stock")}
+        value={<Money amount={result.finalStock} whole />}
+        settleKey={result.finalStock}
+        secondary={
           <FormattedMessage
             id="tfr.result.stock.sub"
             values={{ amount: intl.formatNumber(result.annualQuota, EUR_AMOUNT_FORMAT) }}
           />
         }
-        whole
-        announce
       />
 
-      <div className="qg-results-breakdown__flow">
-        <BreakdownRow labelId="tfr.breakdown.quote" amount={result.totalQuote} />
-        <BreakdownRow labelId="tfr.breakdown.revaluation" amount={result.totalRevaluation} />
-        <BreakdownRow labelId="tfr.result.stock" amount={result.finalStock} total highlight />
+      <Ledger>
+        <LedgerRow label={label("tfr.breakdown.quote")} amount={result.totalQuote} />
+        <LedgerRow label={label("tfr.breakdown.revaluation")} amount={result.totalRevaluation} />
+        <LedgerTotal label={label("tfr.result.stock")} amount={result.finalStock} />
+      </Ledger>
+
+      <div className="qg-ledger-scroll">
+        <Ledger
+          caption={label("tfr.schedule.title")}
+          columns={[
+            label("tfr.schedule.year"),
+            label("tfr.schedule.quota"),
+            label("tfr.schedule.revaluation"),
+            label("tfr.schedule.stock"),
+          ]}
+        >
+          {years.map((row) => (
+            <LedgerCells
+              key={row.year}
+              header={row.year}
+              cells={[
+                <Money key="quota" amount={row.quota} whole />,
+                <Money key="rev" amount={row.revaluation} whole />,
+                <Money key="stock" amount={row.stock} whole />,
+              ]}
+            />
+          ))}
+        </Ledger>
       </div>
 
-      <p className="qg-note">
+      {hasMore && (
+        <p className="qg-result__more">
+          <Button variant="quiet" type="button" onClick={() => setShowAll(true)}>
+            <FormattedMessage id="schedule.showAllYears" />
+          </Button>
+        </p>
+      )}
+
+      <p className="qg-figure__note">
         <FormattedMessage id="tfr.result.note" />
       </p>
-    </Stack>
+    </div>
   );
 }

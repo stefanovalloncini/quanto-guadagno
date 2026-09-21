@@ -14,7 +14,7 @@ describe("NaspiPage", () => {
   it("renders the monthly amount metric with the default inputs", () => {
     renderWithIntl(<NaspiPage />);
     expect(screen.getByText(/Importo mensile/)).toBeTruthy();
-    expect(document.querySelector(".qg-schedule__table")).toBeTruthy();
+    expect(document.querySelector(".qg-ledger")).toBeTruthy();
   });
 
   it("shows the ineligibility alert when weeks of contribution are 0", async () => {

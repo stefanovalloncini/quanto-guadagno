@@ -371,8 +371,6 @@ export const it = {
     "Indice dei prezzi al consumo per famiglie di operai e impiegati, base 2015. È lo stesso indice che rivaluta il TFR e misura il potere d'acquisto nel tempo.",
 
   "apprenticeship.title": "Progressione apprendistato",
-  "apprenticeship.lede":
-    "Stima la retribuzione anno per anno durante l'apprendistato professionalizzante, a partire dalla retribuzione di destinazione. Le percentuali tipiche partono dall'85% del livello finale e crescono ogni anno.",
 
   "apprenticeship.form.target": "Retribuzione di destinazione (RAL)",
   "apprenticeship.form.target.hint":
@@ -384,14 +382,15 @@ export const it = {
   "apprenticeship.col.percent": "% della destinazione",
   "apprenticeship.col.gross": "Lordo annuo",
   "apprenticeship.col.net": "Netto mensile (stima)",
-  "apprenticeship.row.netUnit": "/ mese",
+  "apprenticeship.schedule.title": "Anno per anno",
+  "apprenticeship.result.firstYear": "Netto mensile al primo anno",
+  "apprenticeship.result.lastYear": "All'anno {year} arrivi a {amount} al mese.",
   "apprenticeship.row.openLink": "Apri il calcolatore per l'anno {year}",
   "apprenticeship.results.footnote":
     "Il netto mensile è stimato con aliquota Lombardia, addizionale comunale 0,8% e contratto di apprendistato. Apri una riga per personalizzare regione, detrazioni e altre voci.",
 
   "forfettario.title": "Partita IVA forfettario",
-  "forfettario.lede":
-    "Dal fatturato annuo ricavo il reddito imponibile, i contributi di Gestione Separata e l'imposta sostitutiva. Calcolo valido per i contribuenti in regime forfettario fino a {limit} di ricavi.",
+  "forfettario.lede": "Il regime vale fino a {limit} di ricavi all'anno.",
 
   "forfettario.form.revenue": "Fatturato annuo previsto",
   "forfettario.form.revenue.hint":
@@ -434,44 +433,34 @@ export const it = {
   "forfettario.form.newRegistrantDiscount50":
     "Sono nuovo iscritto: riduzione 50% per i primi 36 mesi (L. 207/2024)",
 
-  "forfettario.eligibility.warning":
-    "Fatturato vicino al limite del regime ({percent}% di {limit}).",
-  "forfettario.eligibility.revenueExceeded":
-    "Fatturato oltre il limite di {limit}: il regime forfettario non è applicabile.",
-  "forfettario.eligibility.employeeCostsExceeded":
-    "Spese per personale oltre {limit}: il regime forfettario non è applicabile.",
+  "forfettario.eligibility.warning": "il fatturato è al {percent}% del limite di {limit}.",
+  "forfettario.eligibility.warning.term": "Vicino al limite:",
+  "forfettario.eligibility.revenueExceeded": "il fatturato supera il limite di {limit}.",
+  "forfettario.eligibility.employeeCostsExceeded": "le spese per personale superano {limit}.",
   "forfettario.eligibility.concurrentEmployeeRalTooHigh":
-    "La RAL da lavoro dipendente supera 35.000 €: il regime forfettario non è applicabile.",
+    "la RAL da lavoro dipendente supera 35.000 €.",
+  "forfettario.eligibility.term": "Fuori dal regime forfettario:",
 
   "forfettario.summary.monthlyNet": "Netto mensile",
-  "forfettario.summary.annualNet": "Netto annuo",
-  "forfettario.summary.annualNet.sub": "fatturato meno contributi e imposta sostitutiva",
-  "forfettario.summary.effectiveRate": "Pressione fiscale effettiva:",
-  "forfettario.summary.totalTaxes": "Totale prelievo:",
-  "forfettario.summary.regimeType": "Regime {rate} ({phase})",
+  "forfettario.summary.annualLine": "Netto annuo {amount} su {revenue} di fatturato",
+  "forfettario.summary.rates": "Imposta sostitutiva {tax} ({phase}), contributi {inps}",
   "forfettario.summary.regimeType.startup": "primi 5 anni",
   "forfettario.summary.regimeType.standard": "a regime",
 
-  "forfettario.breakdown.title": "Dettaglio del calcolo",
   "forfettario.breakdown.revenue": "Fatturato annuo",
-  "forfettario.breakdown.coefficient": "Coefficiente di redditività",
   "forfettario.breakdown.imponibileLordo": "Reddito imponibile lordo",
-  "forfettario.breakdown.inps": "Contributi Gestione Separata ({rate})",
-  "forfettario.breakdown.inps.gestione-separata": "Contributi Gestione Separata ({rate})",
-  "forfettario.breakdown.inps.artigiani": "Contributi INPS Artigiani ({rate})",
-  "forfettario.breakdown.inps.commercianti": "Contributi INPS Commercianti ({rate})",
+  "forfettario.breakdown.inps.gestione-separata": "Contributi Gestione Separata",
+  "forfettario.breakdown.inps.artigiani": "Contributi INPS Artigiani",
+  "forfettario.breakdown.inps.commercianti": "Contributi INPS Commercianti",
   "forfettario.breakdown.inps.cassa-professionale": "Contributi cassa professionale",
   "forfettario.breakdown.discount35": "Applicata la riduzione 35% (L. 190/2014).",
   "forfettario.breakdown.discount50": "Applicata la riduzione 50% nuovi iscritti (L. 207/2024).",
   "forfettario.breakdown.imponibileNetto": "Reddito imponibile netto",
-  "forfettario.breakdown.imponibileNetto.sub": "(imponibile lordo meno contributi INPS dedotti)",
-  "forfettario.breakdown.impostaSostitutiva": "Imposta sostitutiva ({rate})",
+  "forfettario.breakdown.impostaSostitutiva": "Imposta sostitutiva",
   "forfettario.breakdown.totalTaxes": "Totale imposte e contributi",
   "forfettario.breakdown.net": "Netto annuo",
 
   "compoundInterest.title": "Quanto valgono nel tempo i miei risparmi",
-  "compoundInterest.lede":
-    "Stima il valore futuro di un capitale, con versamenti periodici, frequenza di capitalizzazione e inflazione attesa.",
   "compoundInterest.form.principal": "Capitale iniziale",
   "compoundInterest.form.principal.hint": "L'importo da cui parti.",
   "compoundInterest.form.annualRate": "Rendimento annuo atteso",
@@ -491,10 +480,8 @@ export const it = {
   "compoundInterest.form.inflationRate": "Inflazione attesa",
   "compoundInterest.form.inflationRate.hint": "Per stimare il valore reale del capitale finale.",
   "compoundInterest.result.finalNominal": "Valore finale nominale",
-  "compoundInterest.result.finalReal": "Valore finale reale",
-  "compoundInterest.result.finalReal.sub": "rivalutato all'inflazione attesa",
-  "compoundInterest.result.totalContributions": "Totale versato",
-  "compoundInterest.result.totalInterest": "Interessi maturati",
+  "compoundInterest.result.finalReal": "In valore reale {amount}, ai prezzi di oggi.",
+  "compoundInterest.result.split": "Versato {contributions}, interessi maturati {interest}.",
   "compoundInterest.schedule.title": "Andamento anno per anno",
   "compoundInterest.schedule.year": "Anno",
   "compoundInterest.schedule.balance": "Saldo nominale",
@@ -503,8 +490,6 @@ export const it = {
   "compoundInterest.schedule.interest": "Interessi",
 
   "naspi.title": "Indennità di disoccupazione",
-  "naspi.lede":
-    "Stima la NASpI: importo mensile, durata e riduzione progressiva. Aliquote 2024–2026 da circolare INPS.",
   "naspi.form.year": "Anno della cessazione",
   "naspi.form.grossPay4Years": "Retribuzione lorda ultimi 4 anni",
   "naspi.form.grossPay4Years.hint":
@@ -518,21 +503,17 @@ export const it = {
   "naspi.form.weeksAfterVoluntaryResignation": "Settimane di contribuzione dopo le dimissioni",
   "naspi.form.weeksAfterVoluntaryResignation.hint":
     "Servono almeno 13 settimane di contribuzione dopo le dimissioni volontarie per riaprire NASpI.",
-  "naspi.ineligible.title": "Diritto non maturato",
+  "naspi.ineligible.title": "Diritto non maturato:",
   "naspi.ineligible.insufficient-weeks":
     "Servono almeno 13 settimane di contribuzione negli ultimi 4 anni.",
   "naspi.ineligible.voluntary-resignation-lockout":
     "Hai dato dimissioni volontarie da tempo indeterminato negli ultimi 12 mesi. Servono almeno 13 settimane di contribuzione successive prima di accedere a una nuova NASpI.",
-  "naspi.result.monthlyAmount": "Importo mensile (lordo)",
   "naspi.result.monthlyAmountNet": "Importo mensile (netto)",
-  "naspi.result.monthlyAmountGross.sub": "Lordo: {gross, number, ::currency/EUR .}",
+  "naspi.result.summaryLine":
+    "{gross} lordi al mese per {months, plural, one {# mese} other {# mesi}}",
+  "naspi.result.totalLine":
+    "Totale netto {net} su {gross} lordi. Retribuzione di riferimento {reference} al mese.",
   "naspi.result.monthlyAmount.capped": "Importo mensile al massimale {year}.",
-  "naspi.result.durationMonths": "Durata",
-  "naspi.result.durationMonths.value": "{months, plural, one {# mese} other {# mesi}}",
-  "naspi.result.totalGross": "Totale lordo stimato",
-  "naspi.result.totalNet": "Totale netto stimato",
-  "naspi.result.totalGross.sub": "Lordo: {gross, number, ::currency/EUR .}",
-  "naspi.result.referenceMonthly": "Retribuzione mensile di riferimento",
   "naspi.schedule.title": "Andamento mese per mese",
   "naspi.schedule.month": "Mese",
   "naspi.schedule.amount": "Lordo",
@@ -542,8 +523,6 @@ export const it = {
     "Il netto stima l'IRPEF applicata al totale annuo. Non si applicano contributi INPS né addizionali.",
 
   "preavviso.title": "Preavviso di dimissioni",
-  "preavviso.lede":
-    "Calcola i giorni di preavviso da rispettare e la data di uscita, in base al CCNL, al livello e all'anzianità di servizio.",
   "preavviso.form.ccnl": "CCNL applicato",
   "preavviso.form.livello": "Livello di inquadramento",
   "preavviso.form.hireDate": "Data di assunzione",
@@ -551,9 +530,8 @@ export const it = {
   "preavviso.form.error.invalidDates":
     "La data delle dimissioni deve essere successiva all'assunzione.",
   "preavviso.result.noticeDays": "Giorni di preavviso",
-  "preavviso.result.noticeDays.value": "{days, plural, one {# giorno} other {# giorni}}",
-  "preavviso.result.exitDate": "Ultimo giorno di lavoro",
-  "preavviso.result.band": "Anzianità di servizio",
+  "preavviso.result.exitDate": "Ultimo giorno di lavoro: {date}",
+  "preavviso.result.band": "Anzianità {band}, livello {livello}.",
   "preavviso.result.band.lt-5y": "Meno di 5 anni",
   "preavviso.result.band.5-10y": "Da 5 a 10 anni",
   "preavviso.result.band.gt-10y": "Più di 10 anni",
@@ -564,14 +542,12 @@ export const it = {
   "preavviso.result.calendarDays.note": "I giorni indicati sono giorni di calendario.",
 
   "inverse.title": "Dal netto al lordo",
-  "inverse.lede":
-    "Quanto deve essere la RAL per portare a casa un certo netto annuo? Lo trovo per bisezione partendo dal calcolo diretto.",
   "inverse.form.targetNetAnnual": "Netto annuo desiderato",
   "inverse.form.targetNetAnnual.hint":
     "Lo stipendio netto su 12 mesi che vuoi raggiungere, prima di tredicesime e quattordicesime.",
   "inverse.form.municipal.percent": "%",
   "inverse.result.grossAnnual": "RAL lorda corrispondente",
-  "inverse.result.grossMonthly": "Lordo mensile",
+  "inverse.result.grossMonthly": "Lordo mensile {amount}",
   "inverse.result.netAnnualAchieved": "Netto annuo raggiunto",
   "inverse.result.netMonthly": "Netto mensile",
   "inverse.result.inps": "Contributi INPS",
@@ -580,15 +556,13 @@ export const it = {
     "Il calcolatore non ha trovato un valore preciso. Il risultato è la migliore approssimazione.",
 
   "tredicesima.title": "Quanto netto vale la tredicesima",
-  "tredicesima.lede":
-    "La tredicesima è una mensilità in più, ma è tassata più di uno stipendio normale: non porta con sé le detrazioni da lavoro né le addizionali. Ecco quanto resta in tasca.",
   "tredicesima.form.ral": "Stipendio lordo annuo",
   "tredicesima.form.ral.hint": "La RAL su cui si calcola la mensilità aggiuntiva.",
   "tredicesima.form.mensilita": "Mensilità",
   "tredicesima.form.mensilita.hint": "13 per la sola tredicesima, 14 anche con la quattordicesima.",
   "tredicesima.result.net": "Netto della tredicesima",
   "tredicesima.result.net.sub": "Prelievo effettivo {rate} tra INPS e IRPEF",
-  "tredicesima.result.netTotal": "Netto di tredicesima e quattordicesima",
+  "tredicesima.result.netTotal": "Con la quattordicesima il netto totale è {amount}.",
   "tredicesima.breakdown.gross": "Lordo tredicesima",
   "tredicesima.breakdown.inps": "Contributi INPS",
   "tredicesima.breakdown.irpef": "IRPEF",
@@ -610,12 +584,14 @@ export const it = {
     "Calcolo basato sull'indice ISTAT FOI (prezzi al consumo per famiglie di operai e impiegati), base 2015. È lo stesso indice usato per rivalutare il TFR.",
 
   "comparison.title": "Confronto tra due offerte",
-  "comparison.lede":
-    "Due stipendi lordi a confronto, a parità di condizioni. Vedi quale lascia più netto in tasca e di quanto.",
   "comparison.form.ralA": "Offerta A: lordo annuo",
   "comparison.form.ralB": "Offerta B: lordo annuo",
-  "comparison.result.offerA": "Netto offerta A",
-  "comparison.result.offerB": "Netto offerta B",
+  "comparison.result.offerA": "Offerta A",
+  "comparison.result.offerB": "Offerta B",
+  "comparison.result.column.item": "Voce",
+  "comparison.result.row.grossAnnual": "Lordo annuo",
+  "comparison.result.row.netAnnual": "Netto annuo",
+  "comparison.result.row.netMonthly": "Netto al mese",
   "comparison.result.winner":
     "{winner, select, a {Offerta A più alta} b {Offerta B più alta} other {Stesso netto}}",
   "comparison.result.perMonth": "{amount} al mese",
@@ -623,12 +599,9 @@ export const it = {
     "Stesse condizioni per entrambe: anno, regione, comune e mensilità. La differenza è solo nel lordo di partenza.",
 
   "employerCost.title": "Quanto costa un dipendente",
-  "employerCost.lede":
-    "Quanto spende davvero l'azienda per un dipendente: dal lordo in busta al costo totale, con contributi e accantonamenti.",
+  "employerCost.result.summaryLine": "Lordo in busta {gross}, netto per il dipendente {net}.",
 
   "tfr.title": "Quanto TFR accumuli",
-  "tfr.lede":
-    "Il trattamento di fine rapporto cresce ogni anno con una quota dello stipendio e una rivalutazione. Stima quanto accumuli nel tempo.",
   "tfr.form.years": "Anni di lavoro",
   "tfr.form.years.hint": "Per quanti anni resti con lo stesso datore di lavoro.",
   "tfr.form.inflation": "Inflazione attesa",
@@ -638,6 +611,11 @@ export const it = {
   "tfr.result.stock.sub": "Quota annua {amount}, al lordo della tassazione separata",
   "tfr.breakdown.quote": "Quote versate",
   "tfr.breakdown.revaluation": "Rivalutazione netta",
+  "tfr.schedule.title": "Anno per anno",
+  "tfr.schedule.year": "Anno",
+  "tfr.schedule.quota": "Quota",
+  "tfr.schedule.revaluation": "Rivalutazione",
+  "tfr.schedule.stock": "Accumulato",
   "tfr.result.note":
     "Ogni anno accantoni circa un tredicesimo e mezzo dello stipendio, rivalutato all'1,5% più il 75% dell'inflazione ISTAT, con imposta sostitutiva del 17% sulla rivalutazione. Alla liquidazione si applica la tassazione separata, qui non calcolata.",
 
@@ -682,6 +660,8 @@ export const it = {
   "share.button.copied": "Link copiato",
   "share.button.failed": "Copia non riuscita",
   "share.button.print": "Stampa",
+  "schedule.showAllYears": "Mostra tutti gli anni",
+  "schedule.showAllMonths": "Mostra tutti i mesi",
 
   "print.title": "Busta paga",
   "print.subtitle": "Calcolo netto per l'anno fiscale {year}",

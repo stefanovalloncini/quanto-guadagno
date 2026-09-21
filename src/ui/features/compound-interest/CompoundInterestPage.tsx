@@ -8,7 +8,6 @@ export function CompoundInterestPage() {
   return (
     <CalculatorLayout
       titleId="compoundInterest.title"
-      ledeId="compoundInterest.lede"
       form={<CompoundInterestForm calc={calc} />}
       results={<CompoundInterestResults result={calc.result} />}
     />

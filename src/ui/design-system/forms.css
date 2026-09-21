@@ -129,19 +129,22 @@
 
 .qg-toggle {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: var(--s-3);
   cursor: pointer;
 }
 .qg-toggle__input {
   width: 1.1em;
   height: 1.1em;
+  /* Sits on the first line of a label that wraps, not between its two lines. */
+  margin-top: 0.24em;
   accent-color: var(--inchiostro);
   cursor: pointer;
   flex-shrink: 0;
 }
 .qg-toggle__label {
   font-size: var(--t-17);
+  line-height: var(--lh-body);
   color: var(--inchiostro);
   cursor: pointer;
   user-select: none;

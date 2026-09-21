@@ -9,7 +9,6 @@ export function PreavvisoPage() {
   return (
     <CalculatorLayout
       titleId="preavviso.title"
-      ledeId="preavviso.lede"
       form={<PreavvisoForm calc={calc} />}
       results={<PreavvisoResults result={calc.result} invalidDates={calc.invalidDates} />}
       footer={<PreavvisoFaq />}

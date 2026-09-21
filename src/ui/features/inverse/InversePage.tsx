@@ -8,7 +8,6 @@ export function InversePage() {
   return (
     <CalculatorLayout
       titleId="inverse.title"
-      ledeId="inverse.lede"
       form={<InverseForm calc={calc} />}
       results={<InverseResults result={calc.result} />}
     />

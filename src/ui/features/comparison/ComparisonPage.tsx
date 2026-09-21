@@ -8,7 +8,6 @@ export function ComparisonPage() {
   return (
     <CalculatorLayout
       titleId="comparison.title"
-      ledeId="comparison.lede"
       form={<ComparisonForm calc={calc} />}
       results={<ComparisonResults result={calc.result} />}
     />

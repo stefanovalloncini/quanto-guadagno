@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { Field, Select, Stack } from "@/ui/design-system/primitives";
+import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS } from "@/domain/data";
 import type { TredicesimaCalculator, TredicesimaFormState } from "./useTredicesimaCalculator.ts";
 
@@ -13,48 +13,46 @@ export function TredicesimaForm({ calc }: TredicesimaFormProps) {
   const { state, update } = calc;
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <Stack gap="md">
-        <Field
-          label={<FormattedMessage id="tredicesima.form.ral" />}
-          hint={<FormattedMessage id="tredicesima.form.ral.hint" />}
-          type="number"
-          min={0}
-          max={500_000}
-          step={500}
-          value={state.ral}
-          onChange={(e) => update({ ral: Math.max(0, Number(e.target.value)) })}
-          trailing="€"
-          inputMode="numeric"
-        />
+    <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
+      <Field
+        label={<FormattedMessage id="tredicesima.form.ral" />}
+        hint={<FormattedMessage id="tredicesima.form.ral.hint" />}
+        type="number"
+        min={0}
+        max={500_000}
+        step={500}
+        value={state.ral}
+        onChange={(e) => update({ ral: Math.max(0, Number(e.target.value)) })}
+        trailing="€"
+        inputMode="numeric"
+      />
 
-        <Select
-          label={<FormattedMessage id="tredicesima.form.mensilita" />}
-          hint={<FormattedMessage id="tredicesima.form.mensilita.hint" />}
-          value={state.mensilita}
-          onChange={(e) => update({ mensilita: Number(e.target.value) as 13 | 14 })}
-        >
-          {MENSILITA_OPTIONS.map((m) => (
-            <option key={m} value={m}>
-              {m}
-            </option>
-          ))}
-        </Select>
+      <Select
+        label={<FormattedMessage id="tredicesima.form.mensilita" />}
+        hint={<FormattedMessage id="tredicesima.form.mensilita.hint" />}
+        value={state.mensilita}
+        onChange={(e) => update({ mensilita: Number(e.target.value) as 13 | 14 })}
+      >
+        {MENSILITA_OPTIONS.map((m) => (
+          <option key={m} value={m}>
+            {m}
+          </option>
+        ))}
+      </Select>
 
-        <Select
-          label={<FormattedMessage id="employee.form.year" />}
-          value={state.taxYear}
-          onChange={(e) =>
-            update({ taxYear: Number(e.target.value) as TredicesimaFormState["taxYear"] })
-          }
-        >
-          {SUPPORTED_YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-      </Stack>
+      <Select
+        label={<FormattedMessage id="employee.form.year" />}
+        value={state.taxYear}
+        onChange={(e) =>
+          update({ taxYear: Number(e.target.value) as TredicesimaFormState["taxYear"] })
+        }
+      >
+        {SUPPORTED_YEARS.map((y) => (
+          <option key={y} value={y}>
+            {y}
+          </option>
+        ))}
+      </Select>
     </form>
   );
 }

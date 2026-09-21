@@ -369,8 +369,6 @@ export const en: Record<MessageKey, string> = {
     "Consumer price index for blue- and white-collar households, 2015 base. It is the same index that revalues TFR and measures purchasing power over time.",
 
   "apprenticeship.title": "Apprenticeship progression",
-  "apprenticeship.lede":
-    "Estimate year-by-year salary during the apprenticeship period, starting from the target salary. Typical progressions start at 85% of the final level and grow each year.",
 
   "apprenticeship.form.target": "Target gross salary (RAL)",
   "apprenticeship.form.target.hint": "Final-level annual gross, after the apprenticeship ends.",
@@ -381,14 +379,15 @@ export const en: Record<MessageKey, string> = {
   "apprenticeship.col.percent": "% of target",
   "apprenticeship.col.gross": "Gross annual",
   "apprenticeship.col.net": "Monthly net (estimate)",
-  "apprenticeship.row.netUnit": "/ month",
+  "apprenticeship.schedule.title": "Year by year",
+  "apprenticeship.result.firstYear": "Monthly net in the first year",
+  "apprenticeship.result.lastYear": "By year {year} you reach {amount} a month.",
   "apprenticeship.row.openLink": "Open the calculator for year {year}",
   "apprenticeship.results.footnote":
     "Monthly net is estimated with Lombardy rates, 0.8% municipal surcharge and an apprenticeship contract. Open any row to refine region, deductions and other inputs.",
 
   "forfettario.title": "Self-employed forfettario",
-  "forfettario.lede":
-    "From annual invoiced revenue I derive taxable income, Gestione Separata contributions and the substitute tax. Valid for forfettario taxpayers up to {limit} of revenue.",
+  "forfettario.lede": "The regime applies up to {limit} of revenue a year.",
 
   "forfettario.form.revenue": "Expected annual revenue",
   "forfettario.form.revenue.hint":
@@ -428,43 +427,34 @@ export const en: Record<MessageKey, string> = {
   "forfettario.form.newRegistrantDiscount50":
     "I am a new registrant: 50% reduction for the first 36 months (Law 207/2024)",
 
-  "forfettario.eligibility.warning": "Revenue close to the regime limit ({percent}% of {limit}).",
-  "forfettario.eligibility.revenueExceeded":
-    "Revenue above the {limit} limit: forfettario regime does not apply.",
-  "forfettario.eligibility.employeeCostsExceeded":
-    "Employee costs above {limit}: forfettario regime does not apply.",
+  "forfettario.eligibility.warning": "revenue is at {percent}% of the {limit} ceiling.",
+  "forfettario.eligibility.warning.term": "Close to the limit:",
+  "forfettario.eligibility.revenueExceeded": "revenue is above the {limit} ceiling.",
+  "forfettario.eligibility.employeeCostsExceeded": "staff costs are above {limit}.",
   "forfettario.eligibility.concurrentEmployeeRalTooHigh":
-    "The employee gross salary exceeds €35,000: forfettario regime does not apply.",
+    "gross pay from employment is above 35,000 €.",
+  "forfettario.eligibility.term": "Outside the flat-rate regime:",
 
   "forfettario.summary.monthlyNet": "Monthly net",
-  "forfettario.summary.annualNet": "Annual net",
-  "forfettario.summary.annualNet.sub": "revenue minus contributions and substitute tax",
-  "forfettario.summary.effectiveRate": "Effective tax rate:",
-  "forfettario.summary.totalTaxes": "Total levy:",
-  "forfettario.summary.regimeType": "Regime {rate} ({phase})",
+  "forfettario.summary.annualLine": "Annual net {amount} on {revenue} of revenue",
+  "forfettario.summary.rates": "Substitute tax {tax} ({phase}), contributions {inps}",
   "forfettario.summary.regimeType.startup": "first 5 years",
   "forfettario.summary.regimeType.standard": "standard",
 
-  "forfettario.breakdown.title": "Calculation breakdown",
   "forfettario.breakdown.revenue": "Annual revenue",
-  "forfettario.breakdown.coefficient": "Profitability coefficient",
   "forfettario.breakdown.imponibileLordo": "Gross taxable income",
-  "forfettario.breakdown.inps": "Gestione Separata contributions ({rate})",
-  "forfettario.breakdown.inps.gestione-separata": "Gestione Separata contributions ({rate})",
-  "forfettario.breakdown.inps.artigiani": "INPS Artigiani contributions ({rate})",
-  "forfettario.breakdown.inps.commercianti": "INPS Commercianti contributions ({rate})",
+  "forfettario.breakdown.inps.gestione-separata": "Gestione Separata contributions",
+  "forfettario.breakdown.inps.artigiani": "INPS Artigiani contributions",
+  "forfettario.breakdown.inps.commercianti": "INPS Commercianti contributions",
   "forfettario.breakdown.inps.cassa-professionale": "Professional cassa contributions",
   "forfettario.breakdown.discount35": "35% discount applied (Law 190/2014).",
   "forfettario.breakdown.discount50": "50% new-registrant discount applied (Law 207/2024).",
   "forfettario.breakdown.imponibileNetto": "Net taxable income",
-  "forfettario.breakdown.imponibileNetto.sub": "(gross taxable minus deducted INPS contributions)",
-  "forfettario.breakdown.impostaSostitutiva": "Substitute tax ({rate})",
+  "forfettario.breakdown.impostaSostitutiva": "Substitute tax",
   "forfettario.breakdown.totalTaxes": "Total taxes and contributions",
   "forfettario.breakdown.net": "Annual net",
 
   "compoundInterest.title": "How my savings grow over time",
-  "compoundInterest.lede":
-    "Estimate the future value of a sum, accounting for periodic contributions, compounding frequency and expected inflation.",
   "compoundInterest.form.principal": "Initial principal",
   "compoundInterest.form.principal.hint": "The amount you start with.",
   "compoundInterest.form.annualRate": "Expected annual return",
@@ -484,10 +474,8 @@ export const en: Record<MessageKey, string> = {
   "compoundInterest.form.inflationRate": "Expected inflation",
   "compoundInterest.form.inflationRate.hint": "Used to compute the real final value.",
   "compoundInterest.result.finalNominal": "Final nominal value",
-  "compoundInterest.result.finalReal": "Final real value",
-  "compoundInterest.result.finalReal.sub": "discounted by expected inflation",
-  "compoundInterest.result.totalContributions": "Total contributed",
-  "compoundInterest.result.totalInterest": "Interest accrued",
+  "compoundInterest.result.finalReal": "In real terms {amount}, at today's prices.",
+  "compoundInterest.result.split": "Contributed {contributions}, interest accrued {interest}.",
   "compoundInterest.schedule.title": "Year-by-year progression",
   "compoundInterest.schedule.year": "Year",
   "compoundInterest.schedule.balance": "Nominal balance",
@@ -496,8 +484,6 @@ export const en: Record<MessageKey, string> = {
   "compoundInterest.schedule.interest": "Interest",
 
   "naspi.title": "Unemployment indemnity",
-  "naspi.lede":
-    "Estimate NASpI: monthly amount, duration and progressive reduction. 2024–2026 INPS parameters.",
   "naspi.form.year": "Year of cessation",
   "naspi.form.grossPay4Years": "Gross pay (last 4 years)",
   "naspi.form.grossPay4Years.hint":
@@ -511,21 +497,17 @@ export const en: Record<MessageKey, string> = {
   "naspi.form.weeksAfterVoluntaryResignation": "Weeks of contribution after resignation",
   "naspi.form.weeksAfterVoluntaryResignation.hint":
     "At least 13 weeks of contribution after the voluntary resignation are required to reopen NASpI.",
-  "naspi.ineligible.title": "Not eligible",
+  "naspi.ineligible.title": "Not eligible:",
   "naspi.ineligible.insufficient-weeks":
     "At least 13 weeks of contribution in the last 4 years are required.",
   "naspi.ineligible.voluntary-resignation-lockout":
     "You resigned voluntarily from a permanent contract in the last 12 months. At least 13 new weeks of contribution are required before a new NASpI can be granted.",
-  "naspi.result.monthlyAmount": "Monthly amount (gross)",
   "naspi.result.monthlyAmountNet": "Monthly amount (net)",
-  "naspi.result.monthlyAmountGross.sub": "Gross: {gross, number, ::currency/EUR .}",
+  "naspi.result.summaryLine":
+    "{gross} gross a month for {months, plural, one {# month} other {# months}}",
+  "naspi.result.totalLine":
+    "Net total {net} out of {gross} gross. Reference pay {reference} a month.",
   "naspi.result.monthlyAmount.capped": "Monthly amount at the {year} cap.",
-  "naspi.result.durationMonths": "Duration",
-  "naspi.result.durationMonths.value": "{months, plural, one {# month} other {# months}}",
-  "naspi.result.totalGross": "Estimated gross total",
-  "naspi.result.totalNet": "Estimated net total",
-  "naspi.result.totalGross.sub": "Gross: {gross, number, ::currency/EUR .}",
-  "naspi.result.referenceMonthly": "Reference monthly pay",
   "naspi.schedule.title": "Month-by-month schedule",
   "naspi.schedule.month": "Month",
   "naspi.schedule.amount": "Gross",
@@ -535,16 +517,14 @@ export const en: Record<MessageKey, string> = {
     "The net estimate applies IRPEF brackets to the annual total. INPS contributions and surcharges do not apply.",
 
   "preavviso.title": "Resignation notice",
-  "preavviso.lede": "Compute the notice period and exit date based on CCNL, level and seniority.",
   "preavviso.form.ccnl": "Applicable CCNL",
   "preavviso.form.livello": "Level / category",
   "preavviso.form.hireDate": "Hire date",
   "preavviso.form.resignationDate": "Resignation communication date",
   "preavviso.form.error.invalidDates": "Resignation date must be after the hire date.",
   "preavviso.result.noticeDays": "Notice days",
-  "preavviso.result.noticeDays.value": "{days, plural, one {# day} other {# days}}",
-  "preavviso.result.exitDate": "Last day of work",
-  "preavviso.result.band": "Seniority",
+  "preavviso.result.exitDate": "Last day of work: {date}",
+  "preavviso.result.band": "Seniority {band}, grade {livello}.",
   "preavviso.result.band.lt-5y": "Less than 5 years",
   "preavviso.result.band.5-10y": "5 to 10 years",
   "preavviso.result.band.gt-10y": "More than 10 years",
@@ -554,14 +534,12 @@ export const en: Record<MessageKey, string> = {
   "preavviso.result.calendarDays.note": "These are calendar days.",
 
   "inverse.title": "From net to gross",
-  "inverse.lede":
-    "What gross annual salary produces a target net? Bisection on the forward calculator.",
   "inverse.form.targetNetAnnual": "Target annual net",
   "inverse.form.targetNetAnnual.hint":
     "The annual take-home you aim for, spread over 12 months before 13th/14th-month bonuses.",
   "inverse.form.municipal.percent": "%",
   "inverse.result.grossAnnual": "Corresponding gross",
-  "inverse.result.grossMonthly": "Monthly gross",
+  "inverse.result.grossMonthly": "Monthly gross {amount}",
   "inverse.result.netAnnualAchieved": "Net annual achieved",
   "inverse.result.netMonthly": "Monthly net",
   "inverse.result.inps": "INPS contributions",
@@ -570,15 +548,13 @@ export const en: Record<MessageKey, string> = {
     "The calculator did not find a precise value. The result is the best approximation.",
 
   "tredicesima.title": "What the 13th salary is worth net",
-  "tredicesima.lede":
-    "The tredicesima is an extra month's pay, but it's taxed more than a normal salary: it carries no work deduction and no local surcharges. Here's what you keep.",
   "tredicesima.form.ral": "Annual gross salary",
   "tredicesima.form.ral.hint": "The RAL the extra month is computed from.",
   "tredicesima.form.mensilita": "Instalments",
   "tredicesima.form.mensilita.hint": "13 for the 13th only, 14 to include the 14th too.",
   "tredicesima.result.net": "Net 13th salary",
   "tredicesima.result.net.sub": "Effective take of {rate} between INPS and IRPEF",
-  "tredicesima.result.netTotal": "Net of 13th and 14th",
+  "tredicesima.result.netTotal": "With the 14th the total net is {amount}.",
   "tredicesima.breakdown.gross": "Gross 13th",
   "tredicesima.breakdown.inps": "INPS contributions",
   "tredicesima.breakdown.irpef": "IRPEF",
@@ -601,12 +577,14 @@ export const en: Record<MessageKey, string> = {
     "Based on the ISTAT FOI index (consumer prices for blue- and white-collar households), 2015 base. It is the same index used to revalue TFR.",
 
   "comparison.title": "Two offers compared",
-  "comparison.lede":
-    "Two gross salaries side by side, under the same conditions. See which leaves more net pay, and by how much.",
   "comparison.form.ralA": "Offer A: annual gross",
   "comparison.form.ralB": "Offer B: annual gross",
-  "comparison.result.offerA": "Net, offer A",
-  "comparison.result.offerB": "Net, offer B",
+  "comparison.result.offerA": "Offer A",
+  "comparison.result.offerB": "Offer B",
+  "comparison.result.column.item": "Item",
+  "comparison.result.row.grossAnnual": "Gross annual",
+  "comparison.result.row.netAnnual": "Net annual",
+  "comparison.result.row.netMonthly": "Net per month",
   "comparison.result.winner":
     "{winner, select, a {Offer A is higher} b {Offer B is higher} other {Same net pay}}",
   "comparison.result.perMonth": "{amount} per month",
@@ -614,12 +592,9 @@ export const en: Record<MessageKey, string> = {
     "Same conditions for both: year, region, municipality and instalments. Only the starting gross differs.",
 
   "employerCost.title": "What an employee costs",
-  "employerCost.lede":
-    "What a company really spends on an employee: from the gross on the payslip to the total cost, with contributions and accruals.",
+  "employerCost.result.summaryLine": "Gross pay {gross}, net to the employee {net}.",
 
   "tfr.title": "How much TFR you build up",
-  "tfr.lede":
-    "Severance pay (TFR) grows each year with a share of your salary and a revaluation. Estimate how much you accumulate over time.",
   "tfr.form.years": "Years of service",
   "tfr.form.years.hint": "How many years you stay with the same employer.",
   "tfr.form.inflation": "Expected inflation",
@@ -628,6 +603,11 @@ export const en: Record<MessageKey, string> = {
   "tfr.result.stock.sub": "Annual quota {amount}, before separate taxation",
   "tfr.breakdown.quote": "Quotas set aside",
   "tfr.breakdown.revaluation": "Net revaluation",
+  "tfr.schedule.title": "Year by year",
+  "tfr.schedule.year": "Year",
+  "tfr.schedule.quota": "Quota",
+  "tfr.schedule.revaluation": "Revaluation",
+  "tfr.schedule.stock": "Accumulated",
   "tfr.result.note":
     "Each year you set aside about 7.4% of your salary, revalued at 1.5% plus 75% of ISTAT inflation, with a 17% substitute tax on the revaluation. At payout, separate taxation applies and is not computed here.",
 
@@ -671,6 +651,8 @@ export const en: Record<MessageKey, string> = {
   "share.button.copied": "Link copied",
   "share.button.failed": "Copy failed",
   "share.button.print": "Print",
+  "schedule.showAllYears": "Show every year",
+  "schedule.showAllMonths": "Show every month",
 
   "print.title": "Payslip",
   "print.subtitle": "Net salary calculation for tax year {year}",

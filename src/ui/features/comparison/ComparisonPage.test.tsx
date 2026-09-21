@@ -13,8 +13,8 @@ describe("ComparisonPage", () => {
 
   it("shows both offers and flags the higher one (B by default)", () => {
     renderWithIntl(<ComparisonPage />);
-    expect(screen.getByText("Netto offerta A")).toBeTruthy();
-    expect(screen.getByText("Netto offerta B")).toBeTruthy();
+    expect(screen.getByRole("columnheader", { name: "Offerta A" })).toBeTruthy();
+    expect(screen.getByRole("columnheader", { name: "Offerta B" })).toBeTruthy();
     expect(screen.getByText("Offerta B più alta")).toBeTruthy();
   });
 

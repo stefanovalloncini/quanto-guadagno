@@ -8,7 +8,6 @@ export function ApprenticeshipPage() {
   return (
     <CalculatorLayout
       titleId="apprenticeship.title"
-      ledeId="apprenticeship.lede"
       form={<ApprenticeshipForm calc={calc} />}
       results={<ApprenticeshipResults result={calc.result} />}
     />

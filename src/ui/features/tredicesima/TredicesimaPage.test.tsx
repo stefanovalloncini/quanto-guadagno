@@ -20,8 +20,8 @@ describe("TredicesimaPage", () => {
   it("reveals the combined total only when 14 instalments are chosen", async () => {
     const user = userEvent.setup();
     renderWithIntl(<TredicesimaPage />);
-    expect(screen.queryByText("Netto di tredicesima e quattordicesima")).toBeNull();
+    expect(screen.queryByText(/Con la quattordicesima/)).toBeNull();
     await user.selectOptions(screen.getByLabelText("Mensilità"), "14");
-    expect(screen.getByText("Netto di tredicesima e quattordicesima")).toBeTruthy();
+    expect(screen.getByText(/Con la quattordicesima/)).toBeTruthy();
   });
 });

@@ -18,6 +18,8 @@
   --t-52: 52px;
   --t-65: 65px;
   --t-cifra: clamp(2.75rem, 13cqw, 5.5rem);
+  /* Secondary tools: the same stamp, smaller, so the home figure stays first. */
+  --t-cifra-sm: clamp(2.25rem, 9cqw, 4rem);
 
   --lh-body: 1.55;
   --lh-tight: 1.15;
