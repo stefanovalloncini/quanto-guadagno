@@ -524,11 +524,11 @@ export const en: Record<MessageKey, string> = {
   "preavviso.result.noticeDays": "Notice days",
   "preavviso.result.exitDate": "Last day of work: {date}",
   "preavviso.result.band": "Seniority {band}, grade {livello}.",
-  "preavviso.result.band.lt-5y": "Less than 5 years",
+  "preavviso.result.band.lt-5y": "less than 5 years",
   "preavviso.result.band.5-10y": "5 to 10 years",
-  "preavviso.result.band.gt-10y": "More than 10 years",
-  "preavviso.result.band.lte-3y": "Up to 3 years",
-  "preavviso.result.band.gt-3y": "More than 3 years",
+  "preavviso.result.band.gt-10y": "more than 10 years",
+  "preavviso.result.band.lte-3y": "up to 3 years",
+  "preavviso.result.band.gt-3y": "more than 3 years",
   "preavviso.result.workingDays.note": "These are working days (Saturdays and Sundays excluded).",
   "preavviso.result.calendarDays.note": "These are calendar days.",
 
@@ -580,13 +580,13 @@ export const en: Record<MessageKey, string> = {
   "comparison.form.ralB": "Offer B: annual gross",
   "comparison.result.offerA": "Offer A",
   "comparison.result.offerB": "Offer B",
+  "comparison.result.delta": "Difference in annual net",
   "comparison.result.column.item": "Item",
   "comparison.result.row.grossAnnual": "Gross annual",
   "comparison.result.row.netAnnual": "Net annual",
   "comparison.result.row.netMonthly": "Net per month",
   "comparison.result.winner":
-    "{winner, select, a {Offer A is higher} b {Offer B is higher} other {Same net pay}}",
-  "comparison.result.perMonth": "{amount} per month",
+    "{winner, select, a {Offer A pays {amount} more a month.} b {Offer B pays {amount} more a month.} other {The two offers pay the same net.}}",
   "comparison.result.note":
     "Same conditions for both: year, region, municipality and instalments. Only the starting gross differs.",
 

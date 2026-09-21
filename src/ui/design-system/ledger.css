@@ -58,7 +58,9 @@
 }
 .qg-ledger__link {
   color: var(--inchiostro);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--filetto);
+  text-underline-offset: 3px;
 }
 .qg-ledger__link:hover {
   color: var(--blu);
@@ -68,6 +70,15 @@
 /* Four columns of amounts do not fit a phone; the table scrolls, the page does not. */
 .qg-ledger-scroll {
   overflow-x: auto;
+}
+/* Five columns of amounts do not fit the result column either. */
+.qg-ledger--dense {
+  font-size: var(--t-13);
+}
+@media (max-width: 820px) {
+  .qg-ledger-scroll .qg-ledger {
+    font-size: var(--t-13);
+  }
 }
 
 .qg-ledger__group th {

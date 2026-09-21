@@ -6,6 +6,7 @@ interface LedgerProps {
   readonly caption?: ReactNode;
   readonly labelledBy?: string;
   readonly columns?: ReadonlyArray<ReactNode>;
+  readonly dense?: boolean;
   readonly children: ReactNode;
 }
 
@@ -125,10 +126,10 @@ function withZebra(children: ReactNode): ReactNode {
   });
 }
 
-export function Ledger({ caption, labelledBy, columns, children }: LedgerProps) {
+export function Ledger({ caption, labelledBy, columns, dense, children }: LedgerProps) {
   return (
     <table
-      className="qg-ledger"
+      className={dense ? "qg-ledger qg-ledger--dense" : "qg-ledger"}
       {...(labelledBy !== undefined && { "aria-labelledby": labelledBy })}
     >
       {caption !== undefined && <caption>{caption}</caption>}

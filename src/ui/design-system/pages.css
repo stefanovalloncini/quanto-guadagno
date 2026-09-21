@@ -64,8 +64,7 @@
 
 .qg-about h1,
 .qg-sources h1,
-.qg-glossario h1,
-.qg-notfound h1 {
+.qg-glossario h1 {
   font-size: var(--t-33);
   margin-bottom: var(--s-4);
 }

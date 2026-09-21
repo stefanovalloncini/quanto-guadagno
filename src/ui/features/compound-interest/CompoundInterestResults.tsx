@@ -43,6 +43,7 @@ export function CompoundInterestResults({ result }: CompoundInterestResultsProps
 
       <div className="qg-ledger-scroll">
         <Ledger
+          dense
           caption={label("compoundInterest.schedule.title")}
           columns={[
             label("compoundInterest.schedule.year"),

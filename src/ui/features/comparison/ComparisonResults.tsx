@@ -22,13 +22,13 @@ export function ComparisonResults({ result }: ComparisonResultsProps) {
   return (
     <div className="qg-result">
       <ResultFigure
-        label={<FormattedMessage id="comparison.result.winner" values={{ winner }} />}
+        label={label("comparison.result.delta")}
         value={<Money amount={Math.abs(netAnnualDelta)} whole />}
         settleKey={netAnnualDelta}
         secondary={
           <FormattedMessage
-            id="comparison.result.perMonth"
-            values={{ amount: <Money amount={Math.abs(netMonthlyDelta)} whole /> }}
+            id="comparison.result.winner"
+            values={{ winner, amount: <Money amount={Math.abs(netMonthlyDelta)} whole /> }}
           />
         }
         note={label("comparison.result.note")}

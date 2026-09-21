@@ -15,7 +15,7 @@ describe("ComparisonPage", () => {
     renderWithIntl(<ComparisonPage />);
     expect(screen.getByRole("columnheader", { name: "Offerta A" })).toBeTruthy();
     expect(screen.getByRole("columnheader", { name: "Offerta B" })).toBeTruthy();
-    expect(screen.getByText("Offerta B più alta")).toBeTruthy();
+    expect(screen.getByText(/L.offerta B rende/)).toBeTruthy();
   });
 
   it("re-flags the winner when offer A is raised above B", async () => {
@@ -24,6 +24,6 @@ describe("ComparisonPage", () => {
     const ralA = screen.getByLabelText("Offerta A: lordo annuo");
     await user.clear(ralA);
     await user.type(ralA, "60000");
-    expect(screen.getByText("Offerta A più alta")).toBeTruthy();
+    expect(screen.getByText(/L.offerta A rende/)).toBeTruthy();
   });
 });

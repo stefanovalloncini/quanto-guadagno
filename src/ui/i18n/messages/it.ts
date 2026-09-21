@@ -531,11 +531,11 @@ export const it = {
   "preavviso.result.noticeDays": "Giorni di preavviso",
   "preavviso.result.exitDate": "Ultimo giorno di lavoro: {date}",
   "preavviso.result.band": "Anzianità {band}, livello {livello}.",
-  "preavviso.result.band.lt-5y": "Meno di 5 anni",
-  "preavviso.result.band.5-10y": "Da 5 a 10 anni",
-  "preavviso.result.band.gt-10y": "Più di 10 anni",
-  "preavviso.result.band.lte-3y": "Fino a 3 anni",
-  "preavviso.result.band.gt-3y": "Più di 3 anni",
+  "preavviso.result.band.lt-5y": "meno di 5 anni",
+  "preavviso.result.band.5-10y": "da 5 a 10 anni",
+  "preavviso.result.band.gt-10y": "più di 10 anni",
+  "preavviso.result.band.lte-3y": "fino a 3 anni",
+  "preavviso.result.band.gt-3y": "più di 3 anni",
   "preavviso.result.workingDays.note":
     "I giorni indicati sono giorni lavorativi (esclusi sabato e domenica).",
   "preavviso.result.calendarDays.note": "I giorni indicati sono giorni di calendario.",
@@ -587,13 +587,13 @@ export const it = {
   "comparison.form.ralB": "Offerta B: lordo annuo",
   "comparison.result.offerA": "Offerta A",
   "comparison.result.offerB": "Offerta B",
+  "comparison.result.delta": "Differenza di netto annuo",
   "comparison.result.column.item": "Voce",
   "comparison.result.row.grossAnnual": "Lordo annuo",
   "comparison.result.row.netAnnual": "Netto annuo",
   "comparison.result.row.netMonthly": "Netto al mese",
   "comparison.result.winner":
-    "{winner, select, a {Offerta A più alta} b {Offerta B più alta} other {Stesso netto}}",
-  "comparison.result.perMonth": "{amount} al mese",
+    "{winner, select, a {L'offerta A rende {amount} in più al mese.} b {L'offerta B rende {amount} in più al mese.} other {Le due offerte danno lo stesso netto.}}",
   "comparison.result.note":
     "Stesse condizioni per entrambe: anno, regione, comune e mensilità. La differenza è solo nel lordo di partenza.",
 

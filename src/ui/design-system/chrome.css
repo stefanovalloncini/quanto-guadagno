@@ -144,10 +144,6 @@
   margin: 0 0.3em;
 }
 
-.qg-error,
-.qg-notfound {
-  padding: var(--s-6) 0;
-}
 .qg-error h1,
 .qg-notfound h1 {
   font-size: var(--t-33);

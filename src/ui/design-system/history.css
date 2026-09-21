@@ -5,6 +5,14 @@
   flex-direction: column;
   gap: var(--s-7);
 }
+.qg-history .qg-calc__hero {
+  margin-bottom: 0;
+}
+.qg-history .qg-calc__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
 .qg-history__overview {
   display: flex;
   flex-direction: column;
