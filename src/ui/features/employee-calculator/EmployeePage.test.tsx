@@ -164,6 +164,30 @@ describe("EmployeePage", () => {
     expect(dependentsDetails).toHaveAttribute("open");
   });
 
+  it("puts the raise block straight after the IRPEF bracket", () => {
+    renderWithIntl(<EmployeePage />);
+    const disclosures = document.querySelector(".qg-employee__disclosures") as HTMLElement;
+    const order = Array.from(disclosures.children).map((el) => el.className);
+    expect(order.indexOf("qg-disclosure qg-raise")).toBe(order.indexOf("qg-irpef-indicator") + 1);
+  });
+
+  it("lists the four raise steps with the share kept and the marginal rate", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<EmployeePage />);
+
+    const block = document.querySelector(".qg-raise") as HTMLElement;
+    expect(block).not.toHaveAttribute("open");
+    await user.click(screen.getByText("Se il lordo aumenta"));
+
+    const rows = block.querySelectorAll("tbody tr");
+    expect(rows).toHaveLength(4);
+    expect(rows[0]?.textContent).toMatch(/\+1\.000/);
+    expect(rows[0]?.textContent).toMatch(/57,99%/);
+    expect(rows[0]?.textContent).toMatch(/35,52%/);
+    expect(rows[3]?.textContent).toMatch(/\+10\.000/);
+    expect(block.textContent).toMatch(/Nessuna fonte nuova/);
+  });
+
   it("offers the two starting points as a pressed pair", () => {
     renderWithIntl(<EmployeePage />);
     const gross = screen.getByRole("button", { name: "Parto dal lordo" });

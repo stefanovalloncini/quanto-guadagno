@@ -931,4 +931,9 @@ export const en: Record<MessageKey, string> = {
   "employee.form.targetNet": "Monthly net you want",
   "employee.form.targetNet.hint": "Annual net {amount} over {frequency} pay periods",
   "employee.summary.requiredGross": "Gross annual needed: {amount}",
+
+  "employee.raise.title": "If the gross goes up",
+  "employee.raise.row.detail": "you keep {kept}, marginal {marginal}",
+  "employee.raise.note":
+    "No new source: the same figures as the payslip, recomputed on the higher gross.",
 };

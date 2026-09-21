@@ -3,6 +3,7 @@ import { EmployeeFaq } from "./components/EmployeeFaq.tsx";
 import { EsempioGuidato } from "./components/EsempioGuidato.tsx";
 import { EmployerCostView } from "@/ui/shared/EmployerCostView.tsx";
 import { IrpefBracketIndicator } from "./components/IrpefBracketIndicator.tsx";
+import { RaiseImpactBlock } from "./components/RaiseImpactBlock.tsx";
 import { useEmployeeCalculator } from "./useEmployeeCalculator.ts";
 import { EmployeeFormPrimary } from "./EmployeeFormPrimary.tsx";
 import { EmployeeOverview } from "./EmployeeOverview.tsx";
@@ -35,6 +36,7 @@ export function EmployeePage() {
           taxableIncome={calc.result.taxableIncome}
           taxYear={calc.state.taxYear}
         />
+        <RaiseImpactBlock input={calc.input} />
         <EmployerCostView breakdown={calc.result} />
         <EmployeeFaq />
       </div>

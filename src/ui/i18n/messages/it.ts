@@ -944,6 +944,11 @@ export const it = {
   "employee.form.targetNet": "Netto al mese che vuoi",
   "employee.form.targetNet.hint": "Netto annuo {amount} su {frequency} mensilità",
   "employee.summary.requiredGross": "Lordo annuo necessario: {amount}",
+
+  "employee.raise.title": "Se il lordo aumenta",
+  "employee.raise.row.detail": "ti resta il {kept}, marginale {marginal}",
+  "employee.raise.note":
+    "Nessuna fonte nuova: sono gli stessi numeri del cedolino, ricalcolati con il lordo più alto.",
 } as const;
 
 export type MessageKey = keyof typeof it;
