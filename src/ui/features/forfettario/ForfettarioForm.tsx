@@ -140,17 +140,22 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
         inputMode="numeric"
       />
 
-      <label className="qg-toggle">
-        <input
-          type="checkbox"
-          className="qg-toggle__input"
-          checked={state.hasOtherPension}
-          onChange={(e) => update({ hasOtherPension: e.target.checked })}
-        />
-        <span className="qg-toggle__label">
-          <FormattedMessage id="forfettario.form.hasOtherPension" />
-        </span>
-      </label>
+      <div className="qg-toggle-group">
+        <label className="qg-toggle">
+          <input
+            type="checkbox"
+            className="qg-toggle__input"
+            checked={state.hasOtherPension}
+            onChange={(e) => update({ hasOtherPension: e.target.checked })}
+          />
+          <span className="qg-toggle__label">
+            <FormattedMessage id="forfettario.form.hasOtherPension" />
+          </span>
+        </label>
+        <p className="qg-toggle__hint">
+          <FormattedMessage id="forfettario.form.hasOtherPension.hint" />
+        </p>
+      </div>
 
       <label className="qg-toggle">
         <input
