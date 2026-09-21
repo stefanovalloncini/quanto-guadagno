@@ -14,19 +14,19 @@ Resta una stima. Non sostituisce il lavoro di un commercialista e non è un docu
 
 | Strumento | Percorso | Cosa fa |
 | --- | --- | --- |
-| Stipendio netto da lordo | `/calcola-stipendio` | Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo. |
-| Calcolo inverso: netto a lordo | `/calcolo-netto-lordo` | Conosci il netto a cui vuoi arrivare: trova la RAL lorda corrispondente. |
+| Stipendio netto da lordo | `/calcola-stipendio` | Lavoratore dipendente, anno fiscale 2024, 2025 o 2026. Aliquote regionali, detrazione lavoro, trattamento integrativo, taglio del cuneo. Si può partire dal netto che vuoi in busta invece che dal lordo. |
+| Lordo da netto | `/calcolo-netto-lordo` | Conosci il netto a cui vuoi arrivare: trova la RAL lorda corrispondente. |
 | Tredicesima netta | `/calcolo-tredicesima` | Quanto resta della tredicesima dopo INPS e IRPEF, escludendo le detrazioni da lavoro. |
 | Progressione apprendistato | `/progressione-apprendistato` | Stima la retribuzione anno per anno durante l'apprendistato professionalizzante. |
 | Costo del lavoro | `/costo-azienda` | Quanto costa un dipendente all'azienda, dal lordo agli oneri. |
 | Confronto offerte | `/confronto-stipendi` | Due stipendi lordi a confronto: quale rende di più al netto. |
 | Storico stipendi | `/storico-stipendio` | Tieni traccia dei tuoi RAL anno per anno e vedi come l'inflazione ne ha cambiato il valore reale. |
-| Partita IVA forfettario | `/partita-iva-forfettario` | Reddito netto da fatturato con aliquota sostitutiva al 5% o 15% e contributi Gestione Separata. |
+| Forfettario | `/partita-iva-forfettario` | Reddito netto da fatturato con aliquota sostitutiva al 5% o 15% e contributi Gestione Separata. |
 | NASpI | `/calcolo-naspi` | Stima l'indennità di disoccupazione: importo mensile, durata, riduzione progressiva. |
-| Preavviso dimissioni | `/preavviso-dimissioni` | Giorni di preavviso e data di uscita in base al CCNL, al livello e all'anzianità. |
+| Preavviso di dimissioni | `/preavviso-dimissioni` | Giorni di preavviso e data di uscita in base al CCNL, al livello e all'anzianità. |
 | TFR | `/tfr` | Quanto trattamento di fine rapporto accumuli, con quote e rivalutazione. |
 | Interesse composto | `/interesse-composto` | Quanto cresce un capitale nel tempo, con versamenti periodici e inflazione attesa. |
-| Potere d'acquisto | `/inflazione` | Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI. |
+| Potere d'acquisto | `/inflazione` | Quanto vale oggi una cifra di qualche anno fa, con l'indice ISTAT FOI. Dice anche di quanto deve salire lo stipendio per pareggiare l'inflazione e cosa succede se resta fermo. |
 | Glossario | `/glossario` | I termini del fisco italiano in breve. |
 | Fonti | `/fonti` | Da dove vengono i numeri, riferimento per riferimento. |
 | Informazioni | `/informazioni` | Cos'è il progetto e come è fatto. |
