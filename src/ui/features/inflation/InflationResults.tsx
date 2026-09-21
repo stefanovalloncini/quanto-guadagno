@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { MetricBlock, Stack } from "@/ui/design-system/primitives";
+import { Money } from "@/ui/design-system/primitives";
 import { formatPercentage } from "@/domain/format.ts";
 import type { InflationResult } from "./useInflationCalculator.ts";
 
@@ -9,35 +9,38 @@ interface InflationResultsProps {
 
 export function InflationResults({ result }: InflationResultsProps) {
   return (
-    <Stack gap="md">
-      <MetricBlock
-        label={
+    <div className="qg-cedolino">
+      <div className="qg-cedolino__head">
+        <span className="qg-cedolino__label">
           <FormattedMessage
             id="inflation.result.adjusted"
             values={{ year: String(result.toYear) }}
           />
-        }
-        amount={result.adjusted}
-        sublabel={
-          <FormattedMessage
-            id="inflation.result.adjusted.sub"
-            values={{ year: String(result.fromYear) }}
-          />
-        }
-        whole
-        announce
-      />
-
-      <div className="qg-metric">
-        <div className="qg-metric__label">
-          <FormattedMessage id="inflation.result.cumulative" />
+        </span>
+        {/* The live region stays mounted; the key inside it re-runs the settle. */}
+        <div className="qg-cedolino__amount" aria-live="polite">
+          <strong className="qg-cifra qg-cifra--sm" key={result.adjusted}>
+            <Money amount={result.adjusted} whole />
+          </strong>
         </div>
-        <div className="qg-metric__amount">{formatPercentage(result.cumulativeRate)}</div>
       </div>
+
+      <p className="qg-cedolino__annual">
+        <FormattedMessage
+          id="inflation.result.adjusted.sub"
+          values={{ year: String(result.fromYear) }}
+        />
+      </p>
+      <p className="qg-cedolino__rates">
+        <span>
+          <FormattedMessage id="inflation.result.cumulative" />
+        </span>{" "}
+        <span className="qg-num">{formatPercentage(result.cumulativeRate)}</span>
+      </p>
 
       <p className="qg-note">
         <FormattedMessage id="inflation.result.note" />
       </p>
-    </Stack>
+    </div>
   );
 }

@@ -949,6 +949,16 @@ export const it = {
   "employee.raise.row.detail": "ti resta il {kept}, marginale {marginal}",
   "employee.raise.note":
     "Nessuna fonte nuova: sono gli stessi numeri del cedolino, ricalcolati con il lordo più alto.",
+
+  "inflation.keepPace.title": "Quanto aumento serve per pareggiare l'inflazione",
+  "inflation.keepPace.needed": "Importo necessario nel {year}",
+  "inflation.keepPace.raise": "Aumento",
+  "inflation.keepPace.note":
+    "È l'aumento che riporta l'importo del {from} allo stesso potere d'acquisto nel {to}.",
+  "inflation.frozen.title": "Se lo stipendio resta fermo",
+  "inflation.frozen.caption": "Valore reale, in euro del {year}",
+  "inflation.frozen.row.loss": "perde il {rate}",
+  "inflation.frozen.seriesEnd": "La serie ISTAT FOI arriva al {year}: oltre non c'è proiezione.",
 } as const;
 
 export type MessageKey = keyof typeof it;

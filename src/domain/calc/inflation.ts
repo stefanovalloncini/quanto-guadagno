@@ -33,6 +33,82 @@ export function adjustValueAcrossYears(
   };
 }
 
+export interface RaiseToKeepPace {
+  readonly fromYear: number;
+  readonly toYear: number;
+  readonly gross: number;
+  readonly grossNeeded: number;
+  readonly raiseAmount: number;
+  readonly raisePercent: number;
+}
+
+// The gross that buys in `toYear` what `gross` bought in `fromYear`.
+export function raiseNeededToKeepPace(
+  gross: number,
+  fromYear: number,
+  toYear: number,
+): RaiseToKeepPace | null {
+  const adjusted = adjustValueAcrossYears(gross, fromYear, toYear);
+  if (adjusted === null) return null;
+  return {
+    fromYear,
+    toYear,
+    gross,
+    grossNeeded: adjusted.adjusted,
+    raiseAmount: adjusted.adjusted - gross,
+    raisePercent: adjusted.factor - 1,
+  };
+}
+
+export interface FrozenSalaryYear {
+  readonly year: number;
+  /** The frozen gross expressed in `fromYear` euros. */
+  readonly realValue: number;
+  readonly loss: number;
+  readonly lossRate: number;
+}
+
+export interface FrozenSalary {
+  readonly gross: number;
+  readonly fromYear: number;
+  readonly lastYear: number;
+  /** True when the requested horizon runs past the last year the FOI covers. */
+  readonly truncated: boolean;
+  readonly years: ReadonlyArray<FrozenSalaryYear>;
+}
+
+// What a salary left untouched is worth year by year. The walk stops at the
+// last FOI year on record: the series is never extended by assumption.
+export function frozenSalaryRealValue(
+  gross: number,
+  fromYear: number,
+  years: number,
+): FrozenSalary | null {
+  const from = findIndex(fromYear);
+  if (from === undefined || from.index === 0) return null;
+
+  const horizon = fromYear + Math.max(0, Math.floor(years));
+  const covered = FOI_INDEX.filter((p) => p.year >= fromYear && p.year <= horizon);
+  const last = covered[covered.length - 1];
+  if (last === undefined) return null;
+
+  return {
+    gross,
+    fromYear,
+    lastYear: last.year,
+    truncated: horizon > last.year,
+    years: covered.map((point) => {
+      const realValue = (gross * from.index) / point.index;
+      return {
+        year: point.year,
+        realValue,
+        loss: gross - realValue,
+        lossRate: 1 - from.index / point.index,
+      };
+    }),
+  };
+}
+
 export function cumulativeInflation(fromYear: number, toYear: number): number | null {
   const from = findIndex(fromYear);
   const to = findIndex(toYear);

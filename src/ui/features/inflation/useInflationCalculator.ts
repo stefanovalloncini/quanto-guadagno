@@ -1,5 +1,12 @@
 import { useMemo } from "react";
-import { adjustValueAcrossYears, cumulativeInflation } from "@/domain/calc";
+import {
+  adjustValueAcrossYears,
+  cumulativeInflation,
+  frozenSalaryRealValue,
+  raiseNeededToKeepPace,
+  type FrozenSalary,
+  type RaiseToKeepPace,
+} from "@/domain/calc";
 import { FOI_INDEX, FOI_LATEST_YEAR } from "@/domain/data";
 import { usePatchState } from "@/ui/shared/usePatchState.ts";
 
@@ -24,6 +31,8 @@ export interface InflationResult {
   readonly cumulativeRate: number;
   readonly fromYear: number;
   readonly toYear: number;
+  readonly keepPace: RaiseToKeepPace | null;
+  readonly frozen: FrozenSalary | null;
 }
 
 export interface InflationCalculator {
@@ -39,6 +48,7 @@ export function useInflationCalculator(): InflationCalculator {
   const result = useMemo<InflationResult>(() => {
     const adjusted = adjustValueAcrossYears(state.amount, state.fromYear, state.toYear);
     const rate = cumulativeInflation(state.fromYear, state.toYear);
+    const span = state.toYear - state.fromYear;
     return {
       nominal: state.amount,
       adjusted: adjusted?.adjusted ?? state.amount,
@@ -46,6 +56,8 @@ export function useInflationCalculator(): InflationCalculator {
       cumulativeRate: rate ?? 0,
       fromYear: state.fromYear,
       toYear: state.toYear,
+      keepPace: raiseNeededToKeepPace(state.amount, state.fromYear, state.toYear),
+      frozen: span > 0 ? frozenSalaryRealValue(state.amount, state.fromYear, span) : null,
     };
   }, [state]);
 

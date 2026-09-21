@@ -1,12 +1,23 @@
 /* Blocks added after the identity pass. Same vocabulary, no new colours. */
 
+:root {
+  /* The secondary figure size, for pages whose headline number is not a payslip. */
+  --t-cifra-sm: clamp(2.25rem, 9cqw, 4rem);
+}
+
+.qg-cifra--sm {
+  font-size: var(--t-cifra-sm);
+}
+
 .qg-salary-input {
   display: flex;
   flex-direction: column;
   gap: var(--s-3);
 }
 
-.qg-raise__body {
+.qg-raise__body,
+.qg-keep-pace__body,
+.qg-frozen__body {
   padding-bottom: var(--s-5);
   display: flex;
   flex-direction: column;

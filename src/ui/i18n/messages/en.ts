@@ -936,4 +936,15 @@ export const en: Record<MessageKey, string> = {
   "employee.raise.row.detail": "you keep {kept}, marginal {marginal}",
   "employee.raise.note":
     "No new source: the same figures as the payslip, recomputed on the higher gross.",
+
+  "inflation.keepPace.title": "The raise it takes to match inflation",
+  "inflation.keepPace.needed": "Amount needed in {year}",
+  "inflation.keepPace.raise": "Raise",
+  "inflation.keepPace.note":
+    "The raise that brings the {from} amount back to the same purchasing power in {to}.",
+  "inflation.frozen.title": "If the salary stays put",
+  "inflation.frozen.caption": "Real value, in {year} euros",
+  "inflation.frozen.row.loss": "down {rate}",
+  "inflation.frozen.seriesEnd":
+    "The ISTAT FOI series ends in {year}, nothing is projected beyond it.",
 };
