@@ -44,6 +44,8 @@ Quando esce una Legge di Bilancio:
 3. aggiungi i casi di test presi dagli esempi delle istruzioni ufficiali;
 4. lancia `pnpm test`.
 
+La procedura per esteso, con le regole sui vettori e la checklist della pull request, sta in [docs/CONTRIBUTING_DATA.md](docs/CONTRIBUTING_DATA.md).
+
 Le addizionali comunali sono migliaia e cambiano ogni anno: il calcolatore lascia l'aliquota modificabile a mano invece di far finta di conoscerle tutte.
 
 ## Sviluppo
