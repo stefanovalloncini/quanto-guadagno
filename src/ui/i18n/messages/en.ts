@@ -947,4 +947,8 @@ export const en: Record<MessageKey, string> = {
   "inflation.frozen.row.loss": "down {rate}",
   "inflation.frozen.seriesEnd":
     "The ISTAT FOI series ends in {year}, nothing is projected beyond it.",
+
+  "employee.form.region.hint.exempt": "exempt up to {amount}",
+  "employee.form.region.hint.flat": "flat rate {rate}",
+  "employee.form.region.hint.progressive": "progressive {rates}",
 };

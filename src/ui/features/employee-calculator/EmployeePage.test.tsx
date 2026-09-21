@@ -3,6 +3,13 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { EmployeePage } from "./EmployeePage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
+import { it as itMessages } from "@/ui/i18n/messages/it.ts";
+import { formatCurrencyWhole } from "@/domain/format.ts";
+
+function hintOf(control: HTMLElement): string {
+  const id = control.getAttribute("aria-describedby") ?? "";
+  return document.getElementById(id)?.textContent ?? "";
+}
 
 describe("EmployeePage", () => {
   it("renders the page heading", () => {
@@ -162,6 +169,26 @@ describe("EmployeePage", () => {
 
     const dependentsDetails = dependentsTitle.closest("details.qg-extras-section");
     expect(dependentsDetails).toHaveAttribute("open");
+  });
+
+  it("builds the region bracket hint out of the catalog", () => {
+    expect(itMessages["employee.form.region.hint.progressive"]).toBe("progressivo {rates}");
+    renderWithIntl(<EmployeePage />);
+    const region = screen.getByLabelText(/Regione di residenza/);
+    expect(hintOf(region)).toBe("progressivo 1,23%, 1,58%, 1,72%, 1,73%");
+  });
+
+  it("names the exemption and the flat rate in the region hint", async () => {
+    const user = userEvent.setup();
+    expect(itMessages["employee.form.region.hint.exempt"]).toBe("esente fino a {amount}");
+    expect(itMessages["employee.form.region.hint.flat"]).toBe("aliquota unica {rate}");
+
+    renderWithIntl(<EmployeePage />);
+    const region = screen.getByLabelText(/Regione di residenza/);
+    await user.selectOptions(region, "valle-daosta");
+    expect(hintOf(region)).toBe(
+      `esente fino a ${formatCurrencyWhole(15_000)}, aliquota unica 1,23%`,
+    );
   });
 
   it("puts the raise block straight after the IRPEF bracket", () => {
