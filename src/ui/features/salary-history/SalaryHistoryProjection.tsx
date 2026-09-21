@@ -1,5 +1,5 @@
 import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
-import { Field, Money, Select, Stack } from "@/ui/design-system/primitives";
+import { Field, Money, Select } from "@/ui/design-system/primitives";
 import type { SalaryEntry } from "./salaryHistory.ts";
 import type { ProjectionBundle } from "./useSalaryProjection.ts";
 
@@ -37,7 +37,7 @@ export function SalaryHistoryProjection({
   const last = projection.expected[projection.expected.length - 1] ?? null;
 
   return (
-    <Stack gap="md">
+    <div className="qg-calc__form-stack">
       <p className="qg-history-projection__lede">
         <FormattedMessage
           id="history.projection.lede"
@@ -91,18 +91,22 @@ export function SalaryHistoryProjection({
                 ),
                 gross: <Money amount={last.grossAnnual} whole />,
                 net:
-                  last.net !== null ? <Money amount={last.net.netAnnual} whole /> : <span>—</span>,
+                  last.net !== null ? (
+                    <Money amount={last.net.netAnnual} whole />
+                  ) : (
+                    <FormattedMessage id="history.table.net.na" />
+                  ),
                 netMonthly:
                   last.net !== null ? (
                     <Money amount={Math.round(last.net.netMonthly)} whole />
                   ) : (
-                    <span>—</span>
+                    <FormattedMessage id="history.table.net.na" />
                   ),
               }}
             />
           </p>
         </div>
       ) : null}
-    </Stack>
+    </div>
   );
 }

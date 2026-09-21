@@ -307,6 +307,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 .qg-figure__head {
   display: flex;

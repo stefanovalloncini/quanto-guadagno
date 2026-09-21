@@ -22,14 +22,12 @@ const ENTRIES: ReadonlyArray<Entry> = [
 export function GlossarioPage() {
   return (
     <section className="qg-glossario">
-      <header className="qg-calc__hero">
-        <h1>
-          <FormattedMessage id="glossario.title" />
-        </h1>
-        <p className="qg-lede">
-          <FormattedMessage id="glossario.lede" />
-        </p>
-      </header>
+      <h1>
+        <FormattedMessage id="glossario.title" />
+      </h1>
+      <p className="qg-note">
+        <FormattedMessage id="glossario.lede" />
+      </p>
 
       <dl className="qg-glossario__list">
         {ENTRIES.map((entry) => (

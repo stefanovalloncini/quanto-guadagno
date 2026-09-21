@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export function NotFoundPage() {
   return (
-    <section className="qg-notfound">
+    <section className="qg-notfound qg-prose">
       <h1>
         <FormattedMessage id="notFound.title" />
       </h1>
-      <p className="qg-lede">
+      <p>
         <FormattedMessage id="notFound.body" />
       </p>
       <p>

@@ -4,6 +4,8 @@
   width: 100%;
   border-collapse: collapse;
   font-size: var(--t-17);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 .qg-ledger caption {
   text-align: left;

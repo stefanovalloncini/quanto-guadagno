@@ -31,7 +31,7 @@ describe("PageMeta", () => {
 
   it("titles the home page with the site name first", () => {
     renderAt("/");
-    expect(document.title).toBe("Quanto Guadagno · Calcolo stipendio netto");
+    expect(document.title).toBe("Quanto Guadagno - Calcolo stipendio netto");
     expect(metaContent("name", "description")).toBe(itMessages["meta.home.description"]);
     expect(metaContent("property", "og:title")).toBe(document.title);
     expect(metaContent("property", "og:description")).toBe(itMessages["meta.home.description"]);
@@ -41,13 +41,13 @@ describe("PageMeta", () => {
 
   it("titles an inner page with the page name first", () => {
     renderAt("/calcolo-naspi");
-    expect(document.title).toBe("Calcolo NASpI · Quanto Guadagno");
+    expect(document.title).toBe("Calcolo NASpI - Quanto Guadagno");
     expect(metaContent("name", "description")).toBe(itMessages["meta.naspi.description"]);
   });
 
   it("falls back to the not-found copy on an unmapped path", () => {
     renderAt("/questa-pagina-non-esiste");
-    expect(document.title).toBe("Pagina non trovata · Quanto Guadagno");
+    expect(document.title).toBe("Pagina non trovata - Quanto Guadagno");
     expect(metaContent("name", "description")).toBe(itMessages["meta.notFound.description"]);
   });
 });

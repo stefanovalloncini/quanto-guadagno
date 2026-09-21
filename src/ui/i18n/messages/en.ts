@@ -329,7 +329,6 @@ export const en: Record<MessageKey, string> = {
   "sources.title": "Where the numbers come from",
   "sources.lede":
     "Every calculation is grounded in public documents. Below, in compact form, the origin of each component.",
-  "sources.citations": "References",
   "sources.irpef.title": "IRPEF brackets",
   "sources.irpef.body":
     "Progressive rates 2024–2026 from Agenzia delle Entrate (D.lgs. 216/2023 and amendments).",
@@ -698,6 +697,11 @@ export const en: Record<MessageKey, string> = {
   "history.title": "Your salaries over time",
   "history.lede":
     "Add your gross salary year by year. We show them in today's terms using the ISTAT FOI index up to {year}.",
+  "history.overview.label": "{year} gross pay in {target} money",
+  "history.overview.nominal": "Nominal {amount} in {year}",
+  "history.overview.realChange": "{change, number, ::percent .0} in purchasing power since {year}",
+  "history.view.asTable": "Show as a table",
+  "history.view.asChart": "Show as a chart",
   "history.form.title": "Add a year",
   "history.form.year": "Year",
   "history.form.gross": "Gross salary that year",

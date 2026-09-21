@@ -20,14 +20,14 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.irpef.body",
     citations: [
       {
-        text: "L. 199/2025 — Legge di Bilancio 2026",
+        text: "L. 199/2025, Legge di Bilancio 2026",
         href: "https://www.gazzettaufficiale.it/eli/id/2025/12/30/25G00214/sg",
       },
       {
-        text: "L. 207/2024 — Legge di Bilancio 2025",
+        text: "L. 207/2024, Legge di Bilancio 2025",
         href: "https://www.mef.gov.it/focus/Principali-misure-della-legge-di-bilancio-2025/",
       },
-      { text: "D.Lgs. 216/2023 — riforma IRPEF, Art. 11 TUIR" },
+      { text: "D.Lgs. 216/2023, riforma IRPEF, Art. 11 TUIR" },
       {
         text: "Agenzia delle Entrate",
         href: "https://www.agenziaentrate.gov.it",
@@ -40,12 +40,12 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.inps.body",
     citations: [
       {
-        text: "Circolare INPS n. 6/2026 — aliquote dipendenti privati 2026",
+        text: "Circolare INPS n. 6/2026, aliquote dipendenti privati 2026",
         href: "https://www.inps.it",
       },
-      { text: "Circolare INPS n. 26/2025 — aliquote 2025" },
-      { text: "Circolare INPS n. 21/2024 — aliquote 2024" },
-      { text: "Decreto MEF 19 novembre 2025 — perequazione +1,40% per il 2026" },
+      { text: "Circolare INPS n. 26/2025, aliquote 2025" },
+      { text: "Circolare INPS n. 21/2024, aliquote 2024" },
+      { text: "Decreto MEF 19 novembre 2025, perequazione +1,40% per il 2026" },
     ],
   },
   {
@@ -54,10 +54,10 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.workDeduction.body",
     citations: [
       { text: "Art. 13 TUIR (D.P.R. 917/1986)" },
-      { text: "L. 213/2023, Art. 1 c. 2 — innalzamento detrazione minima" },
-      { text: "L. 207/2024 e L. 199/2025 — formula vigente per 2025–2026" },
+      { text: "L. 213/2023, Art. 1 c. 2, innalzamento detrazione minima" },
+      { text: "L. 207/2024 e L. 199/2025, formula vigente per 2025–2026" },
       {
-        text: "Agenzia delle Entrate — Detrazioni per redditi di lavoro dipendente",
+        text: "Agenzia delle Entrate, Detrazioni per redditi di lavoro dipendente",
         href: "https://www.agenziaentrate.gov.it",
       },
     ],
@@ -68,7 +68,7 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.trattamento.body",
     citations: [
       { text: "D.L. 3/2020 convertito in L. 21/2020, Art. 1" },
-      { text: "L. 234/2021 (Bilancio 2022), Art. 2 — adeguamento del meccanismo" },
+      { text: "L. 234/2021 (Bilancio 2022), Art. 2, adeguamento del meccanismo" },
       { text: "Agenzia delle Entrate, Circolare 4/E del 18 febbraio 2022" },
     ],
   },
@@ -77,8 +77,8 @@ const sources: ReadonlyArray<SourceEntry> = [
     titleId: "sources.taxWedge.title",
     bodyId: "sources.taxWedge.body",
     citations: [
-      { text: "L. 207/2024, Art. 1 commi 4–9 — cuneo fiscale 2025" },
-      { text: "L. 199/2025, Art. 1 c. 11 — cuneo strutturale dal 2026" },
+      { text: "L. 207/2024, Art. 1 commi 4–9, cuneo fiscale 2025" },
+      { text: "L. 199/2025, Art. 1 c. 11, cuneo strutturale dal 2026" },
       { text: "Agenzia delle Entrate, Circolare 4/E del 16 maggio 2025" },
     ],
   },
@@ -96,8 +96,8 @@ const sources: ReadonlyArray<SourceEntry> = [
     titleId: "sources.forfettario.title",
     bodyId: "sources.forfettario.body",
     citations: [
-      { text: "L. 190/2014, commi 54–89 — regime forfettario" },
-      { text: "L. 197/2022 — soglia ricavi €85.000" },
+      { text: "L. 190/2014, commi 54–89, regime forfettario" },
+      { text: "L. 197/2022, soglia ricavi €85.000" },
       { text: "Circolari INPS Gestione Separata e gestioni autonomi" },
     ],
   },
@@ -107,14 +107,14 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.naspi.body",
     citations: [
       { text: "D.Lgs. 22/2015, Artt. 3–8" },
-      { text: "Circolari INPS annuali — massimali e décalage", href: "https://www.inps.it" },
+      { text: "Circolari INPS annuali, massimali e décalage", href: "https://www.inps.it" },
     ],
   },
   {
     key: "preavviso",
     titleId: "sources.preavviso.title",
     bodyId: "sources.preavviso.body",
-    citations: [{ text: "Art. 2118 c.c." }, { text: "CCNL di categoria — termini di preavviso" }],
+    citations: [{ text: "Art. 2118 c.c." }, { text: "CCNL di categoria, termini di preavviso" }],
   },
   {
     key: "tredicesima",
@@ -122,14 +122,14 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.tredicesima.body",
     citations: [
       { text: "Art. 2099 c.c. e contrattazione collettiva" },
-      { text: "Art. 51 TUIR — imponibilità" },
+      { text: "Art. 51 TUIR, imponibilità" },
     ],
   },
   {
     key: "tfr",
     titleId: "sources.tfr.title",
     bodyId: "sources.tfr.body",
-    citations: [{ text: "Art. 2120 c.c." }, { text: "DL 47/2014 — imposta sostitutiva 17%" }],
+    citations: [{ text: "Art. 2120 c.c." }, { text: "DL 47/2014, imposta sostitutiva 17%" }],
   },
   {
     key: "fringe",
@@ -137,16 +137,16 @@ const sources: ReadonlyArray<SourceEntry> = [
     bodyId: "sources.fringe.body",
     citations: [
       { text: "Art. 51 TUIR" },
-      { text: "L. 207/2024 — welfare €1.000/€2.000 e auto per alimentazione" },
-      { text: "L. 160/2019 — buoni pasto €8 elettronici, €4 cartacei" },
-      { text: "D.Lgs. 252/2005 — previdenza complementare €5.164,57" },
+      { text: "L. 207/2024, welfare €1.000/€2.000 e auto per alimentazione" },
+      { text: "L. 160/2019, buoni pasto €8 elettronici, €4 cartacei" },
+      { text: "D.Lgs. 252/2005, previdenza complementare €5.164,57" },
     ],
   },
   {
     key: "inflation",
     titleId: "sources.inflation.title",
     bodyId: "sources.inflation.body",
-    citations: [{ text: "ISTAT — Prezzi al consumo, indice FOI", href: "https://www.istat.it" }],
+    citations: [{ text: "ISTAT, Prezzi al consumo, indice FOI", href: "https://www.istat.it" }],
   },
 ];
 
@@ -165,22 +165,19 @@ export function SourcesPage() {
       <h1>
         <FormattedMessage id="sources.title" />
       </h1>
-      <p className="qg-lede">
+      <p className="qg-note">
         <FormattedMessage id="sources.lede" />
       </p>
 
       <dl className="qg-sources__list">
         {sources.map((s) => (
           <div key={s.key} className="qg-sources__item">
-            <dt>
+            <dt className="qg-sources__term">
               <FormattedMessage id={s.titleId} />
             </dt>
-            <dd>
-              <p className="qg-sources__body">
+            <dd className="qg-sources__body">
+              <p>
                 <FormattedMessage id={s.bodyId} />
-              </p>
-              <p className="qg-sources__cite-label">
-                <FormattedMessage id="sources.citations" />
               </p>
               <ul className="qg-sources__cite-list">
                 {s.citations.map((c) => (

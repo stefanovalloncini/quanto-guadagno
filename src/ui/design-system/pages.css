@@ -1,4 +1,4 @@
-/* Home index, reference pages, and the apprenticeship progression list. */
+/* Home index and the reference pages: tools, sources, glossary, about. */
 
 .qg-tools {
   margin-top: var(--s-9);
@@ -64,7 +64,8 @@
 
 .qg-about h1,
 .qg-sources h1,
-.qg-glossario h1 {
+.qg-glossario h1,
+.qg-notfound h1 {
   font-size: var(--t-33);
   margin-bottom: var(--s-4);
 }
@@ -73,32 +74,30 @@
   margin-top: var(--s-6);
   display: flex;
   flex-direction: column;
-  gap: var(--s-5);
 }
 .qg-sources__item {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
   border-top: 1px solid var(--filetto);
-  padding-top: var(--s-4);
 }
-.qg-sources__item dt {
-  font-size: var(--t-21);
+.qg-sources__term {
+  font-size: var(--t-17);
   font-weight: 600;
   color: var(--inchiostro);
-  margin-bottom: var(--s-2);
 }
-.qg-sources__item dd {
+.qg-sources__body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
   color: var(--grigio);
-  font-size: var(--t-17);
   line-height: var(--lh-body);
   max-width: 70ch;
 }
-.qg-sources__body {
-  margin: 0 0 var(--s-3);
-}
-.qg-sources__cite-label {
-  margin: 0 0 var(--s-1);
-  font-size: var(--t-13);
-  color: var(--grigio);
+.qg-sources__body p {
+  margin: 0;
 }
 .qg-sources__cite-list {
   list-style: none;
@@ -111,6 +110,12 @@
 }
 .qg-sources__cite-link {
   color: var(--blu);
+}
+@media (max-width: 720px) {
+  .qg-sources__item {
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
 }
 
 .qg-glossario__list {

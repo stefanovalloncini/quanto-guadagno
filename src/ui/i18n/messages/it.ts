@@ -330,7 +330,6 @@ export const it = {
   "sources.title": "Da dove vengono i numeri",
   "sources.lede":
     "Ogni calcolo si appoggia a documenti pubblici. Sotto, in forma sintetica, l'origine di ciascun componente.",
-  "sources.citations": "Riferimenti",
   "sources.irpef.title": "Scaglioni IRPEF",
   "sources.irpef.body":
     "Aliquote progressive 2024–2026 da Agenzia delle Entrate (D.lgs. 216/2023 e successive).",
@@ -707,6 +706,12 @@ export const it = {
   "history.title": "I tuoi stipendi nel tempo",
   "history.lede":
     "Aggiungi i tuoi RAL anno per anno. Te li mostriamo a valori correnti, rivalutati con l'indice ISTAT FOI fino al {year}.",
+  "history.overview.label": "RAL {year} a valori {target}",
+  "history.overview.nominal": "Nominale {amount} nel {year}",
+  "history.overview.realChange":
+    "{change, number, ::percent .0} in potere d'acquisto rispetto al {year}",
+  "history.view.asTable": "Mostra come tabella",
+  "history.view.asChart": "Mostra come grafico",
   "history.form.title": "Aggiungi un anno",
   "history.form.year": "Anno",
   "history.form.gross": "RAL di quell'anno",

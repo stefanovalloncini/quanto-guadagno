@@ -5,7 +5,7 @@ import { useSalaryProjection } from "./useSalaryProjection.ts";
 import { defaultGrowthRate } from "./projection.ts";
 import { SalaryHistoryForm } from "./SalaryHistoryForm.tsx";
 import { SalaryHistoryTable } from "./SalaryHistoryTable.tsx";
-import { SalaryHistoryChart } from "./SalaryHistoryChart.tsx";
+import { SalaryHistoryOverview } from "./SalaryHistoryOverview.tsx";
 import { SalaryHistoryProjection } from "./SalaryHistoryProjection.tsx";
 
 const DEFAULT_HORIZON = 5;
@@ -29,26 +29,25 @@ export function SalaryHistoryPage() {
         </p>
       </header>
 
-      <div className="qg-history__grid">
-        <section className="qg-history__panel">
+      <div className="qg-calc__grid">
+        <div className="qg-calc__form">
           <h2 className="qg-subhead qg-subhead--md">
             <FormattedMessage id="history.form.title" />
           </h2>
           <SalaryHistoryForm defaultSettings={history.lastSettings} onSubmit={history.addEntry} />
-        </section>
+        </div>
 
-        <section className="qg-history__panel">
-          <h2 className="qg-subhead qg-subhead--md">
-            <FormattedMessage id="history.chart.title" />
-          </h2>
-          <SalaryHistoryChart
+        <aside className="qg-calc__result">
+          <SalaryHistoryOverview
             rows={history.adjusted}
             projection={projection}
             targetYear={history.targetYear}
           />
-        </section>
+        </aside>
+      </div>
 
-        <section className="qg-history__panel qg-history__panel--wide">
+      <div className="qg-history__wide">
+        <section className="qg-history__panel">
           <h2 className="qg-subhead qg-subhead--md">
             <FormattedMessage id="history.projection.title" />
           </h2>
@@ -62,7 +61,7 @@ export function SalaryHistoryPage() {
           />
         </section>
 
-        <section className="qg-history__panel qg-history__panel--wide">
+        <section className="qg-history__panel">
           <h2 className="qg-subhead qg-subhead--md">
             <FormattedMessage id="history.table.title" />
           </h2>

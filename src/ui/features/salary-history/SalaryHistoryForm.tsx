@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Button, Field, Select, Stack } from "@/ui/design-system/primitives";
+import { Button, Field, Select } from "@/ui/design-system/primitives";
 import { RegionSelector } from "@/ui/features/employee-calculator/components/RegionSelector.tsx";
 import type { ContractType } from "@/domain/calc";
 import { FOI_INDEX } from "@/domain/data";
@@ -64,7 +64,7 @@ export function SalaryHistoryForm({ defaultSettings, onSubmit }: SalaryHistoryFo
         setState((s) => ({ ...initState(s.settings), year: s.year }));
       }}
     >
-      <Stack gap="md">
+      <div className="qg-calc__form-stack">
         <div className="qg-history-form__row">
           <Select
             label={<FormattedMessage id="history.form.year" />}
@@ -166,7 +166,7 @@ export function SalaryHistoryForm({ defaultSettings, onSubmit }: SalaryHistoryFo
             <FormattedMessage id="history.form.submit" />
           </Button>
         </div>
-      </Stack>
+      </div>
     </form>
   );
 }

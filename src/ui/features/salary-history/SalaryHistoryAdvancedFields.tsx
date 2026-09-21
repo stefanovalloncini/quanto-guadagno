@@ -1,5 +1,5 @@
 import { FormattedMessage, useIntl } from "react-intl";
-import { EnableToggle, Field, Select, Stack } from "@/ui/design-system/primitives";
+import { EnableToggle, Field, Select } from "@/ui/design-system/primitives";
 import type { CompanySize, DependentsInput } from "@/domain/calc";
 import type { SalaryEntrySettings } from "./salaryHistory.ts";
 
@@ -63,7 +63,7 @@ export function SalaryHistoryAdvancedFields({
   };
 
   return (
-    <Stack gap="md">
+    <div className="qg-calc__form-stack">
       <EnableToggle
         checked={dependents.hasSpouse}
         onChange={(hasSpouse) => updateDependents({ hasSpouse })}
@@ -132,6 +132,6 @@ export function SalaryHistoryAdvancedFields({
           {intl.formatMessage({ id: "history.form.companySize.large" })}
         </option>
       </Select>
-    </Stack>
+    </div>
   );
 }

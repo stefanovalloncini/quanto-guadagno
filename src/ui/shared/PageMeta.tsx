@@ -24,7 +24,7 @@ export function PageMeta() {
     const { titleId, descriptionId } = metaForPath(pathname);
     const name = intl.formatMessage({ id: titleId });
     const description = intl.formatMessage({ id: descriptionId });
-    const title = pathname === "/" ? `${SITE_NAME} · ${name}` : `${name} · ${SITE_NAME}`;
+    const title = pathname === "/" ? `${SITE_NAME} - ${name}` : `${name} - ${SITE_NAME}`;
 
     document.title = title;
     setMeta("name", "description", description);
