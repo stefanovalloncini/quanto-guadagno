@@ -1,4 +1,7 @@
 :root {
+  /* Native checkboxes, date pickers and scrollbars follow the theme. */
+  color-scheme: light;
+
   --carta: #ffffff;
   --inchiostro: #000000;
   --grigio: #5c5c5c;
