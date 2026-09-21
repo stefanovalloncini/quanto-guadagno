@@ -28,25 +28,25 @@ export function SalaryHistoryOverview({
 
   return (
     <div className="qg-history__overview">
-      {latest !== undefined && latest.adjusted !== null && (
+      {latest !== undefined && (
         <ResultFigure
           label={
-            <FormattedMessage
-              id="history.overview.label"
-              values={{ year: latest.entry.year, target: targetYear }}
-            />
+            <FormattedMessage id="history.overview.label" values={{ year: latest.entry.year }} />
           }
-          value={<Money amount={latest.adjusted.adjusted} whole />}
-          settleKey={latest.adjusted.adjusted}
-          secondary={
-            <FormattedMessage
-              id="history.overview.nominal"
-              values={{
-                amount: <Money amount={latest.entry.grossAnnual} whole />,
-                year: latest.entry.year,
-              }}
-            />
-          }
+          value={<Money amount={latest.entry.grossAnnual} whole />}
+          settleKey={latest.entry.grossAnnual}
+          {...(latest.adjusted !== null &&
+            latest.entry.year !== targetYear && {
+              secondary: (
+                <FormattedMessage
+                  id="history.overview.nominal"
+                  values={{
+                    amount: <Money amount={latest.adjusted.adjusted} whole />,
+                    target: targetYear,
+                  }}
+                />
+              ),
+            })}
           {...(realChange !== null &&
             first !== undefined &&
             first.entry.year !== latest.entry.year && {

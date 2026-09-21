@@ -706,8 +706,8 @@ export const it = {
   "history.title": "I tuoi stipendi nel tempo",
   "history.lede":
     "Aggiungi i tuoi RAL anno per anno. Te li mostriamo a valori correnti, rivalutati con l'indice ISTAT FOI fino al {year}.",
-  "history.overview.label": "RAL {year} a valori {target}",
-  "history.overview.nominal": "Nominale {amount} nel {year}",
+  "history.overview.label": "RAL {year}",
+  "history.overview.nominal": "A valori {target} sono {amount}.",
   "history.overview.realChange":
     "{change, number, ::percent .0} in potere d'acquisto rispetto al {year}",
   "history.view.asTable": "Mostra come tabella",

@@ -37,12 +37,23 @@ const emptyProjection: ProjectionBundle = {
 const rows = [row("a", 2022, 25_000), row("b", 2026, 32_000)];
 
 describe("SalaryHistoryOverview", () => {
-  it("leads with the latest gross restated in target-year money", () => {
+  it("leads with the latest gross and the purchasing-power change", () => {
     renderWithIntl(
       <SalaryHistoryOverview rows={rows} projection={emptyProjection} targetYear={TARGET_YEAR} />,
     );
-    expect(screen.getByText(/RAL 2026 a valori 2026/)).toBeTruthy();
-    expect(screen.getByText(/Nominale/)).toBeTruthy();
+    expect(screen.getByText("RAL 2026")).toBeTruthy();
+    expect(screen.getByText(/in potere d'acquisto rispetto al 2022/)).toBeTruthy();
+  });
+
+  it("restates an older entry in target-year money", () => {
+    renderWithIntl(
+      <SalaryHistoryOverview
+        rows={[row("a", 2019, 24_000)]}
+        projection={emptyProjection}
+        targetYear={TARGET_YEAR}
+      />,
+    );
+    expect(screen.getByText(/A valori 2026 sono/)).toBeTruthy();
   });
 
   it("swaps the chart for a table and back", async () => {

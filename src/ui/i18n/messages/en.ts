@@ -697,8 +697,8 @@ export const en: Record<MessageKey, string> = {
   "history.title": "Your salaries over time",
   "history.lede":
     "Add your gross salary year by year. We show them in today's terms using the ISTAT FOI index up to {year}.",
-  "history.overview.label": "{year} gross pay in {target} money",
-  "history.overview.nominal": "Nominal {amount} in {year}",
+  "history.overview.label": "{year} gross pay",
+  "history.overview.nominal": "In {target} money that is {amount}.",
   "history.overview.realChange": "{change, number, ::percent .0} in purchasing power since {year}",
   "history.view.asTable": "Show as a table",
   "history.view.asChart": "Show as a chart",
