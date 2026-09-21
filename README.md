@@ -77,7 +77,7 @@ pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build && p
 
 ## Deploy
 
-Il sito è statico: basta servire `dist/`. `public/_redirects` e `public/_headers` portano il fallback per le rotte e le intestazioni di cache e sicurezza; `wrangler.jsonc` descrive il progetto per Cloudflare Workers con asset statici.
+Il sito è statico: basta servire `dist/`. `wrangler.jsonc` descrive il progetto per Cloudflare Workers con asset statici e il fallback per le rotte; `public/_headers` porta le intestazioni di cache e sicurezza.
 
 Cloudflare, da repository GitHub: crea un progetto Workers collegato a questo repo con comando di build `pnpm build` e comando di deploy `npx wrangler deploy`, oppure un progetto Pages con comando di build `pnpm build`, cartella `dist` e variabile `NODE_VERSION=22`. Poi aggiungi `quantoguadagno.com` come dominio personalizzato.
 
