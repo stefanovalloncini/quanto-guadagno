@@ -2,11 +2,18 @@ import type { Region, RegionCode } from "@/domain/data/types.ts";
 import { REGIONS } from "@/domain/data/regions.ts";
 import { applyProgressiveBrackets, getMarginalRate } from "./irpef.ts";
 
+function deductionFor(taxableIncome: number, region: Region): number {
+  const deduction = region.taxDeduction;
+  if (deduction === undefined || taxableIncome > deduction.incomeCeiling) return 0;
+  return deduction.amount;
+}
+
 export function calculateRegionalTax(taxableIncome: number, region: Region): number {
   if (region.exemptionThreshold !== undefined && taxableIncome <= region.exemptionThreshold) {
     return 0;
   }
-  return applyProgressiveBrackets(taxableIncome, region.taxBrackets);
+  const tax = applyProgressiveBrackets(taxableIncome, region.taxBrackets);
+  return Math.max(0, tax - deductionFor(taxableIncome, region));
 }
 
 export function getEffectiveRegionalRate(taxableIncome: number, region: Region): number {
@@ -18,6 +25,10 @@ export function getRegionalMarginalRate(taxableIncome: number, region: Region): 
   if (region.exemptionThreshold !== undefined && taxableIncome <= region.exemptionThreshold) {
     return 0;
   }
+  // While the detrazione still covers the whole tax, another euro of income
+  // costs nothing. The jump at the ceiling is a cliff, not a marginal rate.
+  const gross = applyProgressiveBrackets(taxableIncome, region.taxBrackets);
+  if (gross < deductionFor(taxableIncome, region)) return 0;
   return getMarginalRate(taxableIncome, region.taxBrackets);
 }
 

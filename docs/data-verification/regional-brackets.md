@@ -21,6 +21,10 @@ interface Region {
     rate: number;        // 0.0123 = 1,23 %
   }>;
   exemptionThreshold?: number;
+  taxDeduction?: {
+    amount: number;       // subtracted from the tax, never from the base
+    incomeCeiling: number; // above it the deduction is gone entirely
+  };
 }
 ```
 
@@ -31,7 +35,8 @@ Brackets MUST partition the income axis without gaps: each bracket's `min` equal
 ```ts
 function calculateRegionalTax(taxableIncome, region) {
   if (region.exemptionThreshold && taxableIncome <= region.exemptionThreshold) return 0;
-  return applyProgressiveBrackets(taxableIncome, region.taxBrackets);
+  const tax = applyProgressiveBrackets(taxableIncome, region.taxBrackets);
+  return Math.max(0, tax - deductionFor(taxableIncome, region));
 }
 ```
 
@@ -74,10 +79,10 @@ would diverge for someone with other income the calculator does not know about.
 ## Trento and Bolzano — same rates, two different reliefs
 
 Both provinces charge 1,23% up to €50.000 and 1,73% above, so the `taxBrackets` arrays are right.
-The relief below the threshold, however, is not the same instrument in the two provinces, and
-`exemptionThreshold` models only one of them correctly.
+The relief below the threshold, however, is not the same instrument in the two provinces: Bolzano
+grants a detrazione from the tax, Trento a deduction from the base. They need two different fields.
 
-### Bolzano — a detrazione of €430,50, not a zero-rate threshold
+### Bolzano — a detrazione of €430,50, modelled as such since 2026-09-21
 
 MEF aggregator, region code 03, year 2026, citing **art. 21/sexiesdecies, legge provinciale 11
 agosto 1998, n. 9**:
@@ -90,28 +95,39 @@ agosto 1998, n. 9**:
 The detrazioni cumulate but never produce a credit: if the tax owed is smaller, the addizionale is
 simply zero.
 
-`REGIONS["bolzano"]` carries `exemptionThreshold: 28_000` instead. The two agree below €28.000
-(the law charges at most 28.000 × 1,23% = €344,40, which the €430,50 detrazione wipes out) and
-again above €90.000, where the detrazione is gone. Between those points the calculator **overstates
-the Bolzano addizionale**:
+`REGIONS["bolzano"]` now carries `taxDeduction: { amount: 430.5, incomeCeiling: 90_000 }` and no
+`exemptionThreshold`. `calculateRegionalTax` runs the brackets first, subtracts the detrazione when
+the taxable income is at or below the ceiling, and floors the result at zero. The break-even sits at
+exactly €35.000, where 430,50 / 0,0123 = 35.000.
 
-| Taxable income | Law | Calculator | Difference |
+Golden vectors in `tests/domain/calc/regionalTax.test.ts`:
+
+| Taxable income | Brackets | Detrazione | Addizionale |
 |---|---|---|---|
-| €28.000 | 0 | 0 | 0 |
-| €32.000 | 393,60 − 430,50 → 0 | 393,60 | +393,60 |
-| €35.000 | 430,50 − 430,50 = 0 | 430,50 | +430,50 |
-| €40.000 | 492,00 − 430,50 = 61,50 | 492,00 | +430,50 |
-| €60.000 | 788,00 − 430,50 − 50,00 = 307,50 | 788,00 | +480,50 |
+| €20.000 | 246,00 | −430,50 | 0 |
+| €28.000 | 344,40 | −430,50 | 0 |
+| €35.000 | 430,50 | −430,50 | 0 |
+| €60.000 | 788,00 | −430,50 | 357,50 |
+| €90.000 | 1.307,00 | −430,50 | 876,50 |
+| €95.000 | 1.393,50 | none | 1.393,50 |
 
-The break-even sits at exactly €35.000, where 430,50 / 0,0123 = 35.000.
+#### What is still not modelled
 
-**The data has not been changed.** Fixing this is not a rate correction: `Region` would need a
-detrazione field with its own income ceiling and a phase-in term, and `calculateRegionalTax` would
-have to subtract it after the brackets and floor the result at zero. Until that model exists, the
-Bolzano figure is a known overstatement of at most €430,50 per year (€480,50 once the second
-detrazione is fully phased in above €75.000), and it is never an understatement.
+The second detrazione of up to €125,00 above €50.000 is not modelled: the law grants it on top of
+the €430,50 for the same taxpayers, so leaving it out overstates the addizionale by at most €125,00
+a year between €50.000 and €90.000, and never understates it.
 
-Per-child regional detrazioni are not modelled for any region.
+The €340,00 per dependent child is not modelled: the calculator collects the number of children
+over 21 for the national detrazioni, but the provincial relief keys on dependent children of any
+age, which is not an input the form asks for.
+
+#### Marginal rate
+
+`getRegionalMarginalRate` needed one adjustment. A fixed detrazione does not change the slope of the
+curve, but while it still covers the whole tax another euro of income costs nothing, so the helper
+returns 0 below €35.000 and the bracket rate above it. The step at €90.000 is a cliff, not a
+marginal rate: one euro more than the ceiling costs €430,50 in lost detrazione, and the helper does
+not report it as a rate.
 
 ### Trento — a €30.000 deduction from the taxable base, which the model does match
 
@@ -131,7 +147,7 @@ law in force.
 
 - **Comune-level** addizionale is captured via a single user-editable rate, not a comune-keyed table — Italy has ~8000 comuni, each with its own rate; the calculator deliberately keeps this as a user input.
 - **2026 vs prior years**: rates can change yearly. Regions are not yet versioned by `taxYear`; we currently use 2026 values for all years. Future iteration should add per-year regional bracket tables (similar to `TAX_CONFIG_<year>`).
-- **Special regimes** for Trento and Bolzano (Provincia Autonoma): treated as separate "regions" with their own brackets. Bolzano's relief is modelled as a threshold rather than as the detrazione the law grants; see the section above for the size of the gap.
+- **Special regimes** for Trento and Bolzano (Provincia Autonoma): treated as separate "regions" with their own brackets. Bolzano's €430,50 detrazione is modelled; its second detrazione of up to €125 above €50.000 is not.
 - **Regional detrazioni for dependent children** (Bolzano €340, Trento €246) are not modelled.
 
 ## Verification log
@@ -139,3 +155,4 @@ law in force.
 | Date | What was checked | Source |
 |---|---|---|
 | 2026-09-21 | Valle d'Aosta exemption wording, Bolzano detrazione, Trento base deduction | MEF addizionale regionale aggregator, region codes 20, 03, 18, year 2026 |
+| 2026-09-21 | Bolzano modelled as a detrazione of €430,50 up to €90.000 (L.P. 9/1998 art. 21-sexiesdecies), replacing the €28.000 threshold | MEF addizionale regionale aggregator, region code 03, year 2026 |

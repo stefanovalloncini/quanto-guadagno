@@ -8,6 +8,14 @@ const currencyFormatterWhole = new Intl.NumberFormat("it-IT", {
   useGrouping: true,
 });
 
+const currencyFormatterCents = new Intl.NumberFormat("it-IT", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  useGrouping: true,
+});
+
 const percentFormatter = new Intl.NumberFormat("it-IT", {
   style: "percent",
   minimumFractionDigits: 1,
@@ -16,6 +24,10 @@ const percentFormatter = new Intl.NumberFormat("it-IT", {
 
 export function formatCurrencyWhole(value: number): string {
   return currencyFormatterWhole.format(value);
+}
+
+export function formatCurrencyCents(value: number): string {
+  return currencyFormatterCents.format(value);
 }
 
 export function formatPercentage(value: number): string {

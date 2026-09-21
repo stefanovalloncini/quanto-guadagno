@@ -108,17 +108,18 @@ IRPEF. La tabella deve rispettare quattro regole:
 - il primo scaglione parte da `min: 0`;
 - l'ultimo ha `max: null`;
 - il `min` di ogni scaglione è uguale al `max` del precedente, senza buchi;
-- `exemptionThreshold` azzera l'imposta fino a quella soglia, e sopra non ha effetto.
+- `exemptionThreshold` azzera l'imposta fino a quella soglia, e sopra non ha effetto;
+- `taxDeduction` sottrae un importo fisso dall'imposta fino a `incomeCeiling`, con il risultato mai
+  sotto zero.
 
 Oggi non esiste un test che verifica queste quattro regole su tutte le regioni: `regionalTax.test.ts`
 copre singoli casi di calcolo. Finché quel test non c'è, ricontrolla la continuità degli scaglioni
 a mano dopo ogni modifica.
 
 `exemptionThreshold` descrive un'esenzione vera (Valle d'Aosta) o una deduzione dalla base con
-effetto a scalino (Trento). Non descrive una detrazione d'imposta: la provincia di Bolzano ne ha
-una, ed è documentata come scostamento noto in `docs/data-verification/regional-brackets.md`.
-Prima di modellare una regione con `exemptionThreshold`, leggi sulla pagina MEF quale dei tre
-strumenti la legge usa davvero.
+effetto a scalino (Trento). Una detrazione d'imposta va invece su `taxDeduction`, come per la
+provincia di Bolzano. Prima di modellare una regione, leggi sulla pagina MEF quale dei tre
+strumenti la legge usa davvero: producono importi diversi sulla stessa aliquota.
 
 La tabella non è ancora versionata per anno: vale l'ultimo anno verificato per tutti gli anni
 supportati. Se una regione cambia aliquota, la modifica si riflette anche sui calcoli degli anni

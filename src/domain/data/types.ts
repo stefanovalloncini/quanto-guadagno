@@ -58,11 +58,20 @@ export interface RegionalTaxBracket {
   readonly rate: number;
 }
 
+// Comes off the tax the brackets produce, not off the taxable base, and never
+// turns into a credit. Bolzano grants one; Trento deducts from the base instead,
+// which is what exemptionThreshold models.
+export interface RegionalTaxDeduction {
+  readonly amount: number;
+  readonly incomeCeiling: number;
+}
+
 export interface Region {
   readonly code: RegionCode;
   readonly name: string;
   readonly taxBrackets: readonly RegionalTaxBracket[];
   readonly exemptionThreshold?: number;
+  readonly taxDeduction?: RegionalTaxDeduction;
 }
 
 export interface SpouseDeductionThreshold {

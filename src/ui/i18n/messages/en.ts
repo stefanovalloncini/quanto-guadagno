@@ -928,6 +928,7 @@ export const en: Record<MessageKey, string> = {
     "The ISTAT FOI series ends in {year}, nothing is projected beyond it.",
 
   "employee.form.region.hint.exempt": "exempt up to {amount}",
+  "employee.form.region.hint.deduction": "deduction of {amount} up to {ceiling}",
   "employee.form.region.hint.flat": "flat rate {rate}",
   "employee.form.region.hint.progressive": "progressive {rates}",
 };

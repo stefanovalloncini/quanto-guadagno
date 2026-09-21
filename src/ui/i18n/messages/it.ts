@@ -940,6 +940,7 @@ export const it = {
   "inflation.frozen.seriesEnd": "La serie ISTAT FOI arriva al {year}: oltre non c'è proiezione.",
 
   "employee.form.region.hint.exempt": "esente fino a {amount}",
+  "employee.form.region.hint.deduction": "detrazione {amount} fino a {ceiling}",
   "employee.form.region.hint.flat": "aliquota unica {rate}",
   "employee.form.region.hint.progressive": "progressivo {rates}",
 } as const;

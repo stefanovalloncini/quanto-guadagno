@@ -38,7 +38,7 @@ export const REGIONS: Record<RegionCode, Region> = {
       { min: 0, max: 50_000, rate: 0.0123 },
       { min: 50_000, max: null, rate: 0.0173 },
     ],
-    exemptionThreshold: 28_000,
+    taxDeduction: { amount: 430.5, incomeCeiling: 90_000 },
   },
   trento: {
     code: "trento",

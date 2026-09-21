@@ -1,7 +1,7 @@
 import { FormattedMessage, useIntl, type IntlShape } from "react-intl";
 import { Select } from "@/ui/design-system/primitives";
 import { REGIONS, REGIONS_LIST } from "@/domain/data";
-import { formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
+import { formatCurrencyCents, formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
 import type { RegionCode } from "@/domain/data";
 
 interface RegionSelectorProps {
@@ -18,6 +18,18 @@ function describeBrackets(code: RegionCode, intl: IntlShape): string {
       intl.formatMessage(
         { id: "employee.form.region.hint.exempt" },
         { amount: formatCurrencyWhole(region.exemptionThreshold) },
+      ),
+    );
+  }
+
+  if (region.taxDeduction !== undefined) {
+    parts.push(
+      intl.formatMessage(
+        { id: "employee.form.region.hint.deduction" },
+        {
+          amount: formatCurrencyCents(region.taxDeduction.amount),
+          ceiling: formatCurrencyWhole(region.taxDeduction.incomeCeiling),
+        },
       ),
     );
   }
