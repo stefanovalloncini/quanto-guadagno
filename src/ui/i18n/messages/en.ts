@@ -562,8 +562,6 @@ export const en: Record<MessageKey, string> = {
     "The 13th carries no employee work deduction and no regional or municipal surcharge, so it is taxed more than an ordinary month.",
 
   "inflation.title": "Purchasing power over time",
-  "inflation.lede":
-    "Inflation erodes the value of money. See what an amount from a few years ago is worth today, by the ISTAT FOI index.",
   "inflation.form.amount": "Amount",
   "inflation.form.amount.hint":
     "The amount whose real value you want to compare between two years.",

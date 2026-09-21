@@ -570,8 +570,6 @@ export const it = {
     "Sulla tredicesima non si applicano le detrazioni da lavoro dipendente né le addizionali regionale e comunale: per questo è tassata più di una mensilità ordinaria.",
 
   "inflation.title": "Il potere d'acquisto nel tempo",
-  "inflation.lede":
-    "L'inflazione erode il valore dei soldi. Scopri quanto vale oggi una cifra di qualche anno fa, secondo l'indice ISTAT FOI.",
   "inflation.form.amount": "Importo",
   "inflation.form.amount.hint": "La cifra di cui confrontare il valore reale tra due anni.",
   "inflation.form.fromYear": "Anno di partenza",

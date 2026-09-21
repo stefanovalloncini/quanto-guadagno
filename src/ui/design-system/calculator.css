@@ -217,7 +217,10 @@
 
 .qg-esempio__body,
 .qg-employer__body,
-.qg-irpef-indicator__body {
+.qg-irpef-indicator__body,
+.qg-raise__body,
+.qg-keep-pace__body,
+.qg-frozen__body {
   padding-bottom: var(--s-5);
   display: flex;
   flex-direction: column;

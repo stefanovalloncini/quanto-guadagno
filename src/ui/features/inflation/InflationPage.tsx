@@ -12,7 +12,6 @@ export function InflationPage() {
   return (
     <CalculatorLayout
       titleId="inflation.title"
-      ledeId="inflation.lede"
       form={<InflationForm calc={calc} />}
       results={<InflationResults result={calc.result} />}
       footer={
