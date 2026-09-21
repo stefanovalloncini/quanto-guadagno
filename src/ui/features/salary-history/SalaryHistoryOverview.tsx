@@ -61,10 +61,13 @@ export function SalaryHistoryOverview({
       )}
 
       {asTable ? (
-        <SalaryHistoryDataTable rows={rows} targetYear={targetYear} />
+        <div className="qg-ledger-scroll">
+          <SalaryHistoryDataTable rows={rows} targetYear={targetYear} />
+        </div>
       ) : (
         <>
           <SalaryHistoryChart rows={rows} projection={projection} targetYear={targetYear} />
+          {/* The chart's numbers stay readable by screen reader while the chart is shown. */}
           <div className="qg-visually-hidden">
             <SalaryHistoryDataTable rows={rows} targetYear={targetYear} />
           </div>
