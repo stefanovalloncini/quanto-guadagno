@@ -2,9 +2,10 @@ import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Button, Field, Select } from "@/ui/design-system/primitives";
 import { RegionSelector } from "@/ui/features/employee-calculator/components/RegionSelector.tsx";
+import { PaymentFrequencySelector } from "@/ui/features/employee-calculator/components/PaymentFrequencySelector.tsx";
 import type { ContractType } from "@/domain/calc";
 import { FOI_INDEX } from "@/domain/data";
-import { type PaymentFrequency, type SalaryEntrySettings } from "./salaryHistory.ts";
+import { type SalaryEntrySettings } from "./salaryHistory.ts";
 import { SalaryHistoryAdvancedFields } from "./SalaryHistoryAdvancedFields.tsx";
 import type { NewEntryInput } from "./useSalaryHistory.ts";
 import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
@@ -16,8 +17,6 @@ const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
   "determinato",
   "apprendistato",
 ];
-
-const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14];
 
 const YEAR_OPTIONS = FOI_INDEX.map((p) => p.year);
 const DEFAULT_YEAR = YEAR_OPTIONS[YEAR_OPTIONS.length - 1] ?? 2026;
@@ -115,19 +114,10 @@ export function SalaryHistoryForm({ defaultSettings, onSubmit }: SalaryHistoryFo
         />
 
         <div className="qg-history-form__row">
-          <Select
-            label={<FormattedMessage id="history.form.paymentFrequency" />}
+          <PaymentFrequencySelector
             value={state.settings.paymentFrequency}
-            onChange={(e) =>
-              updateRequired("paymentFrequency", Number(e.target.value) as PaymentFrequency)
-            }
-          >
-            {PAYMENT_FREQUENCIES.map((f) => (
-              <option key={f} value={f}>
-                {intl.formatMessage({ id: `employee.form.paymentFrequency.option${f}` })}
-              </option>
-            ))}
-          </Select>
+            onChange={(paymentFrequency) => updateRequired("paymentFrequency", paymentFrequency)}
+          />
 
           <Field
             label={<FormattedMessage id="history.form.municipalTaxRate" />}
