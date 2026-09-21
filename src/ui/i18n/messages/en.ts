@@ -11,12 +11,8 @@ export const en: Record<MessageKey, string> = {
   "error.boundary.body": "Reload the page to try again.",
 
   "nav.employee": "Calculator",
-  "nav.apprenticeship": "Apprenticeship",
   "nav.forfettario": "Forfettario",
-  "nav.compoundInterest": "Compound interest",
   "nav.naspi": "NASpI",
-  "nav.preavviso": "Resignation notice",
-  "nav.inverse": "Net-to-gross",
   "nav.glossario": "Glossary",
   "nav.sources": "Sources",
   "nav.about": "About",
@@ -153,10 +149,7 @@ export const en: Record<MessageKey, string> = {
     "15 instalments, includes 13th, 14th and 15th-month bonuses",
   "employee.form.paymentFrequency.option16": "16 instalments, additional contractual bonuses",
   "employee.form.region": "Region of residence",
-  "employee.form.regional": "Regional surcharge rate",
-  "employee.form.regional.hint": "Changes by region of residence.",
   "employee.form.municipal": "Municipal surcharge rate",
-  "employee.form.municipal.hint": "Changes by municipality of residence.",
 
   "employee.results.detail": "Calculation breakdown",
 
@@ -311,7 +304,6 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.regional": "Regional surcharge",
   "employee.breakdown.municipal": "Municipal surcharge",
   "employee.breakdown.trattamento": "Trattamento integrativo",
-  "employee.breakdown.net": "Net annual",
 
   "notFound.title": "Page not found",
   "notFound.body": "The page you requested does not exist.",
@@ -673,7 +665,6 @@ export const en: Record<MessageKey, string> = {
   "print.input.companySize.large": "More than 15 employees",
   "print.input.companySize.small": "Up to 15 employees",
   "print.input.yes": "Yes",
-  "print.input.no": "No",
   "print.breakdown.gross": "Annual gross salary",
   "print.breakdown.inps": "Employee INPS contributions",
   "print.breakdown.taxableIncome": "IRPEF taxable income",
@@ -685,9 +676,7 @@ export const en: Record<MessageKey, string> = {
   "print.breakdown.trattamento": "Trattamento integrativo",
   "print.breakdown.sommaAggiuntiva": "Additional sum (€100 bonus)",
   "print.breakdown.pdrNet": "Net performance bonus",
-  "print.breakdown.totalTaxes": "Total tax and contribution charge",
   "print.breakdown.netAnnual": "Annual net",
-  "print.breakdown.netMonthly": "Monthly net",
   "print.footer.note":
     "Estimate for guidance only. Your employer's official payslip remains the reference.",
   "print.footer.sourceLink": "Verify the calculation at quantoguadagno.com",
@@ -769,11 +758,9 @@ export const en: Record<MessageKey, string> = {
     "In {year}: {gross} gross becomes {net} net per year, about {netMonthly} per month, at {growth} growth.",
   "history.projection.emptyHint": "Add an entry for 2024 or later to see a projection.",
 
-  "employee.dependents.title": "Dependent family members",
   "employee.dependents.spouse": "Dependent spouse",
   "employee.dependents.spouseIncome": "Annual spouse income",
   "employee.dependents.spouseIncome.hint": "Maximum to be considered dependent: {limit}",
-  "employee.dependents.spouseIncome.warning": "Income exceeds the limit",
   "employee.dependents.spouseIncome.warningDetails":
     "With income above {limit}, the spouse is not considered dependent and the deduction does not apply.",
   "employee.dependents.childrenOver21": "Dependent children (over 21)",
@@ -783,7 +770,6 @@ export const en: Record<MessageKey, string> = {
   "employee.dependents.otherDependents.hint":
     "Parents, in-laws, siblings and other family members under art. 433 c.c. living with you or receiving alimony. €750 per person, phased out by income (zero above €80,000).",
 
-  "employee.expenses.title": "Expense deductions",
   "employee.expenses.mortgageInterest": "Mortgage interest",
   "employee.expenses.mortgageInterest.hint": "Deductible at 19% up to €4,000",
   "employee.expenses.medicalExpenses": "Medical expenses",
@@ -794,11 +780,9 @@ export const en: Record<MessageKey, string> = {
   "employee.expenses.pensionFund.hint":
     "Pension-fund contributions, deductible from income up to €5,164.57/year.",
 
-  "employee.premio.title": "Performance bonus (PdR)",
   "employee.premio.amount": "Gross amount (max {max})",
   "employee.premio.hint": "{rate} flat tax for incomes under €80,000",
 
-  "employee.fringe.title": "Fringe benefits",
   "employee.fringe.companyCar.title": "Company car",
   "employee.fringe.companyCar.subtitle": "Taxable annual benefit on the payslip.",
   "employee.fringe.mealVouchers.subtitle":
@@ -840,7 +824,6 @@ export const en: Record<MessageKey, string> = {
     "Tax-free up to {amount}/year (with dependent children)",
   "employee.fringe.welfare.hasChildren": "I have dependent children",
 
-  "employee.specialConditions.title": "Special conditions",
   "employee.specialConditions.regimeImpatriati.label": "Impatriate Regime (Return of Talent)",
   "employee.specialConditions.regimeImpatriati.hint":
     "50% of income exempt from IRPEF for 5 years (Art. 5 Legislative Decree 209/2023)",
@@ -882,7 +865,6 @@ export const en: Record<MessageKey, string> = {
   "employee.irpefBracket.topBracket": "You're already in the top bracket.",
   "employee.summary.pdr": "Performance bonus (net)",
 
-  "employee.breakdown.title": "Tax breakdown",
   "employee.breakdown.section.contributions": "Social contributions",
   "employee.breakdown.section.taxes": "Income taxes",
   "employee.breakdown.section.credits": "Credits and bonuses",
@@ -905,7 +887,6 @@ export const en: Record<MessageKey, string> = {
   "employee.breakdown.pdrInps": "INPS on bonus",
   "employee.breakdown.pdrTax": "Substitute tax on bonus",
   "employee.breakdown.pdrNet": "Bonus net",
-  "employee.breakdown.netMonthly": "Net monthly:",
 
   "employee.employer.section": "What the employer pays",
   "employee.employer.insight": "Every net euro you receive costs the company {ratio}.",

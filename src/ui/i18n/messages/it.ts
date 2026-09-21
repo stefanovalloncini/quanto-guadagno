@@ -9,12 +9,8 @@ export const it = {
   "error.boundary.body": "Ricarica la pagina per riprovare.",
 
   "nav.employee": "Calcolatore",
-  "nav.apprenticeship": "Apprendistato",
   "nav.forfettario": "Forfettario",
-  "nav.compoundInterest": "Interesse composto",
   "nav.naspi": "NASpI",
-  "nav.preavviso": "Preavviso dimissioni",
-  "nav.inverse": "Calcolo lordo da netto",
   "nav.glossario": "Glossario",
   "nav.sources": "Fonti",
   "nav.about": "Informazioni",
@@ -154,10 +150,7 @@ export const it = {
     "15 mensilità, con tredicesima, quattordicesima e quindicesima",
   "employee.form.paymentFrequency.option16": "16 mensilità, con bonus contrattuali aggiuntivi",
   "employee.form.region": "Regione di residenza",
-  "employee.form.regional": "Aliquota addizionale regionale",
-  "employee.form.regional.hint": "Cambia in base alla regione di residenza.",
   "employee.form.municipal": "Aliquota addizionale comunale",
-  "employee.form.municipal.hint": "Cambia in base al comune di residenza.",
 
   "employee.results.detail": "Dettaglio del calcolo",
 
@@ -312,7 +305,6 @@ export const it = {
   "employee.breakdown.regional": "Addizionale regionale",
   "employee.breakdown.municipal": "Addizionale comunale",
   "employee.breakdown.trattamento": "Trattamento integrativo",
-  "employee.breakdown.net": "Netto annuo",
 
   "notFound.title": "Pagina non trovata",
   "notFound.body": "L'indirizzo cercato non esiste.",
@@ -682,7 +674,6 @@ export const it = {
   "print.input.companySize.large": "Oltre 15 dipendenti",
   "print.input.companySize.small": "Fino a 15 dipendenti",
   "print.input.yes": "Sì",
-  "print.input.no": "No",
   "print.breakdown.gross": "Reddito lordo annuo",
   "print.breakdown.inps": "Contributi INPS dipendente",
   "print.breakdown.taxableIncome": "Reddito imponibile IRPEF",
@@ -694,9 +685,7 @@ export const it = {
   "print.breakdown.trattamento": "Trattamento integrativo",
   "print.breakdown.sommaAggiuntiva": "Somma aggiuntiva (bonus 100€)",
   "print.breakdown.pdrNet": "Premio di risultato netto",
-  "print.breakdown.totalTaxes": "Totale trattenute fiscali",
   "print.breakdown.netAnnual": "Netto annuo",
-  "print.breakdown.netMonthly": "Netto mensile",
   "print.footer.note":
     "Stima a uso indicativo. La busta paga ufficiale del datore di lavoro resta il riferimento.",
   "print.footer.sourceLink": "Verifica il calcolo su quantoguadagno.com",
@@ -781,12 +770,10 @@ export const it = {
   "history.projection.emptyHint":
     "Aggiungi una voce per il 2024 o successivi per vedere una proiezione.",
 
-  "employee.dependents.title": "Familiari a carico",
   "employee.dependents.spouse": "Coniuge a carico",
   "employee.dependents.spouseIncome": "Reddito annuo del coniuge",
   "employee.dependents.spouseIncome.hint":
     "Limite massimo per essere considerato a carico: {limit}",
-  "employee.dependents.spouseIncome.warning": "Reddito superiore al limite",
   "employee.dependents.spouseIncome.warningDetails":
     "Con reddito sopra {limit} il coniuge non è considerato a carico e la detrazione non si applica.",
   "employee.dependents.childrenOver21": "Figli a carico (oltre 21 anni)",
@@ -795,7 +782,6 @@ export const it = {
   "employee.dependents.otherDependents.hint":
     "Genitori, suoceri, fratelli e altri familiari di cui all'art. 433 c.c. conviventi o con assegno alimentare. €750 per persona, ridotto in proporzione al reddito (zero oltre €80.000).",
 
-  "employee.expenses.title": "Detrazioni spese",
   "employee.expenses.mortgageInterest": "Interessi sul mutuo",
   "employee.expenses.mortgageInterest.hint": "Detrazione al 19% fino a 4.000 €",
   "employee.expenses.medicalExpenses": "Spese sanitarie",
@@ -806,11 +792,9 @@ export const it = {
   "employee.expenses.pensionFund.hint":
     "Versamenti a fondi pensione, deducibili dal reddito fino a 5.164,57 € l'anno.",
 
-  "employee.premio.title": "Premio di risultato",
   "employee.premio.amount": "Importo lordo (max {max})",
   "employee.premio.hint": "Tassazione sostitutiva {rate} per redditi inferiori a 80.000 €",
 
-  "employee.fringe.title": "Fringe benefit",
   "employee.fringe.companyCar.title": "Auto aziendale",
   "employee.fringe.companyCar.subtitle": "Beneficio annuo imponibile in busta paga.",
   "employee.fringe.mealVouchers.subtitle":
@@ -852,7 +836,6 @@ export const it = {
     "Esente fino a {amount}/anno (con figli a carico)",
   "employee.fringe.welfare.hasChildren": "Ho figli fiscalmente a carico",
 
-  "employee.specialConditions.title": "Condizioni speciali",
   "employee.specialConditions.regimeImpatriati.label": "Regime impatriati (rientro dei cervelli)",
   "employee.specialConditions.regimeImpatriati.hint":
     "50% del reddito esente IRPEF per 5 anni (art. 5 D.lgs. 209/2023)",
@@ -895,7 +878,6 @@ export const it = {
   "employee.irpefBracket.topBracket": "Sei già nello scaglione più alto.",
   "employee.summary.pdr": "Premio di risultato netto",
 
-  "employee.breakdown.title": "Dettaglio imposte",
   "employee.breakdown.section.contributions": "Contributi previdenziali",
   "employee.breakdown.section.taxes": "Imposte sul reddito",
   "employee.breakdown.section.credits": "Crediti e bonus",
@@ -918,7 +900,6 @@ export const it = {
   "employee.breakdown.pdrInps": "Contributi INPS sul premio",
   "employee.breakdown.pdrTax": "Imposta sostitutiva sul premio",
   "employee.breakdown.pdrNet": "Premio netto",
-  "employee.breakdown.netMonthly": "Netto mensile:",
 
   "employee.employer.section": "Costo per l'azienda",
   "employee.employer.insight": "Ogni euro netto che ricevi costa {ratio} all'azienda.",
