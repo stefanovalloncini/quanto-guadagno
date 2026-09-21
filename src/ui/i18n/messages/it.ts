@@ -310,13 +310,13 @@ export const it = {
   "notFound.body": "L'indirizzo cercato non esiste.",
   "notFound.home": "Torna alla home",
 
-  "about.title": "Cos'è quanto guadagno",
+  "about.title": "Cos'è Quanto guadagno",
   "about.lede":
     "Calcolatore di stipendio netto basato su aliquote IRPEF e contributi INPS in vigore. Niente account, niente tracker.",
   "about.body1":
     "Il progetto nasce per dare una stima dello stipendio netto a partire dal lordo. Le aliquote regionali sono modificabili perché variano da una regione all'altra.",
   "about.body2":
-    "Il calcolo segue gli scaglioni Agenzia delle Entrate e le circolari INPS aggiornate. Nessuna stima è sostituto della busta paga reale: serve a orientarsi.",
+    "Il calcolo segue gli scaglioni dell'Agenzia delle Entrate e le circolari INPS in vigore. Nessuna stima sostituisce la busta paga: serve a orientarsi.",
   "about.github": "Codice su GitHub",
 
   "sources.title": "Da dove vengono i numeri",

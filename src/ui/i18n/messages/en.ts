@@ -309,7 +309,7 @@ export const en: Record<MessageKey, string> = {
   "notFound.body": "The page you requested does not exist.",
   "notFound.home": "Back to home",
 
-  "about.title": "About quanto guadagno",
+  "about.title": "About Quanto guadagno",
   "about.lede":
     "Italian net-salary calculator based on the IRPEF brackets and INPS contributions in force. No account, no tracker.",
   "about.body1":
