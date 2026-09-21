@@ -2,6 +2,9 @@ import { FormattedMessage } from "react-intl";
 import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS, type SupportedYear } from "@/domain/data";
 import type { NaspiCalculator } from "./useNaspiCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_GROSS_PAY = 2_000_000;
 
 interface NaspiFormProps {
   readonly calc: NaspiCalculator;
@@ -27,13 +30,14 @@ export function NaspiForm({ calc }: NaspiFormProps) {
       <Field
         label={<FormattedMessage id="naspi.form.grossPay4Years" />}
         hint={<FormattedMessage id="naspi.form.grossPay4Years.hint" />}
-        type="number"
-        min={0}
-        step={1000}
-        value={state.grossPay4Years}
-        onChange={(e) => update({ grossPay4Years: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.grossPay4Years)}
+        onChange={(e) =>
+          update({ grossPay4Years: Math.min(parseDigits(e.target.value), MAX_GROSS_PAY) })
+        }
+        trailing="€"
       />
 
       <Field

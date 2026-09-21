@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ForfettarioPage } from "./ForfettarioPage.tsx";
 import { renderWithIntl } from "@/ui/shared/test-utils.tsx";
 
@@ -18,6 +19,15 @@ describe("ForfettarioPage", () => {
     expect(screen.getByLabelText(/Anno fiscale/i)).toBeTruthy();
     expect(screen.getByLabelText(/Anni dall'apertura/i)).toBeTruthy();
     expect(screen.getByLabelText(/Spese annue per personale dipendente/i)).toBeTruthy();
+  });
+
+  it("groups thousands in the revenue field as the user types", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<ForfettarioPage />);
+    const field = screen.getByLabelText(/Fatturato annuo previsto/i);
+    await user.clear(field);
+    await user.type(field, "85000");
+    expect(field).toHaveValue("85.000");
   });
 
   it("shows the monthly net summary for the default inputs", () => {

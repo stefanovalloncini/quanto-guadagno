@@ -2,6 +2,9 @@ import { FormattedMessage } from "react-intl";
 import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS } from "@/domain/data";
 import type { TredicesimaCalculator, TredicesimaFormState } from "./useTredicesimaCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_RAL = 500_000;
 
 const MENSILITA_OPTIONS: ReadonlyArray<13 | 14> = [13, 14];
 
@@ -17,14 +20,12 @@ export function TredicesimaForm({ calc }: TredicesimaFormProps) {
       <Field
         label={<FormattedMessage id="tredicesima.form.ral" />}
         hint={<FormattedMessage id="tredicesima.form.ral.hint" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.ral}
-        onChange={(e) => update({ ral: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.ral)}
+        onChange={(e) => update({ ral: Math.min(parseDigits(e.target.value), MAX_RAL) })}
+        trailing="€"
       />
 
       <Select

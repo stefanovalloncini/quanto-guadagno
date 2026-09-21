@@ -2,6 +2,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import type { PremioRisultatoInput as PremioRisultatoInputType } from "@/domain/calc";
 import { getTaxConfig, type SupportedYear } from "@/domain/data";
 import { EnableToggle, Field, Money, Stack } from "@/ui/design-system/primitives";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
 
 interface PremioRisultatoInputProps {
   readonly value: PremioRisultatoInputType | null;
@@ -38,14 +39,14 @@ export function PremioRisultatoInput({ value, onChange, taxYear }: PremioRisulta
             />
           }
           hint={<FormattedMessage id="employee.premio.hint" values={{ rate: rateFormatted }} />}
-          type="number"
-          min={0}
-          max={pdrSostitutiva.maxAmount}
-          step={100}
-          value={current.amount}
-          onChange={(e) => onChange({ amount: Math.max(0, Number(e.target.value)) })}
-          trailing="€"
+          type="text"
           inputMode="numeric"
+          autoComplete="off"
+          value={formatThousands(current.amount)}
+          onChange={(e) =>
+            onChange({ amount: Math.min(parseDigits(e.target.value), pdrSostitutiva.maxAmount) })
+          }
+          trailing="€"
         />
       )}
     </Stack>

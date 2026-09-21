@@ -1,6 +1,7 @@
 import { useIntl, FormattedMessage } from "react-intl";
 import type { CompanyCarInput, CompanyCarMode, FringePowertrainType } from "@/domain/data";
 import { Field } from "@/ui/design-system/primitives";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
 import type { SupportedYear } from "@/domain/data";
 
 interface CompanyCarSectionProps {
@@ -9,6 +10,7 @@ interface CompanyCarSectionProps {
   readonly taxYear: SupportedYear;
 }
 
+const MAX_CAR_VALUE = 100_000;
 const MODES: ReadonlyArray<CompanyCarMode> = ["simple", "detailed"];
 const POWERTRAINS: ReadonlyArray<FringePowertrainType> = ["bev", "phev", "other"];
 
@@ -40,16 +42,17 @@ export function CompanyCarSection({ value, onChange, taxYear }: CompanyCarSectio
         <Field
           label={<FormattedMessage id="employee.fringe.companyCar.annualValue" />}
           hint={<FormattedMessage id="employee.fringe.companyCar.annualValue.hint" />}
-          type="number"
-          min={0}
-          max={100_000}
-          step={100}
-          value={value.annualBenefitValue ?? 0}
+          type="text"
+          inputMode="numeric"
+          autoComplete="off"
+          value={formatThousands(value.annualBenefitValue ?? 0)}
           onChange={(e) =>
-            onChange({ ...value, annualBenefitValue: Math.max(0, Number(e.target.value)) })
+            onChange({
+              ...value,
+              annualBenefitValue: Math.min(parseDigits(e.target.value), MAX_CAR_VALUE),
+            })
           }
           trailing="€"
-          inputMode="numeric"
         />
       ) : (
         <>

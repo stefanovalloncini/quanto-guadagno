@@ -49,6 +49,6 @@ describe("ApprenticeshipPage", () => {
       </IntlProvider>,
     );
     const targetField = screen.getByLabelText(/Retribuzione di destinazione/);
-    expect((targetField as HTMLInputElement).value).toBe("35000");
+    expect((targetField as HTMLInputElement).value).toBe("35.000");
   });
 });

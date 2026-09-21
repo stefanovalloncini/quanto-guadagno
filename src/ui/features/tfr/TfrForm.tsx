@@ -1,6 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import { Field } from "@/ui/design-system/primitives";
 import type { TfrCalculator } from "./useTfrCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_RAL = 500_000;
 
 interface TfrFormProps {
   readonly calc: TfrCalculator;
@@ -14,14 +17,12 @@ export function TfrForm({ calc }: TfrFormProps) {
     <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
       <Field
         label={<FormattedMessage id="employee.form.salary" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.ral}
-        onChange={(e) => update({ ral: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.ral)}
+        onChange={(e) => update({ ral: Math.min(parseDigits(e.target.value), MAX_RAL) })}
+        trailing="€"
       />
 
       <Field

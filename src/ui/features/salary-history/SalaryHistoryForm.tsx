@@ -7,6 +7,9 @@ import { FOI_INDEX } from "@/domain/data";
 import { type PaymentFrequency, type SalaryEntrySettings } from "./salaryHistory.ts";
 import { SalaryHistoryAdvancedFields } from "./SalaryHistoryAdvancedFields.tsx";
 import type { NewEntryInput } from "./useSalaryHistory.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_GROSS = 1_000_000;
 
 const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
   "indeterminato",
@@ -80,16 +83,17 @@ export function SalaryHistoryForm({ defaultSettings, onSubmit }: SalaryHistoryFo
 
           <Field
             label={<FormattedMessage id="history.form.gross" />}
-            type="number"
-            min={0}
-            max={1_000_000}
-            step={100}
-            value={state.grossAnnual}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={formatThousands(state.grossAnnual)}
             onChange={(e) =>
-              setState((s) => ({ ...s, grossAnnual: Math.max(0, Number(e.target.value)) }))
+              setState((s) => ({
+                ...s,
+                grossAnnual: Math.min(parseDigits(e.target.value), MAX_GROSS),
+              }))
             }
             trailing="€"
-            inputMode="numeric"
           />
         </div>
 

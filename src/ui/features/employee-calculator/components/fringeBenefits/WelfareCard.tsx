@@ -1,7 +1,9 @@
 import { FormattedMessage, useIntl } from "react-intl";
 import type { WelfareInput } from "@/domain/data";
 import { Field, Stack } from "@/ui/design-system/primitives";
-import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
+import { EUR_AMOUNT_FORMAT, formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_WELFARE = 20_000;
 
 interface WelfareCardProps {
   readonly value: WelfareInput;
@@ -34,14 +36,14 @@ export function WelfareCard({
             />
           )
         }
-        type="number"
-        min={0}
-        max={20_000}
-        step={100}
-        value={value.annualAmount}
-        onChange={(e) => onChange({ ...value, annualAmount: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(value.annualAmount)}
+        onChange={(e) =>
+          onChange({ ...value, annualAmount: Math.min(parseDigits(e.target.value), MAX_WELFARE) })
+        }
+        trailing="€"
       />
       <label className="qg-toggle">
         <input

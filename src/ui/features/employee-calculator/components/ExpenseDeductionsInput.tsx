@@ -1,6 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import type { ExpenseDeductionsInput as ExpenseDeductionsInputType } from "@/domain/calc";
 import { EnableToggle, Field, Stack } from "@/ui/design-system/primitives";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_EXPENSE = 100_000;
 
 interface ExpenseDeductionsInputProps {
   readonly value: ExpenseDeductionsInputType | null;
@@ -29,61 +32,65 @@ export function ExpenseDeductionsInput({ value, onChange }: ExpenseDeductionsInp
           <Field
             label={<FormattedMessage id="employee.expenses.mortgageInterest" />}
             hint={<FormattedMessage id="employee.expenses.mortgageInterest.hint" />}
-            type="number"
-            min={0}
-            max={100_000}
-            step={100}
-            value={current.mortgageInterest}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={formatThousands(current.mortgageInterest)}
             onChange={(e) =>
-              onChange({ ...current, mortgageInterest: Math.max(0, Number(e.target.value)) })
+              onChange({
+                ...current,
+                mortgageInterest: Math.min(parseDigits(e.target.value), MAX_EXPENSE),
+              })
             }
             trailing="€"
-            inputMode="numeric"
           />
 
           <Field
             label={<FormattedMessage id="employee.expenses.medicalExpenses" />}
             hint={<FormattedMessage id="employee.expenses.medicalExpenses.hint" />}
-            type="number"
-            min={0}
-            max={100_000}
-            step={100}
-            value={current.medicalExpenses}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={formatThousands(current.medicalExpenses)}
             onChange={(e) =>
-              onChange({ ...current, medicalExpenses: Math.max(0, Number(e.target.value)) })
+              onChange({
+                ...current,
+                medicalExpenses: Math.min(parseDigits(e.target.value), MAX_EXPENSE),
+              })
             }
             trailing="€"
-            inputMode="numeric"
           />
 
           <Field
             label={<FormattedMessage id="employee.expenses.otherDeductions" />}
             hint={<FormattedMessage id="employee.expenses.otherDeductions.hint" />}
-            type="number"
-            min={0}
-            max={100_000}
-            step={100}
-            value={current.otherDeductions}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={formatThousands(current.otherDeductions)}
             onChange={(e) =>
-              onChange({ ...current, otherDeductions: Math.max(0, Number(e.target.value)) })
+              onChange({
+                ...current,
+                otherDeductions: Math.min(parseDigits(e.target.value), MAX_EXPENSE),
+              })
             }
             trailing="€"
-            inputMode="numeric"
           />
 
           <Field
             label={<FormattedMessage id="employee.expenses.pensionFund" />}
             hint={<FormattedMessage id="employee.expenses.pensionFund.hint" />}
-            type="number"
-            min={0}
-            max={100_000}
-            step={100}
-            value={current.pensionFund ?? 0}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={formatThousands(current.pensionFund ?? 0)}
             onChange={(e) =>
-              onChange({ ...current, pensionFund: Math.max(0, Number(e.target.value)) })
+              onChange({
+                ...current,
+                pensionFund: Math.min(parseDigits(e.target.value), MAX_EXPENSE),
+              })
             }
             trailing="€"
-            inputMode="numeric"
           />
         </Stack>
       )}

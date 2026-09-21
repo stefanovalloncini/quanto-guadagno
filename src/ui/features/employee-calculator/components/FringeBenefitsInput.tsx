@@ -8,7 +8,7 @@ import type {
   WelfareInput,
 } from "@/domain/data";
 import { EnableToggle, Field, OptionToggle, Stack } from "@/ui/design-system/primitives";
-import { EUR_AMOUNT_FORMAT } from "@/ui/shared/numeric.ts";
+import { EUR_AMOUNT_FORMAT, formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
 import { CompanyCarSection } from "./fringeBenefits/CompanyCarSection.tsx";
 import { MealVouchersCard } from "./fringeBenefits/MealVouchersCard.tsx";
 import { WelfareCard } from "./fringeBenefits/WelfareCard.tsx";
@@ -22,6 +22,8 @@ interface FringeBenefitsInputProps {
 
 const DEFAULT_CAR: CompanyCarInput = { mode: "simple", annualBenefitValue: 0 };
 const DEFAULT_VOUCHERS: MealVouchersInput = { dailyValue: 8, workingDaysPerMonth: 22 };
+const MAX_PREMIUM = 50_000;
+
 const DEFAULT_HEALTH: HealthInsuranceInput = { annualPremium: 0 };
 const DEFAULT_WELFARE: WelfareInput = { annualAmount: 0, hasDependentChildren: false };
 const EMPTY: FringeBenefitsInputType = {};
@@ -108,19 +110,19 @@ export function FringeBenefitsInput({ value, onChange, taxYear }: FringeBenefits
               <Field
                 label={<FormattedMessage id="employee.fringe.healthInsurance.annualPremium" />}
                 hint={<FormattedMessage id="employee.fringe.healthInsurance.annualPremium.hint" />}
-                type="number"
-                min={0}
-                max={50_000}
-                step={100}
-                value={current.healthInsurance.annualPremium}
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                value={formatThousands(current.healthInsurance.annualPremium)}
                 onChange={(e) =>
                   onChange({
                     ...current,
-                    healthInsurance: { annualPremium: Math.max(0, Number(e.target.value)) },
+                    healthInsurance: {
+                      annualPremium: Math.min(parseDigits(e.target.value), MAX_PREMIUM),
+                    },
                   })
                 }
                 trailing="€"
-                inputMode="numeric"
               />
             )}
           </OptionToggle>

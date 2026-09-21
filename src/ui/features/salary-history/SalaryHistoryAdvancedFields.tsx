@@ -2,6 +2,9 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { EnableToggle, Field, Select } from "@/ui/design-system/primitives";
 import type { CompanySize, DependentsInput } from "@/domain/calc";
 import type { SalaryEntrySettings } from "./salaryHistory.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_SPOUSE_INCOME = 1_000_000;
 
 interface SalaryHistoryAdvancedFieldsProps {
   readonly settings: SalaryEntrySettings;
@@ -72,14 +75,16 @@ export function SalaryHistoryAdvancedFields({
       {dependents.hasSpouse ? (
         <Field
           label={<FormattedMessage id="history.form.dependents.spouseIncome" />}
-          type="number"
-          min={0}
-          max={1_000_000}
-          step={100}
-          value={dependents.spouseIncome ?? 0}
-          onChange={(e) => updateDependents({ spouseIncome: Math.max(0, Number(e.target.value)) })}
-          trailing="€"
+          type="text"
           inputMode="numeric"
+          autoComplete="off"
+          value={formatThousands(dependents.spouseIncome ?? 0)}
+          onChange={(e) =>
+            updateDependents({
+              spouseIncome: Math.min(parseDigits(e.target.value), MAX_SPOUSE_INCOME),
+            })
+          }
+          trailing="€"
         />
       ) : null}
 

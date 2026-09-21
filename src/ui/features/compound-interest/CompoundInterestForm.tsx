@@ -4,6 +4,10 @@ import type {
   CompoundInterestCalculator,
   CompoundInterestFormState,
 } from "./useCompoundInterestCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_PRINCIPAL = 10_000_000;
+const MAX_CONTRIBUTION = 1_000_000;
 
 interface CompoundInterestFormProps {
   readonly calc: CompoundInterestCalculator;
@@ -20,13 +24,14 @@ export function CompoundInterestForm({ calc }: CompoundInterestFormProps) {
       <Field
         label={<FormattedMessage id="compoundInterest.form.principal" />}
         hint={<FormattedMessage id="compoundInterest.form.principal.hint" />}
-        type="number"
-        min={0}
-        step={100}
-        value={state.principal}
-        onChange={(e) => update({ principal: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.principal)}
+        onChange={(e) =>
+          update({ principal: Math.min(parseDigits(e.target.value), MAX_PRINCIPAL) })
+        }
+        trailing="€"
       />
 
       <Field
@@ -57,14 +62,15 @@ export function CompoundInterestForm({ calc }: CompoundInterestFormProps) {
       <Field
         label={<FormattedMessage id="compoundInterest.form.contribution" />}
         hint={<FormattedMessage id="compoundInterest.form.contribution.hint" />}
-        type="number"
-        min={0}
-        step={50}
-        value={state.contribution === 0 ? "" : state.contribution}
-        placeholder="0"
-        onChange={(e) => update({ contribution: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.contribution)}
+        placeholder="0"
+        onChange={(e) =>
+          update({ contribution: Math.min(parseDigits(e.target.value), MAX_CONTRIBUTION) })
+        }
+        trailing="€"
       />
 
       <Select

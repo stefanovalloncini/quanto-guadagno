@@ -1,6 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import { Field, Select } from "@/ui/design-system/primitives";
 import type { ApprenticeshipCalculator } from "./useApprenticeshipCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_TARGET = 1_000_000;
 
 const YEAR_OPTIONS: ReadonlyArray<number> = [1, 2, 3, 4, 5];
 
@@ -15,14 +18,12 @@ export function ApprenticeshipForm({ calc }: ApprenticeshipFormProps) {
       <Field
         label={<FormattedMessage id="apprenticeship.form.target" />}
         hint={<FormattedMessage id="apprenticeship.form.target.hint" />}
-        type="number"
-        min={1}
-        max={1_000_000}
-        step={100}
-        value={state.targetGrossAnnual}
-        onChange={(e) => setTarget(Number(e.target.value))}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.targetGrossAnnual)}
+        onChange={(e) => setTarget(Math.min(parseDigits(e.target.value), MAX_TARGET))}
+        trailing="€"
       />
       <Select
         label={<FormattedMessage id="apprenticeship.form.years" />}

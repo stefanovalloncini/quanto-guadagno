@@ -2,9 +2,10 @@ import { FormattedMessage } from "react-intl";
 import type { DependentsInput as DependentsInputType } from "@/domain/calc";
 import { SHARED_DEPENDENTS_DEDUCTION } from "@/domain/data";
 import { EnableToggle, Field, Money, Stack } from "@/ui/design-system/primitives";
-import { clampInt } from "@/ui/shared/numeric.ts";
+import { clampInt, formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
 
 const SPOUSE_INCOME_LIMIT = SHARED_DEPENDENTS_DEDUCTION.dependentIncomeLimit;
+const MAX_SPOUSE_INCOME = 100_000;
 const MAX_CHILDREN = 10;
 const MAX_OTHER = 10;
 
@@ -69,17 +70,15 @@ export function DependentsInput({ value, onChange }: DependentsInputProps) {
                     />
                   ) : undefined
                 }
-                type="number"
-                min={0}
-                max={100_000}
-                step={100}
-                value={current.spouseIncome ?? 0}
+                type="text"
+                inputMode="numeric"
+                autoComplete="off"
+                value={formatThousands(current.spouseIncome ?? 0)}
                 onChange={(e) => {
-                  const spouseIncome = Math.max(0, Number(e.target.value));
+                  const spouseIncome = Math.min(parseDigits(e.target.value), MAX_SPOUSE_INCOME);
                   onChange({ ...current, spouseIncome });
                 }}
                 trailing="€"
-                inputMode="numeric"
               />
             </div>
           )}

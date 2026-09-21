@@ -9,6 +9,12 @@ import {
 import { formatCurrencyWhole, formatPercentage } from "@/domain/format.ts";
 import type { Gestion } from "@/domain/calc";
 import type { ForfettarioCalculator, ForfettarioFormState } from "./useForfettarioCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_REVENUE = 500_000;
+const MAX_CASSA = 100_000;
+const MAX_CONCURRENT_RAL = 500_000;
+const MAX_EMPLOYEE_COSTS = 100_000;
 
 const GESTION_OPTIONS: ReadonlyArray<Gestion> = [
   "gestione-separata",
@@ -33,14 +39,12 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
       <Field
         label={<FormattedMessage id="forfettario.form.revenue" />}
         hint={<FormattedMessage id="forfettario.form.revenue.hint" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={1000}
-        value={state.revenue}
-        onChange={(e) => update({ revenue: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.revenue)}
+        onChange={(e) => update({ revenue: Math.min(parseDigits(e.target.value), MAX_REVENUE) })}
+        trailing="€"
       />
 
       <Select
@@ -89,14 +93,15 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
         <Field
           label={<FormattedMessage id="forfettario.form.cassaManualAmount" />}
           hint={<FormattedMessage id="forfettario.form.cassaManualAmount.hint" />}
-          type="number"
-          min={0}
-          step={100}
-          value={state.cassaManualAmount === 0 ? "" : state.cassaManualAmount}
-          placeholder="0"
-          onChange={(e) => update({ cassaManualAmount: Number(e.target.value) })}
-          trailing="€"
+          type="text"
           inputMode="numeric"
+          autoComplete="off"
+          value={formatThousands(state.cassaManualAmount)}
+          placeholder="0"
+          onChange={(e) =>
+            update({ cassaManualAmount: Math.min(parseDigits(e.target.value), MAX_CASSA) })
+          }
+          trailing="€"
         />
       )}
 
@@ -173,14 +178,17 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
         <Field
           label={<FormattedMessage id="forfettario.form.concurrentEmployeeRal" />}
           hint={<FormattedMessage id="forfettario.form.concurrentEmployeeRal.hint" />}
-          type="number"
-          min={0}
-          step={500}
-          value={state.concurrentEmployeeRal === 0 ? "" : state.concurrentEmployeeRal}
-          placeholder="0"
-          onChange={(e) => update({ concurrentEmployeeRal: Number(e.target.value) })}
-          trailing="€"
+          type="text"
           inputMode="numeric"
+          autoComplete="off"
+          value={formatThousands(state.concurrentEmployeeRal)}
+          placeholder="0"
+          onChange={(e) =>
+            update({
+              concurrentEmployeeRal: Math.min(parseDigits(e.target.value), MAX_CONCURRENT_RAL),
+            })
+          }
+          trailing="€"
         />
       )}
 
@@ -222,15 +230,15 @@ export function ForfettarioForm({ calc }: ForfettarioFormProps) {
             values={{ limit: employeeCostLimit }}
           />
         }
-        type="number"
-        min={0}
-        max={100_000}
-        step={500}
-        value={state.employeeCosts === 0 ? "" : state.employeeCosts}
-        placeholder="0"
-        onChange={(e) => update({ employeeCosts: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.employeeCosts)}
+        placeholder="0"
+        onChange={(e) =>
+          update({ employeeCosts: Math.min(parseDigits(e.target.value), MAX_EMPLOYEE_COSTS) })
+        }
+        trailing="€"
       />
     </form>
   );

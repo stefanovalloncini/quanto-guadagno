@@ -3,6 +3,9 @@ import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS } from "@/domain/data";
 import type { ContractType } from "@/domain/calc";
 import type { EmployerCostCalculator, EmployerCostFormState } from "./useEmployerCostCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_GROSS = 500_000;
 
 const CONTRACT_TYPES: ReadonlyArray<ContractType> = [
   "indeterminato",
@@ -22,14 +25,12 @@ export function EmployerCostForm({ calc }: EmployerCostFormProps) {
     <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
       <Field
         label={<FormattedMessage id="employee.form.salary" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.grossAnnual}
-        onChange={(e) => update({ grossAnnual: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.grossAnnual)}
+        onChange={(e) => update({ grossAnnual: Math.min(parseDigits(e.target.value), MAX_GROSS) })}
+        trailing="€"
       />
 
       <Select

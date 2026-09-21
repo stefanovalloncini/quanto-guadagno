@@ -3,6 +3,9 @@ import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS, REGIONS_LIST, type RegionCode } from "@/domain/data";
 import type { PaymentFrequency } from "@/domain/calc";
 import type { InverseCalculator, InverseFormState } from "./useInverseCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_TARGET_NET = 500_000;
 
 const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14, 15, 16];
 
@@ -20,14 +23,14 @@ export function InverseForm({ calc }: InverseFormProps) {
       <Field
         label={<FormattedMessage id="inverse.form.targetNetAnnual" />}
         hint={<FormattedMessage id="inverse.form.targetNetAnnual.hint" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.targetNetAnnual}
-        onChange={(e) => update({ targetNetAnnual: Number(e.target.value) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.targetNetAnnual)}
+        onChange={(e) =>
+          update({ targetNetAnnual: Math.min(parseDigits(e.target.value), MAX_TARGET_NET) })
+        }
+        trailing="€"
       />
 
       <Select

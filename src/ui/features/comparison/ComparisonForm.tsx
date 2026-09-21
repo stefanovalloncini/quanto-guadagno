@@ -3,6 +3,9 @@ import { Field, Select } from "@/ui/design-system/primitives";
 import { SUPPORTED_YEARS, REGIONS_LIST, type RegionCode } from "@/domain/data";
 import type { PaymentFrequency } from "@/domain/calc";
 import type { ComparisonCalculator, ComparisonFormState } from "./useComparisonCalculator.ts";
+import { formatThousands, parseDigits } from "@/ui/shared/numeric.ts";
+
+const MAX_RAL = 500_000;
 
 const PAYMENT_FREQUENCIES: ReadonlyArray<PaymentFrequency> = [12, 13, 14, 15, 16];
 
@@ -19,26 +22,22 @@ export function ComparisonForm({ calc }: ComparisonFormProps) {
     <form className="qg-calc__form-stack" onSubmit={(e) => e.preventDefault()}>
       <Field
         label={<FormattedMessage id="comparison.form.ralA" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.ralA}
-        onChange={(e) => update({ ralA: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.ralA)}
+        onChange={(e) => update({ ralA: Math.min(parseDigits(e.target.value), MAX_RAL) })}
+        trailing="€"
       />
 
       <Field
         label={<FormattedMessage id="comparison.form.ralB" />}
-        type="number"
-        min={0}
-        max={500_000}
-        step={500}
-        value={state.ralB}
-        onChange={(e) => update({ ralB: Math.max(0, Number(e.target.value)) })}
-        trailing="€"
+        type="text"
         inputMode="numeric"
+        autoComplete="off"
+        value={formatThousands(state.ralB)}
+        onChange={(e) => update({ ralB: Math.min(parseDigits(e.target.value), MAX_RAL) })}
+        trailing="€"
       />
 
       <Select

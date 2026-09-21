@@ -21,9 +21,9 @@ describe("InversePage", () => {
     const user = userEvent.setup();
     renderWithIntl(<InversePage />);
     const field = screen.getByLabelText("Netto annuo desiderato");
-    expect(field).toHaveValue(24_000);
+    expect(field).toHaveValue("24.000");
     await user.clear(field);
     await user.type(field, "40000");
-    expect(field).toHaveValue(40_000);
+    expect(field).toHaveValue("40.000");
   });
 });
