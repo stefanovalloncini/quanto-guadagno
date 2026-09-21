@@ -19,7 +19,8 @@
   padding: var(--s-2) 0;
   vertical-align: baseline;
 }
-.qg-ledger__label {
+/* Scoped past .qg-ledger th, which sets the padding shorthand. */
+.qg-ledger .qg-ledger__label {
   text-align: left;
   font-weight: 400;
   color: var(--inchiostro);
@@ -53,7 +54,7 @@
   font-weight: 500;
   color: var(--grigio);
 }
-.qg-ledger__amount + .qg-ledger__amount {
+.qg-ledger .qg-ledger__amount + .qg-ledger__amount {
   padding-left: var(--s-4);
 }
 .qg-ledger__link {
