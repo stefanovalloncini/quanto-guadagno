@@ -75,6 +75,14 @@ Prima di proporre una modifica devono passare tutti:
 pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm check:ai-tells && pnpm check:i18n
 ```
 
+## Deploy
+
+Il sito è statico: basta servire `dist/`. `public/_redirects` e `public/_headers` portano il fallback per le rotte e le intestazioni di cache e sicurezza; `wrangler.jsonc` descrive il progetto per Cloudflare Workers con asset statici.
+
+Cloudflare, da repository GitHub: crea un progetto Workers collegato a questo repo con comando di build `pnpm build` e comando di deploy `npx wrangler deploy`, oppure un progetto Pages con comando di build `pnpm build`, cartella `dist` e variabile `NODE_VERSION=22`. Poi aggiungi `quantoguadagno.com` come dominio personalizzato.
+
+Da terminale, con `wrangler login` già fatto: `pnpm build && npx wrangler deploy`.
+
 ## Contribuire
 
 La segnalazione più utile riguarda i dati: un'aliquota sbagliata, una soglia non aggiornata, un'addizionale che non corrisponde alla delibera. Apri una issue con il modello "Errore nei dati fiscali" e allega il link alla fonte ufficiale che dimostra il valore corretto.
